@@ -16,10 +16,37 @@
 #include "Vector3D.hpp"
 
 // OBSERVADORES
-
-// COMPLETAR
-
-
+double ed::angulo(Vector3D v) const{
+	return dotProduct(v)/(modulo() * v.modulo());
+}
+double ed::alfa() const{
+	Vector3D a(1,0,0);
+	return angulo(a);
+}
+double ed::beta() const{
+	Vector3D a(0,1,0);
+	return angulo(a);
+}
+double ed::gamma() const{
+	Vector3D a(0,0,1);
+	return angulo(a);
+}
+double ed::dotProduct(Vector3D v) const{
+	return v1_*v.get1() + v2_*v.get2() + v3_*v.get3();
+}
+Vector3D ed::crossProduct(Vector3D v) const{
+	double w1, w2, w3;
+	
+	w1=v2_*v.get3() - v3_*v.get2();
+	w2=v3_*v.get1() - v1_*v.get3();
+	w3=v1_*v.get2() - v2_*v.get1();
+	
+	Vector3D w(w1,w2,w3);
+	return w;
+}	
+double ed::productoMixto(Vector3D v, Vector3D w) const{
+	return dotProduct(crossProduct(v, w));
+}
 ////////////////////////////////////////////////////////////////
 
 // MODIFICADORES

@@ -26,36 +26,42 @@ using std::ostream;
 
 
 // Se incluye la clase Vector3D dentro del espacio de nombre de la asigantura: ed
-namespace ed {
+namespace ed{
 
 //!  Definición de la clase Vector3D:  \f$ \vec{v} = (v_1, v_2, v_3) = v_1 \vec{i} + v_2 \vec{j} + v_3 \vec{k} \f$ 
-class Vector3D
-{
+class Vector3D{
   //! \name Atributos privados de la clase Vector3D
    private: 
-
-	// COMPLETAR
-
-
+		double v1_, v2_, v3_;	
    //! \name Funciones o métodos públicos de la clase Vector3D
    public:
-
 	//! \name Constructores de la clase Vector3D
-
-	// COMPLETAR
-
+		Vector3D(){
+			v1_=0; v2_=0; v3_0;
+		}
+		Vector3D(double v1, double v2, double v3);
+		Vector3D(Vector3D v);
 	//! \name Observadores: funciones de consulta de Vector3D
-
-	// COMPLETAR
-
-
-
+		double get1() const{return v1_;}
+		double get2() const{return v2_;}
+		double get3() const{return v3_;}
+		double modulo() const{return sqrt(v1_*v1_ + v2_*v2 + v3_*v3);}
+		double angulo(Vector3D v) const;
+		double alfa() const;
+		double beta() const;
+		double gamma() const;
+		double dotProduct(Vector3D v) const;
+		Vector3D crossProduct(Vector3D v) const;
+		double productoMixto(Vector3D v, Vector3D w) const;
 	//! \name Modificadores: funciones de modificación de Vector3D
-
-	// COMPLETAR
-
-
-    //! \name Operadores de la clase
+		void set1(double v);
+		void set2(double v);
+		void set3(double v);
+		void sumConst(double v);
+		void sumVect(Vector3D v);
+		void multConst(double v);
+		void multVect(Vector3D v);
+   //! \name Operadores de la clase
    
 	// COMPLETAR COMENTARIOS DE DOXYGEN
 	Vector3D & operator=(Vector3D const &objeto);
@@ -67,9 +73,8 @@ class Vector3D
 
 
 	//! \name Funciones lectura y escritura de la clase Vector3D
-
-	// COMPLETAR
-
+		void leerVector3D();
+		void escribirVector3D();
 }; // Fin de la definición de la clase Vector3D
 
 
@@ -91,4 +96,4 @@ class Vector3D
 } // \brief Fin de namespace ed.
 
 //  _VECTOR3D_HPP_
-#endif 
+#endif
