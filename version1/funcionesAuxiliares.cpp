@@ -4,23 +4,15 @@
   \author 
   \date   
 */
-
 #include <iostream>
 #include <string>
-
 #include "funcionesAuxiliares.hpp"
-
 #include "macros.hpp"
-
 #include "Vector3D.hpp"
-
-int ed::menu()
-{
- int opcion, posicion;
-
+int ed::menu(){
+	int opcion, posicion;
 	// Se muestran las opciones del menú
 	posicion=2;
-
 	// Se borra la pantalla
 	std::cout << CLEAR_SCREEN;
 
@@ -69,25 +61,17 @@ int ed::menu()
 	std::cin >> opcion;
 
    	// Se elimina el salto de línea del flujo de entrada
-    std::cin.ignore();
+   std::cin.ignore();
 
 	return opcion;
 }
-
-
-///////////////////////////////////////////////////////////////////////////
-
-void ed::leerVectores(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w)
-{
-
-   
-
+void ed::leerVectores(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
 
-/*
+
 	// Usando la función de la clase
 	std::cout << BIGREEN << "Lectura de u usando la función leerVector" << RESET << std::endl;
-	std::cout << BIYELLOW << "u.leerVector() " << RESET << std::endl; 
+	std::cout << BIYELLOW << "u.leerVector3D() " << RESET << std::endl; 
 	u.leerVector3D();
 
 	std::cout << std::endl;
@@ -104,17 +88,12 @@ void ed::leerVectores(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w)
 	std::cout << "w = "; 
 	std::cin >> w;
 
-*/
-
  	return;
 }
-
-///////////////////////////////////////////////////////////////////////////
-
 void ed::escribirVectores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w)
 {
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
-/*
+
 	// Usando la función de la clase
 	std::cout  << BIYELLOW << "u = "  << RESET ; 
 	u.escribirVector3D();
@@ -123,17 +102,16 @@ void ed::escribirVectores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vect
 	// Usando la sobrecarga del operador >>
 	std::cout  << BIYELLOW << "v = " << RESET  << v << std::endl;
 	std::cout  << BIYELLOW << "w = " << RESET << w << std::endl;
-*/
+
  	return;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////
 
-void ed::observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v)
-{
+void ed::observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
-/*
+
 	// Usando la función de la clase
 	std::cout  << BIYELLOW << "u = "  << RESET ; 
 	u.escribirVector3D();
@@ -151,20 +129,15 @@ void ed::observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v)
 			  << RESET << v.modulo() << std::endl;
 
 
-  if ( (u.modulo() != 0.0) and  (v.modulo() != 0.0) ) 
-	{
+	if((u.modulo() != 0.0) and (v.modulo() != 0.0)){
 		std::cout << BIYELLOW << "Ángulo entre u y v = " 
 			  << RESET << u.angulo(v) << std::endl;
 	}
-	else
-	{
+	else{
 		std::cout << BIRED << "No se pueden calcular los ángulos: hay, al menos, un vector nulo" << RESET << std::endl;
 		std::cout << BIYELLOW << "u = " << RESET << u << std::endl;
 		std::cout << BIYELLOW << "v = " << RESET << v << std::endl;
 	}
-
-
-	// 
 
 	std::cout << BIBLUE << "Datos de u = " << RESET << u << std::endl;
  	std::cout << BIYELLOW << "u.get1() = " << RESET << u.get1() << std::endl;
@@ -173,20 +146,18 @@ void ed::observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v)
 
 	std::cout << BIYELLOW << "u.modulo() = " << RESET << u.modulo() << std::endl;
 
-	if ( (u.modulo() != 0.0) ) 
-	{
+	if((u.modulo() != 0.0)){
 		std::cout << BIYELLOW << "u.alfa() = " << RESET << u.alfa() << std::endl;
 		std::cout << BIYELLOW << "u.beta() = " << RESET << u.beta() << std::endl;
 		std::cout << BIYELLOW << "u.gamma() = " << RESET << u.gamma() << std::endl;
 	}
-	else
-	{	
+	else{	
 		std::cout << BIRED << "No se pueden calcular los ángulos de u: es un vector nulo" 
 				  << RESET << std::endl;
 		std::cout << BIYELLOW << "u = " << RESET << u << std::endl;
 	}
 
-	// //////////////////////
+	////////////////////////
 
 	std::cout << BIBLUE << "Datos de v = " << RESET << u << std::endl;
  	std::cout << BIYELLOW << "v.get1() = " << RESET << u.get1() << std::endl;
@@ -195,38 +166,29 @@ void ed::observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v)
 
 	std::cout << BIYELLOW << "v.modulo() = " << RESET << u.modulo() << std::endl;
 
-	if ( (v.modulo() != 0.0) ) 
-	{
+	if((v.modulo() != 0.0)){
 		std::cout << BIYELLOW << "v.alfa() = " << RESET << u.alfa() << std::endl;
 		std::cout << BIYELLOW << "v.beta() = " << RESET << u.beta() << std::endl;
 		std::cout << BIYELLOW << "v.gamma() = " << RESET << u.gamma() << std::endl;
 	}
-	else
-	{	
+	else{	
 		std::cout << BIRED << "No se pueden calcular los ángulos de v: es un vector nulo" 
 				  << RESET << std::endl;
 		std::cout << BIYELLOW << "u = " << RESET << u << std::endl;
 	}
 
-*/
-
  	return;
 }
-
-///////////////////////////////////////////////////////////////////////////
-
-void ed::modificarVector(ed::Vector3D &u, ed::Vector3D const &v, double k)
-{
+void ed::modificarVector(ed::Vector3D &u, ed::Vector3D const &v, double k){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
 /*
-   	std::cout << BIBLUE;
+	std::cout << BIBLUE;
   	std::cout << "Modificaciones del vector " << std::endl; 
 	std::cout << RESET;
 
 	//
 	std::cout << BIGREEN << "Valor inicial de u = " << RESET  << u 
 			  << std::endl << std::endl;
-
 	//
 	u.sumConst(k);
 
@@ -275,13 +237,8 @@ void ed::modificarVector(ed::Vector3D &u, ed::Vector3D const &v, double k)
   	std::cout << BIGREEN << "Nuevo valor de u = " << RESET  << u 
 			  << std::endl << std::endl;
 */
-
 }
-
-///////////////////////////////////////////////////////////////////////////
-
-void ed::mostrarProductoEscalar(ed::Vector3D const &u, ed::Vector3D const &v)
-{
+void ed::mostrarProductoEscalar(ed::Vector3D const &u, ed::Vector3D const &v){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
 
 /*
@@ -293,27 +250,17 @@ void ed::mostrarProductoEscalar(ed::Vector3D const &u, ed::Vector3D const &v)
 	std::cout << u << BIYELLOW << ".dotProduct(" << RESET << v << BIYELLOW << ") = " << RESET 
 			  << u.dotProduct(v) << std::endl << std::endl;
 
-
-
 	std::cout << BIGREEN << "Usando el operador: u * v " << RESET << std::endl; 
 	std::cout << u << BIYELLOW << " * "  << RESET << v << " = " <<  u * v << std::endl  << std::endl;
 */
 	return;
 }
-
-
-
-///////////////////////////////////////////////////////////////////////////
-
-
-void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v)
-{
+void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
 
  /*
 	// Se comprueba si no son nulos
-	if ( (u.modulo() != 0.0) and  (v.modulo() != 0.0)) 
-	{
+	if((u.modulo() != 0.0) and (v.modulo() != 0.0)){
 		std::cout << BIBLUE;
 	  	std::cout << "Producto vectorial de dos vectores: u ^ v " << std::endl << std::endl;
 		std::cout << RESET;
@@ -337,50 +284,33 @@ void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v)
 
 		std::cout << BIYELLOW << v << " ^ " << u << " = " << RESET << (v ^ u) << std::endl;
 	}
-	else 
-	{	
+	else{	
 		std::cout << BIRED << "No se puede calcular porque hay un vector nulo" << RESET << std::endl;
 		std::cout << BIYELLOW << "u = " << RESET << u << std::endl;
 		std::cout << BIYELLOW << "v = " << RESET << v << std::endl;
 	}
 */
-
 	return;
 }
-
-
-///////////////////////////////////////////////////////////////////////////
-
-void ed::mostrarProductoMixto(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w)
-{
+void ed::mostrarProductoMixto(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
-
 /*
 	// Se comprueba si no son nulos v y w
-	if ( (v.modulo() != 0.0) and  (w.modulo() != 0.0)) 
-	{
+	if((v.modulo() != 0.0) and (w.modulo() != 0.0)){
 	  	std::cout << BIYELLOW << u << BIGREEN " * (" <<  v << " ^ " <<  w << ") = " << RESET
 				  << u.productoMixto(v,w) << std::endl;
-
 	  	std::cout << "Donde " << std::endl;
 	  	std::cout << BIGREEN << v << " ^ " << w << " = " << RESET << (v ^ w) << std::endl;
 	}
-	else 
-	{	
+	else{	
 		std::cout << BIRED << "No se puede calcular porque hay un vector nulo " << RESET << std::endl;
 		std::cout << BIYELLOW << "v = " << RESET << v << std::endl;
 		std::cout << BIYELLOW << "w = " << RESET << w << std::endl;
 	}
 */
-
 	return;
 }
-
-
-///////////////////////////////////////////////////////////////////////////
-
-void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D &w,  double k)
-{
+void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D &w,  double k){
  /*
 	std::cout << BIGREEN;
 	std::cout << "Operador de igualdad == " << std::endl;
@@ -389,11 +319,10 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 	std::cout << BIYELLOW << "\t Los vectores u = " << RESET << u 
 			  << BIYELLOW << " y v = " << RESET << v;
 
-	if (u == v)
+	if(u == v)
 		std::cout << " son iguales " << std::endl;
 	else
 		std::cout << " son diferentes " << std::endl;
-
 
 	//////////////////////
 	std::cout << BIGREEN;
@@ -411,7 +340,7 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 
 	//////////////////////
 
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Operador prefijo unario +: +u" << std::endl; 
 	std::cout << RESET;
 
@@ -419,7 +348,7 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 
 	//////////////////////
 
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Operador prefijo unario -: -u " << std::endl; 
 	std::cout << RESET;
 
@@ -427,21 +356,21 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 
 	//////////////////////
 
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Operador binario +: u + v " << std::endl; 
 	std::cout << RESET;
 	std::cout << "\t" << BIYELLOW << u << " + " << v << " = " << RESET << u + v << std::endl;
 
 
 	//////////////////////
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Operador binario -: u - v " << std::endl; 
 	std::cout << RESET;
 
 	std::cout << "\t" << BIYELLOW << u << " - " << v << " = " << RESET << u - v << std::endl;
 
 	//////////////////////
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Producto por un número escalar (prefijo): k * u" << std::endl; 
 	std::cout << RESET;
 
@@ -449,21 +378,12 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 
 
 	//////////////////////
-   	std::cout << BIGREEN;
+  	std::cout << BIGREEN;
   	std::cout << "Producto por un número escalar (postfijo): u * k " << std::endl; 
 	std::cout << RESET;
 
 	std::cout << "\t" << BIYELLOW << u << " * " << k << " = " << RESET << (u * k) << std::endl;
 	std::cout << std::endl;
 */
-
 	return;
-}
-
-
-
-
-
-
-
-		
+}		

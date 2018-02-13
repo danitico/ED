@@ -1,19 +1,13 @@
-
 /*!
   \file   funcionesAuxiliares.hpp
   \brief  Funciones auxiliares para el programa principal de la práctica 1
   \author 
   \date  
 */
-
 #ifndef _FUNCIONESAUXILIARES_HPP_
 #define _FUNCIONESAUXILIARES_HPP_
-
 #include "Vector3D.hpp"
-
-
-namespace ed
-{
+namespace ed{
 	/*! 
 		\brief   Muestra el menú del programa principal 
 		\return  Devuelve el número de opción elegido
@@ -24,11 +18,10 @@ namespace ed
 	void leerVectores(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w);
 
 	// COMPLETAR LOS COMENTARIOS DE DOXYGEN
-	void escribirVectores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w);
-
+	void escribirVectores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w);//ok
 
 	// COMPLETAR LOS COMENTARIOS DE DOXYGEN
-	void observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v);
+	void observadoresDeVectores(ed::Vector3D const &u, ed::Vector3D const &v);//ok
 
 	// COMPLETAR LOS COMENTARIOS DE DOXYGEN
 	void modificarVector(ed::Vector3D &u, ed::Vector3D const &v, double k);
@@ -44,11 +37,6 @@ namespace ed
 
 	// COMPLETAR LOS COMENTARIOS DE DOXYGEN
 	void mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D &w,  double k);
-
-
-
 } // Fin del espacio de nombre de la asignatura: ed
-
 // Fin de _FUNCIONESAUXILIARES_HPP_
 #endif
-
