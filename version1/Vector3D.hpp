@@ -44,21 +44,21 @@ namespace ed{
 			inline void set1(double v1){v1_=v1;}
 			inline void set2(double v2){v2_=v2;}
 			inline void set3(double v3){v3_=v3;}
-			void sumConst(double v);
+			void sumConst(double k);
 			void sumVect(Vector3D v);
-			void multConst(double v);
+			void multConst(double k);
 			void multVect(Vector3D v);
 		//! \name Operadores de la clase
-		
-		// COMPLETAR COMENTARIOS DE DOXYGEN
-		Vector3D & operator=(Vector3D const &objeto);
-
-		// COMPLETAR COMENTARIOS DE DOXYGEN
-		bool operator == (Vector3D const &objeto) const;
-
-		// COMPLETAR EL RESTO DE OPERADORES
-
-
+		//hace falta doxygen en todas las funciones
+		Vector3D &operator=(Vector3D const &objeto);//ok
+		bool operator==(Vector3D const &objeto) const;//ok
+		Vector3D& operator+(Vector3D const &objeto)  const;//ok
+		Vector3D& operator+() const;//ok
+		Vector3D& operator-(Vector3D const &objeto) const;//ok
+		Vector3D& operator-() const;//ok
+		Vector3D& operator*(double k) const;//ok
+		double operator*(Vector3D const &objeto) const;//ok
+		Vector3D& operator^(Vector3D const &objeto) const;
 		//! \name Funciones lectura y escritura de la clase Vector3D
 			void leerVector3D();
 			void escribirVector3D() const;
@@ -69,14 +69,13 @@ namespace ed{
 //! \name Funciones que utilizan un objetos de la clase Vector3D, pero que no pertenecen a la clase Vector3D
 
 	// COMPLETAR COMENTARIOS DE DOXYGEN
-   Vector3D & operator* (double k, Vector3D const & objeto);
-
+   Vector3D & operator* (double k, Vector3D const & objeto);//ok
 
 	// COMPLETAR COMENTARIOS DE DOXYGEN
-	istream &operator>>(istream &stream, Vector3D &objeto);
+	istream &operator>>(istream &stream, Vector3D &objeto);//ok
 
 	// COMPLETAR COMENTARIOS DE DOXYGEN    
-	ostream &operator<<(ostream &stream, Vector3D const &objeto);
+	ostream &operator<<(ostream &stream, Vector3D const &objeto);//ok
 
 
 } // \brief Fin de namespace ed.

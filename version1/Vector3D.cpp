@@ -41,19 +41,78 @@ double ed::Vector3D::productoMixto(ed::Vector3D v, ed::Vector3D w) const{
 ////////////////////////////////////////////////////////////////
 
 // MODIFICADORES
-
-// COMPLETAR
-
-
-
+void ed::Vector3D::sumConst(double k){
+	set1(get1() + k);
+	set2(get2() + k);
+	set3(get3() + k);
+}
+void ed::Vector3D::sumVect(Vector3D v){
+	set1(get1() + v.get1());
+	set2(get2() + v.get2());
+	set3(get3() + v.get3());
+}
+void ed::Vector3D::multConst(double k){
+	set1(get1() * k);
+	set2(get2() * k);
+	set3(get3() * k);
+}
+void ed::Vector3D::multVect(Vector3D v){
+	set1(get1() * v.get1());
+	set2(get2() * v.get2());
+	set3(get3() * v.get3());
+}
 ////////////////////////////////////////////////////////////////////////////////
-
 // OPERADORES
-
-// COMPLETAR
-
-
-
+bool ed::Vector3D::operator==(Vector3D const &objeto) const{
+	if(get1()==objeto.get1() && get2()==objeto.get2() && get3()==objeto.get3()) return true;
+	else return false;
+}
+ed::Vector3D& ed::Vector3D::operator=(Vector3D const &objeto){
+	set1(objeto.get1());
+	set2(objeto.get2());
+	set3(objeto.get3());
+	return *this;
+}
+ed::Vector3D& ed::Vector3D::operator+(Vector3D const &objeto) const{
+	ed::Vector3D *res=new ed::Vector3D();
+	res->set1(get1() + objeto.get1());
+	res->set2(get2() + objeto.get2());
+	res->set3(get3() + objeto.get3());
+	return *res;
+}
+ed::Vector3D& ed::Vector3D::operator+() const{
+	ed::Vector3D *res=new ed::Vector3D(*this);
+	return *res;
+}
+ed::Vector3D& ed::Vector3D::operator-(Vector3D const &objeto) const{
+	ed::Vector3D *res=new ed::Vector3D();
+	res->set1(get1() - objeto.get1());
+	res->set2(get2() - objeto.get2());
+	res->set3(get3() - objeto.get3());
+	return *res;
+}
+ed::Vector3D& ed::Vector3D::operator-() const{
+	ed::Vector3D *res=new ed::Vector3D(*this);
+	res->set1(-(res->get1()));
+	res->set2(-(res->get2()));
+	res->set3(-(res->get3()));
+	return *res;
+}
+ed::Vector3D& ed::Vector3D::operator*(double k) const{
+	ed::Vector3D *res=new ed::Vector3D();
+	res->set1(get1() * k);
+	res->set2(get2() * k);
+	res->set3(get3() * k);
+	return *res;
+}
+double ed::Vector3D::operator*(Vector3D const &objeto) const{
+	return dotProduct(objeto);
+}
+ed::Vector3D& ed::Vector3D::operator^(Vector3D const &objeto) const{
+	ed::Vector3D *res=new ed::Vector3D();
+	*res=crossProduct(objeto);
+	return *res;
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 // FUNCIONES DE LECTURA Y ESCRITURA
@@ -69,15 +128,15 @@ namespace ed{
 	// Producto "por un" escalar (prefijo): k * v
 	ed::Vector3D & operator* (double k, ed::Vector3D const & objeto){
 		ed::Vector3D *vectorResultado = new ed::Vector3D();
-
-		// COMPLETAR
-
+		vectorResultado->set1(objeto.get1() * k);
+		vectorResultado->set2(objeto.get2() * k);
+		vectorResultado->set3(objeto.get3() * k);
 		return *vectorResultado;
 	}
 	// Sobrecarga del operador de salida
 	// Se escriben por pantalla las coordenadas del vector 3D  de la forma (v1, v2, v3)
 	ostream &operator<<(ostream &stream, ed::Vector3D const &objeto){
-		stream<<"("<<objeto.get1()<<", "<<objeto.get2()<<", "<<objeto.get3()<<")\n";
+		stream<<"("<<objeto.get1()<<", "<<objeto.get2()<<", "<<objeto.get3()<<")";
 		return stream;
 	}
 
