@@ -10,57 +10,301 @@
 using std::istream;
 using std::ostream;
 #define COTA_ERROR   1.0e-6 //!< Cota de error para la comparación números reales
+/**
+ * @namespace ed
+ * @brief Este es el espacio de nombres ed
+ */
 namespace ed{
 //!  Definición de la clase Vector3D:  \f$ \vec{v} = (v_1, v_2, v_3) = v_1 \vec{i} + v_2 \vec{j} + v_3 \vec{k} \f$ 
+	/**
+	 * @class Vector3D
+    * @brief Esta es la clase Vector3D
+    */
 	class Vector3D{
 	  //! \name Atributos privados de la clase Vector3D
 		private: 
-			double v1_, v2_, v3_;	
+			double v1_; 
+			double v2_; 
+			double v3_;				
 		//! \name Funciones o métodos públicos de la clase Vector3D
 		public:
 		//! \name Constructores de la clase Vector3D
+			/**
+          * @fn Vector3D()
+          * @brief Constructor de la clase Vector3D
+          *
+			 * Este constructor iguala a cero los tres miembros privados de la clase
+			 */
 			Vector3D(){
 				v1_=0; v2_=0; v3_=0;
 			}
+			/**
+          * @fn Vector3D(double v1, double v2, double v3)
+          * @brief Constructor de la clase Vector3D
+			 * @param v1 El valor que va a tomar la variable privada v1_
+			 * @param v2 El valor que va a tomar la variable privada v2_
+          * @param v3 El valor que va a tomar la variable privada v3_
+			 *
+			 * Este constructor iguala los tres miembros privados de la clase a los parametros pasados respectivamente
+			 */
 			Vector3D(double v1, double v2, double v3){
 				v1_=v1; v2_=v2; v3_=v3;
 			}
+			/**
+          * @fn Vector3D(const Vector3D &v)
+          * @brief Constructor de copia de la clase Vector3D
+			 * @param v El vector que vamos a obtener es copia de v
+			 *
+			 * Este constructor iguala los tres miembros privados de la clase a los parametros pasados respectivamente
+			 */
 			Vector3D(const Vector3D &v){
 				v1_=v.get1(); v2_=v.get2(); v3_=v.get3();
 			}
 		//! \name Observadores: funciones de consulta de Vector3D
+			/**
+          * @fn inline double get1() const
+          * @brief Observador de la clase Vector3D
+          * @return Devuelve v1_
+			 *
+			 * Este observador devuelve el miembro privado v1_
+			 */
 			inline double get1() const{return v1_;}
+			/**
+          * @fn inline double get2() const
+          * @brief Observador de la clase Vector3D
+          * @return Devuelve v2_
+			 *
+			 * Este observador devuelve el miembro privado v2_
+			 */
 			inline double get2() const{return v2_;}
+			/**
+          * @fn inline double get3() const
+          * @brief Observador de la clase Vector3D
+          * @return Devuelve v3_
+			 *
+			 * Este observador devuelve el miembro privado v3_
+			 */
 			inline double get3() const{return v3_;}
+			/**
+          * @fn inline double modulo() const
+          * @brief Observador de la clase Vector3D
+          * @return Devuelve el modulo del vector
+			 *
+			 * Este observador devuelve el modulo el cual se calcula como \f$ \left \| \vec{v} \right \|=\sqrt{v1\_^2 + v2\_^2 + v3\_^2} \f$ 
+			 */
 			inline double modulo() const{return sqrt(v1_*v1_ + v2_*v2_ + v3_*v3_);}
+			/**
+          * @fn double angulo(Vector3D v) const
+          * @brief Observador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+          * @return Devuelve el angulo entre el vector pasado por parametro y el mismo
+			 *
+			 * Este observador devuelve el angulo entre los dos vectores el cual se calcula como \f$ \arccos \left ( \frac{\vec{u}*\vec{v}}{\left \| \vec{u} \right \|* \left \| \vec{v} \right \|} \right ) \f$ 
+			 */
 			double angulo(Vector3D v) const;
+			/**
+          * @fn double alfa() const
+          * @brief Observador de la clase Vector3D
+			 * @return Devuelve el angulo entre el vector y el eje X
+			 *
+			 * Este observador devuelve el angulo entre el vector y el eje X el cual se calcula como \f$ \arccos \left ( \frac{\vec{u}*\vec{v}}{\left \| \vec{u} \right \|* \left \| \vec{v} \right \|} \right ) \f$ siendo \f$ \vec{v}= \left ( 1,0,0 \right ) \f$
+			 */
 			double alfa() const;
+			/**
+          * @fn double beta() const
+          * @brief Observador de la clase Vector3D
+			 * @return Devuelve el angulo entre el vector y el eje Y
+			 *
+			 * Este observador devuelve el angulo entre el vector y el eje Y el cual se calcula como \f$ \arccos \left ( \frac{\vec{u}*\vec{v}}{\left \| \vec{u} \right \|* \left \| \vec{v} \right \|} \right ) \f$ siendo \f$ \vec{v}= \left ( 0,1,0 \right ) \f$
+			 */
 			double beta() const;
+			/**
+          * @fn double gamma() const
+          * @brief Observador de la clase Vector3D
+			 * @return Devuelve el angulo entre el vector y el eje Z
+			 *
+			 * Este observador devuelve el angulo entre el vector y el eje Z el cual se calcula como \f$ \arccos \left ( \frac{\vec{u}*\vec{v}}{\left \| \vec{u} \right \|* \left \| \vec{v} \right \|} \right ) \f$ siendo \f$ \vec{v}= \left ( 0,0,1 \right ) \f$
+			 */
 			double gamma() const;
+			/**
+          * @fn double dotProduct(Vector3D v) const
+          * @brief Observador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+			 * @return Devuelve el producto escalar entre el vector v y el mismo
+			 *
+			 * Este observador devuelve el producto escalar el cual se calcula como \f$ \vec{u}*\vec{v}=u_{1}*v_{1} + u_{2}*v_{2} + u_{3}*v_{3} \f$
+			 */
 			double dotProduct(Vector3D v) const;
+			/**
+          * @fn Vector3D crossProduct(Vector3D v) const
+          * @brief Observador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+			 * @return Devuelve el producto vectorial entre el vector v y el mismo
+			 *
+			 * Este observador devuelve el producto escalar el cual se calcula como \f$ \vec{u}\times\vec{v}=w_1\vec{i} + w_2\vec{j} + w_3\vec{k} \f$ donde \f$ w_1=u_2*v_3-u_3*v_2 \f$ , \f$ w_2=-u_1*v_3 + u_3*v_1 \f$ y \f$ w_3=u_1*v_2 - u_2*v_1 \f$
+			 */
 			Vector3D crossProduct(Vector3D v) const;
+			/**
+          * @fn double productoMixto(Vector3D v, Vector3D w) const
+          * @brief Observador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+			 * @param w Dato de tipo Vector3D
+			 * @return Devuelve el resultado de calcular el producto escalar del vector actual con el vector obtenido al calcular el producto vectorial de otros dos vectores
+			 *
+			 * Este observador devuelve \f$ \vec{u}*(\left \vec{v} \times \vec{w} \right) \f$
+			 */
 			double productoMixto(Vector3D v, Vector3D w) const;
 		//! \name Modificadores: funciones de modificación de Vector3D
+			/**
+          * @fn inline void set1(double v1)
+          * @brief Modificador de la clase Vector3D
+			 * @param v1 Valor al que se va a igualar v1_
+          * 
+			 * Este modificador iguala v1_ al parametro recibido
+			 */			
 			inline void set1(double v1){v1_=v1;}
+			/**
+          * @fn inline void set2(double v2)
+          * @brief Modificador de la clase Vector3D
+			 * @param v2 Valor al que se va a igualar v2_
+          * 
+			 * Este modificador iguala v2_ al parametro recibido
+			 */
 			inline void set2(double v2){v2_=v2;}
+			/**
+          * @fn inline void set3(double v3)
+          * @brief Modificador de la clase Vector3D
+			 * @param v3 Valor al que se va a igualar v3_
+          * 
+			 * Este modificador iguala v3_ al parametro recibido
+			 */
 			inline void set3(double v3){v3_=v3;}
+			/**
+          * @fn void sumConst(double k)
+          * @brief Modificador de la clase Vector3D
+			 * @param k Dato de tipo double
+          * 
+			 * Modifica el vector sumandolo con la constante que recibe como parametro
+			 */
 			void sumConst(double k);
+			/**
+          * @fn void sumVect(Vector3D v)
+          * @brief Modificador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+          * 
+			 * Modifica el vector sumandole el que recibe como parametro
+			 */
 			void sumVect(Vector3D v);
+			/**
+          * @fn void multConst(double k)
+          * @brief Modificador de la clase Vector3D
+			 * @param k Dato de tipo double
+          * 
+			 * Modifica el vector multiplicandolo con la constante que recibe como parametro
+			 */
 			void multConst(double k);
+			/**
+          * @fn void multVect(Vector3D v)
+          * @brief Modificador de la clase Vector3D
+			 * @param v Dato de tipo Vector3D
+          * 
+			 * Modifica el vector multiplicandolo con el que recibe como parametro
+			 */
 			void multVect(Vector3D v);
-		//! \name Operadores de la clase
-		//hace falta doxygen en todas las funciones
-		Vector3D &operator=(Vector3D const &objeto);//ok
-		bool operator==(Vector3D const &objeto) const;//ok
-		Vector3D& operator+(Vector3D const &objeto)  const;//ok
-		Vector3D& operator+() const;//ok
-		Vector3D& operator-(Vector3D const &objeto) const;//ok
-		Vector3D& operator-() const;//ok
-		Vector3D& operator*(double k) const;//ok
-		double operator*(Vector3D const &objeto) const;//ok
-		Vector3D& operator^(Vector3D const &objeto) const;
-		//! \name Funciones lectura y escritura de la clase Vector3D
+			//! \name Operadores de la clase
+			/**
+          * @fn Vector3D &operator=(Vector3D const &objeto)
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado iguala el vector con el parametro
+			 */
+			Vector3D &operator=(Vector3D const &objeto);
+			/**
+          * @fn bool operator==(Vector3D const &objeto) const
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un valor booleano
+			 *
+			 * Este operador sobrecargado devuelve true si los dos vectores son iguales, y false en el caso contrario.
+			 */
+			bool operator==(Vector3D const &objeto) const;
+			/**
+          * @fn Vector3D& operator+(Vector3D const &objeto) const
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve la suma de dos vectores
+			 */
+			Vector3D& operator+(Vector3D const &objeto) const;
+			/**
+          * @fn Vector3D& operator+() const
+          * @brief Modificador de la clase Vector3D
+			 * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve una copia del vector actual
+		 	 */
+			Vector3D& operator+() const;
+			/**
+          * @fn Vector3D& operator-(Vector3D const &objeto) const
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve la resta de dos vectores
+			 */
+			Vector3D& operator-(Vector3D const &objeto) const;
+			/**
+          * @fn Vector3D& operator-() const
+          * @brief Modificador de la clase Vector3D
+			 * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve un vector que es opuesto al vector actual
+		 	 */
+			Vector3D& operator-() const;
+			/**
+          * @fn Vector3D& operator*(double k) const
+          * @brief Modificador de la clase Vector3D
+			 * @param k Dato de tipo double
+          * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve otro vector el cual es resultado de multiplicar el vector anterior por una constante k
+			 */
+			Vector3D& operator*(double k) const;
+			/**
+          * @fn double operator*(Vector3D const &objeto) const
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un dato de tipo double
+			 *
+			 * Este operador sobrecargado devuelve el producto escalar de dos vectores
+			 */
+			double operator*(Vector3D const &objeto) const;
+			/**
+          * @fn Vector3D& operator^(Vector3D const &objeto) const
+          * @brief Modificador de la clase Vector3D
+			 * @param objeto Dato de tipo const Vector3D&
+          * @return Devuelve un dato de tipo Vector3D&
+			 *
+			 * Este operador sobrecargado devuelve otro vector que es resultado del prodcuto vectorial de dos vectores
+			 */
+			Vector3D& operator^(Vector3D const &objeto) const;
+			//! \name Funciones lectura y escritura de la clase Vector3D
+			/**
+          * @fn void leerVector3D()
+          * @brief Modificador de la clase Vector3D
+			 * 
+			 * Esta función pide por pantalla introducir cada elemento del vector
+			 */		
 			void leerVector3D();
+			/**
+          * @fn void escribirVector3D() const
+          * @brief Observador de la clase Vector3D
+			 * 
+			 * Esta función muestra pantalla el vector
+			 */
 			void escribirVector3D() const;
 	}; // Fin de la definición de la clase Vector3D
 
@@ -68,16 +312,36 @@ namespace ed{
 
 //! \name Funciones que utilizan un objetos de la clase Vector3D, pero que no pertenecen a la clase Vector3D
 
-	// COMPLETAR COMENTARIOS DE DOXYGEN
-   Vector3D & operator* (double k, Vector3D const & objeto);//ok
-
-	// COMPLETAR COMENTARIOS DE DOXYGEN
-	istream &operator>>(istream &stream, Vector3D &objeto);//ok
-
-	// COMPLETAR COMENTARIOS DE DOXYGEN    
-	ostream &operator<<(ostream &stream, Vector3D const &objeto);//ok
-
-
+	/**
+    * @fn Vector3D & operator* (double k, Vector3D const & objeto)
+    * @brief Modificador de la clase Vector3D
+	 * @param k Dato de tipo double
+	 * @param objeto Dato de tipo const Vector3D&
+    * @return Devuelve un dato de tipo Vector3D&
+	 *
+	 * Este operador sobrecargado devuelve otro vector, el cual es el producto entre el vector actual y la constante
+	 */
+   Vector3D & operator* (double k, Vector3D const & objeto);
+	/**
+    * @fn istream &operator>>(istream &stream, Vector3D &objeto)
+    * @brief Modificador de la clase Vector3D
+	 * @param stream Dato de tipo istream
+	 * @param objeto Dato de tipo Vector3D&
+	 * @return Devuelve un dato de tipo istream&
+	 *
+	 * Esta función sobrecarga el operador de entrada para leer un dato de tipo Vector3D
+	 */
+	istream &operator>>(istream &stream, Vector3D &objeto);
+	/**
+    * @fn ostream &operator<<(ostream &stream, Vector3D const &objeto)
+    * @brief Observador de la clase Vector3D
+	 * @param stream Dato de tipo ostream
+	 * @param objeto Dato de tipo const Vector3D&
+	 * @return Devuelve un dato de tipo ostream&
+	 *
+	 * Esta función sobrecarga el operador de salida para mostrar por pantalla un dato de tipo Vector3D
+	 */
+   ostream &operator<<(ostream &stream, Vector3D const &objeto);
 } // \brief Fin de namespace ed.
 
 //  _VECTOR3D_HPP_

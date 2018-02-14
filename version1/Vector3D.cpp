@@ -117,10 +117,19 @@ ed::Vector3D& ed::Vector3D::operator^(Vector3D const &objeto) const{
 
 // FUNCIONES DE LECTURA Y ESCRITURA
 void ed::Vector3D::escribirVector3D() const{
-	std::cout<<*this;
+	std::cout<<"("<<get1()<<", "<<get2()<<", "<<get3()<<")";
 }
 void ed::Vector3D::leerVector3D(){
-	std::cin>>*this;
+	double v1=0, v2=0, v3=0;	
+	std::cout<<"Primer elemento = ";
+	std::cin>>v1;
+	set1(v1);
+	std::cout<<"Segundo elemento = ";
+	std::cin>>v2;
+	set2(v2);
+	std::cout<<"Segundo elemento = ";
+	std::cin>>v3;
+	set3(v3);
 }
 // Se incluyen los operadores sobrecargados dentro del espacio de nombres de ed
 
