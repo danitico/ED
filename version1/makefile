@@ -1,7 +1,7 @@
 NAME=principal
 
 #
-OBJECTS = $(NAME).o funcionesAuxiliares.o Vector3D.o 
+OBJECTS = $(NAME).o funcionesAuxiliares.o Vector3D.o
 
 #
 CPPFLAGS = -c -g -Wall -ansi -O2

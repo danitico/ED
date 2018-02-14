@@ -37,6 +37,9 @@ namespace ed{
 			 */
 			Vector3D(){
 				v1_=0; v2_=0; v3_=0;
+				#ifndef NDEBUG
+				assert(get1()==0 && get2()==0 && get3()==0);
+				#endif
 			}
 			/**
           * @fn Vector3D(double v1, double v2, double v3)
@@ -49,6 +52,9 @@ namespace ed{
 			 */
 			Vector3D(double v1, double v2, double v3){
 				v1_=v1; v2_=v2; v3_=v3;
+				#ifndef NDEBUG
+				assert(get1()==v1 && get2()==v2 && get3()==v3);
+				#endif
 			}
 			/**
           * @fn Vector3D(const Vector3D &v)
@@ -59,6 +65,9 @@ namespace ed{
 			 */
 			Vector3D(const Vector3D &v){
 				v1_=v.get1(); v2_=v.get2(); v3_=v.get3();
+				#ifndef NDEBUG
+				assert(get1()==v.get1() && get2()==v.get2() && get3()==v.get3());
+				#endif
 			}
 		//! \name Observadores: funciones de consulta de Vector3D
 			/**
@@ -86,13 +95,13 @@ namespace ed{
 			 */
 			inline double get3() const{return v3_;}
 			/**
-          * @fn inline double modulo() const
+          * @fn double modulo() const
           * @brief Observador de la clase Vector3D
           * @return Devuelve el modulo del vector
 			 *
 			 * Este observador devuelve el modulo el cual se calcula como \f$ \left \| \vec{v} \right \|=\sqrt{v1\_^2 + v2\_^2 + v3\_^2} \f$ 
 			 */
-			inline double modulo() const{return sqrt(v1_*v1_ + v2_*v2_ + v3_*v3_);}
+			double modulo() const;
 			/**
           * @fn double angulo(Vector3D v) const
           * @brief Observador de la clase Vector3D
@@ -162,7 +171,12 @@ namespace ed{
           * 
 			 * Este modificador iguala v1_ al parametro recibido
 			 */			
-			inline void set1(double v1){v1_=v1;}
+			inline void set1(double v1){
+				v1_=v1;
+				#ifndef NDEBUG
+				assert(abs(v1 - get1())<=COTA_ERROR);
+				#endif
+			}
 			/**
           * @fn inline void set2(double v2)
           * @brief Modificador de la clase Vector3D
@@ -170,7 +184,12 @@ namespace ed{
           * 
 			 * Este modificador iguala v2_ al parametro recibido
 			 */
-			inline void set2(double v2){v2_=v2;}
+			inline void set2(double v2){
+				v2_=v2;
+				#ifndef NDEBUG
+				assert(abs(v2 - get2())<=COTA_ERROR);
+				#endif
+			}
 			/**
           * @fn inline void set3(double v3)
           * @brief Modificador de la clase Vector3D
@@ -178,7 +197,12 @@ namespace ed{
           * 
 			 * Este modificador iguala v3_ al parametro recibido
 			 */
-			inline void set3(double v3){v3_=v3;}
+			inline void set3(double v3){
+				v3_=v3;
+				#ifndef NDEBUG
+				assert(abs(v3 - get3())<=COTA_ERROR);
+				#endif
+			}
 			/**
           * @fn void sumConst(double k)
           * @brief Modificador de la clase Vector3D
