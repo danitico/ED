@@ -23,9 +23,9 @@ namespace ed{
 	class Vector3D{
 	  //! \name Atributos privados de la clase Vector3D
 		private: 
-			double v1_; 
-			double v2_; 
-			double v3_;				
+			double v1_; ///<Primer elemento del vector
+			double v2_; ///<Segundo elemento del vector
+			double v3_;	///<Tercer elemento del vector			
 		//! \name Funciones o métodos públicos de la clase Vector3D
 		public:
 		//! \name Constructores de la clase Vector3D
@@ -160,7 +160,7 @@ namespace ed{
 			 * @param w Dato de tipo Vector3D
 			 * @return Devuelve el resultado de calcular el producto escalar del vector actual con el vector obtenido al calcular el producto vectorial de otros dos vectores
 			 *
-			 * Este observador devuelve \f$ \vec{u}*(\left \vec{v} \times \vec{w} \right) \f$
+			 * Este observador devuelve \f$ \vec{u}* \left(\vec{v} \times \vec{w} \right) \f$
 			 */
 			double productoMixto(Vector3D v, Vector3D w) const;
 		//! \name Modificadores: funciones de modificación de Vector3D

@@ -5,8 +5,9 @@ var indexSectionsWithContent =
   2: "e",
   3: "fmpv",
   4: "abcdeglmopsv",
-  5: "_bcfgiopruwy",
-  6: "i"
+  5: "v",
+  6: "_bcfgiopruwy",
+  7: "i"
 };
 
 var indexSectionNames =
@@ -16,8 +17,9 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "defines",
-  6: "pages"
+  5: "variables",
+  6: "defines",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -27,7 +29,8 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Archivos",
   4: "Funciones",
-  5: "defines",
-  6: "Páginas"
+  5: "Variables",
+  6: "defines",
+  7: "Páginas"
 };
 
