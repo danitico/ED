@@ -8,9 +8,9 @@
 #include "Vector3D.hpp"
 // OBSERVADORES
 double ed::Vector3D::modulo() const{
-	double valor=sqrt(v1_*v1_ + v2_*v2_ + v3_*v3_);
+	double valor=sqrt(v_[0]*v_[0] + v_[1]*v_[1] + v_[2]*v_[2]);
 	#ifndef NDEBUG
-	assert(abs(valor-sqrt(v1_*v1_ + v2_*v2_ + v3_*v3_))<=COTA_ERROR);
+	assert(abs(valor-sqrt(v_[0]*v_[0] + v_[1]*v_[1] + v_[2]*v_[2]))<=COTA_ERROR);
 	#endif
 	return valor;
 }
@@ -58,9 +58,9 @@ double ed::Vector3D::gamma() const{
 	return res;
 }
 double ed::Vector3D::dotProduct(ed::Vector3D v) const{
-	double res=v1_*v.get1() + v2_*v.get2() + v3_*v.get3();
+	double res=v_[0]*v.get1() + v_[1]*v.get2() + v_[2]*v.get3();
 	#ifndef NDEBUG
-	assert(abs(res - (v1_*v.get1() + v2_*v.get2() + v3_*v.get3()))<=COTA_ERROR);
+	assert(abs(res - (v_[0]*v.get1() + v_[1]*v.get2() + v_[2]*v.get3()))<=COTA_ERROR);
 	#endif
 	return res;
 }

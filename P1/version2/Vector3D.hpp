@@ -22,10 +22,11 @@ namespace ed{
     */
 	class Vector3D{
 	  //! \name Atributos privados de la clase Vector3D
-		private: 
-			double v1_; 
-			double v2_; 
-			double v3_;				
+		private:
+			/**
+          *
+			 */ 
+			double v_[3]; ///<Vector de tres elementos
 		//! \name Funciones o métodos públicos de la clase Vector3D
 		public:
 		//! \name Constructores de la clase Vector3D
@@ -33,10 +34,12 @@ namespace ed{
           * @fn Vector3D()
           * @brief Constructor de la clase Vector3D
           *
-			 * Este constructor iguala a cero los tres miembros privados de la clase
+			 * Este constructor iguala a cero los tres elementos del vector
 			 */
 			Vector3D(){
-				v1_=0; v2_=0; v3_=0;
+				for(int i=0; i<3; i++){
+					v_[i]=0;
+				}
 				#ifndef NDEBUG
 				assert(get1()==0 && get2()==0 && get3()==0);
 				#endif
@@ -48,10 +51,10 @@ namespace ed{
 			 * @param v2 El valor que va a tomar la variable privada v2_
           * @param v3 El valor que va a tomar la variable privada v3_
 			 *
-			 * Este constructor iguala los tres miembros privados de la clase a los parametros pasados respectivamente
+			 * Este constructor iguala los tres elementos del vector a los parametros pasados respectivamente
 			 */
 			Vector3D(double v1, double v2, double v3){
-				v1_=v1; v2_=v2; v3_=v3;
+				v_[0]=v1; v_[1]=v2; v_[2]=v3;
 				#ifndef NDEBUG
 				assert(get1()==v1 && get2()==v2 && get3()==v3);
 				#endif
@@ -64,7 +67,7 @@ namespace ed{
 			 * Este constructor iguala los tres miembros privados de la clase a los parametros pasados respectivamente
 			 */
 			Vector3D(const Vector3D &v){
-				v1_=v.get1(); v2_=v.get2(); v3_=v.get3();
+				v_[0]=v.get1(); v_[1]=v.get2(); v_[2]=v.get3();
 				#ifndef NDEBUG
 				assert(get1()==v.get1() && get2()==v.get2() && get3()==v.get3());
 				#endif
@@ -73,27 +76,27 @@ namespace ed{
 			/**
           * @fn inline double get1() const
           * @brief Observador de la clase Vector3D
-          * @return Devuelve v1_
+          * @return Devuelve v_[0]
 			 *
-			 * Este observador devuelve el miembro privado v1_
+			 * Este observador devuelve el miembro privado v_[0]
 			 */
-			inline double get1() const{return v1_;}
+			inline double get1() const{return v_[0];}
 			/**
           * @fn inline double get2() const
           * @brief Observador de la clase Vector3D
-          * @return Devuelve v2_
+          * @return Devuelve v_[1]
 			 *
-			 * Este observador devuelve el miembro privado v2_
+			 * Este observador devuelve el miembro privado v_[1]
 			 */
-			inline double get2() const{return v2_;}
+			inline double get2() const{return v_[1];}
 			/**
           * @fn inline double get3() const
           * @brief Observador de la clase Vector3D
-          * @return Devuelve v3_
+          * @return Devuelve v_[2]
 			 *
-			 * Este observador devuelve el miembro privado v3_
+			 * Este observador devuelve el miembro privado v_[2]
 			 */
-			inline double get3() const{return v3_;}
+			inline double get3() const{return v_[2];}
 			/**
           * @fn double modulo() const
           * @brief Observador de la clase Vector3D
@@ -160,19 +163,19 @@ namespace ed{
 			 * @param w Dato de tipo Vector3D
 			 * @return Devuelve el resultado de calcular el producto escalar del vector actual con el vector obtenido al calcular el producto vectorial de otros dos vectores
 			 *
-			 * Este observador devuelve \f$ \vec{u}*(\left \vec{v} \times \vec{w} \right) \f$
+			 * Este observador devuelve \f$ \vec{u} * \left (\vec{v} \times \vec{w} \right ) \f$
 			 */
 			double productoMixto(Vector3D v, Vector3D w) const;
 		//! \name Modificadores: funciones de modificación de Vector3D
 			/**
           * @fn inline void set1(double v1)
           * @brief Modificador de la clase Vector3D
-			 * @param v1 Valor al que se va a igualar v1_
+			 * @param v1 Valor al que se va a igualar v_[0]
           * 
-			 * Este modificador iguala v1_ al parametro recibido
+			 * Este modificador iguala v_[0] al parametro recibido
 			 */			
 			inline void set1(double v1){
-				v1_=v1;
+				v_[0]=v1;
 				#ifndef NDEBUG
 				assert(abs(v1 - get1())<=COTA_ERROR);
 				#endif
@@ -185,7 +188,7 @@ namespace ed{
 			 * Este modificador iguala v2_ al parametro recibido
 			 */
 			inline void set2(double v2){
-				v2_=v2;
+				v_[1]=v2;
 				#ifndef NDEBUG
 				assert(abs(v2 - get2())<=COTA_ERROR);
 				#endif
@@ -198,7 +201,7 @@ namespace ed{
 			 * Este modificador iguala v3_ al parametro recibido
 			 */
 			inline void set3(double v3){
-				v3_=v3;
+				v_[2]=v3;
 				#ifndef NDEBUG
 				assert(abs(v3 - get3())<=COTA_ERROR);
 				#endif
