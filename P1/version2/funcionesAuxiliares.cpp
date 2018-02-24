@@ -47,7 +47,10 @@ int ed::menu(){
   	std::cout << "[8] Producto mixto de tres vectores  u * (v ^ w) " << std::endl; 
 
 	PLACE(posicion++,10);
-  	std::cout << "[9] Mostrar el uso de los operadores con u y v" << std::endl; 
+  	std::cout << "[9] Mostrar el uso de los operadores con u y v" << std::endl;
+
+	PLACE(posicion++,10);
+	std::cout << "[10] Mostrar vectores unitarios" << std::endl;
 
 	posicion++;
 	PLACE(posicion++,10);
@@ -386,4 +389,45 @@ void ed::mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vec
 	std::cout << std::endl;
 
 	return;
+}
+void ed::mostrarVectoresUnitarios(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w){
+	std::cout << BIYELLOW <<"u inicial = "<<RESET;
+	u.escribirVector3D();
+	std::cout << std::endl;
+
+	std::cout << BIYELLOW <<"v inicial = "<<RESET;
+	v.escribirVector3D();
+	std::cout << std::endl;
+
+	std::cout << BIYELLOW <<"w inicial = "<<RESET;
+	w.escribirVector3D();
+	std::cout << std::endl;
+
+	std::cout << BIYELLOW <<"Módulo u = "<<RESET<<u.modulo()<<std::endl;
+	std::cout << BIYELLOW <<"Módulo v = "<<RESET<<v.modulo()<<std::endl;
+	std::cout << BIYELLOW <<"Módulo w = "<<RESET<<w.modulo()<<std::endl;
+	
+	if(u.modulo()>0.0){
+		u.vectorUnitario();
+		std::cout<< BIYELLOW << "u = " << RESET << u <<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"No se puede calcular el vector unitario de u ya que el módulo es 0"<<RESET<<std::endl;
+	}
+
+	if(v.modulo()>0.0){
+		v.vectorUnitario();
+		std::cout<< BIYELLOW << "v = " << RESET << v <<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"No se puede calcular el vector unitario de v ya que el módulo es 0"<<RESET<<std::endl;
+	}
+
+	if(w.modulo()>0.0){
+		w.vectorUnitario();
+		std::cout<< BIYELLOW << "w = " << RESET << w <<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"No se puede calcular el vector unitario de w ya que el módulo es 0"<<RESET<<std::endl;
+	}
 }		

@@ -22,11 +22,8 @@ namespace ed{
     */
 	class Vector3D{
 	  //! \name Atributos privados de la clase Vector3D
-		private:
-			/**
-          *
-			 */ 
-			double v_[3]; ///<Vector de tres elementos
+		private: 
+			double v_[3]; ///<Vector de elementos privados			
 		//! \name Funciones o métodos públicos de la clase Vector3D
 		public:
 		//! \name Constructores de la clase Vector3D
@@ -34,12 +31,10 @@ namespace ed{
           * @fn Vector3D()
           * @brief Constructor de la clase Vector3D
           *
-			 * Este constructor iguala a cero los tres elementos del vector
+			 * Este constructor iguala a cero los tres miembros privados de la clase
 			 */
 			Vector3D(){
-				for(int i=0; i<3; i++){
-					v_[i]=0;
-				}
+				v_[0]=0; v_[1]=0; v_[2]=0;
 				#ifndef NDEBUG
 				assert(get1()==0 && get2()==0 && get3()==0);
 				#endif
@@ -51,12 +46,12 @@ namespace ed{
 			 * @param v2 El valor que va a tomar la variable privada v2_
           * @param v3 El valor que va a tomar la variable privada v3_
 			 *
-			 * Este constructor iguala los tres elementos del vector a los parametros pasados respectivamente
+			 * Este constructor iguala el vector de elementos privados de la clase a los parametros pasados respectivamente
 			 */
 			Vector3D(double v1, double v2, double v3){
 				v_[0]=v1; v_[1]=v2; v_[2]=v3;
 				#ifndef NDEBUG
-				assert(get1()==v1 && get2()==v2 && get3()==v3);
+				assert(abs(get1() - v1)<=COTA_ERROR && abs(get2() - v2)<=COTA_ERROR && abs(get3() - v3)<=COTA_ERROR);
 				#endif
 			}
 			/**
@@ -64,12 +59,12 @@ namespace ed{
           * @brief Constructor de copia de la clase Vector3D
 			 * @param v El vector que vamos a obtener es copia de v
 			 *
-			 * Este constructor iguala los tres miembros privados de la clase a los parametros pasados respectivamente
+			 * Este constructor iguala el vector de elementos privados de la clase a los parametros pasados respectivamente
 			 */
 			Vector3D(const Vector3D &v){
 				v_[0]=v.get1(); v_[1]=v.get2(); v_[2]=v.get3();
 				#ifndef NDEBUG
-				assert(get1()==v.get1() && get2()==v.get2() && get3()==v.get3());
+				assert(abs(get1() - v.get1())<=COTA_ERROR && abs(get2() - v.get2())<=COTA_ERROR && abs(get3() - v.get3())<=COTA_ERROR);
 				#endif
 			}
 		//! \name Observadores: funciones de consulta de Vector3D
@@ -163,7 +158,7 @@ namespace ed{
 			 * @param w Dato de tipo Vector3D
 			 * @return Devuelve el resultado de calcular el producto escalar del vector actual con el vector obtenido al calcular el producto vectorial de otros dos vectores
 			 *
-			 * Este observador devuelve \f$ \vec{u} * \left (\vec{v} \times \vec{w} \right ) \f$
+			 * Este observador devuelve \f$ \vec{u}* \left(\vec{v} \times \vec{w} \right) \f$
 			 */
 			double productoMixto(Vector3D v, Vector3D w) const;
 		//! \name Modificadores: funciones de modificación de Vector3D
@@ -183,9 +178,9 @@ namespace ed{
 			/**
           * @fn inline void set2(double v2)
           * @brief Modificador de la clase Vector3D
-			 * @param v2 Valor al que se va a igualar v2_
+			 * @param v2 Valor al que se va a igualar v_[1]
           * 
-			 * Este modificador iguala v2_ al parametro recibido
+			 * Este modificador iguala v_[1] al parametro recibido
 			 */
 			inline void set2(double v2){
 				v_[1]=v2;
@@ -196,9 +191,9 @@ namespace ed{
 			/**
           * @fn inline void set3(double v3)
           * @brief Modificador de la clase Vector3D
-			 * @param v3 Valor al que se va a igualar v3_
+			 * @param v3 Valor al que se va a igualar v_[2]
           * 
-			 * Este modificador iguala v3_ al parametro recibido
+			 * Este modificador iguala v_[2] al parametro recibido
 			 */
 			inline void set3(double v3){
 				v_[2]=v3;
@@ -206,6 +201,13 @@ namespace ed{
 				assert(abs(v3 - get3())<=COTA_ERROR);
 				#endif
 			}
+			/**
+			 * @fn void vectorUnitario()
+			 * @brief Funcion que convierte el vector en unitario
+			 *
+			 * Este modificador calcula el vector unitario de la siguiente manera: \f$ \frac{\vec{v}}{\| \vec{v} \|} \f$
+			 */
+			void vectorUnitario();
 			/**
           * @fn void sumConst(double k)
           * @brief Modificador de la clase Vector3D

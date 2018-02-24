@@ -1,0 +1,4 @@
+#ficheros que no se incluyen
+Vector3D.o
+funcionesAuxiliares.o
+principal.*

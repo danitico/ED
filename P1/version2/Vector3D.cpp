@@ -8,9 +8,9 @@
 #include "Vector3D.hpp"
 // OBSERVADORES
 double ed::Vector3D::modulo() const{
-	double valor=sqrt(v_[0]*v_[0] + v_[1]*v_[1] + v_[2]*v_[2]);
+	double valor=sqrt(get1()*get1() + get2()*get2() + get3()*get3());
 	#ifndef NDEBUG
-	assert(abs(valor-sqrt(v_[0]*v_[0] + v_[1]*v_[1] + v_[2]*v_[2]))<=COTA_ERROR);
+	assert(abs(valor-sqrt(get1()*get1() + get2()*get2() + get3()*get3()))<=COTA_ERROR);
 	#endif
 	return valor;
 }
@@ -58,9 +58,9 @@ double ed::Vector3D::gamma() const{
 	return res;
 }
 double ed::Vector3D::dotProduct(ed::Vector3D v) const{
-	double res=v_[0]*v.get1() + v_[1]*v.get2() + v_[2]*v.get3();
+	double res=get1()*v.get1() + get2()*v.get2() + get3()*v.get3();
 	#ifndef NDEBUG
-	assert(abs(res - (v_[0]*v.get1() + v_[1]*v.get2() + v_[2]*v.get3()))<=COTA_ERROR);
+	assert(abs(res - (get1()*v.get1() + get2()*v.get2() + get3()*v.get3()))<=COTA_ERROR);
 	#endif
 	return res;
 }
@@ -73,7 +73,7 @@ ed::Vector3D ed::Vector3D::crossProduct(ed::Vector3D v) const{
 	
 	ed::Vector3D w(w1,w2,w3);
 	#ifndef NDEBUG
-	assert(dotProduct(w)==0 && v.dotProduct(w)==0 && (abs(w.modulo() - modulo()*v.modulo()*sin(angulo(v)))<=COTA_ERROR));
+	assert(dotProduct(w)<=COTA_ERROR && v.dotProduct(w)<=COTA_ERROR && (abs(w.modulo() - modulo()*v.modulo()*sin(angulo(v)))<=COTA_ERROR));
 	#endif
 	return w;
 }	
@@ -87,6 +87,18 @@ double ed::Vector3D::productoMixto(ed::Vector3D v, ed::Vector3D w) const{
 ////////////////////////////////////////////////////////////////
 
 // MODIFICADORES
+void ed::Vector3D::vectorUnitario(){
+	ed::Vector3D aux(*this);
+	#ifndef NDEBUG
+	assert(modulo() > 0);
+	#endif
+	set1(get1() / modulo());
+	set2(get2() / modulo());
+	set3(get3() / modulo());
+	#ifndef NDEBUG
+	assert(abs(get1() - aux.get1()/aux.modulo())<=COTA_ERROR && abs(get2() - aux.get1()/aux.modulo())<=COTA_ERROR && abs(get3() - aux.get3()/aux.modulo())<=COTA_ERROR);
+	#endif
+}
 void ed::Vector3D::sumConst(double k){
 	ed::Vector3D aux(*this);
 	set1(get1() + k);
@@ -212,7 +224,7 @@ void ed::Vector3D::leerVector3D(){
 	std::cout<<"Segundo elemento = ";
 	std::cin>>v2;
 	set2(v2);
-	std::cout<<"Segundo elemento = ";
+	std::cout<<"Tercer elemento = ";
 	std::cin>>v3;
 	set3(v3);
 }
