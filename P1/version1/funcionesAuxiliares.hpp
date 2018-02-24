@@ -89,6 +89,14 @@ namespace ed{
 	 * @param k Dato de tipo double
 	 */	
 	void mostrarOperadores(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D &w,  double k);
+	/**
+	 * @fn void mostrarVectoresUnitarios(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w)
+	 * @brief Función en la que se calcula los vectores unitarios
+	 * @param u Dato de tipo Vector3D&
+	 * @param v Dato de tipo Vector3D&
+	 * @param w Dato de tipo Vector3D&
+	 */
+	void mostrarVectoresUnitarios(ed::Vector3D &u, ed::Vector3D &v, ed::Vector3D &w);
 } // Fin del espacio de nombre de la asignatura: ed
 // Fin de _FUNCIONESAUXILIARES_HPP_
 #endif

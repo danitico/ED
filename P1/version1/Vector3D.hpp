@@ -53,7 +53,7 @@ namespace ed{
 			Vector3D(double v1, double v2, double v3){
 				v1_=v1; v2_=v2; v3_=v3;
 				#ifndef NDEBUG
-				assert(get1()==v1 && get2()==v2 && get3()==v3);
+				assert(abs(get1() - v1)<=COTA_ERROR && abs(get2() - v2)<=COTA_ERROR && abs(get3() - v3)<=COTA_ERROR);
 				#endif
 			}
 			/**
@@ -66,7 +66,7 @@ namespace ed{
 			Vector3D(const Vector3D &v){
 				v1_=v.get1(); v2_=v.get2(); v3_=v.get3();
 				#ifndef NDEBUG
-				assert(get1()==v.get1() && get2()==v.get2() && get3()==v.get3());
+				assert(abs(get1() - v.get1())<=COTA_ERROR && abs(get2() - v.get2())<=COTA_ERROR && abs(get3() - v.get3())<=COTA_ERROR);
 				#endif
 			}
 		//! \name Observadores: funciones de consulta de Vector3D
@@ -203,6 +203,13 @@ namespace ed{
 				assert(abs(v3 - get3())<=COTA_ERROR);
 				#endif
 			}
+			/**
+			 * @fn void vectorUnitario()
+			 * @brief Funcion que convierte el vector en unitario
+			 *
+			 * Este modificador calcula el vector unitario de la siguiente manera: \f$ \frac{\vec{v}}{\| \vec{v} \|} \f$
+			 */
+			void vectorUnitario();
 			/**
           * @fn void sumConst(double k)
           * @brief Modificador de la clase Vector3D

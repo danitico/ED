@@ -8,6 +8,7 @@ var searchData=
   ['mostrarproductoescalar',['mostrarProductoEscalar',['../namespaceed.html#ac7e02ba54aa1890faa4df840d8e2ae25',1,'ed']]],
   ['mostrarproductomixto',['mostrarProductoMixto',['../namespaceed.html#ae86df53c590516b34f9aab2cde22cab8',1,'ed']]],
   ['mostrarproductovectorial',['mostrarProductoVectorial',['../namespaceed.html#a98f15cf42702863b389ddf3fee446f44',1,'ed']]],
+  ['mostrarvectoresunitarios',['mostrarVectoresUnitarios',['../namespaceed.html#a53b6ad751efabc4902b7a872b77f48eb',1,'ed']]],
   ['multconst',['multConst',['../classed_1_1Vector3D.html#a1f82fa0f3dce2b74207419097f826827',1,'ed::Vector3D']]],
   ['multvect',['multVect',['../classed_1_1Vector3D.html#a9952e96f739a4a4f1a9a1c626a3f5ead',1,'ed::Vector3D']]]
 ];
