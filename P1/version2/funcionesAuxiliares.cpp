@@ -263,7 +263,7 @@ void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v){
 
  
 	// Se comprueba si no son nulos
-	if((u.modulo() != 0.0) and (v.modulo() != 0.0)){
+	if((u.modulo() != 0.0) and (v.modulo() != 0.0) and (u.angulo(v)>0.0)){
 		std::cout << BIBLUE;
 	  	std::cout << "Producto vectorial de dos vectores: u ^ v " << std::endl << std::endl;
 		std::cout << RESET;
@@ -288,7 +288,7 @@ void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v){
 		std::cout << BIYELLOW << v << " ^ " << u << " = " << RESET << (v ^ u) << std::endl;
 	}
 	else{	
-		std::cout << BIRED << "No se puede calcular porque hay un vector nulo" << RESET << std::endl;
+		std::cout << BIRED << "No se puede calcular porque hay un vector nulo o los dos vectores son paralelos" << RESET << std::endl;
 		std::cout << BIYELLOW << "u = " << RESET << u << std::endl;
 		std::cout << BIYELLOW << "v = " << RESET << v << std::endl;
 	}

@@ -9,6 +9,7 @@
 #include <cassert>
 using std::istream;
 using std::ostream;
+using std::abs;
 #define COTA_ERROR   1.0e-6 //!< Cota de error para la comparación números reales
 /**
  * @namespace ed
@@ -51,7 +52,7 @@ namespace ed{
 			Vector3D(double v1, double v2, double v3){
 				v_[0]=v1; v_[1]=v2; v_[2]=v3;
 				#ifndef NDEBUG
-				assert(abs(get1() - v1)<=COTA_ERROR && abs(get2() - v2)<=COTA_ERROR && abs(get3() - v3)<=COTA_ERROR);
+				assert(abs(get1() - v1)<COTA_ERROR && abs(get2() - v2)<COTA_ERROR && abs(get3() - v3)<COTA_ERROR);
 				#endif
 			}
 			/**
@@ -64,7 +65,7 @@ namespace ed{
 			Vector3D(const Vector3D &v){
 				v_[0]=v.get1(); v_[1]=v.get2(); v_[2]=v.get3();
 				#ifndef NDEBUG
-				assert(abs(get1() - v.get1())<=COTA_ERROR && abs(get2() - v.get2())<=COTA_ERROR && abs(get3() - v.get3())<=COTA_ERROR);
+				assert(abs(get1() - v.get1())<COTA_ERROR && abs(get2() - v.get2())<COTA_ERROR && abs(get3() - v.get3())<COTA_ERROR);
 				#endif
 			}
 		//! \name Observadores: funciones de consulta de Vector3D
@@ -172,7 +173,7 @@ namespace ed{
 			inline void set1(double v1){
 				v_[0]=v1;
 				#ifndef NDEBUG
-				assert(abs(v1 - get1())<=COTA_ERROR);
+				assert(abs(v1 - get1())<COTA_ERROR);
 				#endif
 			}
 			/**
@@ -185,7 +186,7 @@ namespace ed{
 			inline void set2(double v2){
 				v_[1]=v2;
 				#ifndef NDEBUG
-				assert(abs(v2 - get2())<=COTA_ERROR);
+				assert(abs(v2 - get2())<COTA_ERROR);
 				#endif
 			}
 			/**
@@ -198,7 +199,7 @@ namespace ed{
 			inline void set3(double v3){
 				v_[2]=v3;
 				#ifndef NDEBUG
-				assert(abs(v3 - get3())<=COTA_ERROR);
+				assert(abs(v3 - get3())<COTA_ERROR);
 				#endif
 			}
 			/**
