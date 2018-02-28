@@ -1,4 +1,6 @@
 #ficheros que no se incluyen
+P1/version1/html
+P1/version2/html
 Vector3D.o
 funcionesAuxiliares.o
 principal.*
