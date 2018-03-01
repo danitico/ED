@@ -4,24 +4,15 @@
   \author 
   \date   
 */
-
 #include <iostream>
 #include <string>  
-
 // Para usar atoi
 #include <stdlib.h>
-
 #include "Provincia.hpp"
-
 #include "Municipio.hpp"
-
 #include "funcionesAuxiliares.hpp"
-
-
 #include "macros.hpp"
-
-int ed::menu()
-{
+int ed::menu(){
 	int opcion;
 	int posicion;
 
@@ -101,11 +92,9 @@ int ed::menu()
 	return opcion;
 }
 
-
 //////////////////////////////////////////////////////////////////////////////
 
-void ed::comprobarProvinciaVacia(ed::Provincia &provincia)
-{
+void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
@@ -113,15 +102,12 @@ void ed::comprobarProvinciaVacia(ed::Provincia &provincia)
 
 //////////////////////////////////////////////////////////////////////////////
 
-void ed::cargarProvincia(ed::Provincia &provincia)
-{
+void ed::cargarProvincia(ed::Provincia &provincia){
 	 std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
-void ed::grabarProvincia(ed::Provincia  &provincia)
-{
+void ed::grabarProvincia(ed::Provincia  &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
@@ -129,26 +115,23 @@ void ed::grabarProvincia(ed::Provincia  &provincia)
 
 //////////////////////////////////////////////////////////////////////
 
-void ed::consultarDatosDeProvincia(ed::Provincia &provincia)
-{
+void ed::consultarDatosDeProvincia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
 
 //
-void ed::mostrarMunicipiosDeProvincia(ed::Provincia & provincia)
-{
+
+void ed::mostrarMunicipiosDeProvincia(ed::Provincia & provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
 
-
 ////////////////////////////////////////////////////////////////////////
-void ed::modificarDatosDeProvincia(ed::Provincia &provincia)
-{
+
+void ed::modificarDatosDeProvincia(ed::Provincia &provincia){
 
 std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
@@ -208,40 +191,23 @@ std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 */
 	return;
 }
-
-
-void ed::borrarTodosLosMunicipiosDeProvincia(ed::Provincia &provincia)
-{
+void ed::borrarTodosLosMunicipiosDeProvincia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
-
-void ed::consultarMunicipioDeProvincia(ed::Provincia &provincia)
-{
+void ed::consultarMunicipioDeProvincia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
-void ed::insertarMunicipioEnProvincia(ed::Provincia &provincia)
-{
+void ed::insertarMunicipioEnProvincia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
-  
-
-
-void ed::borrarMunicipioDeProvincia(ed::Provincia &provincia)
-{
+void ed::borrarMunicipioDeProvincia(ed::Provincia &provincia){
 	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 
 	return;
 }
-
-
-
-
