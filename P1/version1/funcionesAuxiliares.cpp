@@ -298,15 +298,15 @@ void ed::mostrarProductoVectorial(ed::Vector3D const &u, ed::Vector3D const &v){
 void ed::mostrarProductoMixto(ed::Vector3D const &u, ed::Vector3D const &v, ed::Vector3D const &w){
  // QUITAR LOS "COMENTARIOS DE BLOQUE" CUANDO SE HAYA CODIFICADO LA CLASE Vector3D
 
-	// Se comprueba si no son nulos v y w
-	if((v.modulo() != 0.0) and (w.modulo() != 0.0)){
+	// Se comprueba si no son nulos v y w ni paralelos
+	if((v.modulo() != 0.0) and (w.modulo() != 0.0) and (v.angulo(w) > 0.0)){
 	  	std::cout << BIYELLOW << u << BIGREEN " * (" <<  v << " ^ " <<  w << ") = " << RESET
 				  << u.productoMixto(v,w) << std::endl;
 	  	std::cout << "Donde " << std::endl;
 	  	std::cout << BIGREEN << v << " ^ " << w << " = " << RESET << (v ^ w) << std::endl;
 	}
 	else{	
-		std::cout << BIRED << "No se puede calcular porque hay un vector nulo " << RESET << std::endl;
+		std::cout << BIRED << "No se puede calcular porque hay un vector nulo o los dos vectores son paralelos" << RESET << std::endl;
 		std::cout << BIYELLOW << "v = " << RESET << v << std::endl;
 		std::cout << BIYELLOW << "w = " << RESET << w << std::endl;
 	}

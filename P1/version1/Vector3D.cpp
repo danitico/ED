@@ -81,6 +81,9 @@ ed::Vector3D ed::Vector3D::crossProduct(ed::Vector3D v) const{
 	return w;
 }	
 double ed::Vector3D::productoMixto(ed::Vector3D v, ed::Vector3D w) const{
+	#ifndef NDEBUG
+	assert(v.angulo(w) > 0.0);
+	#endif
 	double res=dotProduct(v.crossProduct(w));
 	#ifndef NDEBUG
 	assert(abs(res - dotProduct(v.crossProduct(w)))<COTA_ERROR);
