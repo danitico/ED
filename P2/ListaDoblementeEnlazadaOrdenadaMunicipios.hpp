@@ -71,7 +71,12 @@ namespace ed{
 		\post  isEmpty() == true
 		*/
 		inline ListaDoblementeEnlazadaOrdenadaMunicipios(){
-		  // DEBES CODIFICAR ESTA FUNCIÓN	
+			setHead(NULL);
+			setCurrent(NULL);
+
+			#ifndef NDEBUG
+			assert(isEmpty());
+			#endif				
 		}
 	//! \name Destructor 
 
@@ -81,7 +86,19 @@ namespace ed{
 		\post isEmpty() == true
 		*/
 		~ListaDoblementeEnlazadaOrdenadaMunicipios(){
-		  // DEBES CODIFICAR ESTA FUNCIÓN
+			if(_head->getNext()==NULL){
+				delete _head;
+			}
+			else{
+				setCurrent(_head->getNext());
+				while(_current->getNext()!=NULL){
+					delete _current->getPrevious();
+					setCurrent(_current->getNext());
+				}
+			}
+			#ifndef NDEBUG
+			assert(isEmpty());
+			#endif
 		}
 
 	//! \name Observadores públicos 
@@ -92,16 +109,23 @@ namespace ed{
 		\return true, si la lista está vacía; false, en caso contrario
 		*/
 		inline bool isEmpty() const{
-  		// DEBES CODIFICAR ESTA FUNCIÓN
- 		// SE DEVUELVE UN VALOR ARBITRARIO PARA QUE EL CÓDIGO SE PUEDA COMPILAR
-		return true;
+  			if(getHead()==NULL) return true;
+			else return false;
 		}
-
-		// COMPLETAR EL RESTO DE OBSERVADORES PÚBLICOS
-
+		int nItems() const;
+		bool isFirstItem() const;
+		bool isLastItem() const;
+		ed::Municipio const & getCurrentItem() const;
+		ed::Municipio const & getPreviousItem() const;
+		ed::Municipio const & getNextItem() const;
+		
 		//! \name Modificadores públicos
 
-		// COMPLETAR EL RESTO DE MODIFICADORES PÚBLICOS
+		void gotoHead();
+		void gotoLast();
+		void gotoPrevious();
+		void gotoNext();
+		bool find(ed::Municipio const & item);
 }; // Fin de la clase ListaDoblementeEnlazadaOrdenadaMunicipios
 } //namespace ed
 #endif // __ListaDoblementeEnlazadaOrdenadaMunicipios_HPP__

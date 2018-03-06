@@ -42,7 +42,7 @@ namespace ed{
 		\return Número entero que representa el número de elementos o ítems de la lista
 		*/
 
-//		virtual int nItems() const = 0;
+		virtual int nItems() const = 0;
 
 		/*!
 		\brief  Comprueba si el cursor está en el primer Municipio
@@ -52,7 +52,7 @@ namespace ed{
 		\return Verdadero, si el cursor está situado en la cabeza; falso en caso contrario
 		*/
 
-// 	virtual bool isFirstItem() const = 0;
+		virtual bool isFirstItem() const = 0;
 
 		/*!
 		\brief  Comprueba si el cursor está en el último Municipio
@@ -62,7 +62,7 @@ namespace ed{
 		\return true, si el cursor está situado al final de la lista; false, en caso contrario
 		*/
 
-//		virtual bool isLastItem() const = 0;
+		virtual bool isLastItem() const = 0;
 
 		/*!
 		\brief  Devuelve el Municipio situado en el campo informativo indicado por el cursor
@@ -72,7 +72,7 @@ namespace ed{
 		\return Una referencia constante al municipio indicado por el cursor
 		*/
 
-//		virtual ed::Municipio const & getCurrentItem() const = 0;
+		virtual ed::Municipio const & getCurrentItem() const = 0;
 
 		/*!
 		\brief  Devuelve el Municipio situado en el campo informativo anterior
@@ -83,7 +83,7 @@ namespace ed{
 		\return Una referencia al municipio situado en el nodo previo al indicado por el cursor
 		*/
 
-//		virtual  ed::Municipio const & getPreviousItem() const = 0;
+		virtual  ed::Municipio const & getPreviousItem() const = 0;
 
 		/*!
 		\brief  Devuelve el Municipio situado en el campo informativo posterior
@@ -94,7 +94,7 @@ namespace ed{
 		\return Una referencia al municipio situado en el nodo siguiente al indicado por el cursor
 		*/
 
-//		virtual ed::Municipio const & getNextItem() const = 0;
+		virtual ed::Municipio const & getNextItem() const = 0;
 
 		//!  \name Modificadores públicos
 
@@ -107,7 +107,7 @@ namespace ed{
 		\sa		gotoLast(), gotoPrevious(), gotoNext()
       */
 
-//      virtual void gotoHead() = 0;
+      virtual void gotoHead() = 0;
 
 		/*!
 		\brief  Coloca el cursor en la última posición de la lista
@@ -118,7 +118,7 @@ namespace ed{
 		\sa		gotoHead(), gotoPrevious(), gotoNext()
       */
 
-//      virtual void gotoLast() = 0;
+      virtual void gotoLast() = 0;
 
 		/*!
 		\brief  Coloca el cursor en la posición anterior de la lista
@@ -130,7 +130,7 @@ namespace ed{
 		\sa		gotoHead(), gotoLast(), gotoNext()
 		*/
 
-//      virtual void gotoPrevious() = 0;
+      virtual void gotoPrevious() = 0;
 
 		/*!
 		\brief  Coloca el cursor en la posición siguiente de la lista
@@ -142,7 +142,7 @@ namespace ed{
 		\sa		gotoHead(), gotoLast(), gotoPrevious()
 		*/
 
-//      virtual void gotoNext() = 0;
+      virtual void gotoNext() = 0;
 
 		/*!
 		\brief  Coloca el cursor en el nodo que contiene al municipio en su campo informativo, si existe;
@@ -153,7 +153,7 @@ namespace ed{
 		\return true, si el municipio está en la lista; false, en caso contrario
 		*/
 
-//      virtual bool find(ed::Municipio const & item) = 0;
+      virtual bool find(ed::Municipio const & item) = 0;
    
 		/*!
 		\brief Inserta un Municipio de forma ordenada por apellidos y nombre
