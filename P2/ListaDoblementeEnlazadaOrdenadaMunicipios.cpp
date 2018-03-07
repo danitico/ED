@@ -167,9 +167,9 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		NodoDoblementeEnlazadoMunicipio aux(item, _current->getPrevious(), _current);
 
 		gotoPrevious();
-		_current->setNext(&aux);//*(_current->getNext())=aux;
+		_current->setNext(&aux);
 		gotoNext(); gotoNext();
-		_current->setPrevious(&aux);//*(_current->getPrevious())=aux;
+		_current->setPrevious(&aux);
 		gotoPrevious();
 	}
 
@@ -185,31 +185,54 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 	int oldnitems=nItems();
 	if(oldnitems==1){
 		setCurrent(NULL);
+
+		#ifndef
+		assert(isEmpty());
+		#endif
 	}
 	else{
 		if(oldnitems > 1 && isFirstItem()){
 			NodoDoblementeEnlazadoMunicipio *aux=_current->getNext();
+			NodoDoblementeEnlazadoMunicipio old=*_current;
 			setCurrent(NULL);
 			aux->setPrevious(NULL);
 			setCurrent(aux);
+			
+			#ifndef NDEBUG
+			assert(old.getNextItem()==getCurrentItem() && isFirstItem());//error
+			#endif
 		}
 		else{
 			if(isLastItem()){
 				NodoDoblementeEnlazadoMunicipio *aux=_current->getPrevious();
+				NodoDoblementeEnlazadoMunicipio old=*_current;
 				setCurrent(NULL);
 				aux->setNext(NULL);
 				setCurrent(aux);
 				
 				#ifndef NDEBUG
-				assert(isEmpty() || (isLastItem() && 
+				assert(isEmpty() || (isLastItem() && old.getPreviousItem()==getCurrentItem()));/error
+				#endif
 			}
 			else{
 				NodoDoblementeEnlazadoMunicipio *aux1=_current->getPrevious();
 				NodoDoblementeEnlazadoMunicipio *aux2=_current->getNext();
+				NodoDoblementeEnlazadoMunicipio old=*_current;
 				setCurrent(NULL);
 				aux1->setNext(aux2);
 				aux2->setPrevious(aux1);
+
+				#ifndef NDEBUG
+				assert(old.getPreviousItem()==getPreviousItem() && old.getNextItem()==getCurrentItem());//error
+				#endif
 			}
 		}
 	}
 }
+/*void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
+	delete this;
+	
+	#ifndef NDEBUG
+	assert(isEmpty()),
+	#endif
+}*/
