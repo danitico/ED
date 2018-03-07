@@ -1,7 +1,7 @@
 /*!	
 	\file  Provincia.cpp
 	\brief Definición de la clase Provincia
-	\author  
+	\author Daniel Ranchal Parrado
 	\date  
 	\version 1.0
 */

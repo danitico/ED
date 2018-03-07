@@ -1,7 +1,7 @@
 /*!	
 	\file  Provincia.hpp
 	\brief Definición de la clase Provincia
-	\author  
+	\author Daniel Ranchal Parrado
 	\date  
 	\version 
 
@@ -29,24 +29,35 @@ namespace ed{
 class Provincia{
 	//!	\name Métodos públicos de la clase Provincia
 	private:
-		std::string nombre_;//!<  \brief Nombre de la Provincia
-		int codigo_;//!<  \brief Código de la Provincia
-	  	ed::ListaDoblementeEnlazadaOrdenadaMunicipios listaMunicipios_; //!<  \brief Lista de municipios de la Provincia
+		std::string _nombre;//!<  \brief Nombre de la Provincia
+		int         _codigo;//!<  \brief Código de la Provincia
+	  	ed::ListaDoblementeEnlazadaOrdenadaMunicipios _listaMunicipios;//!<  \brief Lista de municipios de la Provincia
 	//!	\name  Métodos públicos de la clase Provincia
 	public: 
 
 	//!	\name Constructor
+		Provincia(std::string nombre="", int codigo=0){
+			_nombre=nombre;
+			_codigo=codigo;
 
-
-	/////////////////////////////////////////////////////////////////////
+			#ifndef NDEBUG
+			assert(getNombre()==nombre && getCodigo()==codigo && hayMunicipios()==true);
+			#endif
+		}
 
 	//!	\name Observadores
-
-
-	/////////////////////////////////////////////////////////////////////
-
+		inline std::string getNombre() const{return _nombre;}
+		inline int getCodigo() const{return _codigo;}
+		bool hayMunicipios() const{return true;}
+		int getNumeroMunicipios() const;
+		bool existeMunicipio(std::string nombre);
+		Municipio getMunicipio(std::string nombre);
+		int getTotalHombres() const;
+		int getTotalMujeres() const;
+		int getTotalHabitantes() const;
+	
 	//!	\name Modificadores
-
+		void setNombre(std::string nombre);
 
 
 	/////////////////////////////////////////////////////////////////////
