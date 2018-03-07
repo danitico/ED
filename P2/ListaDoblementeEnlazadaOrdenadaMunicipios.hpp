@@ -126,6 +126,7 @@ namespace ed{
 		void gotoPrevious();
 		void gotoNext();
 		bool find(ed::Municipio const & item);
+		void insert(ed::Municipio const & item);
 }; // Fin de la clase ListaDoblementeEnlazadaOrdenadaMunicipios
 } //namespace ed
 #endif // __ListaDoblementeEnlazadaOrdenadaMunicipios_HPP__

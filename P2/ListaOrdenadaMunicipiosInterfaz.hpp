@@ -164,7 +164,7 @@ namespace ed{
 		\sa    remove() 
 		*/
 
-// 	  virtual void insert(ed::Municipio const & item) = 0;
+		virtual void insert(ed::Municipio const & item) = 0;
 			
 		/*!
 		\brief Borra el municipio indicado por el cursor

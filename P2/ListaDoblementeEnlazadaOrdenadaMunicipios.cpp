@@ -122,19 +122,52 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::gotoNext(){
 	setCurrent(_current->getNext());
 }
 bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::find(ed::Municipio const & item){
+	bool res=false;
 	gotoHead();
-	while(_current->getNext!=NULL){
+	while(_current->getNext()!=NULL){
 		if(_current->getItem()==item){
-			return true;
+			 res=true;
 		}
 		gotoNext();
 	}		
+	
+	if(res){	
+		#ifndef NDEBUG
+		assert(_current->getItem()==item);
+		#endif
+		return res;
+	}
 
+	gotoHead();
+	while(_current->getNext()!=NULL && _current->getItem()<item){
+		gotoNext();
+	}
+	
+	#ifndef NDEBUG
+	assert(item < _current->getItem() || isLastItem()==true);
+	#endif
 
+	return res;
+}
+void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const & item){
+	#ifndef NDEBUG
+	assert(find(item)==false);
+	#endif
+	int oldnitems=nItems();
+	gotoHead();
+	
+	while(_current->getNext()!=NULL && _current->getItem()<item){
+		gotoNext();
+	}
+	NodoDoblementeEnlazadoMunicipio aux(item, _current->getPrevious(), _current); // |0|nodo1|3|  |1|nodo2|3|   |1|nodo3|4|
 
+	gotoPrevious();
+	_current->getNext()=&aux;//error
+	gotoNext(); gotoNext();
+	_current->getPrevious()=&aux;//error
+	gotoPrevious();
 
-
-
-
-
-
+	#ifndef NDEBUG
+	assert(_current->getItem()==item	&& nItems()==(oldnitems + 1));
+	#endif
+}
