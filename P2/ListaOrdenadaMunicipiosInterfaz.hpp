@@ -178,7 +178,7 @@ namespace ed{
 		\sa    insert()
 		*/
 
-//		virtual void remove() = 0;
+		virtual void remove() = 0;
 			
 }; // Fin de la clase ListaOrdenadaMunicipiosInterfaz
 } //namespace ed

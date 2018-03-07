@@ -42,7 +42,7 @@ namespace ed{
 			return this->_current;
 		}
 
-    //! \name Modificadores privados 
+    //! \name Modificadores privados 4
 
 		inline void setHead(ed::NodoDoblementeEnlazadoMunicipio *head){
 			this->_head = head;
@@ -127,6 +127,7 @@ namespace ed{
 		void gotoNext();
 		bool find(ed::Municipio const & item);
 		void insert(ed::Municipio const & item);
+		void remove();
 }; // Fin de la clase ListaDoblementeEnlazadaOrdenadaMunicipios
 } //namespace ed
 #endif // __ListaDoblementeEnlazadaOrdenadaMunicipios_HPP__
