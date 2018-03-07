@@ -48,17 +48,20 @@ class Provincia{
 	//!	\name Observadores
 		inline std::string getNombre() const{return _nombre;}
 		inline int getCodigo() const{return _codigo;}
-		bool hayMunicipios() const{return true;}
+		bool hayMunicipios() const;
 		int getNumeroMunicipios() const;
 		bool existeMunicipio(std::string nombre);
 		Municipio getMunicipio(std::string nombre);
-		int getTotalHombres() const;
-		int getTotalMujeres() const;
-		int getTotalHabitantes() const;
+		int getTotalHombres();
+		int getTotalMujeres();
+		int getTotalHabitantes();
 	
 	//!	\name Modificadores
 		void setNombre(std::string nombre);
-
+		void setCodigo(int numero);
+		void insertarMunicipio(Municipio municipio);
+		void borrarMunicipio(std::string cadena);
+		void borrarTodosLosMunicipios();
 
 	/////////////////////////////////////////////////////////////////////
 
@@ -73,4 +76,4 @@ class Provincia{
 
 }; //Fin de la clase  Provincia
 } // Fin del espacio de nombres ed
-#endif // _PROVINCIA_HPP_
+#endif // _PROVINCIA_HPP_º
