@@ -86,16 +86,14 @@ namespace ed{
 		\post isEmpty() == true
 		*/
 		~ListaDoblementeEnlazadaOrdenadaMunicipios(){
-			if(_head->getNext()==NULL){
-				delete _head;
-			}
-			else{
+			if(_head!=NULL){
 				setCurrent(_head->getNext());
 				while(_current->getNext()!=NULL){
 					delete _current->getPrevious();
 					setCurrent(_current->getNext());
 				}
 			}
+
 			#ifndef NDEBUG
 			assert(isEmpty());
 			#endif

@@ -1,8 +1,8 @@
 /*!
 	\file   ListaDoblementeEnlazadaOrdenadaMunicipios.cpp
 	\brief  Clase de una lista doblemente enlazada y ordenada de Municipios
-	\author  
-	\date  
+	\author Daniel Ranchal Parrado
+	\date 
 	\version 1.0
 */
 // Para comprobar las pre y post-condiciones
@@ -186,53 +186,55 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 	if(oldnitems==1){
 		setCurrent(NULL);
 
-		#ifndef
+		#ifndef NDEBUG
 		assert(isEmpty());
 		#endif
 	}
 	else{
 		if(oldnitems > 1 && isFirstItem()){
 			NodoDoblementeEnlazadoMunicipio *aux=_current->getNext();
-			NodoDoblementeEnlazadoMunicipio old=*_current;
 			setCurrent(NULL);
 			aux->setPrevious(NULL);
 			setCurrent(aux);
 			
 			#ifndef NDEBUG
-			assert(old.getNextItem()==getCurrentItem() && isFirstItem());//error
+			assert(aux->getItem()==getCurrentItem() && isFirstItem());
 			#endif
 		}
 		else{
 			if(isLastItem()){
 				NodoDoblementeEnlazadoMunicipio *aux=_current->getPrevious();
-				NodoDoblementeEnlazadoMunicipio old=*_current;
 				setCurrent(NULL);
 				aux->setNext(NULL);
 				setCurrent(aux);
 				
 				#ifndef NDEBUG
-				assert(isEmpty() || (isLastItem() && old.getPreviousItem()==getCurrentItem()));/error
+				assert(isEmpty() || (isLastItem() && aux->getItem()==getCurrentItem()));
 				#endif
 			}
 			else{
 				NodoDoblementeEnlazadoMunicipio *aux1=_current->getPrevious();
 				NodoDoblementeEnlazadoMunicipio *aux2=_current->getNext();
-				NodoDoblementeEnlazadoMunicipio old=*_current;
 				setCurrent(NULL);
 				aux1->setNext(aux2);
 				aux2->setPrevious(aux1);
 
 				#ifndef NDEBUG
-				assert(old.getPreviousItem()==getPreviousItem() && old.getNextItem()==getCurrentItem());//error
+				assert(aux1->getItem()==getPreviousItem() && (aux2->getItem()==getCurrentItem()));
 				#endif
 			}
 		}
 	}
 }
-/*void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
-	delete this;
+void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
+	setCurrent(_head->getNext());
+	while(_current->getNext()!=NULL){
+		delete _current->getPrevious();
+		setCurrent(_current->getNext());
+	}
+	setCurrent(getHead());
 	
 	#ifndef NDEBUG
-	assert(isEmpty()),
+	assert(isEmpty());
 	#endif
-}*/
+}
