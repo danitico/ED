@@ -152,10 +152,11 @@ bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::find(ed::Municipio const & i
 void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const & item){
 	/* 
 		Debo de codificar esta función de nuevo, no he tenido en cuenta todos los casos.
-	*/	
+	*/
 	#ifndef NDEBUG
 	assert(find(item)==false);
 	#endif
+	
 	int oldnitems=nItems();
 	gotoHead();
 	
@@ -167,15 +168,22 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		while(_current->getNext()!=NULL && _current->getItem()<item){
 			gotoNext();
 		}
-		NodoDoblementeEnlazadoMunicipio aux(item, _current->getPrevious(), _current);
+		
+		if(isLastItem()){//revisar esto
+			NodoDoblementeEnlazadoMunicipio aux(item, _current, _current);
+		}		
+		else{
+			NodoDoblementeEnlazadoMunicipio aux(item, _current->getPrevious(), _current);
 
-		gotoPrevious();
-		_current->setNext(&aux);
-		gotoNext(); gotoNext();
-		_current->setPrevious(&aux);
-		gotoPrevious();
+			gotoPrevious();
+			_current->setNext(&aux);
+			gotoNext(); gotoNext();
+			_current->setPrevious(&aux);
+			gotoPrevious();
+		}
 	}
-
+	
+	
 	#ifndef NDEBUG
 	assert(_current->getItem()==item	&& nItems()==(oldnitems + 1));
 	#endif
