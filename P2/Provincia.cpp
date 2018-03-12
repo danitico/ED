@@ -34,23 +34,25 @@ ed::Municipio ed::Provincia::getMunicipio(std::string nombre){
 int ed::Provincia::getTotalHombres(){
 	int hombres=0;
 	_listaMunicipios.gotoHead();	
-	while(_listaMunicipios.getCurrent()->getNext()!=NULL){
-		hombres+=_listaMunicipios.getCurrent()->getItem().getHombres();
+	while(!_listaMunicipios.isLastItem()){
+		hombres+=_listaMunicipios.getCurrentItem().getHombres();
 		_listaMunicipios.gotoNext();
 	}
+	hombres+=_listaMunicipios.getCurrentItem().getHombres();
 	return hombres;
 }
 int ed::Provincia::getTotalMujeres(){
 	int mujeres=0;
 	_listaMunicipios.gotoHead();
-	while(_listaMunicipios.getCurrent()->getNext()!=NULL){
-		mujeres+=_listaMunicipios.getCurrent()->getItem().getMujeres();
+	while(!_listaMunicipios.isLastItem()){
+		mujeres+=_listaMunicipios.getCurrentItem().getMujeres();
 		_listaMunicipios.gotoNext();
 	}
+	mujeres+=_listaMunicipios.getCurrentItem().getMujeres();
 	return mujeres;
 }
 int ed::Provincia::getTotalHabitantes(){
-	return _listaMunicipios.getTotalHombres() + _listaMunicipios.getTotalMujeres();
+	return getTotalHombres() + getTotalMujeres();
 }
 
 // MODIFICADORES
@@ -61,13 +63,53 @@ void ed::Provincia::setNombre(std::string nombre){
 	assert(getNombre()==nombre);
 	#endif
 }
+void ed::Provincia::setCodigo(int codigo){
+	_codigo=codigo;
+
+	#ifndef NDEBUG
+	assert(getCodigo()==codigo);
+	#endif
+}
+void ed::Provincia::insertarMunicipio(ed::Municipio municipio){
+	#ifndef NDEBUG
+	int oldmunicipios=getNumeroMunicipios();	
+	assert(!existeMunicipio(municipio.getNombre()));
+	#endif
+	
+	_listaMunicipios.insert(municipio);
+	
+	#ifndef NDEBUG
+	assert(existeMunicipio(municipio.getNombre()) && getNumeroMunicipios()==oldmunicipios+1);
+	#endif
+}
+void ed::Provincia::borrarMunicipio(std::string cadena){
+	#ifndef NDEBUG
+	int oldmunicipios=getNumeroMunicipios();
+	assert(existeMunicipio(cadena));
+	#endif
+
+	Municipio municipio(cadena);
+	_listaMunicipios.find(municipio);
+	_listaMunicipios.remove();
+
+	#ifndef NDEBUG
+	assert(!existeMunicipio(cadena) && getNumeroMunicipios()==oldmunicipios-1);
+	#endif
+}
+void ed::Provincia::borrarTodosLosMunicipios(){
+	_listaMunicipios.removeAll();
+
+	#ifndef NDEBUG
+	assert(!hayMunicipios());
+	#endif
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 // FUNCIÓN DE ESCRITURA
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 // OPERACIONES CON FICHEROS
 

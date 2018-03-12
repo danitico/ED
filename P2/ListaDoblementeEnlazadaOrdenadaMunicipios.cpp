@@ -150,6 +150,9 @@ bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::find(ed::Municipio const & i
 	return res;
 }
 void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const & item){
+	/* 
+		Debo de codificar esta función de nuevo, no he tenido en cuenta todos los casos.
+	*/	
 	#ifndef NDEBUG
 	assert(find(item)==false);
 	#endif
