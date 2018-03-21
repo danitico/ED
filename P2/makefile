@@ -74,5 +74,5 @@ doc: Doxyfile
 .PHONY: clean  
 clean:
 	@echo "Borrando los ficheros superfluos"
-	@rm -f $(OBJECTS) *~ 
+	@rm -f *.exe $(OBJECTS) *~ 
 

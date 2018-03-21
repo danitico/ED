@@ -1,6 +1,11 @@
 #ficheros que no se incluyen
 P1/version1/html
 P1/version2/html
-Vector3D.o
-funcionesAuxiliares.o
-principal.*
+P1/version1/Vector3D.o
+P1/version1/funcionesAuxiliares.o
+P1/version1/principal.*
+P1/version2/Vector3D.o
+P1/version2/funcionesAuxiliares.o
+P1/version2/principal.*
+P2/*.o
+P2/*.exe
