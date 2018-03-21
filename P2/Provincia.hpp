@@ -55,7 +55,7 @@ class Provincia{
 		int getTotalHombres();
 		int getTotalMujeres();
 		int getTotalHabitantes();
-	
+
 	//!	\name Modificadores
 		void setNombre(std::string nombre);
 		void setCodigo(int numero);
@@ -66,13 +66,13 @@ class Provincia{
 	/////////////////////////////////////////////////////////////////////
 
 	//! \name Función de escritura de la clase Provincia
-
-
+		void escribirMunicipios();
 
 	/////////////////////////////////////////////////////////////////////
 
 	//! Operaciones con ficheros
-
+		bool cargarFichero(std::string archivo);
+		bool grabarFichero(std::string archivo);
 
 }; //Fin de la clase  Provincia
 } // Fin del espacio de nombres ed

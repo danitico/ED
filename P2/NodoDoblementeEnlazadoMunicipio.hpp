@@ -1,7 +1,7 @@
 /*! 	
 	\file   NodoDoblementeEnlazadoMunicipio.hpp
 	\brief  Declaración del TAD NodoDoblementeEnlazadoMunicipio: nodo doblemente enlazado con el campo informativo Municipio
-	\author 
+	\author Daniel Ranchal Parrado
 	\date 
 	\version 1.0
 

@@ -12,7 +12,7 @@
 #include "Municipio.hpp"
 // DEBES CODIFICAR LAS FUNCIONES DE LA CLASE ListaDoblementeEnlazadaOrdenadaMunicipios
 int ed::ListaDoblementeEnlazadaOrdenadaMunicipios::nItems() const{
-	if(isEmpty()){
+	/*if(isEmpty()){
 		return 0;
 	}
 	else{
@@ -28,7 +28,8 @@ int ed::ListaDoblementeEnlazadaOrdenadaMunicipios::nItems() const{
 			}
 			return n;
 		}
-	}
+	}*/
+	return _nitems;
 }
 bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isFirstItem() const{
 	#ifndef NDEBUG
@@ -47,12 +48,7 @@ bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isLastItem() const{
 	assert(isEmpty()==false);
 	#endif
 
-	NodoDoblementeEnlazadoMunicipio *aux=getHead();
-	while(aux->getNext()!=NULL){
-		aux=aux->getNext();
-	}
-
-	if(aux==getCurrent()){
+	if(getCurrent()->getNext()==NULL){
 		return true;
 	}
 	else{
@@ -161,8 +157,8 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 	gotoHead();
 	
 	if(oldnitems==0){
-		NodoDoblementeEnlazadoMunicipio aux(item, NULL, NULL);
-		setHead(&aux);
+		NodoDoblementeEnlazadoMunicipio aux(item, getHead(), NULL);
+		setCurrent(&aux);
 	}
 	else{
 		while(_current->getNext()!=NULL && _current->getItem()<item){
@@ -170,7 +166,10 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 		
 		if(isLastItem()){//revisar esto
-			NodoDoblementeEnlazadoMunicipio aux(item, _current, _current);
+			NodoDoblementeEnlazadoMunicipio aux(item, _current, NULL);
+			
+			_current->setNext(&aux);
+			gotoNext();
 		}		
 		else{
 			NodoDoblementeEnlazadoMunicipio aux(item, _current->getPrevious(), _current);
@@ -183,6 +182,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 	}
 	
+	_nitems++;
 	
 	#ifndef NDEBUG
 	assert(_current->getItem()==item	&& nItems()==(oldnitems + 1));
@@ -236,6 +236,12 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 			}
 		}
 	}
+	
+	_nitems--;
+	
+	#ifndef NEDEBUG
+	assert(nItems()==oldnitems-1);
+	#endif
 }
 void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
 	setCurrent(_head->getNext());

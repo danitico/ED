@@ -8,6 +8,7 @@
 //Para los flujos de entrada/salida en ficheros.
 #include <fstream>  
 #include <iostream>
+#include <cstdlib>
 // Para comprobar las pre y post condiciones
 #include <cassert>
 #include "Provincia.hpp"
@@ -106,11 +107,79 @@ void ed::Provincia::borrarTodosLosMunicipios(){
 ///////////////////////////////////////////////////////////////////////////////////
 
 // FUNCIÓN DE ESCRITURA
+void ed::Provincia::escribirMunicipios(){
+	std::cout<<getCodigo()<<"\t"<<getNombre()<<std::endl;
 
-
-
+	_listaMunicipios.gotoHead();	
+	while(!_listaMunicipios.isLastItem()){
+		_listaMunicipios.getCurrentItem().escribirMunicipio();
+		_listaMunicipios.gotoNext();
+	}
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 // OPERACIONES CON FICHEROS
+bool ed::Provincia::cargarFichero(std::string archivo){
+	std::ifstream file(archivo.c_str());
+	std::string stream;
+	Municipio a;
+	
+	if(file.is_open()){
+		getline(file, stream, ' ');
+		setCodigo(atoi(stream.c_str()));
+		getline(file, stream, '\n');
+		setNombre(stream);
+		
+		while(getline(file, stream, ' ')){
+			a.setCodigoPostal(atoi(stream.c_str()));
+			
+			getline(file, stream, ';');
+			a.setNombre(stream);
+		
+			getline(file, stream, ';');
+			a.setHombres(atoi(stream.c_str()));
+
+			getline(file, stream, ';');
+			a.setMujeres(atoi(stream.c_str()));
+
+			getline(file, stream, '\n');
+			
+			insertarMunicipio(a);
+		}
+		
+		file.close();
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+bool ed::Provincia::grabarFichero(std::string archivo){
+	std::ofstream file(archivo.c_str());
+	
+	if(file.is_open()){
+		file<<getCodigo()<<" "<<getNombre()<<"\n";
+		_listaMunicipios.gotoHead();	
+		while(!_listaMunicipios.isLastItem()){
+			file<<_listaMunicipios.getCurrentItem().getCodigoPostal()<<" ";
+			file<<_listaMunicipios.getCurrentItem().getNombre()<<";";
+			file<<_listaMunicipios.getCurrentItem().getHombres()<<";";
+			file<<_listaMunicipios.getCurrentItem().getMujeres()<<";";
+			file<<"\n";
+		
+			_listaMunicipios.gotoNext();
+		}
+		
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+
+
+
+
 
 

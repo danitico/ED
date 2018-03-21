@@ -1,7 +1,7 @@
 /*!
 	\file   ListaDoblementeEnlazadaOrdenadaMunicipios.hpp
 	\brief  Clase de una lista doblemente enlazada y ordenada de Municipios
-	\author  
+	\author Daniel Ranchal Parrado
 	\date  
 	\version 1.0
 */
@@ -31,6 +31,7 @@ namespace ed{
 	private:
 		ed::NodoDoblementeEnlazadoMunicipio *_head;    //!< \brief puntero al primer nodo de la lista
 		ed::NodoDoblementeEnlazadoMunicipio *_current; //!< \brief puntero al nodo current de la lista
+		int _nitems; //!< \brief Contador de los elemen
 
     // \name Observadores privados 
 
@@ -73,6 +74,7 @@ namespace ed{
 		inline ListaDoblementeEnlazadaOrdenadaMunicipios(){
 			setHead(NULL);
 			setCurrent(NULL);
+			_nitems=0;
 
 			#ifndef NDEBUG
 			assert(isEmpty());
