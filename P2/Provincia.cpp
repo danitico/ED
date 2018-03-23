@@ -80,7 +80,8 @@ void ed::Provincia::insertarMunicipio(ed::Municipio municipio){
 	_listaMunicipios.insert(municipio);
 	
 	#ifndef NDEBUG
-	assert(existeMunicipio(municipio.getNombre()) && getNumeroMunicipios()==oldmunicipios+1);
+	assert(existeMunicipio(municipio.getNombre()));
+	assert(getNumeroMunicipios()==oldmunicipios+1);
 	#endif
 }
 void ed::Provincia::borrarMunicipio(std::string cadena){
@@ -109,11 +110,13 @@ void ed::Provincia::borrarTodosLosMunicipios(){
 // FUNCIÓN DE ESCRITURA
 void ed::Provincia::escribirMunicipios(){
 	std::cout<<getCodigo()<<"\t"<<getNombre()<<std::endl;
-
-	_listaMunicipios.gotoHead();	
-	while(!_listaMunicipios.isLastItem()){
+	if(!_listaMunicipios.isEmpty()){
+		_listaMunicipios.gotoHead();	
+		while(!_listaMunicipios.isLastItem()){
+			_listaMunicipios.getCurrentItem().escribirMunicipio();
+			_listaMunicipios.gotoNext();
+		}
 		_listaMunicipios.getCurrentItem().escribirMunicipio();
-		_listaMunicipios.gotoNext();
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////
@@ -176,10 +179,3 @@ bool ed::Provincia::grabarFichero(std::string archivo){
 		return false;
 	}
 }
-
-
-
-
-
-
-

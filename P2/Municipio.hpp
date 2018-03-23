@@ -1,6 +1,6 @@
 /*! 
    \file Municipio.hpp
-   \brief Fichero de la clase Municipio: vértice del plano euclídeo 
+   \brief Fichero de la clase Municipio: vértice del plano euclídeo
 */
 
 #ifndef _MUNICIPIO_HPP_

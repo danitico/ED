@@ -95,7 +95,13 @@ int ed::menu(){
 //////////////////////////////////////////////////////////////////////////////
 
 void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	//std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	if(provincia.hayMunicipios()){
+		std::cout<<BIRED<<"La provincia "<<provincia.getNombre()<<" está vacia"<<RESET<<std::endl;
+	}
+	else{
+		std::cout<<BLUE<<"La provincia "<<ITALIC<<provincia.getNombre()<<RESET<<BLUE<<" tiene "<<ITALIC<<provincia.getNumeroMunicipios()<<RESET<<BLUE<<" municipios."<<RESET<<std::endl;
+	}
 
 	return;
 }
@@ -103,7 +109,16 @@ void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
 //////////////////////////////////////////////////////////////////////////////
 
 void ed::cargarProvincia(ed::Provincia &provincia){
-	 std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	 //std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	std::string nombre_fichero;
+	std::cout<<PURPLE<<"Introduzca el nombre del fichero que quiere cargar: "<<RESET;
+	std::cin>>nombre_fichero;
+	if(provincia.cargarFichero(nombre_fichero)){
+		std::cout<<BIGREEN<<"Fichero cargado correctamente"<<RESET<<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"Error al cargar el fichero"<<RESET<<std::endl;
+	}
 
 	return;
 }

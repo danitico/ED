@@ -90,6 +90,7 @@ namespace ed{
 		~ListaDoblementeEnlazadaOrdenadaMunicipios(){
 			if(_head!=NULL){
 				setCurrent(_head->getNext());
+				_head=NULL;
 				while(_current->getNext()!=NULL){
 					delete _current->getPrevious();
 					setCurrent(_current->getNext());
@@ -109,8 +110,12 @@ namespace ed{
 		\return true, si la lista está vacía; false, en caso contrario
 		*/
 		inline bool isEmpty() const{
-  			if(getHead()==NULL) return true;
-			else return false;
+  			if(getHead()==NULL){
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 		int nItems() const;
 		bool isFirstItem() const;
