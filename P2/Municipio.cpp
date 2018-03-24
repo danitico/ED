@@ -64,15 +64,15 @@ void ed::Municipio::escribirMunicipio() const
   std::cout  << "Mujeres: " 	<< this->getMujeres() << std::endl << std::endl; 
 */
 
-  std::cout  << this->getCodigoPostal();
+  std::cout  << BGREEN << this->getCodigoPostal() << RESET;
   std::cout  << "\t"; 
-  std::cout  << this->getNombre(); 
+  std::cout  << BYELLOW << this->getNombre() << RESET;
   std::cout  << "\t\t"; 
-  std::cout  << this->getHombres();
+  std::cout  << BBLUE << this->getHombres() << RESET;
   std::cout  << "\t"; 
-  std::cout  << this->getMujeres();
+  std::cout  << BPURPLE << this->getMujeres() << RESET;
   std::cout  << "\t"; 
-  std::cout  << this->getHabitantes() << std::endl; 
+  std::cout  << BCYAN << this->getHabitantes() << RESET << std::endl; 
 
 
 }

@@ -8,6 +8,7 @@
 #include <string>  
 // Para usar atoi
 #include <stdlib.h>
+#include <unistd.h>
 #include "Provincia.hpp"
 #include "Municipio.hpp"
 #include "funcionesAuxiliares.hpp"
@@ -97,10 +98,10 @@ int ed::menu(){
 void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
 	//std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 	if(provincia.hayMunicipios()){
-		std::cout<<BIRED<<"La provincia "<<provincia.getNombre()<<" está vacia"<<RESET<<std::endl;
+		std::cout<<IBLUE<<"La provincia "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" tiene "<<ITALIC<<provincia.getNumeroMunicipios()<<RESET<<IBLUE<<" municipios."<<RESET<<std::endl;	
 	}
 	else{
-		std::cout<<BLUE<<"La provincia "<<ITALIC<<provincia.getNombre()<<RESET<<BLUE<<" tiene "<<ITALIC<<provincia.getNumeroMunicipios()<<RESET<<BLUE<<" municipios."<<RESET<<std::endl;
+		std::cout<<BIRED<<"La provincia '"<<provincia.getNombre()<<"' está vacia"<<RESET<<std::endl;		
 	}
 
 	return;
@@ -109,21 +110,46 @@ void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
 //////////////////////////////////////////////////////////////////////////////
 
 void ed::cargarProvincia(ed::Provincia &provincia){
-	 //std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 	std::string nombre_fichero;
-	std::cout<<PURPLE<<"Introduzca el nombre del fichero que quiere cargar: "<<RESET;
+	std::cout<<IPURPLE<<"Introduzca el nombre del fichero que quiere cargar: "<<RESET;
 	std::cin>>nombre_fichero;
-	if(provincia.cargarFichero(nombre_fichero)){
+	std::cin.ignore();
+
+	bool res=provincia.cargarFichero(nombre_fichero);
+	
+	std::cout << CLEAR_SCREEN;
+	PLACE(3,1);
+	std::cout <<  "[1] Comprobar si la provincia tiene municipios"<<std::endl;
+	
+	if(res){
 		std::cout<<BIGREEN<<"Fichero cargado correctamente"<<RESET<<std::endl;
 	}
 	else{
-		std::cout<<BIRED<<"Error al cargar el fichero"<<RESET<<std::endl;
+		std::cout<<BIRED<<"Error al cargar el fichero "<<nombre_fichero<<", ya que no existe o no se puede abrir"<<RESET<<std::endl;
 	}
 
 	return;
 }
 void ed::grabarProvincia(ed::Provincia  &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+//	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	
+	std::string nombre_fichero;
+	std::cout<<IPURPLE<<"Introduzca el nombre del fichero en donde quiere grabar datos: "<<RESET;
+	std::cin>>nombre_fichero;
+	std::cin.ignore();
+
+	bool res=provincia.grabarFichero(nombre_fichero);
+	
+	std::cout << CLEAR_SCREEN;
+	PLACE(3,1);
+	std::cout << "[2] Cargar la provincia desde un fichero"<<std::endl;
+	
+	if(res){
+		std::cout<<BIGREEN<<"Fichero grabado correctamente"<<RESET<<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"Error al abrir el fichero "<<nombre_fichero<<", ya que no se poseen los suficientes permisos"<<RESET<<std::endl;
+	}
 
 	return;
 }
@@ -131,32 +157,37 @@ void ed::grabarProvincia(ed::Provincia  &provincia){
 //////////////////////////////////////////////////////////////////////
 
 void ed::consultarDatosDeProvincia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
-
+	std::cout<<IBLUE<<"El nombre de la provincia es "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<std::endl;
+	std::cout<<IBLUE<<"El código de la provincia de "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" es "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getCodigo()<<RESET<<std::endl;	
+	
+	if(provincia.hayMunicipios()){
+		std::cout<<IBLUE<<"La provincia de "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" tiene "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNumeroMunicipios()<<RESET<<IBLUE<<" municipios."<<RESET<<std::endl;
+		std::cout<<IBLUE<<"El número total de la provincia de "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" es "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getTotalHabitantes()<<RESET<<IBLUE<<", donde "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getTotalHombres()<<RESET<<IBLUE<<" son hombres y "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getTotalMujeres()<<RESET<<IBLUE<<" son mujeres."<<RESET<<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"No se pueden consultar los datos relativos a los municipios ya que la lista de municipios está vacia."<<RESET<<std::endl;
+	}
 	return;
 }
-
-//
 
 void ed::mostrarMunicipiosDeProvincia(ed::Provincia & provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
-
+	if(provincia.hayMunicipios()){
+		provincia.escribirMunicipios();
+	}
+	else{
+		std::cout<<BIRED<<"No se pueden mostrar los municipios ya que la lista de municipios está vacia."<<RESET<<std::endl;
+	}
 	return;
 }
 
-////////////////////////////////////////////////////////////////////////
-
 void ed::modificarDatosDeProvincia(ed::Provincia &provincia){
-
-std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
-
-// QUITAR LOS COMENTARIOS CUANDO SE HAYA CODIFICADO LA CLASE Provincia
-
-/*
 	int opcion, codigo;
 	std::string nombre; 
 
 	do{
+		PLACE(3,1);
+		std::cout << "[6] Modificar datos de la provincia: código o nombre" 
+							  << std::endl;
 		std::cout << BIYELLOW  << "Nombre de la provincia: "  << RESET 
 				  << provincia.getNombre() << std::endl; 
 		std::cout << BIYELLOW << "Código de la provincia: " << RESET
@@ -202,27 +233,69 @@ std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 					std::cout << BIRED << "Opción incorrecta:" << RESET 
 							  << opcion << std::endl;
 		}
+		
+		std::cout << CLEAR_SCREEN;
 	}while (opcion != 0);
-*/
+
 	return;
 }
 void ed::borrarTodosLosMunicipiosDeProvincia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	if(provincia.hayMunicipios()){
+		provincia.borrarTodosLosMunicipios();
+		std::cout << BIGREEN <<"Se han borrado todos los municipios de la provincia de la lista."<<RESET<<std::endl;
+	}
+	else{
+		std::cout << BIRED <<"La lista ya esta vacía, por lo que ya están borrados los municipios"<<RESET<<std::endl;
+	}
 
 	return;
 }
 void ed::consultarMunicipioDeProvincia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	std::string nombre_municipio;
+	std::cout<<IPURPLE<<"Introduzca el nombre del municipio de la provincia a consultar: "<<RESET;
+	std::cin>>nombre_municipio;
+	std::cin.ignore();
 
+	if(provincia.existeMunicipio(nombre_municipio)){
+		std::cout<<BIGREEN<<"Se ha obtenido la información del municipio correctamente. Se procede a mostrarla."<<RESET<<std::endl;		
+		std::cout<<"|"<<BGREEN<<" Código Postal "<<RESET<<"|"<<BYELLOW<<" Municipio "<<RESET<<"|"<<BBLUE<<" Nº Hombres "<<RESET<<"|"<<BPURPLE<<" Nº Mujeres "<<RESET<<"|"<<BCYAN<<" Nº Habitantes "<<RESET<<"|"<<std::endl;		
+		provincia.getMunicipio(nombre_municipio).escribirMunicipio();
+	}
+	else{
+		std::cout<<BIRED<<"El municipio consultado no existe"<<RESET<<std::endl;
+	}
+	
 	return;
 }
 void ed::insertarMunicipioEnProvincia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	Municipio a;
+	std::cout<<BIRED<<"¡CUIDADO! Los datos se leen teniendo en cuenta el formato: CP Nombre; hombres; mujeres;"<<RESET<<std::endl;
+	std::cin>>a;
+	std::cin.ignore();
+
+	if(provincia.existeMunicipio(a.getNombre())){
+		std::cout<<BIRED<<"Un municipio con ese nombre ya existe, por lo que se procede al aborto de esta operación"<<RESET<<std::endl;
+	}
+	else{
+		provincia.insertarMunicipio(a);
+		std::cout<<BIGREEN<<"El municipio se ha insertado con éxito"<<RESET<<std::endl;
+	}
 
 	return;
 }
 void ed::borrarMunicipioDeProvincia(ed::Provincia &provincia){
-	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
+	std::string nombre_municipio_a_borrar;
+	std::cout<<IPURPLE<<"Introduzca el nombre del municipio de la provincia para borrarlo de la lista: "<<RESET;
+	std::cin>>nombre_municipio_a_borrar;
+	std::cin.ignore();	
+
+	if(provincia.existeMunicipio(nombre_municipio_a_borrar)){
+		provincia.borrarMunicipio(nombre_municipio_a_borrar);
+		std::cout<<BIGREEN<<"El municipio se ha borrado con éxito"<<RESET<<std::endl;
+	}
+	else{
+		std::cout<<BIRED<<"El municipio no estaba en la lista, por lo que se procede al aborto de esta operación"<<RESET<<std::endl;
+	}
 
 	return;
 }

@@ -86,8 +86,8 @@ int main(){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 6: 
-					std::cout << "[6] Modificar datos de la provincia: código o nombre" 
-							  << std::endl;
+//					std::cout << "[6] Modificar datos de la provincia: código o nombre" 
+//							  << std::endl;
 				  	ed::modificarDatosDeProvincia(provincia);
 					break;
 
@@ -123,10 +123,11 @@ int main(){
 				std::cout << opcion << std::endl;
 				std::cout << RESET;
      }
-  
-    if (opcion !=0)
+	 
+	 if (opcion !=0 && opcion !=6)
     {
-		PLACE(25,1);
+//		PLACE(25,1);
+		std::cout << std::endl << std::endl;
 		std::cout << "Pulse ";
 		std::cout << BIGREEN;
 		std::cout << "ENTER";

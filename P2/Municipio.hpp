@@ -8,7 +8,7 @@
 
 // Entrada y salida 
 #include <iostream>
-
+#include "macros.hpp"
 // 
 #include <string>
 

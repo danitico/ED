@@ -15,7 +15,7 @@
 // DEBES CODIFICAR LAS FUNCIONES DE LA CLASE Provincia
 // OBSERVADORES
 bool ed::Provincia::hayMunicipios() const{
-	return _listaMunicipios.isEmpty();
+	return !(_listaMunicipios.isEmpty());
 }
 int ed::Provincia::getNumeroMunicipios() const{
 	return _listaMunicipios.nItems();
@@ -28,8 +28,7 @@ ed::Municipio ed::Provincia::getMunicipio(std::string nombre){
 	#ifndef NDEBUG
 	assert(existeMunicipio(nombre));
 	#endif
-	
-	existeMunicipio(nombre);
+		
 	return _listaMunicipios.getCurrentItem();
 }
 int ed::Provincia::getTotalHombres(){
@@ -110,6 +109,9 @@ void ed::Provincia::borrarTodosLosMunicipios(){
 // FUNCIÓN DE ESCRITURA
 void ed::Provincia::escribirMunicipios(){
 	std::cout<<getCodigo()<<"\t"<<getNombre()<<std::endl;
+	std::cout<<std::endl;
+	std::cout<<"#######################################################################"<<std::endl<<std::endl;
+	std::cout<<"|"<<BGREEN<<" Código Postal "<<RESET<<"|"<<BYELLOW<<" Municipio "<<RESET<<"|"<<BBLUE<<" Nº Hombres "<<RESET<<"|"<<BPURPLE<<" Nº Mujeres "<<RESET<<"|"<<BCYAN<<" Nº Habitantes "<<RESET<<"|"<<std::endl;
 	if(!_listaMunicipios.isEmpty()){
 		_listaMunicipios.gotoHead();	
 		while(!_listaMunicipios.isLastItem()){
@@ -149,7 +151,6 @@ bool ed::Provincia::cargarFichero(std::string archivo){
 			
 			insertarMunicipio(a);
 		}
-		
 		file.close();
 		return true;
 	}

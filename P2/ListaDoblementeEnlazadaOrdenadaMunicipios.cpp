@@ -178,8 +178,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 		_nitems++;
 	}
-	std::cout<<getCurrentItem()<<"\n";
-
+	
 	#ifndef NDEBUG
 	assert(getCurrentItem()==item && nItems()==(oldnitems + 1));
 	#endif
@@ -248,6 +247,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
 		delete _current->getPrevious();
 		setCurrent(_current->getNext());
 	}
+	_head=NULL;
 	setCurrent(getHead());
 	
 	#ifndef NDEBUG

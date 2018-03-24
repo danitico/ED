@@ -41,7 +41,7 @@ class Provincia{
 			_codigo=codigo;
 
 			#ifndef NDEBUG
-			assert(getNombre()==nombre && getCodigo()==codigo && hayMunicipios()==true);
+			assert(getNombre()==nombre && getCodigo()==codigo && hayMunicipios()==false);
 			#endif
 		}
 
