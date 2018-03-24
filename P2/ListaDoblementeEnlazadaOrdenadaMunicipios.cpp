@@ -48,7 +48,7 @@ bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isLastItem() const{
 	assert(isEmpty()==false);
 	#endif
 
-	if(getCurrent()->getNext()==NULL){
+	if(_current->getNext()==NULL){
 		return true;
 	}
 	else{
@@ -64,7 +64,8 @@ ed::Municipio const & ed::ListaDoblementeEnlazadaOrdenadaMunicipios::getCurrentI
 }
 ed::Municipio const & ed::ListaDoblementeEnlazadaOrdenadaMunicipios::getPreviousItem() const{
 	#ifndef NDEBUG
-	assert(isEmpty()==false && isLastItem()==false);
+	assert(isEmpty()==false);
+	assert(isFirstItem()==false);
 	#endif
 
 	return (_current->getPrevious())->getItem();
@@ -152,7 +153,8 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 			setCurrent(getHead());
 		}
 		else{
-			if(isFirstItem()){
+			if(isFirstItem() && item < getCurrentItem()){
+				//std::cout<<"meow\n";
 				ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, NULL, getCurrent());
 				_current->setPrevious(aux);
 				setHead(aux);
@@ -160,11 +162,13 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 			}
 			else{
 				if(isLastItem() && !(item < getCurrentItem())){
+					//std::cout<<"al final";
 					ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, _current, NULL);
 					_current->setNext(aux);
 					setCurrent(_current->getNext());
 				}
 				else{
+					//std::cout<<"hey\n";
 					ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, _current->getPrevious(), _current);
 					_current->getPrevious()->setNext(aux);
 					_current->setPrevious(aux);
@@ -174,7 +178,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 		_nitems++;
 	}
-	//std::cout<<getCurrentItem()<<"\n";
+	std::cout<<getCurrentItem()<<"\n";
 
 	#ifndef NDEBUG
 	assert(getCurrentItem()==item && nItems()==(oldnitems + 1));
@@ -182,30 +186,31 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 }
 void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 	#ifndef NDEBUG
+	int oldnitems=nItems();
 	assert(isEmpty()==false);
 	#endif
 
-	int oldnitems=nItems();
-	if(oldnitems==1){
+	
+	if(nItems()==1){
 		setHead(NULL);
-
 		#ifndef NDEBUG
 		assert(isEmpty());
 		#endif
 	}
 	else{
-		if(oldnitems > 1 && isFirstItem()){
-			NodoDoblementeEnlazadoMunicipio *aux=_current->getNext();
-			setCurrent(NULL);
-			aux->setPrevious(NULL);
-			setCurrent(aux);
+		if(isFirstItem()){
+			setHead(getCurrent()->getNext());
+			getHead()->setPrevious(NULL);
+			setCurrent(getHead());
 			
 			#ifndef NDEBUG
-			assert(aux->getItem()==getCurrentItem() && isFirstItem());
+			assert(getHead()->getItem()==getCurrentItem());
+			assert(isFirstItem());
 			#endif
 		}
 		else{
 			if(isLastItem()){
+				Municipio a;
 				NodoDoblementeEnlazadoMunicipio *aux=_current->getPrevious();
 				setCurrent(NULL);
 				aux->setNext(NULL);
@@ -221,9 +226,11 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 				setCurrent(NULL);
 				aux1->setNext(aux2);
 				aux2->setPrevious(aux1);
+				setCurrent(aux2);
 
 				#ifndef NDEBUG
-				assert(aux1->getItem()==getPreviousItem() && (aux2->getItem()==getCurrentItem()));
+				assert(aux1->getItem()==getPreviousItem());
+				assert(aux2->getItem()==getCurrentItem());
 				#endif
 			}
 		}
