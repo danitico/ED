@@ -1,7 +1,7 @@
 /*!
   \file   funcionesAuxiliares.hpp
   \brief  Funciones auxiliares para el programa principal de la práctica 2
-  \author 
+  \author Daniel Ranchal Parrado
   \date  
 */
 #ifndef _FUNCIONESAUXILIARES_HPP_

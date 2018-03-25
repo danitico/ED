@@ -1,9 +1,9 @@
 /*! 	
 	\file   NodoMunicipioInterfaz.hpp
 	\brief  Declaración de la clase NodoMunicipioInterfaz: nodo que contiene como campo informativo a un Municipio
-	\author 
+	\author Daniel Ranchal Parrado
 	\date 
-	\version 
+	\version 1.0
 
 */
 

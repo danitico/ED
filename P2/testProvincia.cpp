@@ -2,9 +2,9 @@
 
 	\file testProvincia.cpp
 	\brief Segundo programa de prueba de la práctica 2 de ED: provincia de municipios
-	\author 
+	\author Daniel Ranchal Parrado
 	\date 
-	\version 1.0
+	\version 2.0
 */
 
 // Para los flujos de entrada y salida y para usar locale

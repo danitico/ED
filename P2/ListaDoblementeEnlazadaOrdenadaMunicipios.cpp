@@ -3,7 +3,7 @@
 	\brief  Clase de una lista doblemente enlazada y ordenada de Municipios
 	\author Daniel Ranchal Parrado
 	\date 
-	\version 1.0
+	\version 2.0
 */
 // Para comprobar las pre y post-condiciones
 #include <cassert>

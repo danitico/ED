@@ -1,7 +1,7 @@
 /*!
 	\file   ListaOrdenadaMunicipiosInterfaz.hpp
 	\brief  Clase abstracta de una lista enlazada y ordenada de Municipios
-	\author  
+	\author Daniel Ranchal Parrado
 	\date  
 	\version 1.0
 */

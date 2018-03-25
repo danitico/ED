@@ -2,14 +2,14 @@
 
 	\file principalProvincia.cpp
 	\brief Programa principal de la práctica 2 de ED: provincia de municipios
-	\author 
+	\author Daniel Ranchal Parrado
 	\date 
-	\version 1.0
+	\version 2.0
 */
 
 /*!
  \mainpage Implementación de una provincia utilizando una lista doblemente enlazada y ordenada de municipios
- \author   
+ \author Daniel Ranchal Parrado
  \date     
  \version  1.0
 */
