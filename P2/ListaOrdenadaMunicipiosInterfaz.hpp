@@ -2,7 +2,7 @@
 	\file   ListaOrdenadaMunicipiosInterfaz.hpp
 	\brief  Clase abstracta de una lista enlazada y ordenada de Municipios
 	\author Daniel Ranchal Parrado
-	\date  
+	\date
 	\version 1.0
 */
 #ifndef _ListaOrdenadaMunicipiosInterfaz_HPP_
@@ -14,26 +14,26 @@
 // SE HAN COMENTADO ALGUNAS FUNCIONES PARA QUE NO SE GENEREN ERRORES DE COMPILACIÓN
 // AL QUITAR EL COMENTARIO, TAMBIÉN SE DEBE CODIFICAR LA FUNCIÓN EN LA CLASE HEREDERA
 /////////////////////////////////////////////////////////////////////////////////////
-/*!	
+/*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
-*/ 
+*/
 namespace ed{
-/*!	
-  \class ListaOrdenadaMunicipiosInterfaz 
+/*!
+  \class ListaOrdenadaMunicipiosInterfaz
   \brief Definición de la clase abstracta ListaOrdenadaMunicipiosInterfaz
 	  \n  Lista de nodos de municipios ordenados alfabéticamente de forma ascendente
 */
 	class ListaOrdenadaMunicipiosInterfaz{
 		public:
-		//! \name Observadores públicos 
+		//! \name Observadores públicos
 		/*!
 		\brief  Comprueba si la lista está vacía
 		\note   Función virtual pura, que deberá ser redefinida en la clase heredera
 		\note   Función de tipo "const": no puede modificar al objeto actual
 		\return true, si la lista está vacía; false, en caso contrario
 		*/
-		
+
 		virtual bool isEmpty() const = 0;
 		/*!
       \brief  Devuelve el número de elementos o ítems de la lista
@@ -78,7 +78,7 @@ namespace ed{
 		\brief  Devuelve el Municipio situado en el campo informativo anterior
 		\note   Función virtual pura, que deberá ser redefinida en la clase heredera
 		\note   Función de tipo "const": no puede modificar al objeto actual
-		\pre    La lista no está vacía 
+		\pre    La lista no está vacía
 		\pre    El cursor no está situado en el primer nodo
 		\return Una referencia al municipio situado en el nodo previo al indicado por el cursor
 		*/
@@ -89,7 +89,7 @@ namespace ed{
 		\brief  Devuelve el Municipio situado en el campo informativo posterior
 		\note   Función virtual pura, que deberá ser redefinida en la clase heredera
 		\note   Función de tipo "const": no puede modificar al objeto actual
-		\pre    La lista no está vacía 
+		\pre    La lista no está vacía
 		\pre 	El cursor no está situado en el último nodo
 		\return Una referencia al municipio situado en el nodo siguiente al indicado por el cursor
 		*/
@@ -154,18 +154,18 @@ namespace ed{
 		*/
 
       virtual bool find(ed::Municipio const & item) = 0;
-   
+
 		/*!
 		\brief Inserta un Municipio de forma ordenada por apellidos y nombre
 		\note  Función virtual pura
 		\param item: objeto de la clase Municipio que va a ser insertado; referencia constante de la clase Municipio
 		\pre   find(item) == false
 		\post  getCurrentItem() == item
-		\sa    remove() 
+		\sa    remove()
 		*/
 
 		virtual void insert(ed::Municipio const & item) = 0;
-			
+
 		/*!
 		\brief Borra el municipio indicado por el cursor
 		\note  Función virtual pura
@@ -179,7 +179,7 @@ namespace ed{
 		*/
 
 		virtual void remove() = 0;
-			
+
 }; // Fin de la clase ListaOrdenadaMunicipiosInterfaz
 } //namespace ed
 #endif // _ListaOrdenadaMunicipiosInterfaz_HPP_

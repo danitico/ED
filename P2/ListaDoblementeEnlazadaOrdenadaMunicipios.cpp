@@ -2,7 +2,7 @@
 	\file   ListaDoblementeEnlazadaOrdenadaMunicipios.cpp
 	\brief  Clase de una lista doblemente enlazada y ordenada de Municipios
 	\author Daniel Ranchal Parrado
-	\date 
+	\date
 	\version 2.0
 */
 // Para comprobar las pre y post-condiciones
@@ -11,31 +11,19 @@
 #include "NodoMunicipioInterfaz.hpp"
 #include "Municipio.hpp"
 // DEBES CODIFICAR LAS FUNCIONES DE LA CLASE ListaDoblementeEnlazadaOrdenadaMunicipios
-int ed::ListaDoblementeEnlazadaOrdenadaMunicipios::nItems() const{
-	/*if(isEmpty()){
-		return 0;
+bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isEmpty() const{
+	if(getHead()==NULL){
+		return true;
 	}
 	else{
-		if(_head->getNext()==NULL && getHead()!=NULL){
-			return 1;
-		}
-		else{
-			NodoDoblementeEnlazadoMunicipio *aux=getHead();
-			int n=0;
-			while(aux->getNext()!=NULL){
-				aux=aux->getNext();
-				n++;
-			}
-			return n;
-		}
-	}*/
-	return _nitems;
+		return false;
+	}
 }
 bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isFirstItem() const{
 	#ifndef NDEBUG
 	assert(isEmpty()==false);
-	#endif	
-	
+	#endif
+
 	if(getHead()==getCurrent()){
 		return true;
 	}
@@ -133,7 +121,7 @@ bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::find(ed::Municipio const & i
 		}
 		if(getCurrentItem() == item){
 				return true;
-		}	
+		}
 		#ifndef NDEBUG
 		assert(item < _current->getItem() || isLastItem());
 		#endif
@@ -145,7 +133,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 	int oldnitems=nItems();
 	assert(find(item)==false);
 	#endif
-	
+
 	if(!find(item)){
 		if(isEmpty()){
 			ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, NULL, NULL);
@@ -178,7 +166,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 		_nitems++;
 	}
-	
+
 	#ifndef NDEBUG
 	assert(getCurrentItem()==item && nItems()==(oldnitems + 1));
 	#endif
@@ -189,7 +177,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 	assert(isEmpty()==false);
 	#endif
 
-	
+
 	if(nItems()==1){
 		setHead(NULL);
 		#ifndef NDEBUG
@@ -201,7 +189,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 			setHead(getCurrent()->getNext());
 			getHead()->setPrevious(NULL);
 			setCurrent(getHead());
-			
+
 			#ifndef NDEBUG
 			assert(getHead()->getItem()==getCurrentItem());
 			assert(isFirstItem());
@@ -214,7 +202,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 				setCurrent(NULL);
 				aux->setNext(NULL);
 				setCurrent(aux);
-				
+
 				#ifndef NDEBUG
 				assert(isEmpty() || (isLastItem() && aux->getItem()==getCurrentItem()));
 				#endif
@@ -234,9 +222,9 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 			}
 		}
 	}
-	
+
 	_nitems--;
-	
+
 	#ifndef NEDEBUG
 	assert(nItems()==oldnitems-1);
 	#endif
@@ -249,7 +237,7 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
 	}
 	_head=NULL;
 	setCurrent(getHead());
-	
+
 	#ifndef NDEBUG
 	assert(isEmpty());
 	#endif
