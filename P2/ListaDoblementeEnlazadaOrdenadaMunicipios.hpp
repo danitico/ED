@@ -120,6 +120,11 @@ namespace ed{
 		bool find(ed::Municipio const & item);
 		void insert(ed::Municipio const & item);
 		void remove();
+      /**
+       * @fn void removeAll()
+       * @brief Borra todos los nodos de la lista
+       * @post isEmpty()==true
+       */
 		void removeAll();
 }; // Fin de la clase ListaDoblementeEnlazadaOrdenadaMunicipios
 } //namespace ed

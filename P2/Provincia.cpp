@@ -163,17 +163,19 @@ bool ed::Provincia::grabarFichero(std::string archivo){
 
 	if(file.is_open()){
 		file<<getCodigo()<<" "<<getNombre()<<"\n";
-		_listaMunicipios.gotoHead();
-		while(!_listaMunicipios.isLastItem()){
-			file<<_listaMunicipios.getCurrentItem().getCodigoPostal()<<" ";
-			file<<_listaMunicipios.getCurrentItem().getNombre()<<";";
-			file<<_listaMunicipios.getCurrentItem().getHombres()<<";";
-			file<<_listaMunicipios.getCurrentItem().getMujeres()<<";";
-			file<<"\n";
+		if(hayMunicipios()){
+			_listaMunicipios.gotoHead();
+			while(!_listaMunicipios.isLastItem()){
+				file<<_listaMunicipios.getCurrentItem().getCodigoPostal()<<" ";
+				file<<_listaMunicipios.getCurrentItem().getNombre()<<";";
+				file<<_listaMunicipios.getCurrentItem().getHombres()<<";";
+				file<<_listaMunicipios.getCurrentItem().getMujeres()<<";";
+				file<<"\n";
 
-			_listaMunicipios.gotoNext();
+				_listaMunicipios.gotoNext();
+			}
 		}
-
+		
 		return true;
 	}
 	else{

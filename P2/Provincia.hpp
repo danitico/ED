@@ -42,7 +42,7 @@ class Provincia{
 		@param     nombre: valor por defecto ""
 		@param     codigo: valor por defecto 0.0
 		@pre       Ninguna
-		@post      getNombre()==nombre && getCodigo()==codigo && hayMunicipios()==falseº
+		@post      getNombre()==nombre && getCodigo()==codigo && hayMunicipios()==false
 	*/
 		Provincia(std::string nombre="", int codigo=0){
 			_nombre=nombre;

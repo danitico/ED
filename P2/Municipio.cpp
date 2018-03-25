@@ -1,4 +1,4 @@
-/*! 
+/*!
    \file Municipio.cpp
    \brief Fichero que contiene el código de las funciones de la clase Municipio
 */
@@ -29,26 +29,26 @@ void ed::Municipio::leerMunicipio()
   // Uso de getline para leer nombres compuestos separados por espacios
   std::getline(std::cin,cadena);
   this->setNombre(cadena);
- 
+
   std::cout << " Código postal --> ";
   std::cin >> n;
   // Se elimna el salto de línea
   std::cin.ignore();
-  // 
+  //
   this->setCodigoPostal(n);
 
   std::cout << " Número total de hombres --> ";
   std::cin >> n;
   // Se elimna el salto de línea
   std::cin.ignore();
-  // 
+  //
   this->setHombres(n);
 
   std::cout << " Número total de mujeres --> ";
   std::cin >> n;
   // Se elimna el salto de línea
   std::cin.ignore();
-  // 
+  //
   this->setMujeres(n);
 
 }
@@ -57,31 +57,31 @@ void ed::Municipio::leerMunicipio()
 void ed::Municipio::escribirMunicipio() const
 {
 /*
-  std::cout  << "Código postal: "  << this->getCodigoPostal() << std::endl; 
-  std::cout  << "Nombre: "   << this->getNombre() << std::endl; 
-  std::cout  << "Habitantes: "  << this->getHabitantes() << std::endl; 
-  std::cout  << "Hombres: " 	<< this->getHombres() << std::endl;  
-  std::cout  << "Mujeres: " 	<< this->getMujeres() << std::endl << std::endl; 
+  std::cout  << "Código postal: "  << this->getCodigoPostal() << std::endl;
+  std::cout  << "Nombre: "   << this->getNombre() << std::endl;
+  std::cout  << "Habitantes: "  << this->getHabitantes() << std::endl;
+  std::cout  << "Hombres: " 	<< this->getHombres() << std::endl;
+  std::cout  << "Mujeres: " 	<< this->getMujeres() << std::endl << std::endl;
 */
 
-  std::cout  << BGREEN << this->getCodigoPostal() << RESET;
-  std::cout  << "\t"; 
+  std::cout  << "| " << BGREEN << this->getCodigoPostal() << RESET;
+  std::cout  << " | ";
   std::cout  << BYELLOW << this->getNombre() << RESET;
-  std::cout  << "\t\t"; 
+  std::cout  << " | ";
   std::cout  << BBLUE << this->getHombres() << RESET;
-  std::cout  << "\t"; 
+  std::cout  << " | ";
   std::cout  << BPURPLE << this->getMujeres() << RESET;
-  std::cout  << "\t"; 
-  std::cout  << BCYAN << this->getHabitantes() << RESET << std::endl; 
+  std::cout  << " | ";
+  std::cout  << BCYAN << this->getHabitantes() << RESET << " |" << std::endl;
 
 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-bool ed::comparar (Municipio const &objeto1, Municipio const &objeto2) 
+bool ed::comparar (Municipio const &objeto1, Municipio const &objeto2)
 {
-   	return (   objeto1.getHombres() + objeto1.getMujeres() 
+   	return (   objeto1.getHombres() + objeto1.getMujeres()
              < objeto2.getHombres() + objeto2.getMujeres() );
 }
 
@@ -125,6 +125,6 @@ istream &operator>>(istream &stream, ed::Municipio & objeto)
   objeto.setMujeres(atoi(cadena.c_str()));
 
   return stream;
-} 
+}
 
 } // Fin del espacio de nombres ed
