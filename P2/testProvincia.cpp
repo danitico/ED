@@ -1,5 +1,4 @@
 /*!
-
 	\file testProvincia.cpp
 	\brief Segundo programa de prueba de la práctica 2 de ED: provincia de municipios
 	\author Daniel Ranchal Parrado
@@ -18,9 +17,6 @@
 */
 int main()
 {
-
-// SE DEBEN QUITAR LOS COMENTARIOS CUANDO SE HAYAN CODIFICADO LAS FUNCIONES DE LA CLASE Provincia
-
 	ed::Provincia provincia;
 	ed::Municipio municipio;
 
@@ -28,39 +24,31 @@ int main()
 
     std::cout << "Insertar Cabra" << std::endl;
 	municipio.setNombre("Cabra");
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.insertarMunicipio(municipio);
     std::cout << std::endl;
 
 	provincia.escribirMunicipios();
-//	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
 
     std::cout << "Insertar Baena" << std::endl;
 	municipio.setNombre("Baena");
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.insertarMunicipio(municipio);
     std::cout << std::endl;
 
 	provincia.escribirMunicipios();
-//	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
 
 	std::cout << "Se borra un municipio para controlar otro caso: Baena" << std::endl;
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.borrarMunicipio("Baena");
     std::cout << std::endl;
 
 	provincia.escribirMunicipios();
-//	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
 
 
     std::cout << "Insertar Luque" << std::endl;
 	municipio.setNombre("Luque");
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.insertarMunicipio(municipio);
     std::cout << std::endl;
 
 	provincia.escribirMunicipios();
-//	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
 
 
     std::cout << "Insertar Bujalance" << std::endl;

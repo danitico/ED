@@ -10,7 +10,6 @@
 #include "ListaDoblementeEnlazadaOrdenadaMunicipios.hpp"
 #include "NodoMunicipioInterfaz.hpp"
 #include "Municipio.hpp"
-// DEBES CODIFICAR LAS FUNCIONES DE LA CLASE ListaDoblementeEnlazadaOrdenadaMunicipios
 bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::isEmpty() const{
 	if(getHead()==NULL){
 		return true;
@@ -142,7 +141,6 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 		}
 		else{
 			if(isFirstItem() && item < getCurrentItem()){
-				//std::cout<<"meow\n";
 				ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, NULL, getCurrent());
 				_current->setPrevious(aux);
 				setHead(aux);
@@ -150,13 +148,11 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::insert(ed::Municipio const &
 			}
 			else{
 				if(isLastItem() && !(item < getCurrentItem())){
-					//std::cout<<"al final";
 					ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, _current, NULL);
 					_current->setNext(aux);
 					setCurrent(_current->getNext());
 				}
 				else{
-					//std::cout<<"hey\n";
 					ed::NodoDoblementeEnlazadoMunicipio *aux = new ed::NodoDoblementeEnlazadoMunicipio(item, _current->getPrevious(), _current);
 					_current->getPrevious()->setNext(aux);
 					_current->setPrevious(aux);
@@ -176,7 +172,6 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 	int oldnitems=nItems();
 	assert(isEmpty()==false);
 	#endif
-
 
 	if(nItems()==1){
 		setHead(NULL);

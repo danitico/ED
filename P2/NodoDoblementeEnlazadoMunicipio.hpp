@@ -4,23 +4,17 @@
 	\author Daniel Ranchal Parrado
 	\date   26/03/2018
 	\version 1.0
-
 */
-
 #ifndef _NodoDoblementeEnlazadoMunicipio_HPP_
 #define _NodoDoblementeEnlazadoMunicipio_HPP_
-
 #include "NodoMunicipioInterfaz.hpp"
 #include "Municipio.hpp"
-
-
 /*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
 */
 namespace ed{
 /*!
-
   \class NodoDoblementeEnlazadoMunicipio
   \brief Definición de la clase NodoDoblementeEnlazadoMunicipio
   \note  Hereda de la clase NodoMunicipioInterfaz

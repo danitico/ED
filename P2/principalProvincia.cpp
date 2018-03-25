@@ -1,33 +1,23 @@
 /*!
-
 	\file principalProvincia.cpp
 	\brief Programa principal de la práctica 2 de ED: provincia de municipios
 	\author Daniel Ranchal Parrado
 	\date   26/03/2018
 	\version 2.0
 */
-
 /*!
  \mainpage Implementación de una provincia utilizando una lista doblemente enlazada y ordenada de municipios
  \author Daniel Ranchal Parrado
- \date
- \version  1.0
+ \date 26/03/2018
+ \version 2.0
 */
-
 // Para los flujos de entrada y salida y para usar locale
 #include <iostream>
-
-
 #include <string>
-
 #include "Provincia.hpp"
 #include "Municipio.hpp"
-
 #include "funcionesAuxiliares.hpp"
 #include "macros.hpp"
-
-
-
 /*!
 	\brief   Programa principal de la práctica 1: provincia y municipios
 	\return  int
@@ -86,8 +76,6 @@ int main(){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 6:
-//					std::cout << "[6] Modificar datos de la provincia: código o nombre"
-//							  << std::endl;
 				  	ed::modificarDatosDeProvincia(provincia);
 					break;
 
@@ -126,7 +114,6 @@ int main(){
 
 	 if (opcion !=0 && opcion !=6)
     {
-//		PLACE(25,1);
 		std::cout << std::endl << std::endl;
 		std::cout << "Pulse ";
 		std::cout << BIGREEN;

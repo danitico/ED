@@ -7,7 +7,6 @@
 #ifndef _FUNCIONESAUXILIARES_HPP_
 #define _FUNCIONESAUXILIARES_HPP_
 #include "Provincia.hpp"
-// SE DEBEN INCLUIR LOS COMENTARIOS DE DOXYGEN DE CADA FUNCIÓN
 namespace ed{
 	/**
 	 * @fn int menu()

@@ -4,7 +4,6 @@
 	\author Daniel Ranchal Parrado
 	\date 26/03/2018
 	\version 2.0
-
 */
 #ifndef _PROVINCIA_HPP_
 #define _PROVINCIA_HPP_
@@ -12,11 +11,6 @@
 #include <cassert>
 #include <string>
 #include "ListaDoblementeEnlazadaOrdenadaMunicipios.hpp"
-// DEBES COMPLETAR O MODIFICAR EL CÓDIGO DE LA CLASE Provincia
-// DEBES COMPLETAR LOS COMENTARIOS DE DOXYGEN
-// IMPORTANTE
-// Se incluyen los prototipos de las funciones virtuales que hay que redefinir
-// Hay que incluir los prototipos de las demás funciones
 /*!
 	\namespace ed
 	\brief Espacio de nombres para la Provincia Estructuras de Datos

@@ -4,21 +4,15 @@
 	\author Daniel Ranchal Parrado
 	\date   26/03/2018
 	\version 1.0
-
 */
-
 #ifndef _NODOMUNICIPIOINTERFAZ_HPP_
 #define _NODOMUNICIPIOINTERFAZ_HPP_
-
 #include "Municipio.hpp"
-
 /*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
 */
 namespace ed{
-
-
 /*!
   \class NodoMunicipioInterfaz
   \brief Definición de la clase abstracta NodoMunicipioInterfaz

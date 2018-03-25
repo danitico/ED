@@ -9,11 +9,6 @@
 #define _ListaOrdenadaMunicipiosInterfaz_HPP_
 // Definición de la clase del campo informativo del nodo de la lista
 #include "Municipio.hpp"
-/////////////////////////////////////////////////////////////////////////////////////
-// IMPORTANTE
-// SE HAN COMENTADO ALGUNAS FUNCIONES PARA QUE NO SE GENEREN ERRORES DE COMPILACIÓN
-// AL QUITAR EL COMENTARIO, TAMBIÉN SE DEBE CODIFICAR LA FUNCIÓN EN LA CLASE HEREDERA
-/////////////////////////////////////////////////////////////////////////////////////
 /*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
@@ -22,7 +17,7 @@ namespace ed{
 /*!
   \class ListaOrdenadaMunicipiosInterfaz
   \brief Definición de la clase abstracta ListaOrdenadaMunicipiosInterfaz
-	  \n  Lista de nodos de municipios ordenados alfabéticamente de forma ascendente
+  \n  Lista de nodos de municipios ordenados alfabéticamente de forma ascendente
 */
 	class ListaOrdenadaMunicipiosInterfaz{
 		public:

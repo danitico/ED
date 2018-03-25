@@ -12,13 +12,9 @@
 #include "ListaOrdenadaMunicipiosInterfaz.hpp"
 #include "NodoDoblementeEnlazadoMunicipio.hpp"
 #include "Municipio.hpp"
-// DEBES ESPECIFICAR LAS FUNCIONES DE LA CLASE ListaDoblementeEnlazadaOrdenadaMunicipios
-
-
 /*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
-
 */
 namespace ed{
 /*!

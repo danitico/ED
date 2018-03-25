@@ -96,7 +96,6 @@ int ed::menu(){
 //////////////////////////////////////////////////////////////////////////////
 
 void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
-	//std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
 	if(provincia.hayMunicipios()){
 		std::cout<<IBLUE<<"La provincia "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" tiene "<<ITALIC<<provincia.getNumeroMunicipios()<<RESET<<IBLUE<<" municipios."<<RESET<<std::endl;
 	}
@@ -131,8 +130,6 @@ void ed::cargarProvincia(ed::Provincia &provincia){
 	return;
 }
 void ed::grabarProvincia(ed::Provincia  &provincia){
-//	std::cout << "SE DEBE COMPLETAR EL CÓDIGO DE ESTA FUNCIÓN " << std::endl;
-
 	std::string nombre_fichero;
 	std::cout<<IPURPLE<<"Introduzca el nombre del fichero en donde quiere grabar datos: "<<RESET;
 	std::cin>>nombre_fichero;
