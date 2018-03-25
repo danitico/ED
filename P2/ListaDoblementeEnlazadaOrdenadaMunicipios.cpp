@@ -2,7 +2,7 @@
 	\file   ListaDoblementeEnlazadaOrdenadaMunicipios.cpp
 	\brief  Clase de una lista doblemente enlazada y ordenada de Municipios
 	\author Daniel Ranchal Parrado
-	\date
+	\date   26/03/2018
 	\version 2.0
 */
 // Para comprobar las pre y post-condiciones

@@ -1,8 +1,8 @@
-/*! 	
+/*!
 	\file   NodoDoblementeEnlazadoMunicipio.hpp
 	\brief  Declaración del TAD NodoDoblementeEnlazadoMunicipio: nodo doblemente enlazado con el campo informativo Municipio
 	\author Daniel Ranchal Parrado
-	\date 
+	\date   26/03/2018
 	\version 1.0
 
 */
@@ -14,7 +14,7 @@
 #include "Municipio.hpp"
 
 
-/*!	
+/*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
 */
@@ -31,7 +31,7 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 //!	\name Atributos o métodos privados
 
  private:
-	Municipio					      _item;      //!< \brief campo informativo del nodo 
+	Municipio					      _item;      //!< \brief campo informativo del nodo
 	NodoDoblementeEnlazadoMunicipio * _previous;  //!< \brief puntero al nodo previous
 	NodoDoblementeEnlazadoMunicipio * _next;      //!< \brief puntero al nodo next
 
@@ -42,18 +42,18 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 
 //! \name Constructor
 
-/*!		
-	\brief Constructor parametrizado 
+/*!
+	\brief Constructor parametrizado
 	\note  Función inline
-  	\param item: campo informativo del nodo, referencia constante a un Municipio 
+  	\param item: campo informativo del nodo, referencia constante a un Municipio
    	\param previous: puntero al nodo previous
    	\param next: puntero al nodo next
 	\pre   Ninguna
   	\post  Crea un nuevo objeto de la clase NodoDoblementeEnlazadoMunicipio con los valores de los argumentos
-	  	\sa    setItem, setPrevious, setNext 
+	  	\sa    setItem, setPrevious, setNext
 */
-	inline NodoDoblementeEnlazadoMunicipio(const ed::Municipio& item, 
-                         NodoDoblementeEnlazadoMunicipio* previous, 
+	inline NodoDoblementeEnlazadoMunicipio(const ed::Municipio& item,
+                         NodoDoblementeEnlazadoMunicipio* previous,
                          NodoDoblementeEnlazadoMunicipio* next)
     {
 		this->setItem(item);
@@ -62,12 +62,12 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 	}
 
 //!	\name Destructor
- 
-/*!		
+
+/*!
 	\brief Destructor
 	\note  Función inline
 	\pre   Ninguna
-	\post  
+	\post
 	\sa   NodoDoblementeEnlazadoMunicipio()
 */
 	inline ~NodoDoblementeEnlazadoMunicipio()
@@ -79,13 +79,13 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 
 //! \name Observadores
 
-/*!	
+/*!
 	\brief  Método público que permite conocer el campo informativo del nodo doble
 	\note   Función inline
 	\return Devuelve el valor del atributo _item
 	\pre    Ninguna
 	\post   Ninguna
-	
+
 */
 	inline ed::Municipio const & getItem()  const
 	{
@@ -93,7 +93,7 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 	}
 
 
-/*!	
+/*!
 	\brief  Método público que permite conocer el puntero al nodo previous
 	\note   Función inline
   	\note   Método "const" que no modifica el objeto de la clase
@@ -101,13 +101,13 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 	\post   Ninguna
     \return Devuelve el puntero al nodo previous
 */
-	inline NodoDoblementeEnlazadoMunicipio  *getPrevious() const 
+	inline NodoDoblementeEnlazadoMunicipio  *getPrevious() const
 	{
 		return this->_previous;
 	}
 
 
-/*!	
+/*!
 	\brief  Método público que permite conocer el puntero al nodo next
 	\note   Función inline
     \note   Metodo "const" que no modifica el objeto de la clase
@@ -124,22 +124,22 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 //! \name Modificadores
 
 
-/*!	
+/*!
 	\brief Método público que permite modificar el campo informativo del nodo doble
 	\note  Función inline
     \attention  La clase Municipio debe tener sobrecargado el operador de asignación "="
-	\param item: nuevo valor del campo informativo; referencia constante a un Municipio 
+	\param item: nuevo valor del campo informativo; referencia constante a un Municipio
 	\pre   Ninguna
 	\post  El campo informativo del nodo actual es igual al parámetro pasado como argumento
 	\return void
 */
-	inline void setItem(ed::Municipio const & item)  
+	inline void setItem(ed::Municipio const & item)
 	{
 		this->_item  = item;
-	}		
+	}
 
 
-/*!	
+/*!
 	\brief  Método público que permite modificar el puntero al nodo previous
 	\note   Función inline
 	\param  previous: nuevo puntero al nodo previous
@@ -148,13 +148,13 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 			\n getPrevious() == item
 	\return void
 */
-	inline void setPrevious(NodoDoblementeEnlazadoMunicipio  *previous) 
+	inline void setPrevious(NodoDoblementeEnlazadoMunicipio  *previous)
 	{
 		this->_previous = previous;
 	}
 
-		
-/*!	
+
+/*!
 	\brief  Método público que permite modificar el puntero al nodo next
 	\note   Función inline
 	\param  next: nuevo puntero al nodo next
@@ -163,11 +163,11 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 			\n getNext() == item
 	\return void
 */
-	inline void setNext(NodoDoblementeEnlazadoMunicipio  *next) 
+	inline void setNext(NodoDoblementeEnlazadoMunicipio  *next)
 	{
 		this->_next = next;
 	}
-		
+
 // Fin de la clase NodoDoblementeEnlazadoMunicipio
 };
 
@@ -175,4 +175,4 @@ class NodoDoblementeEnlazadoMunicipio: public NodoMunicipioInterfaz
 }
 
 //Fin  _NodoDoblementeEnlazadoMunicipio_HPP_
-#endif  
+#endif

@@ -1,8 +1,8 @@
-/*! 	
+/*!
 	\file   NodoMunicipioInterfaz.hpp
 	\brief  Declaración de la clase NodoMunicipioInterfaz: nodo que contiene como campo informativo a un Municipio
 	\author Daniel Ranchal Parrado
-	\date 
+	\date   26/03/2018
 	\version 1.0
 
 */
@@ -12,7 +12,7 @@
 
 #include "Municipio.hpp"
 
-/*!	
+/*!
 	\namespace ed
 	\brief Espacio de nombres para la asignatura Estructuras de Datos
 */
@@ -31,7 +31,7 @@ class NodoMunicipioInterfaz
 
 
   /*!
-    \brief Destructor de la clase 
+    \brief Destructor de la clase
    	\warning Función virtual pura: se debe redefinir en la clase heredera
     \attention Es necesario especificar esta función para liberar memoria en la clase heredera
   */
@@ -42,7 +42,7 @@ class NodoMunicipioInterfaz
 
 //! \name Observador
 
-/*!	
+/*!
 	\brief   Método público que permite conocer el campo informativo del nodo: un municipio
 	\warning Función virtual pura: se debe redefinir en la clase heredera
 	\pre     Ninguna
@@ -54,21 +54,21 @@ class NodoMunicipioInterfaz
 
 //! \name Observador
 
-/*!	
+/*!
 	\brief   Método público que permite modificar el campo informativo del nodo: un municipio
 	\warning Función virtual pura: se debe redefinir en la clase heredera
-	\param   item: referencia constante a un Municipio	
-    \return  void	
+	\param   item: referencia constante a un Municipio
+    \return  void
 	\pre     Ninguna
 	\post    El valor del campo informativo debe ser igual al item pasado como argumento
 */
 	virtual void  setItem(ed::Municipio const &item) = 0;
 
 // Fin de la clase NodoMunicipioInterfaz
-}; 
+};
 
 // Fin del espacio de nombres ed
 }
 
 //Fin  _NODOMUNICIPIOINTERFAZ_HPP_
-#endif  
+#endif

@@ -3,24 +3,16 @@
 	\file testProvincia.cpp
 	\brief Segundo programa de prueba de la práctica 2 de ED: provincia de municipios
 	\author Daniel Ranchal Parrado
-	\date 
+	\date 26/03/2018
 	\version 2.0
 */
-
 // Para los flujos de entrada y salida y para usar locale
 #include <iostream>
-
-
 #include <string>
-
 #include "Provincia.hpp"
 #include "Municipio.hpp"
-
 #include "macros.hpp"
-
-
-
-/*! 
+/*!
 	\brief   Programa principal de la práctica 1: provincia y municipios
 	\return  int
 */
@@ -31,12 +23,12 @@ int main()
 
 	ed::Provincia provincia;
 	ed::Municipio municipio;
-	
+
 	std::cout << "Se insertan los municipios" << std::endl;
 
     std::cout << "Insertar Cabra" << std::endl;
 	municipio.setNombre("Cabra");
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;	
+//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.insertarMunicipio(municipio);
     std::cout << std::endl;
 
@@ -45,7 +37,7 @@ int main()
 
     std::cout << "Insertar Baena" << std::endl;
 	municipio.setNombre("Baena");
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;	
+//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.insertarMunicipio(municipio);
     std::cout << std::endl;
 
@@ -53,7 +45,7 @@ int main()
 //	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
 
 	std::cout << "Se borra un municipio para controlar otro caso: Baena" << std::endl;
-//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;	
+//	std::cout<<"antes-> "<<provincia.getNumeroMunicipios()<<std::endl;
 	provincia.borrarMunicipio("Baena");
     std::cout << std::endl;
 
@@ -69,7 +61,7 @@ int main()
 
 	provincia.escribirMunicipios();
 //	std::cout<<"despues-> "<<provincia.getNumeroMunicipios()<<std::endl;
-	
+
 
     std::cout << "Insertar Bujalance" << std::endl;
 	municipio.setNombre("Bujalance");

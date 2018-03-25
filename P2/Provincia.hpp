@@ -2,7 +2,7 @@
 	\file  Provincia.hpp
 	\brief Definición de la clase Provincia
 	\author Daniel Ranchal Parrado
-	\date
+	\date 26/03/2018
 	\version 2.0
 
 */

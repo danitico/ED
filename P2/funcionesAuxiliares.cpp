@@ -2,7 +2,7 @@
   \file   funcionesAuxiliares.cpp
   \brief  Código de las funciones auxiliares del programa principal de la provincia
   \author Daniel Ranchal Parrado
-  \date
+  \date 26/03/2018
 */
 #include <iostream>
 #include <string>
