@@ -115,9 +115,15 @@ void ed::Provincia::setNuevoMunicipio(ed::Municipio & nuevo_municipio){
 
 // FUNCIÓN DE ESCRITURA
 void ed::Provincia::escribirMunicipios(){
-	std::cout<<getCodigo()<<"\t"<<getNombre()<<std::endl;
+	std::cout << BIYELLOW  << "Nombre de la provincia: "  << RESET
+			  << getNombre() << std::endl;
+	std::cout << BIYELLOW << "Código de la provincia: " << RESET
+			  << getCodigo() << std::endl;
+
 	std::cout<<std::endl;
+
 	std::cout<<"#######################################################################"<<std::endl<<std::endl;
+
 	std::cout<<"|"<<BGREEN<<" Código Postal "<<RESET<<"|"<<BYELLOW<<" Municipio "<<RESET<<"|"<<BBLUE<<" Nº Hombres "<<RESET<<"|"<<BPURPLE<<" Nº Mujeres "<<RESET<<"|"<<BCYAN<<" Nº Habitantes "<<RESET<<"|"<<std::endl;
 	if(!_listaMunicipios.isEmpty()){
 		_listaMunicipios.gotoHead();

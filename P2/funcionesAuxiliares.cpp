@@ -6,6 +6,7 @@
 */
 #include <iostream>
 #include <string>
+#include <cctype>
 // Para usar atoi
 #include <stdlib.h>
 #include <unistd.h>
@@ -289,6 +290,15 @@ void ed::insertarMunicipioEnProvincia(ed::Provincia &provincia){
 	std::cin>>a;
 	std::cin.ignore();
 
+
+	if(islower(a.getNombre()[0])){
+		std::string aux;
+
+		aux=a.getNombre();
+		aux[0]=toupper(aux[0]);
+		a.setNombre(aux);
+	}
+
 	if(provincia.existeMunicipio(a.getNombre())){
 		std::cout<<BIRED<<"Un municipio con ese nombre ya existe, por lo que se procede al aborto de esta operación"<<RESET<<std::endl;
 	}
@@ -354,8 +364,11 @@ void ed::modificarDatosDeMunicipio(ed::Provincia & provincia, std::string & nomb
 					std::cout << IPURPLE;
 					std::cout << "Nuevo nombre del municipio: ";
 					std::cout << RESET;
-					std::getline(std::cin,nombre); /*se supone que el nombre introducido no se encuentra en la lista, es decir
-					que no hay dos pueblos con el mismo nombre en la provincia*/
+					std::getline(std::cin,nombre);
+
+					if(islower(nombre[0])){
+						nombre[0]=toupper(nombre[0]);
+					}
 
 					if(provincia.existeMunicipio(nombre)){
 						std::cout << BIRED << "Ese nombre de municipio ya existe, por lo que se aborta esta operación" << RESET << std::endl << std::endl;
