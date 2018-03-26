@@ -186,6 +186,16 @@ class Provincia{
 		* Borra todos los municipios de la provincia
 		*/
 		void borrarTodosLosMunicipios();
+		/**
+		* @fn void setNuevoMunicipio(ed::Municipio & nuevo_municipio)
+		* @warning Modifica el nodo _current
+		* @brief Modificador de la clase Provincia
+		* @sa ListaDoblementeEnlazadaOrdenadaMunicipios::setNewCurrent()
+		* @post _listaMunicipios.ListaDoblementeEnlazadaOrdenadaMunicipios::getCurrentItem()==nuevo_municipio
+		*
+		* Sustituye el _item del nodo _current
+		*/
+		void setNuevoMunicipio(ed::Municipio & nuevo_municipio);
 
 	/////////////////////////////////////////////////////////////////////
 

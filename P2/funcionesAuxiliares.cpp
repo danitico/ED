@@ -97,7 +97,7 @@ int ed::menu(){
 
 void ed::comprobarProvinciaVacia(ed::Provincia &provincia){
 	if(provincia.hayMunicipios()){
-		std::cout<<IBLUE<<"La provincia "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" tiene "<<ITALIC<<provincia.getNumeroMunicipios()<<RESET<<IBLUE<<" municipios."<<RESET<<std::endl;
+		std::cout<<IBLUE<<"La provincia "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNombre()<<RESET<<IBLUE<<" tiene "<<RESET<<IRED<<ITALIC<<UNDERLINE<<provincia.getNumeroMunicipios()<<RESET<<IBLUE<<" municipios."<<RESET<<std::endl;
 	}
 	else{
 		std::cout<<BIRED<<"La provincia '"<<provincia.getNombre()<<"' está vacia"<<RESET<<std::endl;
@@ -240,7 +240,7 @@ void ed::modificarDatosDeProvincia(ed::Provincia &provincia){
 					}
 					else{
 						std::cout << BIRED << "El municipio no se puede modificar ya que no existe" << RESET <<std::endl<<std::endl;
-						std::cout << "Pulse ENTER para continuar";
+						std::cout << "Pulse "<< BIGREEN << "ENTER" << RESET << "para continuar" << std::endl;
 						std::cin.ignore();
 					}
 
@@ -354,8 +354,16 @@ void ed::modificarDatosDeMunicipio(ed::Provincia & provincia, std::string & nomb
 					std::cout << IPURPLE;
 					std::cout << "Nuevo nombre del municipio: ";
 					std::cout << RESET;
-					std::cin >> nombre; /*se supone que el nombre introducido no se encuentra en la lista, es decir
+					std::getline(std::cin,nombre); /*se supone que el nombre introducido no se encuentra en la lista, es decir
 					que no hay dos pueblos con el mismo nombre en la provincia*/
+
+					if(provincia.existeMunicipio(nombre)){
+						std::cout << BIRED << "Ese nombre de municipio ya existe, por lo que se aborta esta operación" << RESET << std::endl << std::endl;
+						std::cout << "Pulse "<< BIGREEN << "ENTER" << RESET << " para continuar";
+						std::cin.ignore();
+						break;
+					}
+
 					aux=provincia.getMunicipio(nombre_municipio);
 					aux.setNombre(nombre);
 					provincia.borrarMunicipio(nombre_municipio);
@@ -372,8 +380,7 @@ void ed::modificarDatosDeMunicipio(ed::Provincia & provincia, std::string & nomb
 
 					aux=provincia.getMunicipio(nombre_municipio);
 					aux.setCodigoPostal(codigo_postal);
-					provincia.borrarMunicipio(nombre_municipio);
-					provincia.insertarMunicipio(aux);
+					provincia.setNuevoMunicipio(aux);
 
 					break;
 
@@ -385,8 +392,7 @@ void ed::modificarDatosDeMunicipio(ed::Provincia & provincia, std::string & nomb
 
 					aux=provincia.getMunicipio(nombre_municipio);
 					aux.setHombres(hombres);
-					provincia.borrarMunicipio(nombre_municipio);
-					provincia.insertarMunicipio(aux);
+					provincia.setNuevoMunicipio(aux);
 
 					break;
 
@@ -398,8 +404,7 @@ void ed::modificarDatosDeMunicipio(ed::Provincia & provincia, std::string & nomb
 
 					aux=provincia.getMunicipio(nombre_municipio);
 					aux.setMujeres(mujeres);
-					provincia.borrarMunicipio(nombre_municipio);
-					provincia.insertarMunicipio(aux);
+					provincia.setNuevoMunicipio(aux);
 
 					break;
 

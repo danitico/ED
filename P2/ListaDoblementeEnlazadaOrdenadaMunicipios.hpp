@@ -113,6 +113,13 @@ namespace ed{
 		void gotoLast();
 		void gotoPrevious();
 		void gotoNext();
+      /**
+       * @fn void setNewCurrent(ed::Municipio const & item)
+       * @brief Sustituye el _item de _current por item
+       * @post getCurrentItem()==item
+       * @sa getCurrent(), setItem()
+       */
+      void setNewCurrent(ed::Municipio const & item);
 		bool find(ed::Municipio const & item);
 		void insert(ed::Municipio const & item);
 		void remove();

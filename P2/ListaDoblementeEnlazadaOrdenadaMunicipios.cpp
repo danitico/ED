@@ -105,6 +105,13 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::gotoNext(){
 
 	setCurrent(_current->getNext());
 }
+void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::setNewCurrent(ed::Municipio const & item){
+	getCurrent()->setItem(item);
+
+	#ifndef NDEBUG
+	assert(getCurrentItem()==item);
+	#endif
+}
 bool ed::ListaDoblementeEnlazadaOrdenadaMunicipios::find(ed::Municipio const & item){
 	if(isEmpty()){
 		setCurrent(getHead());

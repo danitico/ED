@@ -104,6 +104,13 @@ void ed::Provincia::borrarTodosLosMunicipios(){
 	assert(!hayMunicipios());
 	#endif
 }
+void ed::Provincia::setNuevoMunicipio(ed::Municipio & nuevo_municipio){
+	_listaMunicipios.setNewCurrent(nuevo_municipio);
+
+	#ifndef NDEBUG
+	assert(_listaMunicipios.getCurrentItem()==nuevo_municipio);
+	#endif
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 // FUNCIÓN DE ESCRITURA
