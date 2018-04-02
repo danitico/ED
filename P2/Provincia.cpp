@@ -187,6 +187,11 @@ bool ed::Provincia::grabarFichero(std::string archivo){
 
 				_listaMunicipios.gotoNext();
 			}
+			file<<_listaMunicipios.getCurrentItem().getCodigoPostal()<<" ";
+			file<<_listaMunicipios.getCurrentItem().getNombre()<<";";
+			file<<_listaMunicipios.getCurrentItem().getHombres()<<";";
+			file<<_listaMunicipios.getCurrentItem().getMujeres()<<";";
+			file<<"\n";
 		}
 
 		return true;

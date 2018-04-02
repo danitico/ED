@@ -233,12 +233,13 @@ void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::remove(){
 }
 void ed::ListaDoblementeEnlazadaOrdenadaMunicipios::removeAll(){
 	setCurrent(_head->getNext());
-	while(_current->getNext()!=NULL){
+	while(_current){
 		delete _current->getPrevious();
 		setCurrent(_current->getNext());
 	}
 	_head=NULL;
 	setCurrent(getHead());
+	_nitems=0;
 
 	#ifndef NDEBUG
 	assert(isEmpty());
