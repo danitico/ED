@@ -1,24 +1,16 @@
 /*!
 	\file MonticuloMediciones.hpp
 	\brief Se define el TAD MonticuloMediciones.
-	\author 
-	\date 
+	\author Daniel Ranchal Parrado
+	\date
 */
-
 #ifndef _MONTICULO_MEDICIONES_HPP
 #define _MONTICULO_MEDICIONES_HPP
-
 #include <vector>
-
 #include <cassert>
-
 #include "Medicion.hpp"
-
 #include "MonticuloMedicionesInterfaz.hpp"
-
-
 // COMPLETAR EL CÓDIGO E INCLUIR LOS COMENTARIOS DE DOXYGEN
-
 namespace ed
 {
 
@@ -59,9 +51,9 @@ class MonticuloMediciones : public MonticuloMedicionesInterfaz
 
 
 		//! \name Operadores
-   
+
 		// COMPLETAR
- 
+
 
 		////////////////////////////////////////////////////////////////////
 
@@ -72,6 +64,4 @@ class MonticuloMediciones : public MonticuloMedicionesInterfaz
 	}; // Clase MonticuloMediciones
 
 } // Espacio de nombres ed
-
-
 #endif // _MONTICULO_MEDICIONES_HPP

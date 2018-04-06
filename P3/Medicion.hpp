@@ -10,6 +10,7 @@
 #include <cassert>
 // Definición de la clase Fecha
 #include "Fecha.hpp"
+#include "macros.hpp"
 // Para la sobrecarga de los operadores de flujo: << y >>
 using std::istream;
 using std::ostream;
@@ -20,34 +21,28 @@ namespace ed {
 class Medicion{
   //! \name Atributos privados de la clase Medicion
    private:
-      Fecha fecha_;
-      unsigned float precipitacion_;
+      ed::Fecha fecha_;
+      float precipitacion_;
    //! \name Funciones o métodos públicos de la clase Medicion
    public:
 	//! \name Constructor de la clase Medicion
-      Medicion(Fecha fecha=Fecha(1,1,1), float precipitacion);
-      Medicion(Medicion medicion);
+      inline Medicion(ed::Fecha fecha=Fecha(1,1,1), float precipitacion=0.0);
+      inline Medicion(ed::Medicion const & medicion);
    //! \name Observadores: funciones de consulta de la clase Medicion
-      int getFecha() const{return fecha_;}
-      int getPrecipitacion() const{return precipitacion_;}
+      ed::Fecha getFecha() const{return fecha_;}
+      float getPrecipitacion() const{return precipitacion_;}
 	//! \name Funciones de modificación de la clase Medicion
-      int setFecha(Fecha fecha);
-      int setPrecipitacion(float precipitacion);
+      void setFecha(ed::Fecha fecha);
+      void setPrecipitacion(float precipitacion);
 	//! \name Operadores
-      bool &operator==(Medicion medicion) const;
-      bool operator=(Medicion const medicion);
+      bool operator==(ed::Medicion const medicion) const;
+      ed::Medicion &operator=(ed::Medicion const &medicion);
 	//! \name Funciones de lectura y escritura de la clase Medicion
-      void leerMedicion
+      void leerMedicion();
+      void escribirMedicion();
 }; // Fin de la definición de la clase Medicion
-
-
    //! \name Funciones externas de la clase Medicion: sobrecarga de los operadores de flujo
-
-		// COMPLETAR EL CÓDIGO E INCLUIR LOS COMENTARIOS DE DOXYGEN
-
-
-
+      ostream &operator<<(ostream &stream, ed::Medicion const &medicion);
+      istream &operator>>(istream &stream, ed::Medicion &medicion);
 } // \brief Fin de namespace ed.
-
-//  _MEDICION_HPP_
-#endif
+#endif //  _MEDICION_HPP_

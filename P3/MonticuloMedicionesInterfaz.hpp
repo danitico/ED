@@ -1,17 +1,13 @@
 /*!
 	\file MonticuloMedicionesInterfaz.hpp
 	\brief Se define la interfaz del TAD MonticuloMediciones.
-	\author 
-	\date  
+	\author Daniel Ranchal Parrado
+	\date
 */
-
 #ifndef _MONTICULO_MEDICIONES_INTERFAZ_HPP
 #define _MONTICULO_MEDICIONES_INTERFAZ_HPP
-
 #include "Medicion.hpp"
-
 // COMPLETAR EL CÓDIGO E INCLUIR LOS COMENTARIOS DE DOXYGEN
-
 namespace ed
 {
 
