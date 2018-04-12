@@ -117,14 +117,21 @@ class Medicion{
    //! \name Funciones externas de la clase Medicion: sobrecarga de los operadores de flujo
       /**
        * @fn ostream &operator<<(ostream &stream, ed::Medicion const &medicion)
-       * @brief Iguala el objeto *this al objeto pasado por argumentos
-       * @param medicion Objeto de la clase Medicion
-       * @note Operador sobrecargado de la clase Medicion
-       * @post getFecha() == medicion.getFecha()
-       * @post getPrecipitacion() == medicion.getPrecipitacion()
-       * @return Devuelve un objeto de la clase Medicion
+       * @brief Operador para mostrar por pantalla un objeto de tipo Medicion
+       * @param stream Objeto de la clase ostream
+       * @param medicion Objeto de la clase Medicion pasado por referencia
+       * @note Operador << sobrecargado de la clase Medicion
+       * @return Devuelve un objeto de la clase ostream
        */
       ostream &operator<<(ostream &stream, ed::Medicion const &medicion);
+      /**
+       * @fn istream &operator>>(istream &stream, ed::Medicion &medicion)
+       * @brief Operador para introducir por pantalla un objeto de tipo Medicion
+       * @param stream Objeto de la clase istream
+       * @param medicion Objeto de la clase Medicion pasado por referencia
+       * @note Operador >> sobrecargado de la clase Medicion
+       * @return Devuelve un objeto de la clase istream
+       */
       istream &operator>>(istream &stream, ed::Medicion &medicion);
 } // \brief Fin de namespace ed.
 #endif //  _MEDICION_HPP_
