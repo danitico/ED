@@ -5,7 +5,6 @@
  \version  1.0
 */
 /*!
-
 	\file principalMediciones.cpp
 	\brief Programa principal de la practica 3 de Estructuras de Datos
 */

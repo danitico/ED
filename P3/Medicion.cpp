@@ -5,24 +5,7 @@
 // Ficheros de cabecera
 #include <iostream>
 // atoi, atof
-#include <stdlib.h>
 #include "Medicion.hpp"
-inline ed::Medicion::Medicion(Fecha fecha, float precipitacion){
-   this->setFecha(fecha);
-   this->setPrecipitacion(precipitacion);
-
-   #ifndef NDEBUG
-   assert(getFecha()==fecha && abs(getPrecipitacion()-precipitacion)<=COTA_ERROR);
-   #endif
-}
-inline ed::Medicion::Medicion(Medicion const & medicion){
-   this->setFecha(medicion.getFecha());
-   this->setPrecipitacion(medicion.getPrecipitacion());
-
-   #ifndef NDEBUG
-   assert(getFecha()==medicion.getFecha() && abs(getPrecipitacion()-medicion.getPrecipitacion())<=COTA_ERROR);
-   #endif
-}
 void ed::Medicion::setFecha(ed::Fecha fecha){
    fecha_=fecha;
 

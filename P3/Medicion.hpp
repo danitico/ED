@@ -6,6 +6,7 @@
 #define _MEDICION_HPP_
 // Entrada y salida
 #include <iostream>
+#include <stdlib.h>
 // Para controlar las precondiciones y postcondiciones mediante asertos
 #include <cassert>
 // Definición de la clase Fecha
@@ -36,9 +37,16 @@ class Medicion{
        * @post getFecha() == fecha
        * @post getPrecipitacion() == precipitacion
        */
-      inline Medicion(ed::Fecha fecha=Fecha(1,1,1), float precipitacion=0.0);
+      inline Medicion(ed::Fecha fecha=Fecha(1,1,1), float precipitacion=0.0){
+         this->setFecha(fecha);
+         this->setPrecipitacion(precipitacion);
+
+         #ifndef NDEBUG
+         assert(getFecha()==fecha && abs(getPrecipitacion()-precipitacion)<=COTA_ERROR);
+         #endif
+      }
       /**
-       * @fn inline Medicion(ed::Medicion const & medicion)
+       * @fn inline Medicion(const ed::Medicion & medicion)
        * @brief Copia un objeto de tipo Medicion en otro
        * @param medicion Objeto de la clase Medicion
        * @note Constructor de copia de la clase Medicion
@@ -46,7 +54,14 @@ class Medicion{
        * @post getFecha() == medicion.getFecha()
        * @post getPrecipitacion() == medicion.getPrecipitacion()
        */
-      inline Medicion(ed::Medicion const & medicion);
+      inline Medicion(const ed::Medicion & medicion){
+         this->setFecha(medicion.getFecha());
+         this->setPrecipitacion(medicion.getPrecipitacion());
+
+         #ifndef NDEBUG
+         assert(getFecha()==medicion.getFecha() && abs(getPrecipitacion()-medicion.getPrecipitacion())<=COTA_ERROR);
+         #endif
+      }
    //! \name Observadores: funciones de consulta de la clase Medicion
       /**
        * @fn ed::Fecha getFecha() const
@@ -110,7 +125,7 @@ class Medicion{
       /**
        * @fn void escribirMedicion()
        * @brief Escribe la medicion en pantalla
-       * @wa Se escribe con el siguiente formato dia-mes-año precipitacion
+       * @warning Se escribe con el siguiente formato dia-mes-año precipitacion
        */
       void escribirMedicion();
 }; // Fin de la definición de la clase Medicion

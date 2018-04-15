@@ -12,7 +12,7 @@
 #include "MonticuloMedicionesInterfaz.hpp"
 // COMPLETAR EL CÓDIGO E INCLUIR LOS COMENTARIOS DE DOXYGEN
 namespace ed{
-// COMPLETAR EL CÓDIGO E INCLUIR LOS COMENTARIOS DE DOXYGEN
+	//!  Definición de la clase MonticuloMediciones
 	class MonticuloMediciones : public MonticuloMedicionesInterfaz{
 		private:
 			//! \name Atributos privados de la clase MonticuloMediciones
@@ -117,29 +117,95 @@ namespace ed{
 			/**
 			 * @fn inline MonticuloMediciones()
 			 * @brief Inicializa un objeto de la clase MonticuloMediciones
-			 * @note Constructor de la clase MonticuloMediciones
+			 * @note Constructor de la clase MonticuloMediciones sin argumentos
 			 * @note Función de tipo inline
 			 * @post isEmpty() == true
 			 */
 			inline MonticuloMediciones(){
+				v.resize(0, ed::Medicion(ed::Fecha(0,0,0), 0.0));
 				#ifndef NDEBUG
 				assert(isEmpty());
 				#endif
 			}
 			//! \name Observadores
+			/**
+			 * @fn bool isEmpty() const
+			 * @brief Comprueba si el montículo está vacio.
+			 * @note Observador publico de la clase MonticuloMediciones
+			 * @note Funcion de tipo const
+			 * @post valorDevuelto == (size() == 0)
+			 */
 			bool isEmpty() const;
+			/**
+			 * @fn int size() const
+			 * @brief Devuelve el número de mediciones en el montículo
+			 * @note Observador publico de la clase MonticuloMediciones
+			 * @note Funcion de tipo const
+			 * @post valorDevuelto == (size() == 0)
+			 */
 			int size() const;
+			/**
+			 * @fn ed::Medicion top() const
+			 * @brief Devuelve la cima del montículo
+			 * @note Observador publico de la clase MonticuloMediciones
+			 * @note Funcion de tipo const
+			 * @pre isEmpty() == false
+			 * @post valorDevuelto == getElement(0)
+			 * @return Devuelve un objeto de la clase Medicion
+			 */
 			ed::Medicion top() const;
 			////////////////////////////////////////////////////////////
 			//! \name Operaciones de modificación
+			/**
+			 * @fn void insert(ed::Medicion medicion)
+			 * @brief Inserta una nueva medicion en el monticulo
+			 * @param medicion Objeto de la clase Medicion a insertar
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 * @post isEmpty() == false
+			 * @post has(medicion) == true
+			 */
 			void insert(ed::Medicion medicion);
+			/**
+			 * @fn void remove()
+			 * @brief Borra la medicion que ocupa la cima
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 * @pre isEmpty() == false
+			 */
 			void remove();
+			/**
+			 * @fn void removeAll()
+			 * @brief Borra todas las mediciones del montículo
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 * @post isEmpty() == true
+			 */
 			void removeAll();
+			/**
+			 * @fn void modify(ed::Medicion medicion)
+			 * @brief Modifica la medicion que ocupa la cima y actualiza el monticulo para que este ordenado
+			 * @param medicion Objeto de la clase Medicion a insertar en la cima
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 * @pre isEmpty() == false
+			 * @post has(medicion) == true
+			 */
 			void modify(ed::Medicion medicion);
 			//! \name Operadores
-			ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & const m);
+			/**
+			 * @fn ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & const m)
+			 * @brief Devuelve el monticulo actual que ha sido modificado con las mediciones del monticulo m
+			 * @param m Objeto de la clase MonticuloMediciones con el que se quiere igualar
+			 * @note Operador sobrecargado de la clase MonticuloMediciones
+			 * @pre *this != m
+			 * @return Devuelve un objeto de la clase MonticuloMediciones
+			 */
+			ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & m);
 			////////////////////////////////////////////////////////////////////
 			//! \name Función de escritura
+			/**
+			 * @fn void print() const
+			 * @brief Escribe las mediciones tal y como están almacenadas en el vector que representa el montículo
+			 * @note Funcion de escritura pública de la clase MonticuloMediciones
+			 * @note Funcion de tipo const
+			 */
 			void print() const;
 	}; // Clase MonticuloMediciones
 } // Espacio de nombres ed
