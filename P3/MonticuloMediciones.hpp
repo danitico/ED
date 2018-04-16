@@ -16,7 +16,7 @@ namespace ed{
 	class MonticuloMediciones : public MonticuloMedicionesInterfaz{
 		private:
 			//! \name Atributos privados de la clase MonticuloMediciones
-			std::vector<Medicion> v;
+			std::vector<Medicion> v_;
 			//! \name Métodos privados de la clase MonticuloMediciones
 			/**
 	       * @fn ed::Medicion getElement(int i) const
@@ -96,7 +96,7 @@ namespace ed{
 			 * @pre i>=0
 			 * @pre i<MonticuloMediciones::size()
 			 * @post Si top()!=getElement(i) entonces getElement(i)<=getElement(getParent(i))
-			 * @post Si getLeftChild(i)!=NULL entonces getElement(i)>=getElement(getLeftChild(i))
+			 * @post Si getLeftChild(i)!=N ULL entonces getElement(i)>=getElement(getLeftChild(i))
 			 * @post Si getRightChild(i)!=NULL entonces getElement(i)>=getElement(getRightChild(i))
 	       */
 			void shiftDown(int i);
@@ -122,7 +122,7 @@ namespace ed{
 			 * @post isEmpty() == true
 			 */
 			inline MonticuloMediciones(){
-				v.resize(0, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+				v_.resize(0, ed::Medicion(ed::Fecha(0,0,0), 0.0));
 				#ifndef NDEBUG
 				assert(isEmpty());
 				#endif
