@@ -29,7 +29,7 @@ namespace ed{
 			 * @post Si v[i]==0 return NULL
 			 * @return Devuelve un objeto de la clase Medicion o NULL si no existe
 	       */
-			ed::Medicion getElement(int i) const;
+			ed::Medicion getElement(int i) const;//ok
 			/**
 	       * @fn void setElement(int i, Medicion medicion)
 			 * @param i Variable entera que representa la posicion en el vector
@@ -40,7 +40,7 @@ namespace ed{
 			 * @pre i<MonticuloMediciones::size()
 			 * @post MonticuloMediciones::getElement(i)==medicion
 	       */
-			void setElement(int i, Medicion medicion);
+			void setElement(int i, Medicion medicion);//okxd
 			/**
 	       * @fn int getLeftChild(int i) const
 			 * @param i Variable entera que representa la posicion en el vector
@@ -52,7 +52,7 @@ namespace ed{
 			 * @post Si getElement(2*i+1)!=NULL entonces return 2*i+1
 	       * @return Devuelve un entero que representa la posicion del hijo izquierdo
 	       */
-			int getLeftChild(int i) const;
+			int getLeftChild(int i) const;//ok
 			/**
 	       * @fn int getRightChild(int i) const
 			 * @param i Variable entera que representa la posicion en el vector
@@ -64,7 +64,7 @@ namespace ed{
 			 * @post Si getElement(2*i+2)!=NULL entonces return 2*i+2
 	       * @return Devuelve un entero que representa la posicion del hijo derecho
 	       */
-			int getRightChild(int i) const;
+			int getRightChild(int i) const;//ok
 			/**
 	       * @fn int getParent(int i) const
 			 * @param i Variable entera que representa la posicion en el vector
@@ -75,7 +75,7 @@ namespace ed{
 			 * @post valorDevuelto==(i-1)/2
 	       * @return Devuelve un entero que representa la posicion del padre
 	       */
-			int getParent(int i) const;
+			int getParent(int i) const;//ok
 			/**
 	       * @fn void shiftUp(int i)
 			 * @param i Variable entera que representa la posicion en el vector
@@ -84,10 +84,10 @@ namespace ed{
 			 * @pre i>=0
 			 * @pre i<MonticuloMediciones::size()
 			 * @post Si top()!=getElement(i) entonces getElement(i)<=getElement(getParent(i))
-			 * @post Si getLeftChild(i)!=NULL entonces getElement(i)>=getElement(getLeftChild(i))
-			 * @post Si getRightChild(i)!=NULL entonces getElement(i)>=getElement(getRightChild(i))
+			 * @post Si getLeftChild(i)!=-1 && getLeftChild(i)!=-2 entonces getElement(i)>=getElement(getLeftChild(i))
+			 * @post Si getRightChild(i)!=-1 && getRightChild(i)!=-2 entonces getElement(i)>=getElement(getRightChild(i))
 	       */
-			void shiftUp(int i);
+			void shiftUp(int i);//ok
 			/**
 	       * @fn void shiftDown(int i)
 			 * @param i Variable entera que representa la posicion en el vector
@@ -99,7 +99,7 @@ namespace ed{
 			 * @post Si getLeftChild(i)!=N ULL entonces getElement(i)>=getElement(getLeftChild(i))
 			 * @post Si getRightChild(i)!=NULL entonces getElement(i)>=getElement(getRightChild(i))
 	       */
-			void shiftDown(int i);
+			void shiftDown(int i);//ok
 			/**
 	       * @fn bool has(ed::Medicion medicion) const
 			 * @param medicion Objeto de la clase Medicion
@@ -108,7 +108,7 @@ namespace ed{
 	       * @note Funcion de tipo const
 	       * @return Devuelve true si medicion se encuentra en el montículo. False en el caso contrario
 	       */
-			bool has(ed::Medicion medicion) const;
+			bool has(ed::Medicion medicion) const;//ok
 			/////////////////////////////////////////////////////////////////////////////////////
 
 			//! \name Métodos públicos de la clase MonticuloMediciones
@@ -135,7 +135,7 @@ namespace ed{
 			 * @note Funcion de tipo const
 			 * @post valorDevuelto == (size() == 0)
 			 */
-			bool isEmpty() const;
+			bool isEmpty() const;//ok
 			/**
 			 * @fn int size() const
 			 * @brief Devuelve el número de mediciones en el montículo
@@ -143,7 +143,7 @@ namespace ed{
 			 * @note Funcion de tipo const
 			 * @post valorDevuelto == (size() == 0)
 			 */
-			int size() const;
+			int size() const;//ok
 			/**
 			 * @fn ed::Medicion top() const
 			 * @brief Devuelve la cima del montículo
@@ -153,7 +153,7 @@ namespace ed{
 			 * @post valorDevuelto == getElement(0)
 			 * @return Devuelve un objeto de la clase Medicion
 			 */
-			ed::Medicion top() const;
+			ed::Medicion top() const;//ok
 			////////////////////////////////////////////////////////////
 			//! \name Operaciones de modificación
 			/**
@@ -164,21 +164,21 @@ namespace ed{
 			 * @post isEmpty() == false
 			 * @post has(medicion) == true
 			 */
-			void insert(ed::Medicion medicion);
+			void insert(ed::Medicion medicion);//ok
 			/**
 			 * @fn void remove()
 			 * @brief Borra la medicion que ocupa la cima
 			 * @note Modificador publico de la clase MonticuloMediciones
 			 * @pre isEmpty() == false
 			 */
-			void remove();
+			void remove();//ok
 			/**
 			 * @fn void removeAll()
 			 * @brief Borra todas las mediciones del montículo
 			 * @note Modificador publico de la clase MonticuloMediciones
 			 * @post isEmpty() == true
 			 */
-			void removeAll();
+			void removeAll();//ok
 			/**
 			 * @fn void modify(ed::Medicion medicion)
 			 * @brief Modifica la medicion que ocupa la cima y actualiza el monticulo para que este ordenado

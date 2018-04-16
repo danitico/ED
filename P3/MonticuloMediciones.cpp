@@ -21,6 +21,29 @@ ed::Medicion ed::MonticuloMediciones::getElement(int i) const{
    }
    return v_[i];
 }
+void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
+   if(size()==1){
+      v_[0]=medicion;
+   }
+   else{
+      if(size>1 && i==0){
+         v_[0]=medicion;
+         if(getElement(0).getPrecipitacion()<getElement(getLeftChild(0)))
+      }
+      else{
+         if(getElement(i).getPrecipitacion()>getElement(getParent(i)).getPrecipitacion()){
+            shiftUp(i);
+            shiftDown(i);
+         }
+         else{
+            if(getElement(i).getPrecipitacion()<getElement(getParent(i)).getPrecipitacion()){
+               shiftDown(i);
+               shiftUp(i);
+            }
+         }
+      }
+   }
+}
 int ed::MonticuloMediciones::getLeftChild(int i) const{
    #ifndef NDEBUG
    assert(i>=0);
@@ -62,8 +85,17 @@ void ed::MonticuloMediciones::shiftUp(int i){
       shiftUp(getParent(i));
    }
 
-   //codificar asertos
-
+   #ifndef NDEBUG
+   if(!(top()==getElement(i))){
+      assert(getElement(i).getPrecipitacion()<=getElement(i).getPrecipitacion());
+   }
+   if(getLeftChild(i)!=-1 && getLeftChild(i)!=-2){
+      assert(getElement(i).getPrecipitacion()>=getElement(getLeftChild(i)).getPrecipitacion());
+   }
+   if(getRightChild(i)!=-1 && getRightChild(i)!=-2){
+      assert(getElement(i).getPrecipitacion()>=getElement(getRightChild(i)).getPrecipitacion());
+   }
+   #endif
 }
 void ed::MonticuloMediciones::shiftDown(int i){
    #ifndef NDEBUG
@@ -82,8 +114,17 @@ void ed::MonticuloMediciones::shiftDown(int i){
       shiftDown(n);
    }
 
-   //codificar asertos
-
+   #ifndef NDEBUG
+   if(!(top()==getElement(i))){
+      assert(getElement(i).getPrecipitacion()<=getElement(i).getPrecipitacion());
+   }
+   if(getLeftChild(i)!=-1 && getLeftChild(i)!=-2){
+      assert(getElement(i).getPrecipitacion()>=getElement(getLeftChild(i)).getPrecipitacion());
+   }
+   if(getRightChild(i)!=-1 && getRightChild(i)!=-2){
+      assert(getElement(i).getPrecipitacion()>=getElement(getRightChild(i)).getPrecipitacion());
+   }
+   #endif
 }
 bool ed::MonticuloMediciones::has(ed::Medicion medicion) const{
    for(int i=0; i<size(); i++){
@@ -117,4 +158,47 @@ ed::MonticuloMediciones& ed::MonticuloMediciones::operator=(ed::MonticuloMedicio
    this->v_=m.v_;
 
    return *this;
+}
+void ed::MonticuloMediciones::insert(ed::Medicion medicion){
+   if(size()==0){
+      v_.resize(1, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+      v_[0]=medicion;
+   }
+   else{
+      int ultimo=size()-1;
+      v_.resize(size()+1, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+      v_[ultimo]=medicion;
+      if(v_[ultimo].getPrecipitacion()>v_[getParent(ultimo)].getPrecipitacion()){
+         this->shiftUp(ultimo);
+      }
+   }
+
+   #ifndef NDEBUG
+   assert(!isEmpty() && has(medicion));
+   #endif
+}
+void ed::MonticuloMediciones::remove(){
+   #ifndef NDEBUG
+   assert(!isEmpty());
+   #endif
+
+   std::swap(v_[0], v_[size()-1]);
+   v_.resize(size()-1);
+   this->shiftDown(0);
+}
+void ed::MonticuloMediciones::removeAll(){
+   while(!isEmpty()){
+      this->remove();
+   }
+
+   #ifndef NDEBUG
+   assert(isEmpty());
+   #endif
+}
+void ed::MonticuloMediciones::modify(ed::Medicion medicion){
+   #ifndef NDEBUG
+   assert(!isEmpty());
+   #endif
+
+   setElement(0, medicion);
 }

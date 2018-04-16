@@ -36,7 +36,7 @@ namespace ed{
 			 * @note Función virtual pura que debe de ser redefinida en la clase heredera.
 			 * @return Nada
 			 */
-			//virtual void insert(ed::Medicion medicion) = 0;
+			virtual void insert(ed::Medicion medicion) = 0;
 			/**
 			 * @fn virtual void remove()
 			 * @brief Borra la medición que ocupa la cima
@@ -44,7 +44,7 @@ namespace ed{
 			 * @note Función virtual pura que debe de ser redefinida en la clase heredera.
 			 * @return Nada
 			 */
-			//virtual void remove() = 0;
+			virtual void remove() = 0;
 	}; // Clase MonticuloMedicionesInterfaz
 } // Espacio de nombres ed
 #endif //  _MONTICULO_MEDICIONES_INTERFAZ_HPP
