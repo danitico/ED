@@ -40,7 +40,7 @@ namespace ed{
 			 * @pre i<MonticuloMediciones::size()
 			 * @post MonticuloMediciones::getElement(i)==medicion
 	       */
-			void setElement(int i, Medicion medicion);//okxd
+			void setElement(int i, Medicion medicion);//not okxd
 			/**
 	       * @fn int getLeftChild(int i) const
 			 * @param i Variable entera que representa la posicion en el vector
@@ -187,7 +187,7 @@ namespace ed{
 			 * @pre isEmpty() == false
 			 * @post has(medicion) == true
 			 */
-			void modify(ed::Medicion medicion);
+			void modify(ed::Medicion medicion);//ok
 			//! \name Operadores
 			/**
 			 * @fn ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & const m)
@@ -197,7 +197,7 @@ namespace ed{
 			 * @pre *this != m
 			 * @return Devuelve un objeto de la clase MonticuloMediciones
 			 */
-			ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & m);
+			ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & m);//ok
 			////////////////////////////////////////////////////////////////////
 			//! \name Función de escritura
 			/**
