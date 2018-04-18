@@ -1,12 +1,12 @@
 /*!
+	\file principalMonticulo.cpp
+	\brief Programa principal de la practica 3 de Estructuras de Datos
+*/
+/*!
  \mainpage Implementación de un montículo de mediciones
  \author   Daniel Ranchal Parrado
  \date     2018-3-7
  \version  1.0
-*/
-/*!
-	\file principalMediciones.cpp
-	\brief Programa principal de la practica 3 de Estructuras de Datos
 */
 #include <iostream>
 #include <string>
@@ -39,8 +39,11 @@ int main(int argc, char *argv[])
 	std::cout << " Se crea un montículo de máximos " << std::endl;
 	ed::cargarMonticuloDeFichero(nombreFicheroEntrada,monticulo);
 
-	// QUITAR EL COMENTARIO CUANDO SE HAYA CODIFICADO LA FUNCIÓN
-	// std::cout << "Tamaño del montículo " << monticulo.size() << std::endl;
+	std::cout << "Tamaño del montículo " << monticulo.size() << std::endl;
+//	while(!monticulo.isEmpty()){
+//		monticulo.remove();
+///	}
+	//monticulo.print();
 
 	// Se graba el montículo en el fichero: las mediciones son grabadas en orden descendente
 	std::cout << "Se graba el montículo en el fichero " << nombreFicheroSalida << std::endl;

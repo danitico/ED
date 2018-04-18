@@ -16,9 +16,6 @@ ed::Medicion ed::MonticuloMediciones::getElement(int i) const{
    assert(i>=0 && i<size());
    #endif
 
-//   if(v_[i]==ed::Medicion(ed::Fecha(0,0,0), 0.0)){
-//      return ed::Medicion(ed::Fecha(0,0,0), 0.0);
-   //}
    return v_[i];
 }
 /*void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
@@ -99,7 +96,8 @@ void ed::MonticuloMediciones::shiftUp(int i){
 }
 void ed::MonticuloMediciones::shiftDown(int i){
    #ifndef NDEBUG
-   assert(i>=0 && i<size());
+   assert(i>=0);
+   assert(i<size());
    #endif
 
    int n=i, lC=getLeftChild(i), rC=getRightChild(i);
@@ -156,7 +154,7 @@ void ed::MonticuloMediciones::insert(ed::Medicion medicion){
       v_[0]=medicion;
    }
    else{
-      int ultimo=size()-1;
+      int ultimo=size();
       v_.resize(size()+1, ed::Medicion(ed::Fecha(0,0,0), 0.0));
       v_[ultimo]=medicion;
       if(v_[ultimo].getPrecipitacion()>v_[getParent(ultimo)].getPrecipitacion()){
@@ -174,8 +172,8 @@ void ed::MonticuloMediciones::remove(){
    #endif
 
    std::swap(v_[0], v_[size()-1]);
-   v_.resize(size()-1);
    this->shiftDown(0);
+   v_.resize(size()-1);
 }
 void ed::MonticuloMediciones::removeAll(){
    while(!isEmpty()){
