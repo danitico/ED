@@ -9,6 +9,12 @@
 #include "MonticuloMediciones.hpp"
 namespace ed{
 	/**
+	 * @fn int menu()
+	 * @brief Función que muestra por pantalla utilizando macros las opciones del menú.
+	 * @sa macros.hpp
+	 */
+	int menu();
+	/**
 	 * @fn void cargarMonticuloDeFichero(std::string const & nombreFichero, ed::MonticuloMediciones & monticulo)
 	 * @param nombreFichero Nombre del fichero del que se carga la informacion
 	 * @param monticulo Objeto de la clase MonticuloMediciones en el que se guarda la informacion
