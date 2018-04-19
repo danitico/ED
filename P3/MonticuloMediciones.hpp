@@ -188,6 +188,15 @@ namespace ed{
 			 * @post has(medicion) == true
 			 */
 			void modify(ed::Medicion medicion);//ok
+			/**
+			 * @fn int busquedaMedicion(std::Fecha const & fecha)
+			 * @brief Localiza la medicion con la fecha pasada por argumento
+			 * @param fecha Fecha de la medicion
+			 * @note Observador publico de la clase MonticuloMediciones
+			 * @post Si valorDevuelto < 0 entonces has(medicion(fecha)) == false
+			 * @post Si valorDevuelto >= 0 entonces has(medicion(fecha)) == true
+			 */
+			int busquedaMedicion(ed::Fecha const & fecha);
 			//! \name Operadores
 			/**
 			 * @fn ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & const m)

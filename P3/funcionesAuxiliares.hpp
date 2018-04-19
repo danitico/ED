@@ -28,6 +28,37 @@ namespace ed{
 	 * @brief Función que guarda la informacion del objeto de la clase MonticuloMediciones en un fichero
 	 */
 	void grabarMonticuloEnFichero (std::string const & nombreFichero, ed::MonticuloMediciones const & monticulo);
+	/**
+	 * @fn void consultarDatosdePrecipitacion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo)
+	 * @param fecha Fecha en la que queremos consultar los datos de precipitación
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Función que muestra la precipitación de una fecha específica
+	 */
+	void consultarDatosdePrecipitacion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo);
+	/**
+	 * @fn void mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Muestra los datos ordenados por la cantidad de precipitación de manera descendente
+	 */
+	void mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticulo);
+	/**
+	 * @fn void modificarCimaMonticulo(ed::MonticuloMediciones const & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Modifica la cima del montículo
+	 */
+	void modificarCimaMonticulo(ed::MonticuloMediciones const & monticulo);
+	/**
+	 * @fn void insertarMedicionMonticulo(ed::MonticuloMediciones const & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Inserta una medicion en el heap
+	 */
+	void insertarMedicionMonticulo(ed::MonticuloMediciones const & monticulo);
+	/**
+	 * @fn void borrarElementoMedicion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Inserta una medicion en el heap
+	 */
+	void borrarElementoMedicion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo);
 } // Fin del espacio de nombre de la asignatura: ed
 // Fin de _FuncionesAuxiliares_HPP_
 #endif

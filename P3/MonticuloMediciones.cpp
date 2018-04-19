@@ -196,6 +196,28 @@ void ed::MonticuloMediciones::modify(ed::Medicion medicion){
       shiftDown(0);
    }
 }
+int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha){
+   int valorDevuelto=-1;
+   ed::Medicion buscado(fecha);
+
+   for(int i=0; i<size(); i++){
+      if(buscado==getElement(i)){
+         valorDevuelto=i;
+         break;
+      }
+   }
+
+   #ifndef NDEBUG
+   if(valorDevuelto<0){
+      assert(!has(buscado));
+   }
+   else{
+      assert(has(buscado));
+   }
+   #endif
+
+   return valorDevuelto;
+}
 ed::MonticuloMediciones& ed::MonticuloMediciones::operator=(ed::MonticuloMediciones & m){
    #ifndef NDEBUG
    assert(this->v_!=m.v_);

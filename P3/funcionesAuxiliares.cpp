@@ -122,3 +122,6 @@ void ed::grabarMonticuloEnFichero(std::string const & nombreFichero, ed::Monticu
 
 	return;
 }
+void ed::consultarDatosdePrecipitacion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo){
+
+}
