@@ -56,6 +56,12 @@ namespace ed{
 	 * @brief Inserta una medicion en el heap
 	 */
 	void borrarElementoMedicion(ed::MonticuloMediciones & monticulo);
+	/**
+	 * @fn void borrarMonticulo(ed::MonticuloMediciones & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Borrar todas las mediciones del montículo
+	 */
+	void borrarMonticulo(ed::MonticuloMediciones & monticulo);
 } // Fin del espacio de nombre de la asignatura: ed
 // Fin de _FuncionesAuxiliares_HPP_
 #endif

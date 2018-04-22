@@ -18,29 +18,9 @@ ed::Medicion ed::MonticuloMediciones::getElement(int i) const{
 
    return v_[i];
 }
-/*void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
-   if(size()==1){
-      v_[0]=medicion;
-   }
-   else{
-      if(size>1 && i==0){
-         v_[0]=medicion;
-         if(getElement(0).getPrecipitacion()<getElement(getLeftChild(0)))
-      }
-      else{
-         if(getElement(i).getPrecipitacion()>getElement(getParent(i)).getPrecipitacion()){
-            shiftUp(i);
-            shiftDown(i);
-         }
-         else{
-            if(getElement(i).getPrecipitacion()<getElement(getParent(i)).getPrecipitacion()){
-               shiftDown(i);
-               shiftUp(i);
-            }
-         }
-      }
-   }
-}*/
+void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
+   
+}
 int ed::MonticuloMediciones::getLeftChild(int i) const{
    #ifndef NDEBUG
    assert(i>=0);

@@ -83,6 +83,11 @@ int main(int argc, char *argv[]){
 				borrarElementoMedicion(monticulo);
 				break;
 
+			case 9:
+				std::cout << "[9] Borrar todas las mediciones del montículo" << std::endl;
+				borrarMonticulo(monticulo);
+				break;
+
 			//////////////////////////////////////////////////////////////////////////////
 			default:
 				std::cout << BIRED;

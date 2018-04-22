@@ -62,6 +62,9 @@ int ed::menu(){
    PLACE(posicion++,10);
    std::cout << "[8] Borrar un medicion del montículo por fecha";
 
+   PLACE(posicion++,10);
+   std::cout << "[9] Borrar todas las mediciones del montículo";
+
    //////////////////////////////////////////////////////////////////////////////
    posicion++;
 
@@ -109,11 +112,15 @@ void ed::cargarMonticuloDeFichero(ed::MonticuloMediciones & monticulo){
          medicion.setFecha(fecha);
          medicion.setPrecipitacion(atof(stream.c_str()));
 
-         monticulo.insert(medicion);
+         if(monticulo.busquedaMedicion(fecha)<0){
+            monticulo.insert(medicion);
+         }
       }
+      std::cin.ignore();
       std::cout<<BIGREEN<<"Fichero cargado con exito"<<std::endl;
    }
    else{
+      std::cin.ignore();
       std::cout<<BIRED<<"Error al abrir el fichero"<<RESET<<std::endl;
    }
    return;
@@ -131,9 +138,11 @@ void ed::grabarMonticuloEnFichero(ed::MonticuloMediciones const & monticulo){
          file<<copia.top();
          copia.remove();
       }
+      std::cin.ignore();
       std::cout<<BIGREEN<<"Fichero guardado con exito"<<std::endl;
    }
    else{
+      std::cin.ignore();
       std::cout<<BIRED<<"Error al guardar los datos en el fichero"<<RESET<<std::endl;
    }
 
@@ -215,5 +224,14 @@ void ed::borrarElementoMedicion(ed::MonticuloMediciones & monticulo){
    else{
       monticulo.removeMedition(indice);
       std::cout<<BIGREEN<<"Se ha borrado la medicion deseada del monticulo con éxito"<<RESET<<std::endl;
+   }
+}
+void ed::borrarMonticulo(ed::MonticuloMediciones & monticulo){
+   if(monticulo.isEmpty()){
+      std::cout<<BIGREEN<<"El monticulo ya está vacio"<<RESET<<std::endl;
+   }
+   else{
+      monticulo.removeAll();
+      std::cout<<BIGREEN<<"Se han borrado todas las mediciones con éxito"<<RESET<<std::endl;
    }
 }
