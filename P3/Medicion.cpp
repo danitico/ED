@@ -95,7 +95,7 @@ istream &operator>>(istream &stream, ed::Medicion &medicion){
    medicion.setFecha(fecha);
 
    std::getline(stream, cadena, '\n');
-   medicion.setPrecipitacion(atoi(cadena.c_str()));
+   medicion.setPrecipitacion(atof(cadena.c_str()));
 
    return stream;
 }

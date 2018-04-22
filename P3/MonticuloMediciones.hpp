@@ -122,7 +122,7 @@ namespace ed{
 			 * @post isEmpty() == true
 			 */
 			inline MonticuloMediciones(){
-				v_.resize(0, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+				v_.resize(0, ed::Medicion(ed::Fecha(1,1,1), 0.0));
 				#ifndef NDEBUG
 				assert(isEmpty());
 				#endif
@@ -178,6 +178,7 @@ namespace ed{
 			 * @note Modificador publico de la clase MonticuloMediciones
 			 * @post isEmpty() == true
 			 */
+			void removeMedition(int indice);
 			void removeAll();//ok
 			/**
 			 * @fn void modify(ed::Medicion medicion)
@@ -196,7 +197,15 @@ namespace ed{
 			 * @post Si valorDevuelto < 0 entonces has(medicion(fecha)) == false
 			 * @post Si valorDevuelto >= 0 entonces has(medicion(fecha)) == true
 			 */
-			int busquedaMedicion(ed::Fecha const & fecha);
+			int busquedaMedicion(ed::Fecha const & fecha) const;
+			/**
+			 * @fn ed::Medicion obtenerElemento(int const & indice) const
+			 * @brief Devulve un elemento del heap
+			 * @param indice Indice en el que se encuentra el elemento
+			 * @note Observador publico de la clase MonticuloMediciones
+			 * @return Un objeto de la clase Medicion
+			 */
+			ed::Medicion obtenerElemento(int const & indice) const;
 			//! \name Operadores
 			/**
 			 * @fn ed::MonticuloMediciones& operator=(ed::MonticuloMediciones & const m)

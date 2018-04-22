@@ -19,20 +19,12 @@
 		\return  int
 */
 int main(int argc, char *argv[]){
-	if (argc != 3){
-		std::cout << "Modo de ejecución" << std::endl;
-		std::cout << argv[0] << "<fichero-de-mediciones>  <fichero-ordenado> "  << std::endl;
-		return -1;
-	}
-
 	ed::MonticuloMediciones monticulo;
-	std::string nombreFicheroEntrada(argv[1]);
-	std::string nombreFicheroSalida(argv[2]);
 
 	int opcion;
 
 	do{
-		// Se elige la opción del menún
+		// Se elige la opción del menú
 		opcion = ed::menu();
 
 		std::cout << CLEAR_SCREEN;
@@ -55,36 +47,40 @@ int main(int argc, char *argv[]){
 			//////////////////////////////////////////////////////////////////////////////
 			case 2:
 				std::cout << "[2] Cargar los datos de precipitaciones desde un fichero" << std::endl;
-				ed::cargarMonticuloDeFichero(nombreFicheroEntrada,monticulo);
+				ed::cargarMonticuloDeFichero(monticulo);
 				break;
 
 			case 3:
 				std::cout << "[3] Grabar los datos de precipitaciones ordenados de forma descendente en un fichero" << std::endl;
-				ed::grabarMonticuloEnFichero(nombreFicheroSalida,monticulo);
+				ed::grabarMonticuloEnFichero(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4:
 				std::cout << "[4] Consultar datos de precipitación de un día" << std::endl;
-				
+				ed::consultarDatosdePrecipitacion(monticulo);
 				break;
 
 			case 5:
 				std::cout << "[5] Mostrar los datos de precipitación de forma descendente" << std::endl;
+				ed::mostrarPrecipitacionDescendente(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 6:
 				std::cout << "[6] Modificar la cima del monticulo" << std::endl;
+				ed::modificarCimaMonticulo(monticulo);
 				break;
 
 			case 7:
 				std::cout << "[7] Insertar una medicion en el montículo" << std::endl;
+				insertarMedicionMonticulo(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 8:
 				std::cout << "[8] Borrar un medicion del montículo por fecha" << std::endl;
+				borrarElementoMedicion(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////

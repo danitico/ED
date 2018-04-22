@@ -84,13 +84,18 @@ int ed::menu(){
 
    return opcion;
 }
-void ed::cargarMonticuloDeFichero(std::string const & nombreFichero, ed::MonticuloMediciones & monticulo){
+void ed::cargarMonticuloDeFichero(ed::MonticuloMediciones & monticulo){
+   std::string nombreFichero;
+   std::cout<<BIPURPLE<<"Introduzca el nombre del archivo del que cargar los datos: "<<RESET;
+   std::cin>>nombreFichero;
+
    std::ifstream file(nombreFichero.c_str());
-   std::string stream;
-   Fecha fecha;
-   Medicion medicion;
 
    if(file.is_open()){
+      std::string stream;
+      Fecha fecha;
+      Medicion medicion;
+
       while(getline(file, stream, '-')){
          fecha.setDia(atoi(stream.c_str()));
 
@@ -106,10 +111,18 @@ void ed::cargarMonticuloDeFichero(std::string const & nombreFichero, ed::Monticu
 
          monticulo.insert(medicion);
       }
+      std::cout<<BIGREEN<<"Fichero cargado con exito"<<std::endl;
+   }
+   else{
+      std::cout<<BIRED<<"Error al abrir el fichero"<<RESET<<std::endl;
    }
    return;
 }
-void ed::grabarMonticuloEnFichero(std::string const & nombreFichero, ed::MonticuloMediciones const & monticulo){
+void ed::grabarMonticuloEnFichero(ed::MonticuloMediciones const & monticulo){
+   std::string nombreFichero;
+   std::cout<<BIPURPLE<<"Introduzca el nombre del archivo en el que guardar los datos: "<<RESET;
+   std::cin>>nombreFichero;
+
    std::ofstream file(nombreFichero.c_str());
    ed::MonticuloMediciones copia=monticulo;
 
@@ -118,10 +131,89 @@ void ed::grabarMonticuloEnFichero(std::string const & nombreFichero, ed::Monticu
          file<<copia.top();
          copia.remove();
       }
+      std::cout<<BIGREEN<<"Fichero guardado con exito"<<std::endl;
+   }
+   else{
+      std::cout<<BIRED<<"Error al guardar los datos en el fichero"<<RESET<<std::endl;
    }
 
 	return;
 }
-void ed::consultarDatosdePrecipitacion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo){
+void ed::consultarDatosdePrecipitacion(ed::MonticuloMediciones const & monticulo){
+   ed::Fecha fecha;
+   std::cout<<BIPURPLE<<"Introduzca la fecha para ver la cantidad de precipitacion de ese dia"<<RESET<< " -> ";
+   std::cin>>fecha;
+   // Se lee la fecha teniendo en cuenta el formato: DD-MM-AAAA
 
+   int indice=monticulo.busquedaMedicion(fecha);
+
+   if(indice>=0){
+      std::cout<<BIGREEN<<"La cantidad de lluvia caida en ese día fue "<<RESET<<monticulo.obtenerElemento(indice).getPrecipitacion()<<BIGREEN<<" mm"<<RESET<<std::endl;
+   }
+   else{
+      std::cout<<BIRED<<"Esa fecha no se encuentra registrada en los datos"<<RESET<<std::endl;
+   }
+
+   return;
+}
+void ed::mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticulo){
+   ed::MonticuloMediciones copia=monticulo;
+   int contador=0;
+   std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+   std::cout<<"-----------------------------"<<std::endl;
+   while(!copia.isEmpty()){
+      contador++;
+      std::cout<<copia.top();
+      copia.remove();
+
+      if(contador==34){
+         contador=0;
+         std::cout <<"Pulse INTRO para seguir viendo los datos";
+         std::cin.ignore();
+         std::cout<<CLEAR_SCREEN;
+         PLACE(1,1);
+         std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+         std::cout<<"-----------------------------"<<std::endl;
+      }
+   }
+}
+void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
+   ed::Medicion medicion;
+   std::cout<<BIPURPLE<<"Introduzca la medicion (DD-MM-YY xx.xx) -> "<<RESET;
+   std::cin>>medicion;
+
+   if(medicion==monticulo.top()){
+      std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
+   }
+   else{
+      monticulo.modify(medicion);
+      std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+   }
+}
+void ed::insertarMedicionMonticulo(ed::MonticuloMediciones & monticulo){
+   ed::Medicion medicion;
+   std::cout<<BIPURPLE<<"Introduzca la medicion a insertar (DD-MM-YY xx.xx) -> "<<RESET;
+   std::cin>>medicion;
+
+   if(monticulo.busquedaMedicion(medicion.getFecha())>=0){
+      std::cout<<BIRED<<"Se ha introducido una medicion que se encuentra en el heap, por lo que no se inserta"<<RESET<<std::endl;
+   }
+   else{
+      monticulo.insert(medicion);
+      std::cout<<BIGREEN<<"Se ha insertado la medicion en el monticulo con éxito"<<RESET<<std::endl;
+   }
+}
+void ed::borrarElementoMedicion(ed::MonticuloMediciones & monticulo){
+   ed::Fecha fecha;
+   std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere borrar -> "<<RESET;
+   std::cin>>fecha;
+
+   int indice=monticulo.busquedaMedicion(fecha);
+   if(indice < 0){
+      std::cout<<BIRED<<"Esa fecha no se encuentra en los datos del heap, por lo que no se puede borrar"<<RESET<<std::endl;
+   }
+   else{
+      monticulo.removeMedition(indice);
+      std::cout<<BIGREEN<<"Se ha borrado la medicion deseada del monticulo con éxito"<<RESET<<std::endl;
+   }
 }

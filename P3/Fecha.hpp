@@ -1,4 +1,4 @@
-/*! 
+/*!
    \file Fecha.hpp
    \brief Fichero de la clase Fecha
 */
@@ -6,7 +6,7 @@
 #ifndef _FECHA_HPP_
 #define _FECHA_HPP_
 
-// Entrada y salida 
+// Entrada y salida
 #include <iostream>
 
 // Para controlar las precondiciones y postcondiciones mediante asertos
@@ -20,17 +20,17 @@ using std::ostream;
 namespace ed {
 
 //!  Definición de la clase Fecha
-class Fecha 
+class Fecha
 {
   //! \name Atributos privados de la clase Fecha
-   private: 
-      	int _dia;  //!< día de la fecha  
+   private:
+      	int _dia;  //!< día de la fecha
 		int _mes;  //!< mes de la fecha
 		int _agno; //!< año de la fecha
 
 	//! \name Funciones o métodos privados de la clase Fecha
 
-	/*! 
+	/*!
 		\brief     Función que comprueba si un año es bisiesto, es decir, si es múltiplo de 4 pero si es divisible por 100 también debe ser divisible por 400
 		\attention Se utiliza el modificador const en la definición de la función para poder definir el constructor de copia y el operador de asignacion "="
 		\return    bool: true, si es bisiesto; false, en caso contrario
@@ -45,9 +45,9 @@ class Fecha
    public:
 
 	//! \name Constructores de la clase Fecha
-	/*! 
+	/*!
 		\brief     Constructor que crea una fecha
-		\attention Función sobrecargada        
+		\attention Función sobrecargada
 		\note      Función inline
 	 	\warning   Los parámetros tienen valores por defecto
 		\param     dia: día de la fecha; valor por defecto: 1
@@ -65,17 +65,17 @@ class Fecha
 
 		#ifndef NDEBUG
   		// Se comprueba la postcondición
-//		assert(this->esCorrecta() == true);
+		assert(this->esCorrecta() == true);
 		#endif //NDEBUG
 	}
 
-	/*! 
+	/*!
 		\brief     Constructor de "copia" que crea una fecha a partir de otra fecha
-		\attention Función sobrecargada        
+		\attention Función sobrecargada
 		\note      Función inline
 		\warning   Se requiere que las funciones de acceso getDia(), getMes y getAgno tengan el modificador const
 		\param     objeto de la clase Fecha utilizado para proporcionar los valores iniciales de la nueva fecha
-		\pre       La fecha del objeto es correcta 
+		\pre       La fecha del objeto es correcta
 		\post      Los atributos _dia, _mes y _agno deben tener los valores de los atributos del objeto pasado como argumento
 		\sa        getDia(), getMes(), setDia(), setMes()
 	*/
@@ -100,7 +100,7 @@ class Fecha
 
 	//! \name Observadores: funciones de consulta de la clase Fecha
 
-	/*! 
+	/*!
 		\brief   Función que devuelve el díade una fecha
 		\attention Se utiliza el modificador const en la definición de la función para poder definir el constructor de copia y el operador de asignacion "="
 		\note    Función inline y redefinida de la clase padre FechaInterfaz
@@ -114,7 +114,7 @@ class Fecha
 		return _dia;
 	}
 
-	/*! 
+	/*!
 		\brief     Función que devuelve el mes de una fecha
 		\attention Se utiliza el modificador const en la definición de la función para poder definir el constructor de copia y el operador de asignacion "="
 		\note      Función inline y redefinida de la clase padre FechaInterfaz
@@ -128,7 +128,7 @@ class Fecha
 		return 	this->_mes;
 	}
 
-	/*! 
+	/*!
 		\brief     Función que devuelve el año de una fecha
 		\attention Se utiliza el modificador const en la definición de la función para poder definir el constructor de copia y el operador de asignacion "="
 		\note      Función inline y redefinida de la clase padre FechaInterfaz
@@ -142,7 +142,7 @@ class Fecha
 		return 	this->_agno;
 	}
 
-	/*! 
+	/*!
 		\brief     Función que comprueba si una fecha es correcta
 		\attention Se utiliza el modificador const en la definición de la función para poder definir el constructor de copia y el operador de asignacion "="
 		\return    bool: true, si la fecha es correcta; false, en caso contrario
@@ -155,7 +155,7 @@ class Fecha
 
 	//! \name Funciones de modificación de la clase Fecha
 
-	/*! 
+	/*!
 		\brief Función que asigna un nuevo valor al día de una fecha
 		\note  Función inline y redefinida de la clase padre FechaInterfaz
 		\param v: nuevo valor del día de una Fecha
@@ -174,12 +174,12 @@ class Fecha
 	 }
 
 
-	/*! 
+	/*!
 		\brief Función que asigna un nuevo valor al mes de una fecha
 		\note  Función inline y redefinida de la clase padre FechaInterfaz
 		\param v: nuevo valor del mes de una fecha
 		\pre   ninguna
-		\post  El atributo _mes de Fecha debe tener el valor "v" 
+		\post  El atributo _mes de Fecha debe tener el valor "v"
 		\sa    setDia, setAgno
 	*/
 	inline void setMes(int v)
@@ -193,12 +193,12 @@ class Fecha
 	}
 
 
-	/*! 
+	/*!
 		\brief Función que asigna un nuevo valor al año de una fecha
 		\note  Función inline y redefinida de la clase padre FechaInterfaz
 		\param v: nuevo valor del año de una fecha
 		\pre   ninguna
-		\post  El atributo _agno de Fecha debe tener el valor "v" 
+		\post  El atributo _agno de Fecha debe tener el valor "v"
 		\sa    setDia, setMes
 	*/
 	inline void setAgno(int v)
@@ -213,8 +213,8 @@ class Fecha
 
 
     //! \name Operadores
-   
-	/*! 
+
+	/*!
 		\brief     Operador de asignación: operador que "copia" una fecha en otra fecha
 		\attention Se sobrecarga el operador de asignación "="
 		\note      Función inline
@@ -234,7 +234,7 @@ class Fecha
 		#endif //NDEBUG
 */
 		// Se comprueba que no sean el mismo objeto
-		if (this != &objeto) 
+		if (this != &objeto)
 		{
 			this->setDia(objeto.getDia());
 			this->setMes(objeto.getMes());
@@ -250,9 +250,9 @@ class Fecha
 
 		return *this;
 	}
- 
 
-	/*! 
+
+	/*!
 		\brief     Operador de igualdad: compara si dos fechaes son iguales
 		\attention Se sobrecarga el operador de asignación "=="
 		\note      Función inline
@@ -264,7 +264,7 @@ class Fecha
 	inline bool operator == (Fecha const &objeto) const
 	{
 	  return (
-            	  ( this->getDia() == objeto.getDia() ) 
+            	  ( this->getDia() == objeto.getDia() )
               and ( this->getMes() == objeto.getMes() )
               and ( this->getAgno() == objeto.getAgno() )
              );
@@ -273,7 +273,7 @@ class Fecha
 
 	//! \name Funciones de lectura y escritura de la clase Fecha
 
-	/*! 
+	/*!
 		\brief Escribe por pantalla los valores de los atributos de una fecha
 		\pre   La fecha debe ser correcta
 		\post  Ninguna
@@ -281,7 +281,7 @@ class Fecha
 	*/
 	void escribirFecha()const;
 
-	/*! 
+	/*!
 		\brief   Lee desde el teclado los nuevos valores de los atributos de una fecha
 		\warning Se deben teclear números
 		\pre     ninguna
@@ -310,7 +310,7 @@ class Fecha
     /*!
   		\brief     Sobrecarga del operador de entrada o lectura ">>"
 		\param     stream Flujo de entrada
-		\param     fecha pasada como referencia 
+		\param     fecha pasada como referencia
 		\pre       Ninguna
 		\post      Ninguna
 		\sa        operator<<()
@@ -323,4 +323,4 @@ class Fecha
 } // \brief Fin de namespace ed.
 
 //  _FECHA_HPP_
-#endif 
+#endif

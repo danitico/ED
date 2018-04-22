@@ -47,7 +47,7 @@ int ed::MonticuloMediciones::getLeftChild(int i) const{
    #endif
 
    if(2*i+1<size()){
-      return getElement(2*i+1)==ed::Medicion(ed::Fecha(0,0,0), 0.0) ? -1 : 2*i+1; //Si devuelve -1 es que la posicion en la que está el hijo izquierdo está vacia.
+      return getElement(2*i+1)==ed::Medicion(ed::Fecha(1,1,1), 0.0) ? -1 : 2*i+1; //Si devuelve -1 es que la posicion en la que está el hijo izquierdo está vacia.
    }
    else{
       return -2;//Esto significa que el vector no tiene el suficiente espacio para albergar esa posicion.
@@ -59,7 +59,7 @@ int ed::MonticuloMediciones::getRightChild(int i) const{
    #endif
 
    if(2*i+2<size()){
-      return getElement(2*i+2)==ed::Medicion(ed::Fecha(0,0,0), 0.0) ? -1 : 2*i+2; //Si devuelve -1 es que la posicion en la que está el hijo izquierdo está vacia.
+      return getElement(2*i+2)==ed::Medicion(ed::Fecha(1,1,1), 0.0) ? -1 : 2*i+2; //Si devuelve -1 es que la posicion en la que está el hijo izquierdo está vacia.
    }
    else{
       return -2;//Esto significa que el vector no tiene el suficiente espacio para albergar esa posicion.
@@ -150,12 +150,12 @@ ed::Medicion ed::MonticuloMediciones::top() const{
 }
 void ed::MonticuloMediciones::insert(ed::Medicion medicion){
    if(size()==0){
-      v_.resize(1, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+      v_.resize(1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
       v_[0]=medicion;
    }
    else{
       int ultimo=size();
-      v_.resize(size()+1, ed::Medicion(ed::Fecha(0,0,0), 0.0));
+      v_.resize(size()+1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
       v_[ultimo]=medicion;
       if(v_[ultimo].getPrecipitacion()>v_[getParent(ultimo)].getPrecipitacion()){
          this->shiftUp(ultimo);
@@ -173,6 +173,15 @@ void ed::MonticuloMediciones::remove(){
 
    std::swap(v_[0], v_[size()-1]);
    this->shiftDown(0);
+   v_.resize(size()-1);
+}
+void ed::MonticuloMediciones::removeMedition(int indice){
+   #ifndef NDEBUG
+   assert(!isEmpty() && has(getElement(indice)));
+   #endif
+
+   std::swap(v_[indice], v_[size()-1]);
+   this->shiftDown(indice);
    v_.resize(size()-1);
 }
 void ed::MonticuloMediciones::removeAll(){
@@ -193,10 +202,11 @@ void ed::MonticuloMediciones::modify(ed::Medicion medicion){
       v_[0]=medicion;
    }
    else{
+      v_[0]=medicion;
       shiftDown(0);
    }
 }
-int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha){
+int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha) const{
    int valorDevuelto=-1;
    ed::Medicion buscado(fecha);
 
@@ -217,6 +227,9 @@ int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha){
    #endif
 
    return valorDevuelto;
+}
+ed::Medicion ed::MonticuloMediciones::obtenerElemento(int const & indice) const{
+   return getElement(indice);
 }
 ed::MonticuloMediciones& ed::MonticuloMediciones::operator=(ed::MonticuloMediciones & m){
    #ifndef NDEBUG
