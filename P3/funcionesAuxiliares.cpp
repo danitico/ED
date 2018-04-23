@@ -93,6 +93,14 @@ int ed::menu(){
 
    return opcion;
 }
+void ed::estadoMonticulo(ed::MonticuloMediciones const & monticulo){
+   if(monticulo.isEmpty()){
+      std::cout<<BIRED<<"El monticulo no tiene ninguna medicion"<<RESET<<std::endl;
+   }
+   else{
+      std::cout<<BIGREEN<<"El monticulo tiene "<<RESET<<UNDERLINE<<BIGREEN<<monticulo.size()<<RESET<<BIGREEN<<" mediciones"<<RESET<<std::endl;
+   }
+}
 void ed::cargarMonticuloDeFichero(ed::MonticuloMediciones & monticulo){
    std::string nombreFichero;
    std::cout<<BIPURPLE<<"Introduzca el nombre del archivo del que cargar los datos: "<<RESET;
@@ -174,61 +182,76 @@ void ed::consultarDatosdePrecipitacion(ed::MonticuloMediciones const & monticulo
    return;
 }
 void ed::mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticulo){
-   ed::MonticuloMediciones copia=monticulo;
-   int contador=0;
-   std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
-   std::cout<<"-----------------------------"<<std::endl;
-   while(!copia.isEmpty()){
-      contador++;
-      std::cout<<copia.top();
-      copia.remove();
+   if(!monticulo.isEmpty()){
+      ed::MonticuloMediciones copia=monticulo;
+      int contador=0;
+      std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+      std::cout<<"-----------------------------"<<std::endl;
+      while(!copia.isEmpty()){
+         contador++;
+         std::cout<<copia.top();
+         copia.remove();
 
-      if(contador==34){
-         contador=0;
-         std::cout <<"Pulse INTRO para seguir viendo los datos";
-         std::cin.ignore();
-         std::cout<<CLEAR_SCREEN;
-         PLACE(1,1);
-         std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
-         std::cout<<"-----------------------------"<<std::endl;
+         if(contador==34){
+            contador=0;
+            std::cout <<"Pulse INTRO para seguir viendo los datos";
+            std::cin.ignore();
+            std::cout<<CLEAR_SCREEN;
+            PLACE(1,1);
+            std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+            std::cout<<"-----------------------------"<<std::endl;
+         }
       }
+   }
+   else{
+      std::cout<<BIRED<<"El monticulo esta vacio, por lo que no se puede mostrar ningun dato"<<RESET<<std::endl;
    }
 }
 void ed::modificarElementoMonticulo(ed::MonticuloMediciones & monticulo){
-   ed::Medicion medicion;
-   ed::Fecha fecha;
-   float precipitacion=0;
-   std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere modificar -> "<<RESET;
-   std::cin>>fecha;
-   int indice=monticulo.busquedaMedicion(fecha);
-
-   if(indice<0){
-      std::cout<<BIRED<<"Esa fecha no se encuentra entre las mediciones"<<RESET<<std::endl;
+   if(monticulo.isEmpty()){
+      std::cout<<BIRED<<"El monticulo está vacio, por lo que no se puede modificar ninguna medicion"<<RESET<<std::endl;
    }
    else{
-      std::cout<<BIBLUE<<"Usted va a modificar la precipitacion de la siguiente medicion -> "<<RESET<<monticulo.obtenerElemento(indice);
-      std::cout<<BIPURPLE<<"Introduzca la nueva precipitación -> "<<RESET;
-      std::cin>>precipitacion;
+      ed::Medicion medicion;
+      ed::Fecha fecha;
+      float precipitacion=0;
+      std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere modificar -> "<<RESET;
+      std::cin>>fecha;
+      int indice=monticulo.busquedaMedicion(fecha);
 
-      medicion.setFecha(fecha);
-      medicion.setPrecipitacion(precipitacion);
-      monticulo.modificarMedicion(indice, medicion);
+      if(indice<0){
+         std::cout<<BIRED<<"Esa fecha no se encuentra entre las mediciones"<<RESET<<std::endl;
+      }
+      else{
+         std::cout<<BIBLUE<<"Usted va a modificar la precipitacion de la siguiente medicion -> "<<RESET<<monticulo.obtenerElemento(indice);
+         std::cout<<BIPURPLE<<"Introduzca la nueva precipitación -> "<<RESET;
+         std::cin>>precipitacion;
 
-      std::cin.ignore();
-      std::cout<<BIGREEN<<"Medicion modificada con exito"<<RESET<<std::endl;
+         medicion.setFecha(fecha);
+         medicion.setPrecipitacion(precipitacion);
+         monticulo.modificarMedicion(indice, medicion);
+
+         std::cin.ignore();
+         std::cout<<BIGREEN<<"Medicion modificada con exito"<<RESET<<std::endl;
+      }
    }
 }
 void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
-   ed::Medicion medicion;
-   std::cout<<BIPURPLE<<"Introduzca la medicion (DD-MM-YY xx.xx) -> "<<RESET;
-   std::cin>>medicion;
-
-   if(medicion==monticulo.top()){
-      std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
+   if(monticulo.isEmpty()){
+      std::cout<<BIRED<<"El monticulo está vacio, por lo que no se puede modificar la cima"<<RESET<<std::endl;
    }
    else{
-      monticulo.modify(medicion);
-      std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+      ed::Medicion medicion;
+      std::cout<<BIPURPLE<<"Introduzca la medicion (DD-MM-YY xx.xx) -> "<<RESET;
+      std::cin>>medicion;
+
+      if(medicion==monticulo.top()){
+         std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
+      }
+      else{
+         monticulo.modify(medicion);
+         std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+      }
    }
 }
 void ed::insertarMedicionMonticulo(ed::MonticuloMediciones & monticulo){
@@ -245,22 +268,27 @@ void ed::insertarMedicionMonticulo(ed::MonticuloMediciones & monticulo){
    }
 }
 void ed::borrarElementoMedicion(ed::MonticuloMediciones & monticulo){
-   ed::Fecha fecha;
-   std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere borrar -> "<<RESET;
-   std::cin>>fecha;
-
-   int indice=monticulo.busquedaMedicion(fecha);
-   if(indice < 0){
-      std::cout<<BIRED<<"Esa fecha no se encuentra en los datos del heap, por lo que no se puede borrar"<<RESET<<std::endl;
+   if(monticulo.isEmpty()){
+      std::cout<<BIRED<<"El monticulo está vacio, por lo que no se puede borrar ninguna medicion"<<RESET<<std::endl;
    }
    else{
-      monticulo.removeMedition(indice);
-      std::cout<<BIGREEN<<"Se ha borrado la medicion deseada del monticulo con éxito"<<RESET<<std::endl;
+      ed::Fecha fecha;
+      std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere borrar -> "<<RESET;
+      std::cin>>fecha;
+      int indice=monticulo.busquedaMedicion(fecha);
+
+      if(indice < 0){
+         std::cout<<BIRED<<"Esa fecha no se encuentra en los datos del heap, por lo que no se puede borrar"<<RESET<<std::endl;
+      }
+      else{
+         monticulo.removeMedition(indice);
+         std::cout<<BIGREEN<<"Se ha borrado la medicion deseada del monticulo con éxito"<<RESET<<std::endl;
+      }
    }
 }
 void ed::borrarMonticulo(ed::MonticuloMediciones & monticulo){
    if(monticulo.isEmpty()){
-      std::cout<<BIGREEN<<"El monticulo ya está vacio"<<RESET<<std::endl;
+      std::cout<<BIRED<<"El monticulo ya está vacio"<<RESET<<std::endl;
    }
    else{
       monticulo.removeAll();

@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
 			///////////////////////////////////////////////////////////////////
 			case 1:
 				std::cout <<  "[1] Tamaño del montículo" << std::endl;
-				std::cout << "Tamaño del montículo " << monticulo.size() << std::endl;
+				estadoMonticulo(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////

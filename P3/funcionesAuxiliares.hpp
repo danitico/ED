@@ -15,6 +15,12 @@ namespace ed{
 	 */
 	int menu();
 	/**
+	 * @fn void estadoMonticulo(ed::MonticuloMediciones & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones en el que se guarda la informacion
+	 * @brief Funcion que muestra por pantalla si el monticulo está vacio. En el caso contrario, muestra el numero de mediciones que contiene.
+	 */
+	void estadoMonticulo(ed::MonticuloMediciones const & monticulo);
+	/**
 	 * @fn void cargarMonticuloDeFichero(ed::MonticuloMediciones & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones en el que se guarda la informacion
 	 * @brief Función que vuelca la informacion del fichero en un objeto de la clase MonticuloMediciones
