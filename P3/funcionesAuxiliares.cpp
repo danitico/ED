@@ -54,16 +54,22 @@ int ed::menu(){
    posicion++;
 
    PLACE(posicion++,10);
-   std::cout << "[6] Modificar la cima del monticulo";
+   std::cout << "[6] Modificar un elemento del monticulo";
 
    PLACE(posicion++,10);
-   std::cout << "[7] Insertar una medicion en el montículo";
+   std::cout << "[7] Modificar la cima del monticulo";
+
+   //////////////////////////////////////////////////////////////////////////////
+   posicion++;
 
    PLACE(posicion++,10);
-   std::cout << "[8] Borrar un medicion del montículo por fecha";
+   std::cout << "[8] Insertar una medicion en el montículo";
 
    PLACE(posicion++,10);
-   std::cout << "[9] Borrar todas las mediciones del montículo";
+   std::cout << "[9] Borrar un medicion del montículo por fecha";
+
+   PLACE(posicion++,10);
+   std::cout << "[10] Borrar todas las mediciones del montículo";
 
    //////////////////////////////////////////////////////////////////////////////
    posicion++;
@@ -118,6 +124,7 @@ void ed::cargarMonticuloDeFichero(ed::MonticuloMediciones & monticulo){
       }
       std::cin.ignore();
       std::cout<<BIGREEN<<"Fichero cargado con exito"<<std::endl;
+      file.close();
    }
    else{
       std::cin.ignore();
@@ -139,6 +146,7 @@ void ed::grabarMonticuloEnFichero(ed::MonticuloMediciones const & monticulo){
          copia.remove();
       }
       std::cin.ignore();
+      file.close();
       std::cout<<BIGREEN<<"Fichero guardado con exito"<<std::endl;
    }
    else{
@@ -184,6 +192,30 @@ void ed::mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticu
          std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
          std::cout<<"-----------------------------"<<std::endl;
       }
+   }
+}
+void ed::modificarElementoMonticulo(ed::MonticuloMediciones & monticulo){
+   ed::Medicion medicion;
+   ed::Fecha fecha;
+   float precipitacion=0;
+   std::cout<<BIPURPLE<<"Introduzca la fecha de la medicion que se quiere modificar -> "<<RESET;
+   std::cin>>fecha;
+   int indice=monticulo.busquedaMedicion(fecha);
+
+   if(indice<0){
+      std::cout<<BIRED<<"Esa fecha no se encuentra entre las mediciones"<<RESET<<std::endl;
+   }
+   else{
+      std::cout<<BIBLUE<<"Usted va a modificar la precipitacion de la siguiente medicion -> "<<RESET<<monticulo.obtenerElemento(indice);
+      std::cout<<BIPURPLE<<"Introduzca la nueva precipitación -> "<<RESET;
+      std::cin>>precipitacion;
+
+      medicion.setFecha(fecha);
+      medicion.setPrecipitacion(precipitacion);
+      monticulo.modificarMedicion(indice, medicion);
+
+      std::cin.ignore();
+      std::cout<<BIGREEN<<"Medicion modificada con exito"<<RESET<<std::endl;
    }
 }
 void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){

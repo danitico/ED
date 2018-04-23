@@ -45,6 +45,12 @@ namespace ed{
 	 */
 	void modificarCimaMonticulo(ed::MonticuloMediciones & monticulo);
 	/**
+	 * @fn void modificarElementoMonticulo(ed::MonticuloMediciones & monticulo)
+	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
+	 * @brief Modifica la precipitacion de una de las mediciones del monticulo
+	 */
+	void modificarElementoMonticulo(ed::MonticuloMediciones & monticulo);
+	/**
 	 * @fn void insertarMedicionMonticulo(ed::MonticuloMediciones const & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
 	 * @brief Inserta una medicion en el heap
@@ -53,7 +59,7 @@ namespace ed{
 	/**
 	 * @fn void borrarElementoMedicion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
-	 * @brief Inserta una medicion en el heap
+	 * @brief Borra la medicion la cual está definida por su fecha
 	 */
 	void borrarElementoMedicion(ed::MonticuloMediciones & monticulo);
 	/**

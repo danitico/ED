@@ -16,7 +16,7 @@ namespace ed{
 	class MonticuloMediciones : public MonticuloMedicionesInterfaz{
 		private:
 			//! \name Atributos privados de la clase MonticuloMediciones
-			std::vector<Medicion> v_;
+			std::vector<Medicion> v_; //!< Vector de la STL que representa un monticulo
 			//! \name Métodos privados de la clase MonticuloMediciones
 			/**
 	       * @fn ed::Medicion getElement(int i) const
@@ -38,8 +38,7 @@ namespace ed{
 	       * @note Modificador privado de la clase MonticuloMediciones
 			 * @pre i>=0
 			 * @pre i<MonticuloMediciones::size()
-			 * @post MonticuloMediciones::getElement(i)==medicion
-	       */
+			 */
 			void setElement(int i, Medicion medicion);//not okxd
 			/**
 	       * @fn int getLeftChild(int i) const
@@ -173,12 +172,19 @@ namespace ed{
 			 */
 			void remove();//ok
 			/**
+			 * @fn void removeMedition(int indice)
+			 * @brief Borra la medicion que ocupa la posicion que se le ha pasado por argumentos
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 * @pre isEmpty() == false
+			 * @pre has(getElement(indice))
+			 */
+			void removeMedition(int indice);
+			/**
 			 * @fn void removeAll()
 			 * @brief Borra todas las mediciones del montículo
 			 * @note Modificador publico de la clase MonticuloMediciones
 			 * @post isEmpty() == true
 			 */
-			void removeMedition(int indice);
 			void removeAll();//ok
 			/**
 			 * @fn void modify(ed::Medicion medicion)
@@ -189,6 +195,14 @@ namespace ed{
 			 * @post has(medicion) == true
 			 */
 			void modify(ed::Medicion medicion);//ok
+			/**
+			 * @fn void modificarMedicion(int indice, ed::Medicion medicion)
+			 * @brief Modifica la medicion que ocupa la cima y actualiza el monticulo para que este ordenado
+			 * @param indice Posicion en la que se encuentra la medicion a modificar
+			 * @param medicion Objeto de la clase Medicion que sustituye al que se encuentre en la posicion indice
+			 * @note Modificador publico de la clase MonticuloMediciones
+			 */
+			void modificarMedicion(int indice, ed::Medicion medicion);
 			/**
 			 * @fn int busquedaMedicion(std::Fecha const & fecha)
 			 * @brief Localiza la medicion con la fecha pasada por argumento

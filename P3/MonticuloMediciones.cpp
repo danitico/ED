@@ -19,7 +19,14 @@ ed::Medicion ed::MonticuloMediciones::getElement(int i) const{
    return v_[i];
 }
 void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
-   
+   if(i==0){
+      v_[0]=medicion;
+      shiftDown(i);
+   }
+   else{
+      removeMedition(i);
+      insert(medicion);
+   }
 }
 int ed::MonticuloMediciones::getLeftChild(int i) const{
    #ifndef NDEBUG
@@ -185,6 +192,9 @@ void ed::MonticuloMediciones::modify(ed::Medicion medicion){
       v_[0]=medicion;
       shiftDown(0);
    }
+}
+void ed::MonticuloMediciones::modificarMedicion(int indice, ed::Medicion medicion){
+   setElement(indice, medicion);
 }
 int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha) const{
    int valorDevuelto=-1;

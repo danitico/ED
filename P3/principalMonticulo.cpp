@@ -68,24 +68,29 @@ int main(int argc, char *argv[]){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 6:
-				std::cout << "[6] Modificar la cima del monticulo" << std::endl;
-				ed::modificarCimaMonticulo(monticulo);
+				std::cout << "[6] Modificar un elemento del monticulo" << std::endl;
+				modificarElementoMonticulo(monticulo);
 				break;
 
 			case 7:
-				std::cout << "[7] Insertar una medicion en el montículo" << std::endl;
-				insertarMedicionMonticulo(monticulo);
+				std::cout << "[7] Modificar la cima del monticulo" << std::endl;
+				ed::modificarCimaMonticulo(monticulo);
+				break;
+
+			case 8:
+				std::cout << "[8] Insertar una medicion en el montículo" << std::endl;
+				ed::insertarMedicionMonticulo(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
-			case 8:
-				std::cout << "[8] Borrar un medicion del montículo por fecha" << std::endl;
-				borrarElementoMedicion(monticulo);
+			case 9:
+				std::cout << "[9] Borrar un medicion del montículo por fecha" << std::endl;
+				ed::borrarElementoMedicion(monticulo);
 				break;
 
-			case 9:
-				std::cout << "[9] Borrar todas las mediciones del montículo" << std::endl;
-				borrarMonticulo(monticulo);
+			case 10:
+				std::cout << "[10] Borrar todas las mediciones del montículo" << std::endl;
+				ed::borrarMonticulo(monticulo);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
