@@ -19,14 +19,11 @@ ed::Medicion ed::MonticuloMediciones::getElement(int i) const{
    return v_[i];
 }
 void ed::MonticuloMediciones::setElement(int i, Medicion medicion){
-   if(i==0){
-      v_[0]=medicion;
-      shiftDown(i);
-   }
-   else{
-      removeMedition(i);
-      insert(medicion);
-   }
+   v_[i]=medicion;
+
+   #ifndef NDEBUG
+   assert(v_[i]==medicion);
+   #endif
 }
 int ed::MonticuloMediciones::getLeftChild(int i) const{
    #ifndef NDEBUG
@@ -61,12 +58,17 @@ int ed::MonticuloMediciones::getParent(int i) const{
 }
 void ed::MonticuloMediciones::shiftUp(int i){
    #ifndef NDEBUG
-   assert(i>=0 && i<size());
+   assert(i>0);
+   assert(i<size());
    #endif
 
-   if(i>0 && v_[i].getPrecipitacion()>v_[getParent(i)].getPrecipitacion()){
-      std::swap(v_[i], v_[getParent(i)]);
-      shiftUp(getParent(i));
+   int padre=getParent(i);
+
+   if(i>0 && v_[i].getPrecipitacion()>v_[padre].getPrecipitacion()){
+      std::swap(v_[i], v_[padre]);
+      if(padre!=0){
+         shiftUp(getParent(i));
+      }
    }
 
    #ifndef NDEBUG
@@ -138,12 +140,12 @@ ed::Medicion ed::MonticuloMediciones::top() const{
 void ed::MonticuloMediciones::insert(ed::Medicion medicion){
    if(size()==0){
       v_.resize(1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
-      v_[0]=medicion;
+      setElement(0, medicion);
    }
    else{
       int ultimo=size();
       v_.resize(size()+1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
-      v_[ultimo]=medicion;
+      setElement(ultimo, medicion);
       if(v_[ultimo].getPrecipitacion()>v_[getParent(ultimo)].getPrecipitacion()){
          this->shiftUp(ultimo);
       }
@@ -186,15 +188,22 @@ void ed::MonticuloMediciones::modify(ed::Medicion medicion){
    #endif
 
    if(size()==0){
-      v_[0]=medicion;
+      setElement(0, medicion);
    }
    else{
-      v_[0]=medicion;
+      setElement(0, medicion);
       shiftDown(0);
    }
 }
 void ed::MonticuloMediciones::modificarMedicion(int indice, ed::Medicion medicion){
-   setElement(indice, medicion);
+   if(indice==0){
+      setElement(0, medicion);
+      shiftDown(indice);
+   }
+   else{
+      removeMedition(indice);
+      insert(medicion);
+   }
 }
 int ed::MonticuloMediciones::busquedaMedicion(ed::Fecha const & fecha) const{
    int valorDevuelto=-1;

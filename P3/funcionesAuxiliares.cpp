@@ -249,6 +249,7 @@ void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
          std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
       }
       else{
+//         if(has())
          monticulo.modify(medicion);
          std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
       }

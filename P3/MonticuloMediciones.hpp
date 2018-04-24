@@ -80,7 +80,7 @@ namespace ed{
 			 * @param i Variable entera que representa la posicion en el vector
 	       * @brief El elemento indicado por el indice es subido en el montivulo hasta que se verifica la ordenacion de maximos
 	       * @note Modificador privado de la clase MonticuloMediciones
-			 * @pre i>=0
+			 * @pre i>0
 			 * @pre i<MonticuloMediciones::size()
 			 * @post Si top()!=getElement(i) entonces getElement(i)<=getElement(getParent(i))
 			 * @post Si getLeftChild(i)!=-1 && getLeftChild(i)!=-2 entonces getElement(i)>=getElement(getLeftChild(i))

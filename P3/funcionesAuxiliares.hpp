@@ -15,7 +15,7 @@ namespace ed{
 	 */
 	int menu();
 	/**
-	 * @fn void estadoMonticulo(ed::MonticuloMediciones & monticulo)
+	 * @fn void estadoMonticulo(ed::MonticuloMediciones const & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones en el que se guarda la informacion
 	 * @brief Funcion que muestra por pantalla si el monticulo está vacio. En el caso contrario, muestra el numero de mediciones que contiene.
 	 */
@@ -33,7 +33,7 @@ namespace ed{
 	 */
 	void grabarMonticuloEnFichero(ed::MonticuloMediciones const & monticulo);
 	/**
-	 * @fn void consultarDatosdePrecipitacion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo)
+	 * @fn void consultarDatosdePrecipitacion(ed::MonticuloMediciones const & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
 	 * @brief Función que muestra la precipitación de una fecha específica
 	 */
@@ -45,7 +45,7 @@ namespace ed{
 	 */
 	void mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticulo);
 	/**
-	 * @fn void modificarCimaMonticulo(ed::MonticuloMediciones const & monticulo)
+	 * @fn void modificarCimaMonticulo(ed::MonticuloMediciones & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
 	 * @brief Modifica la cima del montículo
 	 */
@@ -57,13 +57,13 @@ namespace ed{
 	 */
 	void modificarElementoMonticulo(ed::MonticuloMediciones & monticulo);
 	/**
-	 * @fn void insertarMedicionMonticulo(ed::MonticuloMediciones const & monticulo)
+	 * @fn void insertarMedicionMonticulo(ed::MonticuloMediciones & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
 	 * @brief Inserta una medicion en el heap
 	 */
 	void insertarMedicionMonticulo(ed::MonticuloMediciones & monticulo);
 	/**
-	 * @fn void borrarElementoMedicion(ed::Fecha const & fecha, ed::MonticuloMediciones const & monticulo)
+	 * @fn void borrarElementoMedicion(ed::MonticuloMediciones & monticulo)
 	 * @param monticulo Objeto de la clase MonticuloMediciones que posee la informacion que se quiere guardar
 	 * @brief Borra la medicion la cual está definida por su fecha
 	 */
