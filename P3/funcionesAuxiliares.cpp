@@ -249,9 +249,13 @@ void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
          std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
       }
       else{
-//         if(has())
-         monticulo.modify(medicion);
-         std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+         if(monticulo.busquedaMedicion(medicion.getFecha())>=0){
+            std::cout<<BIRED<<"La medicion introducida para modificar la cima ya se encuentra en la medicion"<<RESET<<std::endl;
+         }
+         else{
+            monticulo.modify(medicion);
+            std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+         }
       }
    }
 }

@@ -106,6 +106,8 @@ void ed::MonticuloMediciones::shiftDown(int i){
       assert(getElement(i).getPrecipitacion()<=getElement(i).getPrecipitacion());
    }
    if(getLeftChild(i)!=-1 && getLeftChild(i)!=-2){
+      std::cout<<"actual -- > "<<getElement(i).getPrecipitacion()<<std::endl;
+      std::cout<<"hijo_izquierdo -- > "<<getElement(getLeftChild(i)).getPrecipitacion()<<std::endl;
       assert(getElement(i).getPrecipitacion()>=getElement(getLeftChild(i)).getPrecipitacion());
    }
    if(getRightChild(i)!=-1 && getRightChild(i)!=-2){
@@ -158,11 +160,16 @@ void ed::MonticuloMediciones::insert(ed::Medicion medicion){
 void ed::MonticuloMediciones::remove(){
    #ifndef NDEBUG
    assert(!isEmpty());
+   int a=size();
    #endif
 
    std::swap(v_[0], v_[size()-1]);
    this->shiftDown(0);
    v_.resize(size()-1);
+
+   #ifndef NDEBUG
+   assert(size()==a-1);
+   #endif
 }
 void ed::MonticuloMediciones::removeMedition(int indice){
    #ifndef NDEBUG
