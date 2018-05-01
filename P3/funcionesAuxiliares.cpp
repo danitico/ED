@@ -255,18 +255,8 @@ void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
          std::cout<<BIRED<<"Se ha metido la misma medida de precipitacion, no se modifica la medicion"<<std::endl;
       }
       else{
-<<<<<<< HEAD
-         monticulo.modify(medicion);
-         std::cout<<BIGREEN<<"Se ha modificado la cima del  monticulo con éxito"<<RESET<<std::endl;
-=======
-         if(monticulo.busquedaMedicion(medicion.getFecha())>=0){
-            std::cout<<BIRED<<"La medicion introducida para modificar la cima ya se encuentra en la medicion"<<RESET<<std::endl;
-         }
-         else{
             monticulo.modify(medicion);
             std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
-         }
->>>>>>> abd61b66b9c516cde8f201834fa0e302324f482b
       }
    }
 }
