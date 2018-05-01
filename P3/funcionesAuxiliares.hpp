@@ -2,7 +2,7 @@
   \file   funcionesAuxiliares.hpp
   \brief  Funciones auxiliares para el programa principal de la práctica 3
   \author Daniel Ranchal Parrado
-  \date
+  \date 01-05-2018
 */
 #ifndef _FuncionesAuxiliares_HPP_
 #define _FuncionesAuxiliares_HPP_

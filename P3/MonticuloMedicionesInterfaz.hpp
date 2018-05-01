@@ -2,7 +2,7 @@
 	\file MonticuloMedicionesInterfaz.hpp
 	\brief Se define la interfaz del TAD MonticuloMediciones.
 	\author Daniel Ranchal Parrado
-	\date
+	\date 01-05-2018
 */
 #ifndef _MONTICULO_MEDICIONES_INTERFAZ_HPP
 #define _MONTICULO_MEDICIONES_INTERFAZ_HPP

@@ -2,7 +2,7 @@
 	\file MonticuloMediciones.cpp
 	\brief Fichero que contiene el código de las funciones de la clase MonticuloMediciones.
 	\author Daniel Ranchal Parrado
-	\date
+	\date 01-05-2018
 */
 #include <vector>
 #include <cassert>
@@ -75,10 +75,10 @@ void ed::MonticuloMediciones::shiftUp(int i){
    if(!(top()==getElement(i))){
       assert(getElement(i).getPrecipitacion()<=getElement(i).getPrecipitacion());
    }
-   if(getLeftChild(i)!=-1 && getLeftChild(i)!=-2){
+   if(getLeftChild(i)>=0){
       assert(getElement(i).getPrecipitacion()>=getElement(getLeftChild(i)).getPrecipitacion());
    }
-   if(getRightChild(i)!=-1 && getRightChild(i)!=-2){
+   if(getRightChild(i)>=0){
       assert(getElement(i).getPrecipitacion()>=getElement(getRightChild(i)).getPrecipitacion());
    }
    #endif
@@ -105,10 +105,10 @@ void ed::MonticuloMediciones::shiftDown(int i){
    if(!(top()==getElement(i))){
       assert(getElement(i).getPrecipitacion()<=getElement(i).getPrecipitacion());
    }
-   if(getLeftChild(i)!=-1 && getLeftChild(i)!=-2){
+   if(getLeftChild(i)>=0){
       assert(getElement(i).getPrecipitacion()>=getElement(getLeftChild(i)).getPrecipitacion());
    }
-   if(getRightChild(i)!=-1 && getRightChild(i)!=-2){
+   if(getRightChild(i)>=0){
       assert(getElement(i).getPrecipitacion()>=getElement(getRightChild(i)).getPrecipitacion());
    }
    #endif
@@ -144,7 +144,7 @@ void ed::MonticuloMediciones::insert(ed::Medicion medicion){
    }
    else{
       int ultimo=size();
-      v_.resize(size()+1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
+      v_.resize(ultimo+1, ed::Medicion(ed::Fecha(1,1,1), 0.0));
       setElement(ultimo, medicion);
       if(v_[ultimo].getPrecipitacion()>v_[getParent(ultimo)].getPrecipitacion()){
          this->shiftUp(ultimo);
@@ -161,17 +161,20 @@ void ed::MonticuloMediciones::remove(){
    #endif
 
    std::swap(v_[0], v_[size()-1]);
-   this->shiftDown(0);
    v_.resize(size()-1);
+   if(size()!=0){
+      this->shiftDown(0);
+   }
 }
 void ed::MonticuloMediciones::removeMedition(int indice){
    #ifndef NDEBUG
    assert(!isEmpty() && has(getElement(indice)));
    #endif
-
    std::swap(v_[indice], v_[size()-1]);
-   this->shiftDown(indice);
    v_.resize(size()-1);
+   if(size()!=0 && indice!=size()){
+      this->shiftDown(indice);
+   }
 }
 void ed::MonticuloMediciones::removeAll(){
    while(!isEmpty()){

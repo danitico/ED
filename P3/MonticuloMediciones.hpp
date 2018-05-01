@@ -2,7 +2,7 @@
 	\file MonticuloMediciones.hpp
 	\brief Se define el TAD MonticuloMediciones.
 	\author Daniel Ranchal Parrado
-	\date
+	\date 01-05-2018
 */
 #ifndef _MONTICULO_MEDICIONES_HPP
 #define _MONTICULO_MEDICIONES_HPP
@@ -39,7 +39,7 @@ namespace ed{
 			 * @pre i>=0
 			 * @pre i<MonticuloMediciones::size()
 			 */
-			void setElement(int i, Medicion medicion);//not okxd
+			void setElement(int i, Medicion medicion);//ojk
 			/**
 	       * @fn int getLeftChild(int i) const
 			 * @param i Variable entera que representa la posicion en el vector

@@ -5,7 +5,7 @@
 /*!
  \mainpage Implementación de un montículo de mediciones
  \author   Daniel Ranchal Parrado
- \date     2018-3-7
+ \date     01-05-2018
  \version  1.0
 */
 #include <iostream>
@@ -92,7 +92,6 @@ int main(int argc, char *argv[]){
 				std::cout << "[10] Borrar todas las mediciones del montículo" << std::endl;
 				ed::borrarMonticulo(monticulo);
 				break;
-
 			//////////////////////////////////////////////////////////////////////////////
 			default:
 				std::cout << BIRED;

@@ -2,7 +2,7 @@
   \file   funcionesAuxiliares.cpp
   \brief  Código de las funciones auxiliares para el programa principal de la práctica 1
   \author Daniel Ranchal Parrado
-  \date
+  \date 01-05-2018
 */
 #include <iostream>
 #include <fstream>
@@ -185,20 +185,20 @@ void ed::mostrarPrecipitacionDescendente(ed::MonticuloMediciones const & monticu
    if(!monticulo.isEmpty()){
       ed::MonticuloMediciones copia=monticulo;
       int contador=0;
-      std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+      std::cout<<BIYELLOW<<"Fecha"<<RESET<<"\t\t"<<BICYAN<<"Precipitación"<<RESET<<std::endl;
       std::cout<<"-----------------------------"<<std::endl;
       while(!copia.isEmpty()){
          contador++;
-         std::cout<<copia.top();
+         std::cout<<BIYELLOW<<copia.top().getFecha()<<RESET<<"\t"<<BICYAN<<copia.top().getPrecipitacion()<<RESET<<std::endl;
          copia.remove();
 
          if(contador==34){
             contador=0;
-            std::cout <<"Pulse INTRO para seguir viendo los datos";
+            std::cout <<"Pulse "<<BIGREEN<<"INTRO"<<RESET<<" para seguir viendo los datos";
             std::cin.ignore();
             std::cout<<CLEAR_SCREEN;
             PLACE(1,1);
-            std::cout<<"Fecha\t\tPrecipitación"<<std::endl;
+            std::cout<<BIYELLOW<<"Fecha"<<RESET<<"\t\t"<<BICYAN<<"Precipitación"<<RESET<<std::endl;
             std::cout<<"-----------------------------"<<std::endl;
          }
       }
@@ -242,16 +242,21 @@ void ed::modificarCimaMonticulo(ed::MonticuloMediciones & monticulo){
    }
    else{
       ed::Medicion medicion;
-      std::cout<<BIPURPLE<<"Introduzca la medicion (DD-MM-YY xx.xx) -> "<<RESET;
-      std::cin>>medicion;
+      float precipitacion=0.0;
+      std::cout<<BIBLUE<<"La medicion actual de la cima es "<<RESET<<monticulo.top();
+      std::cout<<BIPURPLE<<"Introduca la nueva medida de precipitacion -> "<<RESET;
+      std::cin>>precipitacion;
+      std::cin.ignore();
 
-      if(medicion==monticulo.top()){
-         std::cout<<BIRED<<"Se ha introducido la misma medicion, por lo que no se actualiza el heap"<<RESET<<std::endl;
+      medicion.setPrecipitacion(precipitacion);
+      medicion.setFecha(monticulo.top().getFecha());
+
+      if(precipitacion==monticulo.top().getPrecipitacion()){
+         std::cout<<BIRED<<"Se ha metido la misma medida de precipitacion, no se modifica la medicion"<<std::endl;
       }
       else{
-//         if(has())
          monticulo.modify(medicion);
-         std::cout<<BIGREEN<<"Se ha modificado el monticulo con éxito"<<RESET<<std::endl;
+         std::cout<<BIGREEN<<"Se ha modificado la cima del  monticulo con éxito"<<RESET<<std::endl;
       }
    }
 }
