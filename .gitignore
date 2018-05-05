@@ -17,3 +17,6 @@ P3/*.o
 P3/*.exe
 P3/practica-3-i62rapad*
 googletest/
+P4/temp
+P4/make-files
+P4/binaries
