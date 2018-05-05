@@ -7,8 +7,8 @@ OBJ_DIR=./temp
 # FILENAMES (without extension)
 OUTPUT_NAME=executable
 MAIN_NAME=main
-FN_FILES_NAMES=clases/Vertex
-LIB_NAME=Vertex_lib
+FN_FILES_NAMES=clases/Vertex clases/Edge
+LIB_NAME=P4_lib
 HEADERS_LOCATION=clases
 # where the headers are located inside of the BASE_DIR folder (for dinamic linking)
 #------------------------------
@@ -38,7 +38,7 @@ GTEST_DIR=../googletest
 	# Points to the root of Google Test, relative to where Makefile is.
 	# Remember to tweak this if you move this file.
 TESTS_DIR=test
-TESTS=Vertex_unittest
+TESTS=unittest
 
 #############################################################
 # the previous configuration compiles the following tree

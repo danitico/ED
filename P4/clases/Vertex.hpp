@@ -80,7 +80,7 @@ namespace ed{
           * @param vertice Objeto de la clase Vertex
           * @note Operador sobrecargado de la clase Vertex
           * @post *this == vertice
-          * @return Devuelve true si las coordenadas de los vertices son distintas,y false en el caso contrario
+          * @return Devuelve un objeto de la clase Vertex
           */
          Vertex &operator=(Vertex const &vertice);
    };

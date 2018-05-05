@@ -21,3 +21,9 @@ bool ed::Vertex::operator!=(ed::Vertex const & vertice) const{
       return false;
    }
 }
+ed::Vertex & ed::Vertex::operator=(Vertex const &vertice){
+   this->setData(vertice.getData());
+   this->setLabel(vertice.getLabel());
+
+   return *this;
+}
