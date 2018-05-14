@@ -9,25 +9,26 @@
 #include <stdlib.h>
 #include <cassert>
 #include <vector>
+#include "Punto.hpp"
 #define COTA_ERROR 1.0e-6
 namespace ed{
    class Vertex{
       //! @name Atributos de la clase Vertex
       private:
-         std::vector<float> v_; //!< Vector que representa un punto en un eje de coordenadas
+         Punto p_; //!< Objeto de la clase Punto que representa la posicion del vertice
          int label_; //!< Etiqueta que diferencia a unos vertices de otros
       //! @name Métodos públicos de la clase Vertex
       public:
          //! @name Observadores de la clase Vertex
          /**
-          * @fn inline std::vector<float> getData() const
-          * @brief Devuelve el atributo privado v_
+          * @fn inline Punto getData() const
+          * @brief Devuelve el atributo privado p_
           * @note Observador de la clase Vertex
           * @note Funcion de tipo const
           * @note Funcion de tipo inline
-          * @return Devuelve un vector de la STL
+          * @return Devuelve un objeto de la clase Punto
           */
-         inline std::vector<float> getData() const{return v_;}
+         inline Punto getData() const{return p_;}
          /**
           * @fn inline int getLabel() const
           * @brief Devuelve el atributo privado label_
@@ -40,12 +41,12 @@ namespace ed{
          inline int getLabel() const{return label_;}
          //! @name Modificadores de la clase Vertex
          /**
-          * @fn void setData(std::vector<float> v)
-          * @brief Modifica el atributo privado v_
-          * @param v El nuevo valor del atributo privado v_
+          * @fn void setData(Punto const & p)
+          * @brief Modifica el atributo privado p_
+          * @param v El nuevo valor del atributo privado p_
           * @note Modificador de la clase Vertex
           */
-         void setData(std::vector<float> v){v_=v;}
+         void setData(Punto const & p){p_=p;}
          /**
           * @fn void setLabel(int label)
           * @brief Modifica el atributo privado label_

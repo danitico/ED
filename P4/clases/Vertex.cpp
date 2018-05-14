@@ -14,7 +14,7 @@ bool ed::Vertex::operator==(ed::Vertex const & vertice) const{
    }
 }
 bool ed::Vertex::operator!=(ed::Vertex const & vertice) const{
-   if(this->getData() != vertice.getData()){
+   if(!(this->getData() == vertice.getData())){
       return true;
    }
    else{
