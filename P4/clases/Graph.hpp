@@ -18,6 +18,16 @@ namespace ed{
       //! @name Metodos publicos de la clase Graph
       public:
          //! @name Constructor de la clase Graph
+         /**
+          * @fn inline Medicion(ed::Fecha fecha=Fecha(1,1,1), float precipitacion=0.0)
+          * @brief Inicializa un objeto de la clase Medicion
+          * @param fecha Objeto de tipo fecha cuyo valor por defecto es Fecha(1,1,1)
+          * @param precipitacion Variable de tipo flotante cuyo valor por defecto es 0.0
+          * @note Constructor de la clase Medicion
+          * @note Función de tipo inline
+          * @post getFecha() == fecha
+          * @post getPrecipitacion() == precipitacion
+          */
          Graph();
          //! @name Observadores de la clase Graph
          /**
@@ -40,10 +50,12 @@ namespace ed{
          bool isDirected() const;
          /**
           * @fn bool adjacent(Vertex u, Vertex v) const
-          * @brief Nos dice si dos vertices del grafo son adyacentes
+          * @brief Devuelve true si los dos vertices son adyacentes y false en el caso contrario
+          * @param u Objeto de la clase Vertex
+          * @param v Objeto de la clase Vertex
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
+          * @pre u y v son vertices del grafo
           * @return Devuelve un valor booleano
           */
          bool adjacent(Vertex u, Vertex v) const;
@@ -67,25 +79,49 @@ namespace ed{
          Vertex currVertex() const;
          /**
           * @fn bool hasCurrEdge() const
-          * @brief Nos dice si el cursor de lados apunta a uno de ellos
+          * @brief Devuelve true si el cursor apunta a un lado
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
           * @return Devuelve un valor booleano
           */
          bool hasCurrEdge() const;
          /**
           * @fn Edge currEdge() const
-          * @brief Nos devuelve el lado al que apunta el cursor
+          * @brief Devuelve el lado al que apunta el cursor
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
-          * @return Devuelve un objeto de la clase Vertex
+          * @pre hasCurrVertex()
+          * @return Devuelve un valor booleano
           */
          Edge currEdge() const;
          //! @name Modificadores de la clase Graph
-         void addVertex(Punto const & p);
+         /**
+          * @fn void addVertex(std::vector<float> v)
+          * @brief Crea un nuevo vertice
+          * @note Modificador de la clase Graph
+          * @post hasCurrVertex() && currVertex.getData()=d
+          * @return Devuelve un valor booleano
+          */
+         void addVertex(std::vector<float> v);
+         /**
+          * @fn void addEdge(Vertex u, Vertex v, float distancia)
+          * @brief Crea un enlace entre el vertice u y v
+          * @note Modificador de la clase Graph
+          * @pre U y V son vertices del grafo
+          * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
+          * @post hasCurrVertex() && currVertex.getData()=d
+          * @return Devuelve un valor booleano
+          */
          void addEdge(Vertex u, Vertex v, float distancia);
+         /**
+          * @fn void removeVertex()
+          * @brief Crea un enlace entre el vertice u y
+          * @note Modificador de la clase Graph
+          * @pre U y V son vertices del grafo
+          * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
+          * @post hasCurrVertex() && currVertex.getData()=d
+          * @return Devuelve un valor booleano
+          */
          void removeVertex();
          void removeEdge();
          //! @name Modificadores de la clase Graph que se encarga del movimiento del cursor
