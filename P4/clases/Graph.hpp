@@ -7,6 +7,8 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 #include "Edge.hpp"
+// #include "Vertex.hpp"
+// #include "Punto.hpp"
 #include <vector>
 namespace ed{
    class Graph{
@@ -96,17 +98,21 @@ namespace ed{
          Edge currEdge() const;
          //! @name Modificadores de la clase Graph
          /**
-          * @fn void addVertex(std::vector<float> v)
+          * @fn void addVertex(Punto p)
           * @brief Crea un nuevo vertice
           * @note Modificador de la clase Graph
+          * @param p Posicion del vertice
           * @post hasCurrVertex() && currVertex.getData()=d
           * @return Devuelve un valor booleano
           */
-         void addVertex(std::vector<float> v);
+         void addVertex(Punto p);
          /**
           * @fn void addEdge(Vertex u, Vertex v, float distancia)
           * @brief Crea un enlace entre el vertice u y v
           * @note Modificador de la clase Graph
+          * @param u Vertice inicio
+          * @param v Vertice final
+          * @param distancia Distancia entre el vertice inicio y final
           * @pre U y V son vertices del grafo
           * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
           * @post hasCurrVertex() && currVertex.getData()=d
@@ -115,25 +121,100 @@ namespace ed{
          void addEdge(Vertex u, Vertex v, float distancia);
          /**
           * @fn void removeVertex()
-          * @brief Crea un enlace entre el vertice u y
+          * @brief Borra el vertice actual y todas sus conexiones o lados
           * @note Modificador de la clase Graph
-          * @pre U y V son vertices del grafo
-          * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
-          * @post hasCurrVertex() && currVertex.getData()=d
-          * @return Devuelve un valor booleano
+          * @pre hasCurrVertex()
           */
          void removeVertex();
+         /**
+          * @fn void removeEdge()
+          * @brief Borra el lado actual
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          */
          void removeEdge();
          //! @name Modificadores de la clase Graph que se encarga del movimiento del cursor
+         /**
+          * @fn void findFirstVertex(Punto const & p)
+          * @brief Busca el vertice con la posicion que se la ha pasado por argumentos
+          * @param p Objeto de la clase Punto que representa la posicion del vertice
+          * @note Modificador de la clase Graph
+          * @post hasCurrVertex() implies currVertex().getData()=d
+          */
          void findFirstVertex(Punto const & p);
          // void findNextVertex(Punto const & p); No codificar esta funcion, no tiene sentido
+         /**
+          * @fn void findFirstEdge(float distancia)
+          * @brief Busca el lado que tenga la distancia que se le ha pasado por argumentos
+          * @param distancia Distancia entre un vertice y otro
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          * @post hasCurrEdge() implies currEdge().getData()=d
+          */
          void findFirstEdge(float distancia);
+         /**
+          * @fn void findNextEdge(float distancia)
+          * @brief Busca el siguiente lado utlizando el argumento pasado a la funcion
+          * @param distancia Distancia entre un vertice y otro
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          * @post hasCurrEdge() implies currEdge().getData()=d
+          */
          void findNextEdge(float distancia);
+         /**
+          * @fn void gotoVertex(Vertex const & v)
+          * @brief Mueve el cursor al vertice pasado por argumentos
+          * @param v Objeto de la clase Vertex
+          * @note Modificador de la clase Graph
+          * @pre v es un vértice del grafo
+          * @post currVertex().getData()=v.getData()
+          */
          void gotoVertex(Vertex const & v);
+         /**
+          * @fn void gotoEdge(Vertex const & u, Vertex const & v)
+          * @brief Mueve el cursor hacia el lado que conectan los dos vertices pasados por argumentos
+          * @param u Objeto de la clase Vertex
+          * @param v Objeto de la clase Vertex
+          * @note Modificador de la clase Graph
+          * @pre u,v son vértices del grafo
+          * @post hasCurrEdge() implies currVertex()=u
+          * @post currEdge().first()=u
+          * @post currEdge().second()=v
+          */
          void gotoEdge(Vertex const & u, Vertex const & v);
+         /**
+          * @fn void goToFirstVertex()
+          * @brief El cursor se mueve al primer vértice
+          * @note Modificador de la clase Graph
+          * @post isEmpty() implies not hasCurrVertex()
+          */
          void goToFirstVertex();
+         /**
+          * @fn void nextVertex()
+          * @brief El cursor se mueve al siguiente vértice
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          */
          void nextVertex();
+         /**
+          * @fn void goToFirstEdge()
+          * @brief El cursor se mueve a la primera conexión del vértice
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          * @post hasCurrEdge()
+          * @post isDirected() implies currVertex()==currEdge().first()
+          * @post not isDirected( implies currEdge().has(currVertex())
+          */
          void goToFirstEdge();
+         /**
+          * @fn void nextEdge()
+          * @brief El cursor se mueve a la siguiente conexión del vértice
+          * @note Modificador de la clase Graph
+          * @pre hasCurrVertex()
+          * @post hasCurrEdge()
+          * @post isDirected() implies currVertex()==currEdge().first()
+          * @post not isDirected( implies currEdge().has(currVertex())
+          */
          void nextEdge();
    };
 }

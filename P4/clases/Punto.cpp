@@ -2,7 +2,7 @@
    \file Punto.cpp
    \brief Fichero de la clase Punto
    \author Daniel Ranchal Parrado
-   \date "DD"/"Month"/"Year"
+   \date 
 */
 #include "Punto.hpp"
 #include <iostream>
