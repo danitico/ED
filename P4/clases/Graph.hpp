@@ -17,6 +17,8 @@ namespace ed{
          std::vector<Vertex> vertexes_; //!< Vector de la STL que contiene todos los vertices del grafo
          std::vector<Edge> edges_; //!< Vector de la STL que contiene todos los lados del grafo
          std::vector<std::vector<int>> matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
+         Vertex *currentVertex=NULL;
+         Edge *currentEdge=NULL;
       //! @name Metodos publicos de la clase Graph
       public:
          //! @name Constructor de la clase Graph
@@ -46,7 +48,6 @@ namespace ed{
           * @brief Nos dice si el grafo es dirigido
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
           * @return Devuelve un valor booleano
           */
          bool isDirected() const;
@@ -66,7 +67,6 @@ namespace ed{
           * @brief Nos dice si el cursor de vertices apunta a uno de ellos
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
           * @return Devuelve un valor booleano
           */
          bool hasCurrVertex() const;
@@ -75,7 +75,7 @@ namespace ed{
           * @brief Nos devuelve el vertice al que apunta el cursor
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @note Funcion de tipo inline
+          * @pre hasCurrVertex()
           * @return Devuelve un objeto de la clase Vertex
           */
          Vertex currVertex() const;
@@ -92,8 +92,8 @@ namespace ed{
           * @brief Devuelve el lado al que apunta el cursor
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
-          * @pre hasCurrVertex()
-          * @return Devuelve un valor booleano
+          * @pre hasCurrEdge()
+          * @return Devuelve un objeto de la clase Edge
           */
          Edge currEdge() const;
          //! @name Modificadores de la clase Graph
@@ -103,7 +103,6 @@ namespace ed{
           * @note Modificador de la clase Graph
           * @param p Posicion del vertice
           * @post hasCurrVertex() && currVertex.getData()=d
-          * @return Devuelve un valor booleano
           */
          void addVertex(Punto p);
          /**
@@ -116,7 +115,6 @@ namespace ed{
           * @pre U y V son vertices del grafo
           * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
           * @post hasCurrVertex() && currVertex.getData()=d
-          * @return Devuelve un valor booleano
           */
          void addEdge(Vertex u, Vertex v, float distancia);
          /**
