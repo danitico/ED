@@ -14,7 +14,7 @@ ed::Punto & ed::Punto::operator=(Punto const &p){
    return *this;
 }
 bool ed::Punto::operator==(Punto const &p) const{
-   if( (std::abs(getX() - this->getX()) < COTA_ERROR) && (std::abs(getY() - this->getY()) < COTA_ERROR) ){
+   if( (std::abs(p.getX() - this->getX()) < COTA_ERROR) && (std::abs(p.getY() - this->getY()) < COTA_ERROR) ){
       return true;
    }
    else{

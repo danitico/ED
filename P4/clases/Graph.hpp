@@ -216,6 +216,15 @@ namespace ed{
           * @post not isDirected( implies currEdge().has(currVertex())
           */
          void nextEdge();
+         //! @name Operadores de la clase Graph
+         /**
+          * @fn Graph & operator=(Graph const &g)
+          * @brief Operador = sobrecargado
+          * @note Operador sobrecargado de la clase Graph
+          * @pre *this != g
+          * @return Objeto de la clase Graph
+          */
+         Graph & operator=(Graph const &g);
    };
 }
 #endif

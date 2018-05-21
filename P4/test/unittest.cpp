@@ -4,12 +4,6 @@
 #include "../clases/Punto.hpp"
 #include "gtest/gtest.h"
 TEST(Vertex, ComprobarObservadoresyModificadores) {
-   // std::vector<float> v1;
-   // v1.push_back(2.1);
-   // v1.push_back(2.3);
-   // std::vector<float> v2;
-   // v2.push_back(3.1);
-   // v2.push_back(3.2);
    ed::Punto a1(2.1, 2.3);
    ed::Punto b1(3.1, 3.2);
 
@@ -21,6 +15,7 @@ TEST(Vertex, ComprobarObservadoresyModificadores) {
 
    EXPECT_EQ(a1, a.getData());
    EXPECT_EQ(b1, b.getData());
+   EXPECT_EQ(a.getData()==b.getData(), false);
    EXPECT_EQ(a==b, false);
    EXPECT_EQ(a!=b, true);
 
@@ -35,18 +30,6 @@ TEST(Edge, ObservadoresyModificadores) {
    ed::Edge e1;
    ed::Edge e2;
 
-   // std::vector<float> v1;
-   // v1.push_back(2.1);
-   // v1.push_back(2.3);
-   // std::vector<float> v2;
-   // v2.push_back(3.1);
-   // v2.push_back(3.2);
-   // std::vector<float> v3;
-   // v3.push_back(4.1);
-   // v3.push_back(4.2);
-   // std::vector<float> v4;
-   // v4.push_back(5.1);
-   // v4.push_back(5.2);
    ed::Punto v1(2.1, 2.3);
    ed::Punto v2(3.1, 3.2);
    ed::Punto v3(4.1, 4.2);
