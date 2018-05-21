@@ -49,3 +49,17 @@ bool ed::Graph::hasCurrEdge() const{
 ed::Edge ed::Graph::currEdge() const{
    return *currentEdge;
 }
+void ed::Graph::addVertex(Punto p){
+   ed::Vertex a;
+
+   a.setData(p);
+   a.setLabel(etiquetas);
+   etiquetas++;
+   vertexes_.push_back(a);
+   currentVertex=&vertexes_[vertexes_.size() - 1];
+
+   matrix_.resize(matrix_.size() + 1);
+   for(int i=0; i<matrix_.size(); i++){
+      matrix_[i].resize(matrix_[i].size() + 1);
+   }
+}

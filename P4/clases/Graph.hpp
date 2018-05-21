@@ -7,6 +7,7 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 #include "Edge.hpp"
+#include <vector>
 // #include "Vertex.hpp"
 // #include "Punto.hpp"
 #include <vector>
@@ -17,8 +18,9 @@ namespace ed{
          std::vector<Vertex> vertexes_; //!< Vector de la STL que contiene todos los vertices del grafo
          std::vector<Edge> edges_; //!< Vector de la STL que contiene todos los lados del grafo
          std::vector<std::vector<int>> matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
-         Vertex *currentVertex=NULL;
-         Edge *currentEdge=NULL;
+         Vertex *currentVertex;
+         Edge *currentEdge;
+         int etiquetas;
       //! @name Metodos publicos de la clase Graph
       public:
          //! @name Constructor de la clase Graph

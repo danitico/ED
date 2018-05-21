@@ -5,6 +5,7 @@
    \date
 */
 #include "Vertex.hpp"
+#include "Punto.hpp"
 bool ed::Vertex::operator==(ed::Vertex const & vertice) const{
    if(this->getData() == vertice.getData()){
       return true;

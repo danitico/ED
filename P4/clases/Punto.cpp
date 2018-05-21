@@ -2,18 +2,18 @@
    \file Punto.cpp
    \brief Fichero de la clase Punto
    \author Daniel Ranchal Parrado
-   \date 
+   \date
 */
 #include "Punto.hpp"
 #include <iostream>
 ed::Punto & ed::Punto::operator=(Punto const &p){
-   if(this != &v){
+   if(this != &p){
       setX(p.getX());
       setY(p.getY());
    }
    return *this;
 }
-bool ed::Punto::operator==(Punto const &p);{
+bool ed::Punto::operator==(Punto const &p) const{
    if( (std::abs(getX() - this->getX()) < COTA_ERROR) && (std::abs(getY() - this->getY()) < COTA_ERROR) ){
       return true;
    }

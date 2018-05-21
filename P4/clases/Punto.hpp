@@ -7,6 +7,7 @@
 #ifndef PUNTO_HPP
 #define PUNTO_HPP
 #include <cmath>
+#include <iostream>
 using std::istream;
 using std::ostream;
 #define COTA_ERROR 1.0e-6
@@ -35,7 +36,7 @@ namespace ed{
          inline void setY(float const &y){y_=y;}
          //! @name Operadores
          Punto & operator=(Punto const &p);
-         bool operator==(Punto const &p);
+         bool operator==(Punto const &p) const;
          void leerPunto();
          void escribirPunto();
    };

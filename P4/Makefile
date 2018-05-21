@@ -7,7 +7,7 @@ OBJ_DIR=./temp
 # FILENAMES (without extension)
 OUTPUT_NAME=executable
 MAIN_NAME=main
-FN_FILES_NAMES=clases/Vertex clases/Edge
+FN_FILES_NAMES=clases/Vertex clases/Edge clases/Punto
 LIB_NAME=P4_lib
 HEADERS_LOCATION=clases
 # where the headers are located inside of the BASE_DIR folder (for dinamic linking)
