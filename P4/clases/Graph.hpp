@@ -157,24 +157,6 @@ namespace ed{
          void removeEdge();
          //! @name Modificadores de la clase Graph que se encarga del movimiento del cursor
          /**
-          * @fn void findFirstVertex(Punto const & p)
-          * @brief Busca el vertice con la posicion que se la ha pasado por argumentos
-          * @param p Objeto de la clase Punto que representa la posicion del vertice
-          * @note Modificador de la clase Graph
-          * @post hasCurrVertex() implies currVertex().getData()=d
-          */
-         void findFirstVertex(Punto const & p);
-         // void findNextVertex(Punto const & p); No codificar esta funcion, no tiene sentido
-         /**
-          * @fn void findFirstEdge(float distancia)
-          * @brief Busca el lado que tenga la distancia que se le ha pasado por argumentos
-          * @param distancia Distancia entre un vertice y otro
-          * @note Modificador de la clase Graph
-          * @pre hasCurrVertex()
-          * @post hasCurrEdge() implies currEdge().getData()=d
-          */
-         void findFirstEdge(float distancia);
-         /**
           * @fn void gotoVertex(Vertex const & v)
           * @brief Mueve el cursor al vertice pasado por argumentos
           * @param v Objeto de la clase Vertex

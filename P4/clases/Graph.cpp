@@ -117,6 +117,7 @@ void ed::Graph::removeEdge(){
    edges_.resize(edges_.size()-1);
 }
 void ed::Graph::gotoVertex(ed::Vertex const & v){
+   currentVertex=-1;
    for(int i=0; i<vertexes_.size(); i++){
       if(vertexes_[i]==v){
          currentVertex=i;
@@ -125,6 +126,7 @@ void ed::Graph::gotoVertex(ed::Vertex const & v){
    }
 }
 void ed::Graph::gotoEdge(ed::Vertex const & u, ed::Vertex const & v){
+   currentEdge=-1;
    for(int i=0; i<edges_.size(); i++){
       if(edges_[i].has(u) && edges_[i].has(v)){
          currentEdge=i;
@@ -153,13 +155,7 @@ void ed::Graph::goToFirstEdge(){
       currentEdge=-1;
    }
    else{
-      currentEdge=-1;
-      for(int i=0; i<edges_.size(); i++){
-         if(edges_[i].has(vertexes_[currentVertex])){
-            currentEdge=i;
-            break;
-         }
-      }
+      currentEdge=0;
    }
 }
 void ed::Graph::nextEdge(){

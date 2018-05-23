@@ -216,3 +216,95 @@ TEST(Graph, BorrarLado){
    //    std::cout<<'\n';
    // }
 }
+
+TEST(Graph, CursorVertice){
+   ed::Graph a;
+
+   a.addVertex(ed::Punto(0.0, 0.0));
+   a.addVertex(ed::Punto(0.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 3.0));
+   a.addVertex(ed::Punto(8.0, 1.0));
+
+   ed::Vertex b;
+
+   b.setData(ed::Punto(0.0, 0.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), 0);
+
+   b.setData(ed::Punto(0.0, 1.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), 1);
+
+   b.setData(ed::Punto(3.0, 1.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), 2);
+
+   b.setData(ed::Punto(3.0, 3.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), 3);
+
+   b.setData(ed::Punto(8.0, 1.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), 4);
+
+   b.setData(ed::Punto(8.0, 17.0));
+   a.gotoVertex(b);
+   EXPECT_EQ(a.getCurrentVertex(), -1);
+
+   a.goToFirstVertex();
+   EXPECT_EQ(a.getVertexVector()[0], a.getVertexVector()[a.getCurrentVertex()]);
+   EXPECT_EQ(a.getCurrentVertex(), 0);
+
+   for(int i=0; i<5; i++){
+      if(i==4){
+         a.nextVertex();
+         EXPECT_EQ(a.getCurrentVertex(), -1);
+      }
+      else{
+         a.nextVertex();
+         EXPECT_EQ(a.getCurrentVertex(), i+1);
+      }
+   }
+}
+
+TEST(Graph, CursoLados){
+   ed::Vertex b, c, d;
+   b.setData(ed::Punto(0.0, 0.0));
+   c.setData(ed::Punto(0.0, 1.0));
+   d.setData(ed::Punto(3.0, 1.0));
+   ed::Graph a;
+
+   a.addVertex(ed::Punto(0.0, 0.0));
+   a.addVertex(ed::Punto(0.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 1.0));
+
+   for(int i=0; i<3; i++){
+      for(int j=i+1; j<3; j++){
+         a.addEdge(a.getVertexVector()[i], a.getVertexVector()[j], ed::distancia(a.getVertexVector()[i].getData(), a.getVertexVector()[j].getData()));
+      }
+   }
+
+   a.gotoEdge(b, c);
+   EXPECT_EQ(a.getCurrentEdge(), 0);
+
+   a.gotoEdge(b, d);
+   EXPECT_EQ(a.getCurrentEdge(), 1);
+
+   a.gotoEdge(c, d);
+   EXPECT_EQ(a.getCurrentEdge(), 2);
+
+   a.goToFirstEdge();
+   EXPECT_EQ(a.getCurrentEdge(), 0);
+
+   for(int i=0; i<3; i++){
+      if(i==2){
+         a.nextEdge();
+         EXPECT_EQ(a.getCurrentEdge(), -1);
+      }
+      else{
+         a.nextEdge();
+         EXPECT_EQ(a.getCurrentEdge(), i+1);
+      }
+   }
+}
