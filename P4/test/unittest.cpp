@@ -2,6 +2,7 @@
 #include "../clases/Vertex.hpp"
 #include "../clases/Edge.hpp"
 #include "../clases/Punto.hpp"
+#include "../clases/Graph.hpp"
 #include "gtest/gtest.h"
 TEST(Vertex, ComprobarObservadoresyModificadores) {
    ed::Punto a1(2.1, 2.3);
@@ -62,4 +63,156 @@ TEST(Edge, ObservadoresyModificadores) {
    EXPECT_EQ(e2.other(d)==c, true);
    EXPECT_EQ(e2.other(e2.other(c))==c, true);
    EXPECT_EQ(e2.other(e2.other(d))==d, true);
+}
+
+TEST(Graph, Constructor){
+   ed::Graph a;
+
+   EXPECT_EQ(a.isEmpty(), true);
+}
+
+TEST(Graph, VertexStuff){
+   ed::Graph a;
+
+   a.addVertex(ed::Punto(0.0, 0.0));
+   a.addVertex(ed::Punto(0.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 3.0));
+   a.addVertex(ed::Punto(8.0, 1.0));
+
+   EXPECT_EQ(a.getVertexVector().size(), 5);
+   for(int i=0; i<5; i++){
+      EXPECT_EQ(a.getVertexVector()[i].getLabel(), i);
+   }
+
+   EXPECT_EQ(a.getVertexVector()[0].getData(), ed::Punto(0.0, 0.0));
+   EXPECT_EQ(a.getVertexVector()[1].getData(), ed::Punto(0.0, 1.0));
+   EXPECT_EQ(a.getVertexVector()[2].getData(), ed::Punto(3.0, 1.0));
+   EXPECT_EQ(a.getVertexVector()[3].getData(), ed::Punto(3.0, 3.0));
+   EXPECT_EQ(a.getVertexVector()[4].getData(), ed::Punto(8.0, 1.0));
+
+   EXPECT_EQ(a.getCurrentVertex(), 4);
+   EXPECT_EQ(a.hasCurrVertex(), true);
+   EXPECT_EQ(a.currVertex(), a.getVertexVector()[4]);
+}
+
+TEST(Graph, EdgeStuff){
+   ed::Graph a;
+
+   a.addVertex(ed::Punto(0.0, 0.0));
+   a.addVertex(ed::Punto(0.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 3.0));
+   a.addVertex(ed::Punto(8.0, 1.0));
+
+   for(int i=0; i<5; i++){
+      for(int j=i+1; j<5; j++){
+         a.addEdge(a.getVertexVector()[i], a.getVertexVector()[j], ed::distancia(a.getVertexVector()[i].getData(), a.getVertexVector()[j].getData()));
+      }
+   }
+
+   int suma=0;
+   for(int i=1; i<5; i++){
+      suma+=(5-i);
+   }
+
+   EXPECT_EQ(a.getEdgeVector().size(), suma);
+   EXPECT_EQ(a.getMatrix().size(), 5);
+   for(int i=0; i<5; i++){
+      EXPECT_EQ(a.getMatrix()[i].size(), 5);
+   }
+
+   EXPECT_EQ(a.isDirected(), false);
+   // for(int i=0; i<5; i++){
+   //    for(int j=0; j<5; j++){
+   //       std::cout<<a.getMatrix()[i][j]<<" ";
+   //    }
+   //    std::cout<<'\n';
+   // }
+
+   for(int i=0; i<5; i++){
+      for(int j=i+1; j<5; j++){
+         EXPECT_EQ(a.adjacent(a.getVertexVector()[i], a.getVertexVector()[j]), true);
+         EXPECT_EQ(a.adjacent(a.getVertexVector()[j], a.getVertexVector()[i]), true);
+      }
+   }
+}
+
+TEST(Graph, BorrarVertice){
+   ed::Graph a;
+
+   a.addVertex(ed::Punto(0.0, 0.0));
+   a.addVertex(ed::Punto(0.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 1.0));
+   a.addVertex(ed::Punto(3.0, 3.0));
+   a.addVertex(ed::Punto(8.0, 1.0));
+
+   for(int i=0; i<5; i++){
+      for(int j=i+1; j<5; j++){
+         a.addEdge(a.getVertexVector()[i], a.getVertexVector()[j], ed::distancia(a.getVertexVector()[i].getData(), a.getVertexVector()[j].getData()));
+      }
+   }
+
+   a.removeVertex();
+   EXPECT_EQ(a.getVertexVector().size(), 4);
+   EXPECT_EQ(a.getEdgeVector().size(), 6);
+   EXPECT_EQ(a.getMatrix().size(), 4);
+   EXPECT_EQ(a.getEtiquetas(), 4);
+   EXPECT_EQ(a.getCurrentVertex(), 3);
+
+   ed::Graph b;
+
+   b.addVertex(ed::Punto(0.0, 0.0));
+   b.addVertex(ed::Punto(0.0, 1.0));
+   b.addVertex(ed::Punto(3.0, 1.0));
+
+   for(int i=0; i<3; i++){
+      for(int j=i+1; j<3; j++){
+         b.addEdge(b.getVertexVector()[i], b.getVertexVector()[j], ed::distancia(b.getVertexVector()[i].getData(), b.getVertexVector()[j].getData()));
+      }
+   }
+
+   ed::Vertex c;
+   c.setData(ed::Punto(0.0, 1.0));
+   b.gotoVertex(c);
+
+   b.removeVertex();
+   EXPECT_EQ(b.getVertexVector().size(), 2);
+   EXPECT_EQ(b.getEdgeVector().size(), 1);
+   EXPECT_EQ(b.getMatrix().size(), 2);
+   EXPECT_EQ(b.getEtiquetas(), 2);
+   EXPECT_EQ(b.getCurrentVertex(), 1);
+}
+
+TEST(Graph, BorrarLado){
+   ed::Graph b;
+
+   b.addVertex(ed::Punto(0.0, 0.0));
+   b.addVertex(ed::Punto(0.0, 1.0));
+   b.addVertex(ed::Punto(3.0, 1.0));
+
+   for(int i=0; i<3; i++){
+      for(int j=i+1; j<3; j++){
+         b.addEdge(b.getVertexVector()[i], b.getVertexVector()[j], ed::distancia(b.getVertexVector()[i].getData(), b.getVertexVector()[j].getData()));
+      }
+   }
+
+   ed::Vertex c,d;
+   c.setData(ed::Punto(0.0, 0.0));
+   d.setData(ed::Punto(0.0, 1.0));
+   b.gotoEdge(c, d);
+
+   b.removeEdge();
+   EXPECT_EQ(b.getVertexVector().size(), 3);
+   EXPECT_EQ(b.getEdgeVector().size(), 2);
+   EXPECT_EQ(b.getMatrix().size(), 3);
+   EXPECT_EQ(b.getEtiquetas(), 3);
+   EXPECT_EQ(b.getCurrentEdge(), -1);
+
+   // for(int i=0; i<3; i++){
+   //    for(int j=0; j<3; j++){
+   //       std::cout<<b.getMatrix()[i][j]<<" ";
+   //    }
+   //    std::cout<<'\n';
+   // }
 }

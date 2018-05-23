@@ -18,8 +18,8 @@ namespace ed{
          std::vector<Vertex> vertexes_; //!< Vector de la STL que contiene todos los vertices del grafo
          std::vector<Edge> edges_; //!< Vector de la STL que contiene todos los lados del grafo
          std::vector<std::vector<int>> matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
-         Vertex *currentVertex;
-         Edge *currentEdge;
+         int currentVertex;
+         int currentEdge;
          int etiquetas;
       //! @name Metodos publicos de la clase Graph
       public:
@@ -34,8 +34,30 @@ namespace ed{
           * @post getFecha() == fecha
           * @post getPrecipitacion() == precipitacion
           */
-         Graph();
+         inline Graph(){
+            vertexes_.resize(0);
+            edges_.resize(0);
+            matrix_.resize(0);
+            currentVertex=-1;
+            currentEdge=-1;
+            etiquetas=0;
+         }
          //! @name Observadores de la clase Graph
+         inline int getCurrentVertex() const{return currentVertex;}
+         inline std::vector<Vertex> getVertexVector() const{
+            return vertexes_;
+         }
+         inline std::vector<Edge> getEdgeVector() const{
+            return edges_;
+         }
+         inline std::vector<std::vector<int>> getMatrix() const{
+            return matrix_;
+         }
+         inline int getEtiquetas() const{
+            return etiquetas;
+         }
+         inline int getCurrentEdge() const{return currentEdge;}
+
          /**
           * @fn bool isEmpty() const
           * @brief Nos dice si el grafo esta vacio, es decir, que no tenga ningun vertice
@@ -118,7 +140,7 @@ namespace ed{
           * @post hasCurrEdge() && currEdge().has(v) && currEdge().other(v)=u && currEdge().getData()=e
           * @post hasCurrVertex() && currVertex.getData()=d
           */
-         void addEdge(Vertex u, Vertex v, float distancia);
+         void addEdge(Vertex const & u, Vertex const & v, float distancia);
          /**
           * @fn void removeVertex()
           * @brief Borra el vertice actual y todas sus conexiones o lados
@@ -152,15 +174,6 @@ namespace ed{
           * @post hasCurrEdge() implies currEdge().getData()=d
           */
          void findFirstEdge(float distancia);
-         /**
-          * @fn void findNextEdge(float distancia)
-          * @brief Busca el siguiente lado utlizando el argumento pasado a la funcion
-          * @param distancia Distancia entre un vertice y otro
-          * @note Modificador de la clase Graph
-          * @pre hasCurrVertex()
-          * @post hasCurrEdge() implies currEdge().getData()=d
-          */
-         void findNextEdge(float distancia);
          /**
           * @fn void gotoVertex(Vertex const & v)
           * @brief Mueve el cursor al vertice pasado por argumentos
