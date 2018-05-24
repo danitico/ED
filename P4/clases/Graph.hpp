@@ -18,9 +18,9 @@ namespace ed{
          std::vector<Vertex> vertexes_; //!< Vector de la STL que contiene todos los vertices del grafo
          std::vector<Edge> edges_; //!< Vector de la STL que contiene todos los lados del grafo
          std::vector<std::vector<int>> matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
-         int currentVertex;
-         int currentEdge;
-         int etiquetas;
+         int currentVertex_;
+         int currentEdge_;
+         int etiquetas_;
       //! @name Metodos publicos de la clase Graph
       public:
          //! @name Constructor de la clase Graph
@@ -38,26 +38,65 @@ namespace ed{
             vertexes_.resize(0);
             edges_.resize(0);
             matrix_.resize(0);
-            currentVertex=-1;
-            currentEdge=-1;
-            etiquetas=0;
+            currentVertex_=-1;
+            currentEdge_=-1;
+            etiquetas_=0;
          }
          //! @name Observadores de la clase Graph
-         inline int getCurrentVertex() const{return currentVertex;}
-         inline std::vector<Vertex> getVertexVector() const{
-            return vertexes_;
-         }
-         inline std::vector<Edge> getEdgeVector() const{
-            return edges_;
-         }
-         inline std::vector<std::vector<int>> getMatrix() const{
-            return matrix_;
-         }
-         inline int getEtiquetas() const{
-            return etiquetas;
-         }
-         inline int getCurrentEdge() const{return currentEdge;}
-
+         /**
+          * @fn inline std::vector<Vertex> getVertexVector() const
+          * @brief Nos devuelve el vector de vértices
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un vector de objetos Vertex
+          */
+         inline std::vector<Vertex> getVertexVector() const{return vertexes_;}
+         /**
+          * @fn inline std::vector<Edge> getEdgeVector() const
+          * @brief Nos devuelve el vector de lados
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un vector de objetos Edge
+          */
+         inline std::vector<Edge> getEdgeVector() const{return edges_;}
+         /**
+          * @fn inline std::vector<std::vector<int>> getMatrix() const
+          * @brief Nos devuelve la matriz de conexiones
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un vector de vectores de enteros
+          */
+         inline std::vector<std::vector<int>> getMatrix() const{return matrix_;}
+         /**
+          * @fn inline int getCurrentVertex() const
+          * @brief Nos devuelve el valor del cursor de vertices
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un entero
+          */
+         inline int getCurrentVertex() const{return currentVertex_;}
+         /**
+          * @fn inline int getCurrentEdge() const
+          * @brief Nos devuelve el valor del cursor de lados
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un entero
+          */
+         inline int getCurrentEdge() const{return currentEdge_;}
+         /**
+          * @fn inline int getEtiquetas() const
+          * @brief Nos devuelve la siguiente etiqueta que tendra el vertice nuevo a añadir
+          * @note Observador de la clase Graph
+          * @note Funcion de tipo const
+          * @note Funcion de tipo inline
+          * @return Devuelve un entero
+          */
+         inline int getEtiquetas() const{return etiquetas_;}
          /**
           * @fn bool isEmpty() const
           * @brief Nos dice si el grafo esta vacio, es decir, que no tenga ningun vertice

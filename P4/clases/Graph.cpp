@@ -28,7 +28,7 @@ bool ed::Graph::adjacent(ed::Vertex u, ed::Vertex v) const{
    }
 }
 bool ed::Graph::hasCurrVertex() const{
-   if(currentVertex==-1){
+   if(currentVertex_==-1){
       return false;
    }
    else{
@@ -36,10 +36,10 @@ bool ed::Graph::hasCurrVertex() const{
    }
 }
 ed::Vertex ed::Graph::currVertex() const{
-   return vertexes_[currentVertex];
+   return vertexes_[currentVertex_];
 }
 bool ed::Graph::hasCurrEdge() const{
-   if(currentEdge==-1){
+   if(currentEdge_==-1){
       return false;
    }
    else{
@@ -47,16 +47,16 @@ bool ed::Graph::hasCurrEdge() const{
    }
 }
 ed::Edge ed::Graph::currEdge() const{
-   return edges_[currentEdge];
+   return edges_[currentEdge_];
 }
 void ed::Graph::addVertex(Punto p){
    ed::Vertex a;
 
    a.setData(p);
-   a.setLabel(etiquetas);
-   etiquetas++;
+   a.setLabel(etiquetas_);
+   etiquetas_++;
    vertexes_.push_back(a);
-   currentVertex=vertexes_.size()-1;
+   currentVertex_=vertexes_.size()-1;
 
    matrix_.resize(matrix_.size() + 1);
    for(int i=0; i<matrix_.size(); i++){
@@ -81,7 +81,7 @@ void ed::Graph::removeVertex(){//de la manera qu lo voy a hacer, hay que hacer e
 
    //Recorremos el vector de vertices y solo metemos en el nuevo grafo aquel que no sea el current
    for(int i=0; i<vertexes_.size(); i++){
-      if(!(vertexes_[i].getData() == vertexes_[currentVertex].getData())){
+      if(!(vertexes_[i].getData() == vertexes_[currentVertex_].getData())){
          aux.addVertex(vertexes_[i].getData());
       }
    }
@@ -96,14 +96,14 @@ void ed::Graph::removeVertex(){//de la manera qu lo voy a hacer, hay que hacer e
    *this=aux;
 }
 void ed::Graph::removeEdge(){
-   int posicion=currentEdge;
+   int posicion=currentEdge_;
 
-   std::swap(edges_[currentEdge], edges_[edges_.size() - 1]);
-   currentEdge=edges_.size()-1;
+   std::swap(edges_[currentEdge_], edges_[edges_.size() - 1]);
+   currentEdge_=edges_.size()-1;
 
    for(int i=0; i<matrix_.size(); i++){
       for(int j=0; j<matrix_.size(); j++){
-         if(matrix_[i][j]==currentEdge){
+         if(matrix_[i][j]==currentEdge_){
             matrix_[i][j]=posicion;
          }
          else{
@@ -113,57 +113,57 @@ void ed::Graph::removeEdge(){
          }
       }
    }
-   currentEdge=-1;
+   currentEdge_=-1;
    edges_.resize(edges_.size()-1);
 }
 void ed::Graph::gotoVertex(ed::Vertex const & v){
-   currentVertex=-1;
+   currentVertex_=-1;
    for(int i=0; i<vertexes_.size(); i++){
       if(vertexes_[i]==v){
-         currentVertex=i;
+         currentVertex_=i;
          break;
       }
    }
 }
 void ed::Graph::gotoEdge(ed::Vertex const & u, ed::Vertex const & v){
-   currentEdge=-1;
+   currentEdge_=-1;
    for(int i=0; i<edges_.size(); i++){
       if(edges_[i].has(u) && edges_[i].has(v)){
-         currentEdge=i;
+         currentEdge_=i;
          break;
       }
    }
 }
 void ed::Graph::goToFirstVertex(){
    if(vertexes_.size()==0){
-      currentVertex=-1;
+      currentVertex_=-1;
    }
    else{
-      currentVertex=0;
+      currentVertex_=0;
    }
 }
 void ed::Graph::nextVertex(){
-   if(currentVertex+1 < vertexes_.size()){
-      currentVertex++;
+   if(currentVertex_+1 < vertexes_.size()){
+      currentVertex_++;
    }
    else{
-      currentVertex=-1;
+      currentVertex_=-1;
    }
 }
 void ed::Graph::goToFirstEdge(){
    if(edges_.size()==0){
-      currentEdge=-1;
+      currentEdge_=-1;
    }
    else{
-      currentEdge=0;
+      currentEdge_=0;
    }
 }
 void ed::Graph::nextEdge(){
-   int ultimoEdgeconocido=currentEdge;
-   currentEdge=-1;
+   int ultimoEdgeconocido=currentEdge_;
+   currentEdge_=-1;
    for(int i=ultimoEdgeconocido+1; i<edges_.size(); i++){
-      if(edges_[i].has(vertexes_[currentVertex])){
-         currentEdge=i;
+      if(edges_[i].has(vertexes_[currentVertex_])){
+         currentEdge_=i;
          break;
       }
    }
@@ -172,9 +172,9 @@ ed::Graph & ed::Graph::operator=(Graph const &g){
    this->vertexes_=g.vertexes_;
    this->edges_=g.edges_;
    this->matrix_=g.matrix_;
-   this->etiquetas=g.etiquetas;
-   this->currentVertex=g.currentVertex;
-   this->currentEdge=g.currentEdge;
+   this->etiquetas_=g.etiquetas_;
+   this->currentVertex_=g.currentVertex_;
+   this->currentEdge_=g.currentEdge_;
 
    return *this;
 }
