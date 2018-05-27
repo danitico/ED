@@ -36,7 +36,9 @@ bool ed::Graph::hasCurrVertex() const{
    }
 }
 ed::Vertex ed::Graph::currVertex() const{
-   return vertexes_[currentVertex_];
+   if(hasCurrVertex()){
+      return vertexes_[currentVertex_];
+   }
 }
 bool ed::Graph::hasCurrEdge() const{
    if(currentEdge_==-1){
@@ -47,7 +49,9 @@ bool ed::Graph::hasCurrEdge() const{
    }
 }
 ed::Edge ed::Graph::currEdge() const{
-   return edges_[currentEdge_];
+   if(hasCurrEdge()){
+      return edges_[currentEdge_];
+   }
 }
 void ed::Graph::addVertex(Punto p){
    ed::Vertex a;

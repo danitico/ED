@@ -3,6 +3,7 @@
 #include "../clases/Edge.hpp"
 #include "../clases/Punto.hpp"
 #include "../clases/Graph.hpp"
+#include "../funcionesAuxiliares.hpp"
 #include "gtest/gtest.h"
 TEST(Vertex, ComprobarObservadoresyModificadores) {
    ed::Punto a1(2.1, 2.3);
@@ -99,17 +100,7 @@ TEST(Graph, VertexStuff){
 TEST(Graph, EdgeStuff){
    ed::Graph a;
 
-   a.addVertex(ed::Punto(0.0, 0.0));
-   a.addVertex(ed::Punto(0.0, 1.0));
-   a.addVertex(ed::Punto(3.0, 1.0));
-   a.addVertex(ed::Punto(3.0, 3.0));
-   a.addVertex(ed::Punto(8.0, 1.0));
-
-   for(int i=0; i<5; i++){
-      for(int j=i+1; j<5; j++){
-         a.addEdge(a.getVertexVector()[i], a.getVertexVector()[j], ed::distancia(a.getVertexVector()[i].getData(), a.getVertexVector()[j].getData()));
-      }
-   }
+   ed::cargarVertices(a, "vertices.txt");
 
    int suma=0;
    for(int i=1; i<5; i++){
@@ -307,4 +298,18 @@ TEST(Graph, CursoLados){
          EXPECT_EQ(a.getCurrentEdge(), i+1);
       }
    }
+}
+
+TEST(Graph, Prim){
+   ed::Graph a,b;
+
+   ed::cargarVertices(a, "vertices.txt");
+
+   for(int i=0; i<5; i++){
+      a.getVertexVector()[i].getData().escribirPunto();
+   }
+
+   //b=ed::prim_algorithm(a);
+
+
 }

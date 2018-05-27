@@ -1,6 +1,9 @@
 #include <iostream>
-#include "./clases/Vertex.hpp"
+#include "./clases/Graph.hpp"
+#include "funcionesAuxiliares.hpp"
 int main(){
-   ed::Vertex a;
-   std::cout << "pipo" << '\n';
+   ed::Graph a,b;
+   ed::cargarVertices(a, "vertices.txt");
+
+   b=ed::prim_algorithm(a);
 }
