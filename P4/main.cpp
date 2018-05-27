@@ -3,7 +3,42 @@
 #include "funcionesAuxiliares.hpp"
 int main(){
    ed::Graph a,b;
-   ed::cargarVertices(a, "vertices.txt");
+
+   a.addVertex(ed::Punto(0.0, 0.1));
+   a.addVertex(ed::Punto(0.0, 0.2));
+   a.addVertex(ed::Punto(0.0, 0.3));
+   a.addVertex(ed::Punto(0.0, 0.4));
+   a.addVertex(ed::Punto(0.0, 0.5));
+
+   for(int i=0; i<5; i++){
+      for(int j=0; j<5; j++){
+         std::cout<<a.getMatrix()[i][j]<<" ";
+      }
+      std::cout<<std::endl;
+   }
+
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 8.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[2], 4.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[3], 6.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 2.0);
+   a.addEdge(a.getVertexVector()[1], a.getVertexVector()[4], 5.0);
+   a.addEdge(a.getVertexVector()[1], a.getVertexVector()[2], 9.0);
+   a.addEdge(a.getVertexVector()[2], a.getVertexVector()[3], 7.0);
+   a.addEdge(a.getVertexVector()[3], a.getVertexVector()[4], 3.0);
+
+   for(int i=0; i<5; i++){
+      for(int j=0; j<5; j++){
+         std::cout<<a.getMatrix()[i][j]<<" ";
+      }
+      std::cout<<std::endl;
+   }
 
    b=ed::prim_algorithm(a);
+   for(int i=0; i<5; i++){
+      for(int j=0; j<5; j++){
+         std::cout<<b.getMatrix()[i][j]<<" ";
+      }
+      std::cout<<std::endl;
+   }
+
 }

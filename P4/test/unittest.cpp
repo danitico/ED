@@ -120,13 +120,6 @@ TEST(Graph, EdgeStuff){
    //    }
    //    std::cout<<'\n';
    // }
-
-   for(int i=0; i<5; i++){
-      for(int j=i+1; j<5; j++){
-         EXPECT_EQ(a.adjacent(a.getVertexVector()[i], a.getVertexVector()[j]), true);
-         EXPECT_EQ(a.adjacent(a.getVertexVector()[j], a.getVertexVector()[i]), true);
-      }
-   }
 }
 
 TEST(Graph, BorrarVertice){
@@ -285,31 +278,54 @@ TEST(Graph, CursoLados){
    a.gotoEdge(c, d);
    EXPECT_EQ(a.getCurrentEdge(), 2);
 
+   a.goToFirstVertex();
    a.goToFirstEdge();
    EXPECT_EQ(a.getCurrentEdge(), 0);
 
-   for(int i=0; i<3; i++){
-      if(i==2){
-         a.nextEdge();
-         EXPECT_EQ(a.getCurrentEdge(), -1);
-      }
-      else{
-         a.nextEdge();
-         EXPECT_EQ(a.getCurrentEdge(), i+1);
-      }
-   }
-}
+   a.nextEdge();
+   EXPECT_EQ(a.getCurrentEdge(), 1);
 
+   a.nextEdge();
+   EXPECT_EQ(a.getCurrentEdge(), -1);
+
+}
 TEST(Graph, Prim){
    ed::Graph a,b;
 
    ed::cargarVertices(a, "vertices.txt");
 
    for(int i=0; i<5; i++){
-      a.getVertexVector()[i].getData().escribirPunto();
+      for(int j=i+1; j<5; j++){
+         EXPECT_EQ(a.adjacent(a.getVertexVector()[i], a.getVertexVector()[j]), true);
+         EXPECT_EQ(a.adjacent(a.getVertexVector()[j], a.getVertexVector()[i]), true);
+      }
    }
 
-   //b=ed::prim_algorithm(a);
+   b=ed::prim_algorithm(a);
+}
+TEST(Graph, Prim2){
+   ed::Graph a,b;
 
+   a.addVertex(ed::Punto(0.0, 0.1));
+   a.addVertex(ed::Punto(0.0, 0.2));
+   a.addVertex(ed::Punto(0.0, 0.3));
+   a.addVertex(ed::Punto(0.0, 0.4));
+   a.addVertex(ed::Punto(0.0, 0.5));
 
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 8.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[2], 4.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[3], 6.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 2.0);
+   a.addEdge(a.getVertexVector()[1], a.getVertexVector()[4], 5.0);
+   a.addEdge(a.getVertexVector()[1], a.getVertexVector()[2], 9.0);
+   a.addEdge(a.getVertexVector()[2], a.getVertexVector()[3], 7.0);
+   a.addEdge(a.getVertexVector()[3], a.getVertexVector()[4], 3.0);
+
+   b=ed::prim_algorithm(a);
+   // for(int i=0; i<5; i++){
+   //    for(int j=0; j<5; j++){
+   //       std::cout<<b.getMatrix()[i][j]<<" ";
+   //    }
+   //    std::cout<<std::endl;
+   // }
 }

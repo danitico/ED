@@ -53,6 +53,9 @@ ed::Edge ed::Graph::currEdge() const{
       return edges_[currentEdge_];
    }
 }
+void ed::Graph::setMatrix(int x, int y, int data){
+   matrix_[x][y]=data;
+}
 void ed::Graph::addVertex(Punto p){
    ed::Vertex a;
 
@@ -78,7 +81,7 @@ void ed::Graph::addEdge(Vertex const & u, Vertex const & v, float distancia){
    // currentEdge=edges_.size()-1;
 
    matrix_[u.getLabel()][v.getLabel()]=edges_.size()-1;
-   matrix_[v.getLabel()][u.getLabel()]=edges_.size()-1;
+   //matrix_[v.getLabel()][u.getLabel()]=edges_.size()-1;
 }
 void ed::Graph::removeVertex(){//de la manera qu lo voy a hacer, hay que hacer el operator =
    ed::Graph aux;
@@ -159,7 +162,13 @@ void ed::Graph::goToFirstEdge(){
       currentEdge_=-1;
    }
    else{
-      currentEdge_=0;
+      for(int i=0; i<edges_.size(); i++){
+         if(edges_[i].has(vertexes_[currentVertex_])){
+            currentEdge_=i;
+            break;
+         }
+      }
+      // currentEdge_=0;
    }
 }
 void ed::Graph::nextEdge(){

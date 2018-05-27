@@ -26,6 +26,7 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
       for(int i=0; i<grafo.getVertexVector().size(); i++){
          for(int j=i+1; j<grafo.getVertexVector().size(); j++){
             grafo.addEdge(grafo.getVertexVector()[i], grafo.getVertexVector()[j], ed::distancia(grafo.getVertexVector()[i].getData(), grafo.getVertexVector()[j].getData()));
+            grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
          }
       }
 
@@ -46,10 +47,7 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo){
    visitados[grafo.currVertex().getLabel()]=1;
    verticeInicio[grafo.currVertex().getLabel()]=-1;
    coste[grafo.currVertex().getLabel()]=0;
-   // std::cout << "hola" << '\n';
    while(visitados!=objetivo){
-      // std::cout<<coste[0]<<" "<<coste[1]<<" "<<coste[2]<<" "<<coste[3]<<" "<<coste[4]<<std::endl;
-
       float minimo=800;
       int candidato=-1;
       for(int i=0; i<coste.size(); i++){
@@ -61,7 +59,6 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo){
       grafo.goToFirstEdge();
       while(grafo.hasCurrEdge()){
          int a=grafo.currEdge().other(grafo.currVertex()).getLabel();
-         if(a>=0 && a<coste.size()){//la buena medida temporal xddd
             if(visitados[a]==0){
                float coste1=coste[a];
                float coste2=grafo.currEdge().getData();
@@ -78,20 +75,15 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo){
                   }
                }
             }
-         }
          grafo.nextEdge();
       }
 
       visitados[candidato]=1;
-
       verticeInicio[candidato]=grafo.currVertex().getLabel();
-
       meow+=coste[candidato];
 
       resultante.addVertex(grafo.getVertexVector()[candidato].getData());
-
       resultante.addEdge(grafo.getVertexVector()[verticeInicio[candidato]], grafo.getVertexVector()[candidato], ed::distancia(grafo.getVertexVector()[verticeInicio[candidato]].getData(), grafo.getVertexVector()[candidato].getData()));
-
       grafo.gotoVertex(grafo.getVertexVector()[candidato]);
    }
    std::cout<<"hey ->"<<meow<<std::endl;

@@ -160,6 +160,7 @@ namespace ed{
           */
          Edge currEdge() const;
          //! @name Modificadores de la clase Graph
+         void setMatrix(int x, int y, int data);
          /**
           * @fn void addVertex(Punto p)
           * @brief Crea un nuevo vertice
