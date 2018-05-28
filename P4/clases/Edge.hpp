@@ -89,6 +89,8 @@ namespace ed{
           * @note Modificador de la clase Edge
           */
          inline void setSecondVertex(Vertex const & u){fin_=u;}
+         bool operator<(Edge const & lado);
+         Edge & operator=(Edge const & lado);
    };
 }
 #endif

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cfloat>
+#include <algorithm>
 void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
    std::ifstream archivo(fichero.c_str());
 
@@ -33,7 +34,7 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
       std::cout<<"Fichero cargado con éxito"<<std::endl;
    }
 }
-ed::Graph ed::prim_algorithm(ed::Graph & grafo){
+ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
    ed::Graph resultante;
    float meow=0;
    std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
@@ -80,12 +81,91 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo){
 
       visitados[candidato]=1;
       verticeInicio[candidato]=grafo.currVertex().getLabel();
-      meow+=coste[candidato];
+      coste_total+=coste[candidato];
 
       resultante.addVertex(grafo.getVertexVector()[candidato].getData());
       resultante.addEdge(grafo.getVertexVector()[verticeInicio[candidato]], grafo.getVertexVector()[candidato], ed::distancia(grafo.getVertexVector()[verticeInicio[candidato]].getData(), grafo.getVertexVector()[candidato].getData()));
       grafo.gotoVertex(grafo.getVertexVector()[candidato]);
    }
-   std::cout<<"hey ->"<<meow<<std::endl;
+   return resultante;
+}
+ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo){
+   ed::Graph resultante;
+   std::vector<ed::Edge> vector_ordenado=grafo.getEdgeVector();
+   std::cout << "tamañoo vector ->" << grafo.getVertexVector().size() <<'\n';
+   std::vector<int> nodos(grafo.getVertexVector().size(), 0);
+   std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
+
+   std::sort(vector_ordenado.begin(), vector_ordenado.end());
+
+   for(int i=0; i<vector_ordenado.size(); i++){
+      std::cout << vector_ordenado[i].getData() << '\n';
+   }
+
+   nodos[0]=1;
+   resultante.addVertex(grafo.getVertexVector()[0].getData());
+   Edge *ladocandidato;
+   Edge *ladoDeseado;
+   int indice=0;
+
+   int minimo=0;
+   while (nodos!=objetivo){
+      ladocandidato=NULL;
+      ladoDeseado=NULL;
+      minimo=1000;
+      for(int i=0; i<nodos.size(); i++){
+         std::cout << "hola5" << '\n';
+         if(nodos[i]==1){
+            std::cout << "hola4" << '\n';
+            for(int j=0; j<nodos.size(); j++){
+               std::cout << "hola3" << '\n';
+               if(nodos[j]==0){
+                  std::cout << "hola2" << '\n';
+                  for(int k=0; k<vector_ordenado.size(); k++){
+                     std::cout << "hola1" << '\n';
+                     if(grafo.getEdgeVector()[k].has(grafo.getVertexVector()[i]) && grafo.getEdgeVector()[k].has(grafo.getVertexVector()[j])){
+                        *ladocandidato=grafo.getEdgeVector()[k];
+                        std::cout << "hola " << '\n';
+                        std::cout << grafo.getEdgeVector()[k].getData() << '\n';
+                        break;
+                     }
+                  }
+               }
+               if(ladocandidato->getData() < minimo){
+                  minimo=ladocandidato->getData();
+                  *ladoDeseado=*ladocandidato;
+               }
+            }
+         }
+      }
+      //añadir el vertice que se ha desplegado
+      if(nodos[ladoDeseado->first().getLabel()]==1){
+         indice=ladoDeseado->second().getLabel();
+         resultante.addVertex(ladoDeseado->second().getData());
+      }
+      else{
+         if(nodos[ladoDeseado->second().getLabel()]==1){
+            indice=ladoDeseado->first().getLabel();
+            resultante.addVertex(ladoDeseado->first().getData());
+         }
+      }
+      //añadir el lado entre el vertice anterior y el vector conjunto visitados
+      resultante.addEdge(ladoDeseado->first(), ladoDeseado->second(), ladoDeseado->getData());
+      //grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
+      nodos[indice]=1;
+
+      //borrar lado del vector ordenado y ordenarlo otra vez
+      int etiqueta=0;
+      for(; etiqueta<vector_ordenado.size(); etiqueta++){
+         if(vector_ordenado[etiqueta].has(ladoDeseado->first()) && vector_ordenado[etiqueta].has(ladoDeseado->second())){
+            break;
+         }
+      }
+      std::swap(vector_ordenado[etiqueta], vector_ordenado[vector_ordenado.size()-1]);
+      vector_ordenado.resize(vector_ordenado.size()-1);
+
+      std::sort(vector_ordenado.begin(), vector_ordenado.end());
+   }
+
    return resultante;
 }

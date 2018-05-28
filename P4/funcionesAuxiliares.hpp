@@ -2,8 +2,8 @@
 #define FUNCIONES_AUXILIARES_HPP
 #include "clases/Graph.hpp"
 namespace ed{
-   void cargarVertices(ed::Graph & grafo, std::string fichero);
-   ed::Graph prim_algorithm(ed::Graph & grafo);
-   ed::Graph kruskal_algorithm(ed::Graph const & grafo);
+   void cargarVertices(Graph & grafo, std::string fichero);
+   Graph prim_algorithm(Graph & grafo, float & coste_total);
+   Graph kruskal_algorithm(Graph const & grafo);
 }
 #endif

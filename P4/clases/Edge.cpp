@@ -23,3 +23,18 @@ ed::Vertex ed::Edge::other(ed::Vertex const & u) const{
       }
    }
 }
+bool ed::Edge::operator<(Edge const & lado){
+   if(this->getData() < lado.getData()){
+      return true;
+   }
+   else{
+      return false;
+   }
+}
+ed::Edge & ed::Edge::operator=(ed::Edge const & lado){
+   this->setFirstVertex(lado.first());
+   this->setSecondVertex(lado.second());
+   this->setData(lado.getData());
+
+   return *this;
+}
