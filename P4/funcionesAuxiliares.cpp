@@ -89,7 +89,7 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
    }
    return resultante;
 }
-ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo){
+ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
    ed::Graph resultante;
    std::vector<ed::Edge> vector_ordenado=grafo.getEdgeVector();
    std::vector<int> nodos(grafo.getVertexVector().size(), 0);
@@ -101,7 +101,6 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo){
    resultante.addVertex(grafo.getVertexVector()[0].getData());
 
    int indice=0;
-   float total=0;
 
    int minimo=0;
    while (nodos!=objetivo){
@@ -143,9 +142,8 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo){
             }
          }
          //añadir el lado entre el vertice anterior y el vector conjunto visitados
-         total+=ladoDeseado.getData();
+         coste_total+=ladoDeseado.getData();
          resultante.addEdge(ladoDeseado.first(), ladoDeseado.second(), ladoDeseado.getData());
-         //grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
          nodos[indice]=1;
 
          //borrar lado del vector ordenado y ordenarlo otra vez
@@ -161,6 +159,5 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo){
          std::sort(vector_ordenado.begin(), vector_ordenado.end());
       }
    }
-   std::cout << "hey -> " << total << '\n';
    return resultante;
 }

@@ -32,10 +32,10 @@ int main(){
    //    }
    //    std::cout<<std::endl;
    // }
-   // float coste=0;
+   float coste=0;
    // b=ed::prim_algorithm(a, coste);
-   // std::cout<<"El coste total del árbol abarcador de coste mínimo es "<<coste<<std::endl;
-   b=ed::kruskal_algorithm(a);
+   b=ed::kruskal_algorithm(a, coste);
+   std::cout<<"El coste total del árbol abarcador de coste mínimo es "<<coste<<std::endl;
    for(int i=0; i<5; i++){
       for(int j=0; j<5; j++){
          std::cout<<b.getMatrix()[i][j]<<" ";
