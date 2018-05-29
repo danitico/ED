@@ -56,6 +56,9 @@ ed::Edge ed::Graph::currEdge() const{
 void ed::Graph::setMatrix(int x, int y, int data){
    matrix_[x][y]=data;
 }
+void ed::Graph::setEdgeVector(int x, ed::Edge & a){
+   edges_[x]=a;
+}
 void ed::Graph::addVertex(Punto p){
    ed::Vertex a;
 

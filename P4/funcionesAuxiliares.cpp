@@ -1,3 +1,9 @@
+/*!
+   \file funcionesAuxiliares.cpp
+   \brief Funciones auxiliares
+   \author Daniel Ranchal Parrado
+   \date 
+*/
 #include "funcionesAuxiliares.hpp"
 #include <fstream>
 #include <iostream>
@@ -212,6 +218,103 @@ void ed::borrarLado(ed::Graph & grafo, ed::Vertex a, ed::Vertex b){
             std::cin.ignore();
             std::cout << BIGREEN << "Conexión borrada correctamente" << RESET <<std::endl;
          }
+      }
+   }
+}
+void ed::modificarCosteConexion(ed::Graph & grafo, ed::Vertex a, ed::Vertex b){
+   grafo.gotoVertex(a);
+   if(grafo.getCurrentVertex()==-1){
+      std::cin.ignore();
+      std::cout << BIRED << "El vértice origen no se encuentra en el grafo" << RESET << std::endl;
+   }
+   else{
+      grafo.gotoVertex(b);
+      if(grafo.getCurrentVertex()==-1){
+         std::cin.ignore();
+         std::cout << BIRED << "El vértice destino no se encuentra en el grafo" << RESET << std::endl;
+      }
+      else{
+         grafo.gotoEdge(a, b);
+         if(grafo.getCurrentEdge()==-1){
+            std::cin.ignore();
+            std::cout << BIRED << "Esos dos vértices no están conectados" << RESET << std::endl;
+         }
+         else{
+            int coste=0;
+            Edge c;
+            std::cout << BIBLUE << "El coste actual de lado es " <<RESET <<UNDERLINE<<grafo.currEdge().getData()<<RESET<<std::endl;
+            std::cout<<BIPURPLE<<"Introduzca el nuevo peso: "<<RESET;
+            std::cin >> coste;
+
+            if(coste!=grafo.currEdge().getData()){
+               c=grafo.currEdge();
+               c.setData(coste);
+               //grafo.getEdgeVector()[grafo.getCurrentEdge()]=c;
+               grafo.setEdgeVector(grafo.getCurrentEdge(), c);
+               std::cin.ignore();
+               std::cout << BIGREEN << "Conexión actualizada correctamente" << RESET <<std::endl;
+            }
+            else{
+               std::cin.ignore();
+               std::cout << BIRED << "Se ha introducido el mismo coste" << RESET <<std::endl;
+            }
+         }
+      }
+   }
+}
+void ed::agnadirVertice(ed::Graph & grafo, ed::Punto & a){
+   ed::Vertex a1;
+   a1.setData(a);
+   grafo.gotoVertex(a1);
+   if(grafo.getCurrentVertex()!=-1){
+      std::cin.ignore();
+      std::cout << BIRED << "Ese vértice ya se encuentra en el grafo. No se añade" << RESET <<std::endl;
+   }
+   else{
+      grafo.addVertex(a);
+      int i=grafo.getVertexVector().size()-1;
+      for(int j=0; j<grafo.getVertexVector().size()-1; j++){
+         grafo.addEdge(grafo.getVertexVector()[i], grafo.getVertexVector()[j], ed::distancia(grafo.getVertexVector()[i].getData(), grafo.getVertexVector()[j].getData()));
+         grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
+      }
+      std::cin.ignore();
+      std::cout << BIGREEN << "Vértice añadido correctamente" << RESET << std::endl;
+   }
+}
+void ed::caminoMasCorto(ed::Graph & grafo, ed::Punto & origen, ed::Punto & destino){
+   ed::Vertex a, b;
+   a.setData(origen);
+   b.setData(destino);
+   std::vector<float> distancias;
+   std::vector<int> predecesor;
+   int indice=0;
+   int busqueda=0;
+
+   grafo.gotoVertex(a);
+   if(grafo.getCurrentVertex()==-1){
+      std::cin.ignore();
+      std::cout << BIRED << "El vértice origen no se encuentra en el grafo" << RESET << std::endl;
+   }
+   else{
+      grafo.gotoVertex(b);
+      indice=grafo.currVertex().getLabel();
+      if(grafo.getCurrentVertex()==-1){
+         std::cin.ignore();
+         std::cout << BIRED << "El vértice destino no se encuentra en el grafo" << RESET << std::endl;
+      }
+      else{
+         grafo.gotoVertex(a);
+         ed::Dijkstra(grafo, grafo.currVertex(), distancias, predecesor);
+
+         std::cin.ignore();
+         std::cout << BIBLUE << "La distancia desde el nodo inicial hasta el destino es " << UNDERLINE << distancias[indice] << RESET <<std::endl;
+         std::cout << indice << " <- " ;
+         busqueda=predecesor[indice];
+         while(busqueda!=-1){
+            std::cout << busqueda << " <- ";
+            busqueda=predecesor[busqueda];
+         }
+         std::cout << "camino" << '\n';
       }
    }
 }

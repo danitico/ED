@@ -99,7 +99,7 @@ TEST(Graph, VertexStuff){
 
 TEST(Graph, EdgeStuff){
    ed::Graph a;
-
+   std::cout << "hola" << '\n';
    ed::cargarVertices(a, "vertices.txt");
 
    int suma=0;
@@ -291,7 +291,7 @@ TEST(Graph, CursoLados){
 }
 TEST(Graph, Prim){
    ed::Graph a,b;
-
+   float coste=0;
    ed::cargarVertices(a, "vertices.txt");
 
    for(int i=0; i<5; i++){
@@ -301,10 +301,11 @@ TEST(Graph, Prim){
       }
    }
 
-   b=ed::prim_algorithm(a);
+   b=ed::prim_algorithm(a, coste);
 }
 TEST(Graph, Prim2){
    ed::Graph a,b;
+   float coste=0;
 
    a.addVertex(ed::Punto(0.0, 0.1));
    a.addVertex(ed::Punto(0.0, 0.2));
@@ -321,7 +322,7 @@ TEST(Graph, Prim2){
    a.addEdge(a.getVertexVector()[2], a.getVertexVector()[3], 7.0);
    a.addEdge(a.getVertexVector()[3], a.getVertexVector()[4], 3.0);
 
-   b=ed::prim_algorithm(a);
+   b=ed::prim_algorithm(a, coste);
    // for(int i=0; i<5; i++){
    //    for(int j=0; j<5; j++){
    //       std::cout<<b.getMatrix()[i][j]<<" ";

@@ -25,14 +25,10 @@ namespace ed{
       public:
          //! @name Constructor de la clase Graph
          /**
-          * @fn inline Medicion(ed::Fecha fecha=Fecha(1,1,1), float precipitacion=0.0)
-          * @brief Inicializa un objeto de la clase Medicion
-          * @param fecha Objeto de tipo fecha cuyo valor por defecto es Fecha(1,1,1)
-          * @param precipitacion Variable de tipo flotante cuyo valor por defecto es 0.0
-          * @note Constructor de la clase Medicion
+          * @fn inline Graph()
+          * @brief Inicializa un objeto de la clase Graph
+          * @note Constructor de la clase Graph
           * @note Función de tipo inline
-          * @post getFecha() == fecha
-          * @post getPrecipitacion() == precipitacion
           */
          inline Graph(){
             vertexes_.resize(0);
@@ -160,6 +156,22 @@ namespace ed{
           */
          Edge currEdge() const;
          //! @name Modificadores de la clase Graph
+         /**
+          * @fn void setEdgeVector(int x, Edge & a)
+          * @brief Modifica el vector de objetos de la clase Edge
+          * @param x Entero que representa la posicion
+          * @param a Objeto de la clase Edge
+          * @note Modificador de la clase Graph
+          */
+         void setEdgeVector(int x, Edge & a);
+         /**
+          * @fn void setEdgeVector(int x, Edge & a)
+          * @brief Modifica el vector de objetos de la clase Edge
+          * @param x Entero que representa la posicion
+          * @param y Entero que representa la posicion
+          * @param data Representa la posicion del lado
+          * @note Modificador de la clase Graph
+          */
          void setMatrix(int x, int y, int data);
          /**
           * @fn void addVertex(Punto p)

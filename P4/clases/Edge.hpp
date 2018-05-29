@@ -89,7 +89,19 @@ namespace ed{
           * @note Modificador de la clase Edge
           */
          inline void setSecondVertex(Vertex const & u){fin_=u;}
+         /**
+          * @fn bool operator<(Edge const & lado)
+          * @brief Nos dice si un lado es más pequeno que otro segun su coste
+          * @note Operador sobrecargado de la clase Edge
+          * @return Nos devuelve true si el primero es menor que el segundo. False en el caso contrario
+          */
          bool operator<(Edge const & lado);
+         /**
+          * @fn Edge & operator=(Edge const & lado)
+          * @brief Operador sobrecargado =
+          * @note Operador sobrecargado de la clase Edge
+          * @return Objeto de las clase Edge
+          */
          Edge & operator=(Edge const & lado);
    };
 }
