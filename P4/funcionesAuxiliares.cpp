@@ -35,79 +35,133 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
    }
 }
 ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
-   ed::Graph resultante;
-   float meow=0;
+   ed::Graph resultante; //grafo resultante
+
+   // Vector objetivo. Que todos los nodos se visiten
    std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
+   // Vector que representa el vector de visitados
    std::vector<int> visitados(grafo.getVertexVector().size(), 0);
+   // Vector que tienen el vertice de inicio
    std::vector<int> verticeInicio(grafo.getVertexVector().size(), -1);
+   // Vector que representa el coste desde el verticeInicio hasta el vertice actual
    std::vector<int> coste(grafo.getVertexVector().size(), 1000);
 
    grafo.goToFirstVertex();
+   // Metemos el primer vertice en el grafo resultante
    resultante.addVertex(grafo.currVertex().getData());
-
+   std::cout<<grafo.currVertex().getLabel()<<" -> "<<resultante.currVertex().getLabel()<<std::endl;
+   // Ponemos que ese nodo ya ha sido visitado
    visitados[grafo.currVertex().getLabel()]=1;
+   // Ponemos que el primer nodo no tiene un predecesor
    verticeInicio[grafo.currVertex().getLabel()]=-1;
+   // Ponemos que su coste es 0
    coste[grafo.currVertex().getLabel()]=0;
+   // Mientras no tengamos el objetivo, es decir, visitar todos...
    while(visitados!=objetivo){
       float minimo=800;
       int candidato=-1;
+      // Antes de desplegar los vertices adyacentes al actual y calcular su minimo
+      // vemos aquellos que se han desplegado antes y cogemos su mínimo
+      // for(int i=0; i<coste.size(); i++){
+      //    if(visitados[i]==0 && coste[i]<1000 && coste[i]<minimo){
+      //       std::cout << "hola" << '\n';
+      //       minimo=coste[i];
+      //       candidato=i;
+      //    }
+      // }
+      // Nos vamos a la primera conexion del primer vertice
+      grafo.goToFirstEdge();
+      //grafo.currEdge().other(grafo.currVertex()).getData().escribirPunto();
+      // Mientras haya nodos adyacentes
+      while(grafo.hasCurrEdge()){
+         // obtenemos el indice del extremo de ese lado, es decir, aquel que no es vertex
+         int a=grafo.currEdge().other(grafo.currVertex()).getLabel();
+
+            // si vemos que no ha sido visitado
+            if(visitados[a]==0){
+               float coste1=coste[a];
+               float coste2=grafo.currEdge().getData();
+               // Vemos si el coste para llegar a este vertice desde este lado
+               // es mejor que su coste anterior (es decir, que sea menor)
+               // Si es asi se actualiza y actualizamos su predecesor
+               if(coste2 < coste1){
+                  coste[a]=coste2;
+                  verticeInicio[a]=grafo.currVertex().getLabel();
+               }
+            }
+         // Nos movemos a la siguiente conexion
+         grafo.nextEdge();
+      }
+      // Vemos si este es el de menor coste, y actualizamos informacion
       for(int i=0; i<coste.size(); i++){
          if(visitados[i]==0 && coste[i]<1000 && coste[i]<minimo){
             minimo=coste[i];
             candidato=i;
          }
       }
-      grafo.goToFirstEdge();
-      while(grafo.hasCurrEdge()){
-         int a=grafo.currEdge().other(grafo.currVertex()).getLabel();
-            if(visitados[a]==0){
-               float coste1=coste[a];
-               float coste2=grafo.currEdge().getData();
 
-               if(coste2 < coste1){
-                  coste[a]=coste2;
-                  verticeInicio[a]=grafo.currVertex().getLabel();
-               }
+      // Una vez aqui, el nodo candidato, es decir, aquel que tenemos a menos distancia
+      // lo marcamos como visitado y decimos que su precedente es el vertice actual
+      visitados[candidato]=1;
 
-               for(int i=0; i<coste.size(); i++){
-                  if(visitados[i]==0 && coste[i]<1000 && coste[i]<minimo){
-                     minimo=coste[i];
-                     candidato=i;
-                  }
+      for(int l=0; l<grafo.getEdgeVector().size(); l++){
+         if(grafo.getEdgeVector()[l].has(grafo.getVertexVector()[candidato])){
+            if(visitados[grafo.getEdgeVector()[l].other(grafo.getVertexVector()[candidato]).getLabel()]==1){
+               if(std::abs(grafo.getEdgeVector()[l].getData()-coste[candidato])<COTA_ERROR){
+                  verticeInicio[candidato]=grafo.getEdgeVector()[l].other(grafo.getVertexVector()[candidato]).getLabel();//aqui esta el fallo
+                  break;
                }
             }
-         grafo.nextEdge();
+         }
       }
 
-      visitados[candidato]=1;
-      verticeInicio[candidato]=grafo.currVertex().getLabel();
+      // En esta variable guardamos cual va a ser la longitud del arbol abarcador
       coste_total+=coste[candidato];
 
+      // Añadimos este vertice al grafo resultante
       resultante.addVertex(grafo.getVertexVector()[candidato].getData());
-      resultante.addEdge(grafo.getVertexVector()[verticeInicio[candidato]], grafo.getVertexVector()[candidato], ed::distancia(grafo.getVertexVector()[verticeInicio[candidato]].getData(), grafo.getVertexVector()[candidato].getData()));
+      // Añadimos la conexion entre el vertice candidato y el vertice actual con su distancia
+      std::cout<<grafo.getVertexVector()[candidato].getLabel()<<" -> "<<resultante.currVertex().getLabel()<<std::endl;
+
+
+      Vertex destinoLado=resultante.currVertex();
+      resultante.gotoVertex(grafo.getVertexVector()[verticeInicio[candidato]]);
+      Vertex origenNuevoLado=resultante.currVertex();
+      //std::cout << "distancia -> " << coste[candidato] << '\n';
+      resultante.addEdge(origenNuevoLado, destinoLado, coste[candidato]);
+      resultante.setMatrix(destinoLado.getLabel(), origenNuevoLado.getLabel(), resultante.getMatrix()[origenNuevoLado.getLabel()][destinoLado.getLabel()]);
+      // Le decimos que el siguiente nodo que hay que desplegar es el candidato
       grafo.gotoVertex(grafo.getVertexVector()[candidato]);
    }
+   //devolvemos el grafo
    return resultante;
 }
 ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
    ed::Graph resultante;
+   // Vector ordenado que tiene las conexiones del grafo original
    std::vector<ed::Edge> vector_ordenado=grafo.getEdgeVector();
+   // Vector que contiene los nodos que estan en un mismo conjunto
    std::vector<int> nodos(grafo.getVertexVector().size(), 0);
+   // El objetivo es que todos esten en el mismo conjunto, es decir, que todos los elementos sean = 1
    std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
 
+   // Ordenamos los lados de menor a mayor
    std::sort(vector_ordenado.begin(), vector_ordenado.end());
 
+   // Ponemos el nodo 0 en el conjunto 1
    nodos[0]=1;
+   // Añadimos el nodo 0 al grafo resultante
    resultante.addVertex(grafo.getVertexVector()[0].getData());
 
-   int indice=0;
+   int indice=0; //Indice del vertice deseado que se va a poner en el mismo conjunto
+   int minimo=0; //Declaramos una variable para obtener el coste minimo
+   ed::Edge ladocandidato;
+   ed::Edge ladoDeseado;
 
-   int minimo=0;
    while (nodos!=objetivo){
-      ed::Edge ladocandidato;
       ladocandidato.setData(-1);
-      ed::Edge ladoDeseado;
       ladoDeseado.setData(-1);
+
       minimo=1000;
       for(int i=0; i<nodos.size(); i++){
          if(nodos[i]==1){
@@ -133,17 +187,38 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
          //añadir el vertice que se ha desplegado
          if(nodos[ladoDeseado.first().getLabel()]==1){
             indice=ladoDeseado.second().getLabel();
+
             resultante.addVertex(ladoDeseado.second().getData());
+            ed::Vertex aux=ladoDeseado.second();
+            aux.setLabel(resultante.getCurrentVertex());
+            ladoDeseado.setSecondVertex(aux);
+
+            resultante.gotoVertex(ladoDeseado.first());
+            aux=ladoDeseado.first();
+            aux.setLabel(resultante.getCurrentVertex());
+            ladoDeseado.setFirstVertex(aux);
          }
          else{
             if(nodos[ladoDeseado.second().getLabel()]==1){
                indice=ladoDeseado.first().getLabel();
+
                resultante.addVertex(ladoDeseado.first().getData());
+               ed::Vertex aux=ladoDeseado.first();
+               aux.setLabel(resultante.getCurrentVertex());
+               ladoDeseado.setFirstVertex(aux);
+
+               resultante.gotoVertex(ladoDeseado.second());
+               aux=ladoDeseado.second();
+               aux.setLabel(resultante.getCurrentVertex());
+               ladoDeseado.setSecondVertex(aux);
             }
          }
          //añadir el lado entre el vertice anterior y el vector conjunto visitados
          coste_total+=ladoDeseado.getData();
+         // std::cout << "pipo -> " << resultante.getMatrix().size() << '\n';
+         // std::cout << ladoDeseado.first().getLabel() <<" " << ladoDeseado.second().getLabel() <<'\n';
          resultante.addEdge(ladoDeseado.first(), ladoDeseado.second(), ladoDeseado.getData());
+         resultante.setMatrix(ladoDeseado.second().getLabel(), ladoDeseado.first().getLabel(), resultante.getMatrix()[ladoDeseado.first().getLabel()][ladoDeseado.second().getLabel()]);
          nodos[indice]=1;
 
          //borrar lado del vector ordenado y ordenarlo otra vez

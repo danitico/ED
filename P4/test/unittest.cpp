@@ -315,7 +315,7 @@ TEST(Graph, Prim2){
    a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 8.0);
    a.addEdge(a.getVertexVector()[0], a.getVertexVector()[2], 4.0);
    a.addEdge(a.getVertexVector()[0], a.getVertexVector()[3], 6.0);
-   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 2.0);
+   a.addEdge(a.getVertexVector()[0], a.getVertexVector()[4], 2.0);
    a.addEdge(a.getVertexVector()[1], a.getVertexVector()[4], 5.0);
    a.addEdge(a.getVertexVector()[1], a.getVertexVector()[2], 9.0);
    a.addEdge(a.getVertexVector()[2], a.getVertexVector()[3], 7.0);
