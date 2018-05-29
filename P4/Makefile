@@ -24,7 +24,7 @@ EXECUTE_AFTER_COMPILATION=YES
 EXECUTION_DATA=SIMPLE
 	# [SIMPLE/COMPLETE(generate a more verbose file)]
 		# todo complete does not works
-COMPILATION_FLAGS=Wpedantic g
+COMPILATION_FLAGS=
 #the binary compilation flags without the "-"
 
 #############################################################
