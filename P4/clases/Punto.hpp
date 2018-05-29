@@ -10,8 +10,9 @@
 #include <iostream>
 using std::istream;
 using std::ostream;
-#define COTA_ERROR 1.0e-6
+#define COTA_ERROR 1.0e-6 //!< Cota de error para la comparación de números reales
 namespace ed{
+   //!  Definición de la clase Vertex
    class Punto{
       //! @name Atributos de la clase Punto
       private:

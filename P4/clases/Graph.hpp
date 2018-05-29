@@ -12,6 +12,7 @@
 // #include "Punto.hpp"
 #include <vector>
 namespace ed{
+   //!  Definición de la clase Graph
    class Graph{
       //! @name Atributos de la clase Graph
       private:
@@ -58,7 +59,7 @@ namespace ed{
           */
          inline std::vector<Edge> getEdgeVector() const{return edges_;}
          /**
-          * @fn inline std::vector<std::vector<int>> getMatrix() const
+          * @fn inline std::vector<std::vector<int> > getMatrix() const
           * @brief Nos devuelve la matriz de conexiones
           * @note Observador de la clase Graph
           * @note Funcion de tipo const
@@ -165,7 +166,7 @@ namespace ed{
           */
          void setEdgeVector(int x, Edge & a);
          /**
-          * @fn void setEdgeVector(int x, Edge & a)
+          * @fn void setMatrix(int x, int y, int data)
           * @brief Modifica el vector de objetos de la clase Edge
           * @param x Entero que representa la posicion
           * @param y Entero que representa la posicion

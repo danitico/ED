@@ -175,6 +175,11 @@ $(LIB_DIR)libgtest.a:
 	mv gtest_main.o temp/gtest_main.o
 	mv libgtest.a $(LIB_DIR)libgtest.a
 
+
+doc:
+	@echo Creando documentacion Doxygen
+	@doxygen
+
 #############################################################
 # HELP_SECTION
 #############################################################

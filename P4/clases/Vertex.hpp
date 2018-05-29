@@ -10,8 +10,9 @@
 #include <cassert>
 #include <vector>
 #include "Punto.hpp"
-#define COTA_ERROR 1.0e-6
+#define COTA_ERROR 1.0e-6 //!< Cota de error para la comparación de números reales
 namespace ed{
+   //!  Definición de la clase Vertex
    class Vertex{
       //! @name Atributos de la clase Vertex
       private:
@@ -43,14 +44,14 @@ namespace ed{
          /**
           * @fn void setData(Punto const & p)
           * @brief Modifica el atributo privado p_
-          * @param v El nuevo valor del atributo privado p_
+          * @param p El nuevo valor del atributo privado p_
           * @note Modificador de la clase Vertex
           */
          void setData(Punto const & p){p_=p;}
          /**
           * @fn void setLabel(int label)
           * @brief Modifica el atributo privado label_
-          * @param v El nuevo valor del atributo privado label_
+          * @param label El nuevo valor del atributo privado label_
           * @note Modificador de la clase Vertex
           */
          void setLabel(int label){label_=label;}

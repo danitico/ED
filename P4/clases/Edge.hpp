@@ -8,6 +8,7 @@
 #define EDGE_HPP
 #include "Vertex.hpp"
 namespace ed{
+   //!  Definición de la clase Edge
    class Edge{
       //! @name Atributos de la clase Edge
       private:

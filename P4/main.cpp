@@ -4,10 +4,20 @@
    \author Daniel Ranchal Parrado
    \date
 */
+/*!
+ \mainpage Implementación de un montículo de mediciones
+ \author   Daniel Ranchal Parrado
+ \date     30-05-2018
+ \version  1.0
+*/
 #include <iostream>
 #include "./clases/Graph.hpp"
 #include "funcionesAuxiliares.hpp"
 #include "macros.hpp"
+/*!
+		\brief   Programa principal de la práctica 2: montículo de mediciones
+		\return  int
+*/
 int main(int argc, char *argv[]){
 	ed::Graph grafo, arbol_abarcador;
    float coste_total=0;

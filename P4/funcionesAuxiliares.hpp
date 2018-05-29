@@ -1,3 +1,9 @@
+/*!
+   \file funcionesAuxiliares.hpp
+   \brief Fichero con funciones auxiliares
+   \author Daniel Ranchal Parrado
+   \date
+*/
 #ifndef FUNCIONES_AUXILIARES_HPP
 #define FUNCIONES_AUXILIARES_HPP
 #include "clases/Graph.hpp"
