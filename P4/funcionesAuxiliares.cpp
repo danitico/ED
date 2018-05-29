@@ -27,7 +27,7 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
       for(int i=0; i<grafo.getVertexVector().size(); i++){
          for(int j=i+1; j<grafo.getVertexVector().size(); j++){
             grafo.addEdge(grafo.getVertexVector()[i], grafo.getVertexVector()[j], ed::distancia(grafo.getVertexVector()[i].getData(), grafo.getVertexVector()[j].getData()));
-            //grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
+            grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
          }
       }
 
@@ -60,15 +60,7 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
    while(visitados!=objetivo){
       float minimo=800;
       int candidato=-1;
-      // Antes de desplegar los vertices adyacentes al actual y calcular su minimo
-      // vemos aquellos que se han desplegado antes y cogemos su mínimo
-      // for(int i=0; i<coste.size(); i++){
-      //    if(visitados[i]==0 && coste[i]<1000 && coste[i]<minimo){
-      //       std::cout << "hola" << '\n';
-      //       minimo=coste[i];
-      //       candidato=i;
-      //    }
-      // }
+
       // Nos vamos a la primera conexion del primer vertice
       grafo.goToFirstEdge();
       //grafo.currEdge().other(grafo.currVertex()).getData().escribirPunto();
@@ -76,7 +68,6 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
       while(grafo.hasCurrEdge()){
          // obtenemos el indice del extremo de ese lado, es decir, aquel que no es vertex
          int a=grafo.currEdge().other(grafo.currVertex()).getLabel();
-
             // si vemos que no ha sido visitado
             if(visitados[a]==0){
                float coste1=coste[a];
@@ -104,6 +95,7 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
       // lo marcamos como visitado y decimos que su precedente es el vertice actual
       visitados[candidato]=1;
 
+      // Obtenemos el nodo origen y lo guardamos en el vector de verticeInicio
       for(int l=0; l<grafo.getEdgeVector().size(); l++){
          if(grafo.getEdgeVector()[l].has(grafo.getVertexVector()[candidato])){
             if(visitados[grafo.getEdgeVector()[l].other(grafo.getVertexVector()[candidato]).getLabel()]==1){
@@ -116,20 +108,22 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
       }
 
       // En esta variable guardamos cual va a ser la longitud del arbol abarcador
+      // std::cout << "---->>>> " << coste[candidato] <<'\n';
       coste_total+=coste[candidato];
 
       // Añadimos este vertice al grafo resultante
       resultante.addVertex(grafo.getVertexVector()[candidato].getData());
       // Añadimos la conexion entre el vertice candidato y el vertice actual con su distancia
-      std::cout<<grafo.getVertexVector()[candidato].getLabel()<<" -> "<<resultante.currVertex().getLabel()<<std::endl;
+      // std::cout<<grafo.getVertexVector()[candidato].getLabel()<<" -> "<<resultante.currVertex().getLabel()<<std::endl;
 
 
       Vertex destinoLado=resultante.currVertex();
       resultante.gotoVertex(grafo.getVertexVector()[verticeInicio[candidato]]);
       Vertex origenNuevoLado=resultante.currVertex();
-      //std::cout << "distancia -> " << coste[candidato] << '\n';
+
       resultante.addEdge(origenNuevoLado, destinoLado, coste[candidato]);
       resultante.setMatrix(destinoLado.getLabel(), origenNuevoLado.getLabel(), resultante.getMatrix()[origenNuevoLado.getLabel()][destinoLado.getLabel()]);
+
       // Le decimos que el siguiente nodo que hay que desplegar es el candidato
       grafo.gotoVertex(grafo.getVertexVector()[candidato]);
    }
@@ -185,9 +179,13 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
       }
       if(ladoDeseado.getData()>-1){
          //añadir el vertice que se ha desplegado
+         // Se distinguen dos casos, que el vertice que se ha desplegado sea second o first
+         // Para saber esto, vemos cual no esta en el conjunto
+         // gracias al vector nodos
          if(nodos[ladoDeseado.first().getLabel()]==1){
             indice=ladoDeseado.second().getLabel();
 
+            //Preparamos la etiquetas para el grafo resultante
             resultante.addVertex(ladoDeseado.second().getData());
             ed::Vertex aux=ladoDeseado.second();
             aux.setLabel(resultante.getCurrentVertex());
@@ -199,6 +197,7 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
             ladoDeseado.setFirstVertex(aux);
          }
          else{
+            // En el caso que first sea el que se ha desplegado
             if(nodos[ladoDeseado.second().getLabel()]==1){
                indice=ladoDeseado.first().getLabel();
 
@@ -213,12 +212,17 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
                ladoDeseado.setSecondVertex(aux);
             }
          }
+
          //añadir el lado entre el vertice anterior y el vector conjunto visitados
+         // std::cout << "----> " << ladoDeseado.getData() <<'\n';
+         // Vamos obteniendo la suma del arbol abarcador minimo
          coste_total+=ladoDeseado.getData();
          // std::cout << "pipo -> " << resultante.getMatrix().size() << '\n';
          // std::cout << ladoDeseado.first().getLabel() <<" " << ladoDeseado.second().getLabel() <<'\n';
+         //Añadimos la conexion entre los dos vertices
          resultante.addEdge(ladoDeseado.first(), ladoDeseado.second(), ladoDeseado.getData());
          resultante.setMatrix(ladoDeseado.second().getLabel(), ladoDeseado.first().getLabel(), resultante.getMatrix()[ladoDeseado.first().getLabel()][ladoDeseado.second().getLabel()]);
+         // Ponemos el vertice añadido en el mismo conjunto
          nodos[indice]=1;
 
          //borrar lado del vector ordenado y ordenarlo otra vez
@@ -235,4 +239,57 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
       }
    }
    return resultante;
+}
+void ed::Dijkstra(Graph & grafo, ed::Vertex comienzo, std::vector<float> & distancias, std::vector<int> & predecesor){
+   std::vector<int> visitados(grafo.getVertexVector().size(), 0);
+   std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
+   distancias.resize(grafo.getVertexVector().size(), 1000);
+   predecesor.resize(grafo.getVertexVector().size(), -1);
+
+   visitados[comienzo.getLabel()]=1;
+   grafo.gotoVertex(comienzo);
+   grafo.goToFirstEdge();
+
+   while(grafo.hasCurrEdge()){
+      distancias[grafo.currEdge().other(comienzo).getLabel()]=grafo.currEdge().getData();
+      predecesor[grafo.currEdge().other(comienzo).getLabel()]=comienzo.getLabel();
+      // std::cout << grafo.getCurrentEdge() << '\n';
+      grafo.nextEdge();
+   }
+
+   ed::Vertex siguiente;
+   int minimo, x, indice;
+   while(visitados!=objetivo){
+      minimo=800;
+      for(int i=0; i<visitados.size(); i++){
+         if(visitados[i]==0 && distancias[i]<1000 && distancias[i]<=minimo){
+            minimo=distancias[i];
+            x=i;
+         }
+      }
+      visitados[x]=1;
+      for(int k=0; k<grafo.getVertexVector().size(); k++){
+         if(grafo.getVertexVector()[k].getLabel()==x){
+            siguiente=grafo.getVertexVector()[k];
+            break;
+         }
+      }
+
+      grafo.gotoVertex(siguiente);
+      grafo.goToFirstEdge();
+      // std::cout << grafo.getCurrentEdge() << '\n';
+      indice=grafo.currEdge().other(siguiente).getLabel();
+      int pipo=0;
+      while(true){
+         if(visitados[indice]==0 && distancias[indice]<1000 && distancias[indice] > distancias[x] + grafo.currEdge().getData()){
+            distancias[indice]=distancias[x] + grafo.currEdge().getData();
+            predecesor[indice]=x;
+         }
+         grafo.nextEdge();
+         std::cout << grafo.getCurrentEdge() << '\n';
+         if(-1==-1){
+            break;
+         }
+      }
+   }
 }
