@@ -26,30 +26,34 @@ int ed::menu(){
    PLACE(posicion++,10);
    std::cout << "[1] Cargar vértices desde fichero";
 
-   posicion++;
-
    PLACE(posicion++,10);
    std::cout << "[2] Añadir vértice al grafo";
 
-   PLACE(posicion++,10);
-   std::cout << "[3] Añadir conexión entre dos vértices";
+   posicion++;
 
    PLACE(posicion++,10);
-   std::cout << "[4] Modificar coste de un lado";
+   std::cout << "[3] Modificar coste de un lado";
 
    PLACE(posicion++,10);
-   std::cout << "[5] Borrar un vértice";
+   std::cout << "[4] Borrar un vértice";
 
    PLACE(posicion++,10);
-   std::cout << "[6] Borrar una conexión";
+   std::cout << "[5] Borrar una conexión";
 
    PLACE(posicion++,10);
-   std::cout << "[7] Mostrar el grafo";
+   std::cout << "[6] Borrar el grafo";
+
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << "[7] Mostrar toda la informacion del grafo";
 
    posicion++;
 
    PLACE(posicion++,10);
    std::cout << "[8] Aplicar el algoritmo de Dijkstra";
+
+   posicion++;
 
    PLACE(posicion++,10);
    std::cout << "[9] Aplicar el algoritmo de Prim";
@@ -89,30 +93,126 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
    std::ifstream archivo(fichero.c_str());
 
    if(!archivo.is_open()){
+      std::cin.ignore();
       std::cout<<BIRED<<"Error al abrir el fichero"<<RESET<<std::endl;
    }
    else{
-      std::string stream;
-      ed::Punto a;
+      if(grafo.getVertexVector().size()==0){
+         std::string stream;
+         ed::Punto a;
 
-      while(getline(archivo, stream, ' ')){
-         a.setX(atof(stream.c_str()));
+         while(getline(archivo, stream, ' ')){
+            a.setX(atof(stream.c_str()));
 
-         getline(archivo, stream, '\n');
-         a.setY(atof(stream.c_str()));
+            getline(archivo, stream, '\n');
+            a.setY(atof(stream.c_str()));
 
-         grafo.addVertex(a);
+            grafo.addVertex(a);
+         }
+         archivo.close();
+
+         for(int i=0; i<grafo.getVertexVector().size(); i++){
+            for(int j=i+1; j<grafo.getVertexVector().size(); j++){
+               grafo.addEdge(grafo.getVertexVector()[i], grafo.getVertexVector()[j], ed::distancia(grafo.getVertexVector()[i].getData(), grafo.getVertexVector()[j].getData()));
+               grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
+            }
+         }
+         std::cin.ignore();
+         std::cout<<BIGREEN<<"Fichero cargado con éxito"<<RESET<<std::endl;
       }
-      archivo.close();
-
+      else{
+         std::cin.ignore();
+         std::cout << BIRED << "El grafo ya tiene datos. Tiene que borrarlo pra cargar uno nuevo" << RESET <<std::endl;
+      }
+   }
+}
+void ed::mostrarGrafo(ed::Graph & grafo){
+   if(grafo.getVertexVector().size()>0){
+      std::cout << BIBLUE << "Los vértices del grafo son:" << RESET <<'\n';
+      std::cout <<BIYELLOW<< "ETIQUETA" << RESET << BICYAN <<"\tPOSICION" << RESET <<std::endl;
       for(int i=0; i<grafo.getVertexVector().size(); i++){
-         for(int j=i+1; j<grafo.getVertexVector().size(); j++){
-            grafo.addEdge(grafo.getVertexVector()[i], grafo.getVertexVector()[j], ed::distancia(grafo.getVertexVector()[i].getData(), grafo.getVertexVector()[j].getData()));
-            grafo.setMatrix(grafo.getVertexVector()[j].getLabel(), grafo.getVertexVector()[i].getLabel(), grafo.getMatrix()[grafo.getVertexVector()[i].getLabel()][grafo.getVertexVector()[j].getLabel()]);
+         std::cout << BIYELLOW << grafo.getVertexVector()[i].getLabel() << RESET << BICYAN <<"\t\t";
+         grafo.getVertexVector()[i].getData().escribirPunto();
+         std::cout<<std::endl;
+      }
+
+      std::cout <<std::endl<<BIYELLOW<< "1º Vértice" << RESET << BICYAN <<"\t2º Vértice\t" << RESET << BIBLUE << "Coste" << RESET <<std::endl;
+      for(int j=0; j<grafo.getEdgeVector().size(); j++){
+         std::cout << BIYELLOW;
+         grafo.getEdgeVector()[j].first().getData().escribirPunto();
+         std::cout << RESET << "\t\t";
+         std::cout << BICYAN;
+         grafo.getEdgeVector()[j].second().getData().escribirPunto();
+         std::cout << RESET << "\t\t";
+         std::cout << BIBLUE << grafo.getEdgeVector()[j].getData() << RESET << std::endl;
+      }
+
+      std::cout<<std::endl<<BIBLUE<<UNDERLINE<<"Matriz de adyacencias"<<RESET<<std::endl;
+      for(int k=0; k<grafo.getMatrix().size(); k++){
+         for(int k1=0; k1<grafo.getMatrix().size(); k1++){
+            if(grafo.getMatrix()[k][k1]==-1){
+               std::cout << "0 ";
+            }
+            else{
+               std::cout << grafo.getMatrix()[k][k1] + 1<<" ";
+            }
+         }
+         std::cout<<std::endl;
+      }
+   }
+   else{
+      std::cout << BIRED << "El grafo está vacio" << RESET <<std::endl;
+   }
+}
+void ed::borrarGrafo(ed::Graph & grafo){
+   if(grafo.isEmpty()){
+      std::cout << BIRED <<"El grafo esta vacío"<< RESET <<std::endl;
+   }
+   else{
+      grafo.goToFirstVertex();
+      while(grafo.hasCurrVertex()){
+         grafo.removeVertex();
+      }
+      std::cout << BIGREEN << "Grafo borrado correctamente" << RESET << std::endl;
+   }
+}
+void ed::BorrarVertice(ed::Graph & grafo, ed::Vertex a){
+   grafo.gotoVertex(a);
+
+   if(grafo.getCurrentVertex()==-1){
+      std::cin.ignore();
+      std::cout << BIRED << "El vértice no se encuentra en el grafo, por lo que no se puede borrar" << RESET <<std::endl;
+   }
+   else{
+      grafo.removeVertex();
+      std::cin.ignore();
+      std::cout << BIGREEN << "El vértice se ha borrado correctamente" << RESET <<std::endl;
+   }
+}
+void ed::borrarLado(ed::Graph & grafo, ed::Vertex a, ed::Vertex b){
+   grafo.gotoVertex(a);
+   if(grafo.getCurrentVertex()==-1){
+      std::cin.ignore();
+      std::cout << BIRED << "El vértice origen no se encuentra en el grafo" << RESET << std::endl;
+   }
+   else{
+      grafo.gotoVertex(b);
+      if(grafo.getCurrentVertex()==-1){
+         std::cin.ignore();
+         std::cout << BIRED << "El vértice destino no se encuentra en el grafo" << RESET << std::endl;
+      }
+      else{
+         grafo.gotoEdge(a, b);
+         if(grafo.getCurrentEdge()==-1){
+            std::cin.ignore();
+            std::cout << BIRED << "Esos dos vértices no están conectados" << RESET << std::endl;
+         }
+         else{
+            grafo.removeEdge();
+            std::cin.ignore();
+            std::cout << BIGREEN << "Conexión borrada correctamente" << RESET <<std::endl;
          }
       }
-
-      std::cout<<BIGREEN<<"Fichero cargado con éxito"<<RESET<<std::endl;
    }
 }
 ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){

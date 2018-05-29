@@ -5,6 +5,7 @@
    \date
 */
 #include "Punto.hpp"
+#include "../macros.hpp"
 #include <iostream>
 ed::Punto & ed::Punto::operator=(Punto const &p){
    if(this != &p){
@@ -23,18 +24,18 @@ bool ed::Punto::operator==(Punto const &p) const{
 }
 void ed::Punto::leerPunto(){
    float x, y;
-   std::cout<<"Introduzca las coordenadas del punto"<<std::endl;
-   std::cout<<"Introduzca el valor de x";
+   std::cout<<BIPURPLE<<"Introduzca las coordenadas del punto"<<RESET<<std::endl;
+   std::cout<<BIPURPLE<<"Introduzca el valor de x: "<<RESET;
    std::cin>>x;
 
-   std::cout<<"Introduzca el valor de y";
+   std::cout<<BIPURPLE<<"Introduzca el valor de y: "<<RESET;
    std::cin>>y;
 
    this->setX(x);
    this->setY(y);
 }
 void ed::Punto::escribirPunto(){
-   std::cout<<"("<<this->getX()<<", "<<this->getY()<<")"<<std::endl;
+   std::cout<<"("<<this->getX()<<", "<<this->getY()<<")";
 }
 float ed::distancia(Punto const &p1, Punto const &p2){
    return sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getY() - p1.getY(), 2));

@@ -6,6 +6,8 @@ int main(int argc, char *argv[]){
 	ed::Graph grafo, arbol_abarcador;
    float coste_total=0;
    std::string fichero;
+	ed::Punto p, p1;
+	ed::Vertex a, b;
 
 	int opcion;
 
@@ -38,30 +40,37 @@ int main(int argc, char *argv[]){
 				break;
 
 			case 3:
-				std::cout << "[3] Añadir conexión entre dos vértices" << std::endl;
+				std::cout << "[3] Modificar coste de un lado" << std::endl;
 
 				break;
 
-			//////////////////////////////////////////////////////////////////////////////
 			case 4:
-				std::cout << "[4] Modificar coste de un lado" << std::endl;
-
-				break;
-
-			case 5:
-				std::cout << "[5] Borrar un vértice" << std::endl;
-
+				std::cout << "[4] Borrar un vértice" << std::endl;
+				p.leerPunto();
+				a.setData(p);
+				ed::BorrarVertice(grafo, a);
 				break;
 
 			//////////////////////////////////////////////////////////////////////////////
-			case 6:
-				std::cout << "[6] Borrar una conexión" << std::endl;
+			case 5:
+				std::cout << "[5] Borrar una conexión" << std::endl;
+				std::cout << "Primer vértice" << '\n';
+				p.leerPunto();
+				a.setData(p);
+				std::cout << "Segundo vértice" << '\n';
+				p1.leerPunto();
+				b.setData(p1);
+				ed::borrarLado(grafo, a, b);
+				break;
 
+			case 6:
+				std::cout << "[6] Borrar el grafo" << std::endl;
+				ed::borrarGrafo(grafo);
 				break;
 
 			case 7:
 				std::cout << "[7] Mostrar el grafo" << std::endl;
-
+				ed::mostrarGrafo(grafo);
 				break;
 
 			case 8:
@@ -98,7 +107,7 @@ int main(int argc, char *argv[]){
                std::cout << BIRED << "El árbol abarcador de coste mínimo no ha sido generado" << '\n';
             }
             else{
-               //hacer funcion que pase matriz a la referencia etiquetas grafo
+               ed::mostrarGrafo(arbol_abarcador);
             }
 				break;
 
