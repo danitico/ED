@@ -243,7 +243,7 @@ ed::Graph ed::kruskal_algorithm(ed::Graph const & grafo, float & coste_total){
 void ed::Dijkstra(Graph & grafo, ed::Vertex comienzo, std::vector<float> & distancias, std::vector<int> & predecesor){
    std::vector<int> visitados(grafo.getVertexVector().size(), 0);
    std::vector<int> objetivo(grafo.getVertexVector().size(), 1);
-   distancias.resize(grafo.getVertexVector().size(), 1000);
+   distancias.resize(grafo.getVertexVector().size(), -1);
    predecesor.resize(grafo.getVertexVector().size(), -1);
 
    visitados[comienzo.getLabel()]=1;
@@ -253,7 +253,6 @@ void ed::Dijkstra(Graph & grafo, ed::Vertex comienzo, std::vector<float> & dista
    while(grafo.hasCurrEdge()){
       distancias[grafo.currEdge().other(comienzo).getLabel()]=grafo.currEdge().getData();
       predecesor[grafo.currEdge().other(comienzo).getLabel()]=comienzo.getLabel();
-      // std::cout << grafo.getCurrentEdge() << '\n';
       grafo.nextEdge();
    }
 
@@ -262,7 +261,7 @@ void ed::Dijkstra(Graph & grafo, ed::Vertex comienzo, std::vector<float> & dista
    while(visitados!=objetivo){
       minimo=800;
       for(int i=0; i<visitados.size(); i++){
-         if(visitados[i]==0 && distancias[i]<1000 && distancias[i]<=minimo){
+         if(visitados[i]==0 && distancias[i]<=minimo && distancias[i]!=-1){
             minimo=distancias[i];
             x=i;
          }
@@ -277,19 +276,19 @@ void ed::Dijkstra(Graph & grafo, ed::Vertex comienzo, std::vector<float> & dista
 
       grafo.gotoVertex(siguiente);
       grafo.goToFirstEdge();
-      // std::cout << grafo.getCurrentEdge() << '\n';
-      indice=grafo.currEdge().other(siguiente).getLabel();
-      int pipo=0;
-      while(true){
-         if(visitados[indice]==0 && distancias[indice]<1000 && distancias[indice] > distancias[x] + grafo.currEdge().getData()){
+
+
+      while(grafo.hasCurrEdge()){
+         indice=grafo.currEdge().other(siguiente).getLabel();
+         if(visitados[indice]==0 && distancias[indice] > distancias[x] + grafo.currEdge().getData()){
+            distancias[indice]=distancias[x] + grafo.currEdge().getData();
+            predecesor[indice]=x;
+         }
+         if(visitados[indice]==0 && distancias[indice]==-1){
             distancias[indice]=distancias[x] + grafo.currEdge().getData();
             predecesor[indice]=x;
          }
          grafo.nextEdge();
-         std::cout << grafo.getCurrentEdge() << '\n';
-         if(-1==-1){
-            break;
-         }
       }
    }
 }

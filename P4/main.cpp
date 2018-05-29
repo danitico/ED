@@ -32,7 +32,22 @@ int main(){
    a.addEdge(a.getVertexVector()[4], a.getVertexVector()[5], 3.0);
    a.addEdge(a.getVertexVector()[6], a.getVertexVector()[7], 10.0);
 
-   // ed::cargarVertices(a, "vertices.txt");
+   //ed::cargarVertices(a, "vertices.txt");
+
+   // a.addVertex(ed::Punto(0.0, 0.1));
+   // a.addVertex(ed::Punto(0.0, 0.2));
+   // a.addVertex(ed::Punto(0.0, 0.3));
+   // a.addVertex(ed::Punto(0.0, 0.4));
+   // a.addVertex(ed::Punto(0.0, 0.5));
+   //
+   // a.addEdge(a.getVertexVector()[0], a.getVertexVector()[1], 8.0);
+   // a.addEdge(a.getVertexVector()[0], a.getVertexVector()[2], 4.0);
+   // a.addEdge(a.getVertexVector()[0], a.getVertexVector()[3], 6.0);
+   // a.addEdge(a.getVertexVector()[0], a.getVertexVector()[4], 2.0);
+   // a.addEdge(a.getVertexVector()[1], a.getVertexVector()[4], 5.0);
+   // a.addEdge(a.getVertexVector()[1], a.getVertexVector()[2], 9.0);
+   // a.addEdge(a.getVertexVector()[2], a.getVertexVector()[3], 7.0);
+   // a.addEdge(a.getVertexVector()[3], a.getVertexVector()[4], 3.0);
 
    // float coste=0;
    // c=ed::prim_algorithm(a, coste);
@@ -57,12 +72,12 @@ int main(){
    std::vector<int> predecesor;
    ed::Vertex comienzo;
 
-   comienzo.setData(ed::Punto(0.0, 0.7));
-   comienzo.setLabel(6);
+   comienzo.setData(ed::Punto(0.0, 0.1));
+   comienzo.setLabel(0);
 
    ed::Dijkstra(a, comienzo, distancias, predecesor);
 
-   for(int i=0; i<8; i++){
+   for(int i=0; i<5; i++){
       std::cout << distancias[i] << " " << predecesor[i] << '\n';
    }
 
