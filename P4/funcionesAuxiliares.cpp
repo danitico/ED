@@ -4,11 +4,92 @@
 #include <string>
 #include <cfloat>
 #include <algorithm>
+#include "macros.hpp"
+int ed::menu(){
+   int opcion;
+   int posicion;
+
+   // Se muestran las opciones del menú
+   posicion=2;
+
+   // Se borra la pantalla
+   std::cout << CLEAR_SCREEN;
+
+   PLACE(1,10);
+   std::cout << BIBLUE;
+   std::cout << "Programa principial | Opciones del menú";
+   std::cout << RESET;
+
+   //////////////////////////////////////////////////////////////////////////////
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << "[1] Cargar vértices desde fichero";
+
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << "[2] Añadir vértice al grafo";
+
+   PLACE(posicion++,10);
+   std::cout << "[3] Añadir conexión entre dos vértices";
+
+   PLACE(posicion++,10);
+   std::cout << "[4] Modificar coste de un lado";
+
+   PLACE(posicion++,10);
+   std::cout << "[5] Borrar un vértice";
+
+   PLACE(posicion++,10);
+   std::cout << "[6] Borrar una conexión";
+
+   PLACE(posicion++,10);
+   std::cout << "[7] Mostrar el grafo";
+
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << "[8] Aplicar el algoritmo de Dijkstra";
+
+   PLACE(posicion++,10);
+   std::cout << "[9] Aplicar el algoritmo de Prim";
+
+   PLACE(posicion++,10);
+   std::cout << "[10] Aplicar el algoritmo de Kruskal";
+
+   PLACE(posicion++,10);
+   std::cout << "[11] Mostrar árbol abarcador mínimo generado";
+
+   PLACE(posicion++,10);
+   std::cout << "[12] Mostrar longitud del árbol abarcador mínimo";
+
+   //////////////////////////////////////////////////////////////////////////////
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << BIRED << "[0] Salir";
+
+   //////////////////////////////////////////////////////////////////////////////
+   posicion++;
+
+   PLACE(posicion++,10);
+   std::cout << BIGREEN;
+   std::cout << "Opción: ";
+   std::cout << RESET;
+
+   // Se lee el número de opción
+   std::cin >> opcion;
+
+    // Se elimina el salto de línea del flujo de entrada
+    std::cin.ignore();
+
+   return opcion;
+}
 void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
    std::ifstream archivo(fichero.c_str());
 
    if(!archivo.is_open()){
-      std::cout<<"Error al abrir el fichero"<<std::endl;
+      std::cout<<BIRED<<"Error al abrir el fichero"<<RESET<<std::endl;
    }
    else{
       std::string stream;
@@ -31,7 +112,7 @@ void ed::cargarVertices(ed::Graph & grafo, std::string fichero){
          }
       }
 
-      std::cout<<"Fichero cargado con éxito"<<std::endl;
+      std::cout<<BIGREEN<<"Fichero cargado con éxito"<<RESET<<std::endl;
    }
 }
 ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
@@ -49,7 +130,6 @@ ed::Graph ed::prim_algorithm(ed::Graph & grafo, float & coste_total){
    grafo.goToFirstVertex();
    // Metemos el primer vertice en el grafo resultante
    resultante.addVertex(grafo.currVertex().getData());
-   std::cout<<grafo.currVertex().getLabel()<<" -> "<<resultante.currVertex().getLabel()<<std::endl;
    // Ponemos que ese nodo ya ha sido visitado
    visitados[grafo.currVertex().getLabel()]=1;
    // Ponemos que el primer nodo no tiene un predecesor

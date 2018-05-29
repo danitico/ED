@@ -17,7 +17,7 @@ namespace ed{
       private:
          std::vector<Vertex> vertexes_; //!< Vector de la STL que contiene todos los vertices del grafo
          std::vector<Edge> edges_; //!< Vector de la STL que contiene todos los lados del grafo
-         std::vector<std::vector<int>> matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
+         std::vector<std::vector<int> > matrix_; //!< Matriz que representa la matriz de adyacencias del grafo
          int currentVertex_;
          int currentEdge_;
          int etiquetas_;
@@ -69,7 +69,7 @@ namespace ed{
           * @note Funcion de tipo inline
           * @return Devuelve un vector de vectores de enteros
           */
-         inline std::vector<std::vector<int>> getMatrix() const{return matrix_;}
+         inline std::vector<std::vector<int> > getMatrix() const{return matrix_;}
          /**
           * @fn inline int getCurrentVertex() const
           * @brief Nos devuelve el valor del cursor de vertices
