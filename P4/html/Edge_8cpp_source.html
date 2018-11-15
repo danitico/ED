@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente clases/Edge.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_02fe6bb0d29b159db6747b11f409a1ef.html">clases</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Edge.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Edge_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Edge_8hpp.html">Edge.hpp</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classed_1_1Edge.html#aa5749cb44443e94389a21619cc787c62">    8</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classed_1_1Edge.html#aa5749cb44443e94389a21619cc787c62">ed::Edge::has</a>(<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> <span class="keyword">const</span> &amp; u)<span class="keyword"> const</span>{</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keywordflow">if</span>(u==<a class="code" href="classed_1_1Edge.html#a9df2aa73dae6828d44769f06ccfc3451">first</a>() || u==<a class="code" href="classed_1_1Edge.html#ade4b328e593025e3c23d2a77fa7a4749">second</a>()){</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   }</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   }</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classed_1_1Edge.html#aa84aa2790c75cedf780620e070fff648">   16</a></span>&#160;<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> <a class="code" href="classed_1_1Edge.html#aa84aa2790c75cedf780620e070fff648">ed::Edge::other</a>(<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> <span class="keyword">const</span> &amp; u)<span class="keyword"> const</span>{</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keywordflow">if</span>(u==<a class="code" href="classed_1_1Edge.html#a9df2aa73dae6828d44769f06ccfc3451">first</a>()){</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classed_1_1Edge.html#ade4b328e593025e3c23d2a77fa7a4749">second</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   }</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keywordflow">if</span>(u==<a class="code" href="classed_1_1Edge.html#ade4b328e593025e3c23d2a77fa7a4749">second</a>()){</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="classed_1_1Edge.html#a9df2aa73dae6828d44769f06ccfc3451">first</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      }</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   }</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classed_1_1Edge.html#a16889fb90c1f42fbc65141db131fc234">   26</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classed_1_1Edge.html#a16889fb90c1f42fbc65141db131fc234">ed::Edge::operator&lt;</a>(<a class="code" href="classed_1_1Edge.html">Edge</a> <span class="keyword">const</span> &amp; lado){</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   <span class="keywordflow">if</span>(this-&gt;<a class="code" href="classed_1_1Edge.html#afd7da4d924b77f4fdd91ce0bd61f68f8">getData</a>() &lt; lado.<a class="code" href="classed_1_1Edge.html#afd7da4d924b77f4fdd91ce0bd61f68f8">getData</a>()){</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   }</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classed_1_1Edge.html#a3a7231a84a2359994affc043dd3d6d5f">   34</a></span>&#160;<a class="code" href="classed_1_1Edge.html">ed::Edge</a> &amp; <a class="code" href="classed_1_1Edge.html#a3a7231a84a2359994affc043dd3d6d5f">ed::Edge::operator=</a>(<a class="code" href="classed_1_1Edge.html">ed::Edge</a> <span class="keyword">const</span> &amp; lado){</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   this-&gt;<a class="code" href="classed_1_1Edge.html#a114b4e99046b771d7f55a47b1350988a">setFirstVertex</a>(lado.<a class="code" href="classed_1_1Edge.html#a9df2aa73dae6828d44769f06ccfc3451">first</a>());</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   this-&gt;<a class="code" href="classed_1_1Edge.html#a97b911fdeda42be81b3d82a496bd01eb">setSecondVertex</a>(lado.<a class="code" href="classed_1_1Edge.html#ade4b328e593025e3c23d2a77fa7a4749">second</a>());</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   this-&gt;<a class="code" href="classed_1_1Edge.html#ae6643637a0a6e4ff453c6407299b26c0">setData</a>(lado.<a class="code" href="classed_1_1Edge.html#afd7da4d924b77f4fdd91ce0bd61f68f8">getData</a>());</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="classed_1_1Edge_html_a16889fb90c1f42fbc65141db131fc234"><div class="ttname"><a href="classed_1_1Edge.html#a16889fb90c1f42fbc65141db131fc234">ed::Edge::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(Edge const &amp;lado)</div><div class="ttdoc">Nos dice si un lado es más pequeno que otro segun su coste. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8cpp_source.html#l00026">Edge.cpp:26</a></div></div>
+<div class="ttc" id="Edge_8hpp_html"><div class="ttname"><a href="Edge_8hpp.html">Edge.hpp</a></div><div class="ttdoc">Fichero de la clase Edge. </div></div>
+<div class="ttc" id="classed_1_1Edge_html_afd7da4d924b77f4fdd91ce0bd61f68f8"><div class="ttname"><a href="classed_1_1Edge.html#afd7da4d924b77f4fdd91ce0bd61f68f8">ed::Edge::getData</a></div><div class="ttdeci">float getData() const</div><div class="ttdoc">Devuelve el atributo privado distancia_. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00029">Edge.hpp:29</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_aa84aa2790c75cedf780620e070fff648"><div class="ttname"><a href="classed_1_1Edge.html#aa84aa2790c75cedf780620e070fff648">ed::Edge::other</a></div><div class="ttdeci">Vertex other(Vertex const &amp;u) const</div><div class="ttdoc">Devuelve el otro vertice que forma parte del segmento. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8cpp_source.html#l00016">Edge.cpp:16</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_ade4b328e593025e3c23d2a77fa7a4749"><div class="ttname"><a href="classed_1_1Edge.html#ade4b328e593025e3c23d2a77fa7a4749">ed::Edge::second</a></div><div class="ttdeci">Vertex second() const</div><div class="ttdoc">Devuelve el vertice final si estamos en grafo dirigido, si no devuelve uno de los vertices...</div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00067">Edge.hpp:67</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_a97b911fdeda42be81b3d82a496bd01eb"><div class="ttname"><a href="classed_1_1Edge.html#a97b911fdeda42be81b3d82a496bd01eb">ed::Edge::setSecondVertex</a></div><div class="ttdeci">void setSecondVertex(Vertex const &amp;u)</div><div class="ttdoc">Modifica el atributo privado fin_. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00092">Edge.hpp:92</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_a9df2aa73dae6828d44769f06ccfc3451"><div class="ttname"><a href="classed_1_1Edge.html#a9df2aa73dae6828d44769f06ccfc3451">ed::Edge::first</a></div><div class="ttdeci">Vertex first() const</div><div class="ttdoc">Devuelve el vertice inicial si estamos en grafo dirigido, si no devuelve uno de los vertices...</div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00057">Edge.hpp:57</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html"><div class="ttname"><a href="classed_1_1Edge.html">ed::Edge</a></div><div class="ttdoc">Definición de la clase Edge. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00012">Edge.hpp:12</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_a3a7231a84a2359994affc043dd3d6d5f"><div class="ttname"><a href="classed_1_1Edge.html#a3a7231a84a2359994affc043dd3d6d5f">ed::Edge::operator=</a></div><div class="ttdeci">Edge &amp; operator=(Edge const &amp;lado)</div><div class="ttdoc">Operador sobrecargado =. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8cpp_source.html#l00034">Edge.cpp:34</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html"><div class="ttname"><a href="classed_1_1Vertex.html">ed::Vertex</a></div><div class="ttdoc">Definición de la clase Vertex. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00016">Vertex.hpp:16</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_a114b4e99046b771d7f55a47b1350988a"><div class="ttname"><a href="classed_1_1Edge.html#a114b4e99046b771d7f55a47b1350988a">ed::Edge::setFirstVertex</a></div><div class="ttdeci">void setFirstVertex(Vertex const &amp;u)</div><div class="ttdoc">Modifica el atributo privado inicio_. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00084">Edge.hpp:84</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_ae6643637a0a6e4ff453c6407299b26c0"><div class="ttname"><a href="classed_1_1Edge.html#ae6643637a0a6e4ff453c6407299b26c0">ed::Edge::setData</a></div><div class="ttdeci">void setData(float const &amp;distancia)</div><div class="ttdoc">Modifica el atributo privado distancia_. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8hpp_source.html#l00076">Edge.hpp:76</a></div></div>
+<div class="ttc" id="classed_1_1Edge_html_aa5749cb44443e94389a21619cc787c62"><div class="ttname"><a href="classed_1_1Edge.html#aa5749cb44443e94389a21619cc787c62">ed::Edge::has</a></div><div class="ttdeci">bool has(Vertex const &amp;u) const</div><div class="ttdoc">Dice si el objeto Vertex se encuentra en el lado. </div><div class="ttdef"><b>Definition:</b> <a href="Edge_8cpp_source.html#l00008">Edge.cpp:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente clases/Vertex.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_02fe6bb0d29b159db6747b11f409a1ef.html">clases</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Vertex.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Vertex_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Vertex_8hpp.html">Vertex.hpp</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Punto_8hpp.html">Punto.hpp</a>&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classed_1_1Vertex.html#afb6e76d553ef666d62c045f4833a6d2a">    9</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classed_1_1Vertex.html#afb6e76d553ef666d62c045f4833a6d2a">ed::Vertex::operator==</a>(<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> <span class="keyword">const</span> &amp; vertice)<span class="keyword"> const</span>{</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keywordflow">if</span>(this-&gt;<a class="code" href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">getData</a>() == vertice.<a class="code" href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">getData</a>()){</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;   }</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   }</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classed_1_1Vertex.html#aaa470f2960c17be50d7d1b71f8e53d67">   17</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classed_1_1Vertex.html#aaa470f2960c17be50d7d1b71f8e53d67">ed::Vertex::operator!=</a>(<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> <span class="keyword">const</span> &amp; vertice)<span class="keyword"> const</span>{</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keywordflow">if</span>(!(this-&gt;<a class="code" href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">getData</a>() == vertice.<a class="code" href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">getData</a>())){</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   }</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   }</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classed_1_1Vertex.html#a43323547fdb1f0a48dc9a65ba7406162">   25</a></span>&#160;<a class="code" href="classed_1_1Vertex.html">ed::Vertex</a> &amp; <a class="code" href="classed_1_1Vertex.html#a43323547fdb1f0a48dc9a65ba7406162">ed::Vertex::operator=</a>(<a class="code" href="classed_1_1Vertex.html">Vertex</a> <span class="keyword">const</span> &amp;vertice){</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   this-&gt;<a class="code" href="classed_1_1Vertex.html#a6807731f15f5c80bdbb0e651b99b8845">setData</a>(vertice.<a class="code" href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">getData</a>());</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   this-&gt;<a class="code" href="classed_1_1Vertex.html#a4776ac1e88c75a4a1f1268b686f9db21">setLabel</a>(vertice.<a class="code" href="classed_1_1Vertex.html#a0533f256a046a9bb9a77d955ca02a37a">getLabel</a>());</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="Vertex_8hpp_html"><div class="ttname"><a href="Vertex_8hpp.html">Vertex.hpp</a></div><div class="ttdoc">Fichero de la clase Vertex. </div></div>
+<div class="ttc" id="Punto_8hpp_html"><div class="ttname"><a href="Punto_8hpp.html">Punto.hpp</a></div><div class="ttdoc">Fichero de la clase Punto. </div></div>
+<div class="ttc" id="classed_1_1Vertex_html_a4776ac1e88c75a4a1f1268b686f9db21"><div class="ttname"><a href="classed_1_1Vertex.html#a4776ac1e88c75a4a1f1268b686f9db21">ed::Vertex::setLabel</a></div><div class="ttdeci">void setLabel(int label)</div><div class="ttdoc">Modifica el atributo privado label_. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00057">Vertex.hpp:57</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_a6807731f15f5c80bdbb0e651b99b8845"><div class="ttname"><a href="classed_1_1Vertex.html#a6807731f15f5c80bdbb0e651b99b8845">ed::Vertex::setData</a></div><div class="ttdeci">void setData(Punto const &amp;p)</div><div class="ttdoc">Modifica el atributo privado p_. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00050">Vertex.hpp:50</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_a43323547fdb1f0a48dc9a65ba7406162"><div class="ttname"><a href="classed_1_1Vertex.html#a43323547fdb1f0a48dc9a65ba7406162">ed::Vertex::operator=</a></div><div class="ttdeci">Vertex &amp; operator=(Vertex const &amp;vertice)</div><div class="ttdoc">Iguala un vertice a otro. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8cpp_source.html#l00025">Vertex.cpp:25</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_afb6e76d553ef666d62c045f4833a6d2a"><div class="ttname"><a href="classed_1_1Vertex.html#afb6e76d553ef666d62c045f4833a6d2a">ed::Vertex::operator==</a></div><div class="ttdeci">bool operator==(Vertex const &amp;vertice) const</div><div class="ttdoc">Compara las coordenadas de los vértices. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8cpp_source.html#l00009">Vertex.cpp:9</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html"><div class="ttname"><a href="classed_1_1Vertex.html">ed::Vertex</a></div><div class="ttdoc">Definición de la clase Vertex. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00016">Vertex.hpp:16</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_aaa470f2960c17be50d7d1b71f8e53d67"><div class="ttname"><a href="classed_1_1Vertex.html#aaa470f2960c17be50d7d1b71f8e53d67">ed::Vertex::operator!=</a></div><div class="ttdeci">bool operator!=(Vertex const &amp;vertice) const</div><div class="ttdoc">Compara las coordenadas de los vértices. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8cpp_source.html#l00017">Vertex.cpp:17</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_a28dc774c3138be811d9d062ae53fba73"><div class="ttname"><a href="classed_1_1Vertex.html#a28dc774c3138be811d9d062ae53fba73">ed::Vertex::getData</a></div><div class="ttdeci">Punto getData() const</div><div class="ttdoc">Devuelve el atributo privado p_. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00032">Vertex.hpp:32</a></div></div>
+<div class="ttc" id="classed_1_1Vertex_html_a0533f256a046a9bb9a77d955ca02a37a"><div class="ttname"><a href="classed_1_1Vertex.html#a0533f256a046a9bb9a77d955ca02a37a">ed::Vertex::getLabel</a></div><div class="ttdeci">int getLabel() const</div><div class="ttdoc">Devuelve el atributo privado label_. </div><div class="ttdef"><b>Definition:</b> <a href="Vertex_8hpp_source.html#l00042">Vertex.hpp:42</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

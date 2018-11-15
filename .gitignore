@@ -1,6 +1,4 @@
 #ficheros que no se incluyen
-P1/version1/html
-P1/version2/html
 P1/version1/Vector3D.o
 P1/version1/funcionesAuxiliares.o
 P1/version1/principal.*
@@ -10,9 +8,7 @@ P1/version2/principal.*
 P2/*.o
 P2/*.exe
 P2/*.txt
-P2/html
 P2/practica-2-i62rapad*
-P3/html
 P3/*.o
 P3/*.exe
 P3/practica-3-i62rapad*

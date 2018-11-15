@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente clases/Punto.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_02fe6bb0d29b159db6747b11f409a1ef.html">clases</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Punto.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Punto_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef PUNTO_HPP</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define PUNTO_HPP</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> std::istream;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> std::ostream;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="Punto_8hpp.html#a8c21afcf0050680d2e57ad28a7a6c2bb">   13</a></span>&#160;<span class="preprocessor">#define COTA_ERROR 1.0e-6 </span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">namespace ed{</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">class </span>Punto{</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <span class="keyword">private</span>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;         <span class="keywordtype">float</span> x_;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;         <span class="keywordtype">float</span> y_;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <span class="keyword">public</span>:</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a8c1f5d58a27cf7dc9485d8ae0d3a05b8">   31</a></span>&#160;         <a class="code" href="classed_1_1Punto.html#a8c1f5d58a27cf7dc9485d8ae0d3a05b8">Punto</a>(<span class="keywordtype">float</span> x=0.0, <span class="keywordtype">float</span> y=0.0){</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this-&gt;setX(x);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this-&gt;setY(y);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         }</div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a22208de7d462a56f8487357cd8274f9c">   41</a></span>&#160;         <a class="code" href="classed_1_1Punto.html#a22208de7d462a56f8487357cd8274f9c">Punto</a>(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p){</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this-&gt;setX(p.getX());</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            this-&gt;setY(p.getY());</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         }</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">   54</a></span>&#160;         <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>()<span class="keyword"> const</span>{<span class="keywordflow">return</span> x_;}</div><div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">   63</a></span>&#160;         <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>()<span class="keyword"> const</span>{<span class="keywordflow">return</span> y_;}</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">   71</a></span>&#160;         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">setX</a>(<span class="keywordtype">float</span> <span class="keyword">const</span> &amp;x){x_=x;}</div><div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">   78</a></span>&#160;         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">setY</a>(<span class="keywordtype">float</span> <span class="keyword">const</span> &amp;y){y_=y;}</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;         <a class="code" href="classed_1_1Punto.html">Punto</a> &amp; operator=(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;         <span class="keywordtype">bool</span> operator==(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p) <span class="keyword">const</span>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;         <span class="keywordtype">void</span> leerPunto();</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;         <span class="keywordtype">void</span> escribirPunto();</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;   };</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   <span class="keywordtype">float</span> <a class="code" href="Punto_8hpp.html#a38effc4add5cff884431911a7b3e74af">distancia</a>(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p1, <a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p2);</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="Punto_8hpp_html_a38effc4add5cff884431911a7b3e74af"><div class="ttname"><a href="Punto_8hpp.html#a38effc4add5cff884431911a7b3e74af">ed::distancia</a></div><div class="ttdeci">float distancia(Punto const &amp;p1, Punto const &amp;p2)</div><div class="ttdoc">Devuelve la distancia euclidea entre dos objetos de la clase Punto. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8cpp_source.html#l00040">Punto.cpp:40</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a8c1f5d58a27cf7dc9485d8ae0d3a05b8"><div class="ttname"><a href="classed_1_1Punto.html#a8c1f5d58a27cf7dc9485d8ae0d3a05b8">ed::Punto::Punto</a></div><div class="ttdeci">Punto(float x=0.0, float y=0.0)</div><div class="ttdoc">Construye un objeto de la clase Punto. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00031">Punto.hpp:31</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a6cb76528b22dee4b457b049ca99c4cce"><div class="ttname"><a href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">ed::Punto::getX</a></div><div class="ttdeci">float getX() const</div><div class="ttdoc">Devuelve la coordenada x. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00054">Punto.hpp:54</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_ade8c14b91f89dd7b133a9ef3db4d7319"><div class="ttname"><a href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">ed::Punto::setX</a></div><div class="ttdeci">void setX(float const &amp;x)</div><div class="ttdoc">Modifica la coordenada x. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00071">Punto.hpp:71</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a8d85ac2b92a64848c0bddf35a001a208"><div class="ttname"><a href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">ed::Punto::getY</a></div><div class="ttdeci">float getY() const</div><div class="ttdoc">Devuelve la coordenada y. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00063">Punto.hpp:63</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a22208de7d462a56f8487357cd8274f9c"><div class="ttname"><a href="classed_1_1Punto.html#a22208de7d462a56f8487357cd8274f9c">ed::Punto::Punto</a></div><div class="ttdeci">Punto(Punto const &amp;p)</div><div class="ttdoc">Constructor de copia. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00041">Punto.hpp:41</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html"><div class="ttname"><a href="classed_1_1Punto.html">ed::Punto</a></div><div class="ttdoc">Definición de la clase Vertex. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00016">Punto.hpp:16</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a0af07f04ba39d5066642caf2ffbd9dbe"><div class="ttname"><a href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">ed::Punto::setY</a></div><div class="ttdeci">void setY(float const &amp;y)</div><div class="ttdoc">Modifica la coordenada y. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00078">Punto.hpp:78</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

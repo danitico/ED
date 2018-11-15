@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente clases/Punto.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_02fe6bb0d29b159db6747b11f409a1ef.html">clases</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Punto.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Punto_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Punto_8hpp.html">Punto.hpp</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../macros.hpp&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a68a7e24b153d82d0fba2b2b7fc0601fe">   10</a></span>&#160;<a class="code" href="classed_1_1Punto.html">ed::Punto</a> &amp; <a class="code" href="classed_1_1Punto.html#a68a7e24b153d82d0fba2b2b7fc0601fe">ed::Punto::operator=</a>(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p){</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;p){</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      <a class="code" href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">setX</a>(p.<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>());</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      <a class="code" href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">setY</a>(p.<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>());</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   }</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> ed::Punto::operator==(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p)<span class="keyword"> const</span>{</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keywordflow">if</span>( (std::abs(p.<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>() - this-&gt;<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>()) &lt; <a class="code" href="Punto_8hpp.html#a8c21afcf0050680d2e57ad28a7a6c2bb">COTA_ERROR</a>) &amp;&amp; (std::abs(p.<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>() - this-&gt;<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>()) &lt; <a class="code" href="Punto_8hpp.html#a8c21afcf0050680d2e57ad28a7a6c2bb">COTA_ERROR</a>) ){</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   }</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordflow">else</span>{</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   }</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#ad5386149f5bc8d945761fe42922d6ca2">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classed_1_1Punto.html#ad5386149f5bc8d945761fe42922d6ca2">ed::Punto::leerPunto</a>(){</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keywordtype">float</span> x, y;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   std::cout&lt;&lt;<a class="code" href="macros_8hpp.html#a1f05000b77a3b358a88653ca5c04daa4">BIPURPLE</a>&lt;&lt;<span class="stringliteral">&quot;Introduzca las coordenadas del punto&quot;</span>&lt;&lt;<a class="code" href="macros_8hpp.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>&lt;&lt;std::endl;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   std::cout&lt;&lt;<a class="code" href="macros_8hpp.html#a1f05000b77a3b358a88653ca5c04daa4">BIPURPLE</a>&lt;&lt;<span class="stringliteral">&quot;Introduzca el valor de x: &quot;</span>&lt;&lt;<a class="code" href="macros_8hpp.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   std::cin&gt;&gt;x;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   std::cout&lt;&lt;<a class="code" href="macros_8hpp.html#a1f05000b77a3b358a88653ca5c04daa4">BIPURPLE</a>&lt;&lt;<span class="stringliteral">&quot;Introduzca el valor de y: &quot;</span>&lt;&lt;<a class="code" href="macros_8hpp.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   std::cin&gt;&gt;y;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   this-&gt;<a class="code" href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">setX</a>(x);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   this-&gt;<a class="code" href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">setY</a>(y);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classed_1_1Punto.html#a09fc3d5f11601e9fd1404b243011e310">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classed_1_1Punto.html#a09fc3d5f11601e9fd1404b243011e310">ed::Punto::escribirPunto</a>(){</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   std::cout&lt;&lt;<span class="stringliteral">&quot;(&quot;</span>&lt;&lt;this-&gt;<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>()&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;this-&gt;<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>()&lt;&lt;<span class="stringliteral">&quot;)&quot;</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="Punto_8hpp.html#a38effc4add5cff884431911a7b3e74af">   40</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="Punto_8hpp.html#a38effc4add5cff884431911a7b3e74af">ed::distancia</a>(<a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p1, <a class="code" href="classed_1_1Punto.html">Punto</a> <span class="keyword">const</span> &amp;p2){</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <span class="keywordflow">return</span> sqrt(pow(p2.<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>() - p1.<a class="code" href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">getX</a>(), 2) + pow(p2.<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>() - p1.<a class="code" href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">getY</a>(), 2));</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div><div class="ttc" id="Punto_8hpp_html_a8c21afcf0050680d2e57ad28a7a6c2bb"><div class="ttname"><a href="Punto_8hpp.html#a8c21afcf0050680d2e57ad28a7a6c2bb">COTA_ERROR</a></div><div class="ttdeci">#define COTA_ERROR</div><div class="ttdoc">Cota de error para la comparación de números reales. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00013">Punto.hpp:13</a></div></div>
+<div class="ttc" id="Punto_8hpp_html_a38effc4add5cff884431911a7b3e74af"><div class="ttname"><a href="Punto_8hpp.html#a38effc4add5cff884431911a7b3e74af">ed::distancia</a></div><div class="ttdeci">float distancia(Punto const &amp;p1, Punto const &amp;p2)</div><div class="ttdoc">Devuelve la distancia euclidea entre dos objetos de la clase Punto. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8cpp_source.html#l00040">Punto.cpp:40</a></div></div>
+<div class="ttc" id="macros_8hpp_html_a1f05000b77a3b358a88653ca5c04daa4"><div class="ttname"><a href="macros_8hpp.html#a1f05000b77a3b358a88653ca5c04daa4">BIPURPLE</a></div><div class="ttdeci">#define BIPURPLE</div><div class="ttdoc">Purple. </div><div class="ttdef"><b>Definition:</b> <a href="macros_8hpp_source.html#l00092">macros.hpp:92</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a68a7e24b153d82d0fba2b2b7fc0601fe"><div class="ttname"><a href="classed_1_1Punto.html#a68a7e24b153d82d0fba2b2b7fc0601fe">ed::Punto::operator=</a></div><div class="ttdeci">Punto &amp; operator=(Punto const &amp;p)</div><div class="ttdoc">Operador sobrecargado =. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8cpp_source.html#l00010">Punto.cpp:10</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a09fc3d5f11601e9fd1404b243011e310"><div class="ttname"><a href="classed_1_1Punto.html#a09fc3d5f11601e9fd1404b243011e310">ed::Punto::escribirPunto</a></div><div class="ttdeci">void escribirPunto()</div><div class="ttdoc">Nos permite mostrar por pantalla un objeto de la clase Punto. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8cpp_source.html#l00037">Punto.cpp:37</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a6cb76528b22dee4b457b049ca99c4cce"><div class="ttname"><a href="classed_1_1Punto.html#a6cb76528b22dee4b457b049ca99c4cce">ed::Punto::getX</a></div><div class="ttdeci">float getX() const</div><div class="ttdoc">Devuelve la coordenada x. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00054">Punto.hpp:54</a></div></div>
+<div class="ttc" id="Punto_8hpp_html"><div class="ttname"><a href="Punto_8hpp.html">Punto.hpp</a></div><div class="ttdoc">Fichero de la clase Punto. </div></div>
+<div class="ttc" id="classed_1_1Punto_html_ad5386149f5bc8d945761fe42922d6ca2"><div class="ttname"><a href="classed_1_1Punto.html#ad5386149f5bc8d945761fe42922d6ca2">ed::Punto::leerPunto</a></div><div class="ttdeci">void leerPunto()</div><div class="ttdoc">Nos permite introducir por pantalla las coordenadas. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8cpp_source.html#l00025">Punto.cpp:25</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_ade8c14b91f89dd7b133a9ef3db4d7319"><div class="ttname"><a href="classed_1_1Punto.html#ade8c14b91f89dd7b133a9ef3db4d7319">ed::Punto::setX</a></div><div class="ttdeci">void setX(float const &amp;x)</div><div class="ttdoc">Modifica la coordenada x. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00071">Punto.hpp:71</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a8d85ac2b92a64848c0bddf35a001a208"><div class="ttname"><a href="classed_1_1Punto.html#a8d85ac2b92a64848c0bddf35a001a208">ed::Punto::getY</a></div><div class="ttdeci">float getY() const</div><div class="ttdoc">Devuelve la coordenada y. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00063">Punto.hpp:63</a></div></div>
+<div class="ttc" id="macros_8hpp_html_ab702106cf3b3e96750b6845ded4e0299"><div class="ttname"><a href="macros_8hpp.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a></div><div class="ttdeci">#define RESET</div><div class="ttdoc">Reset. </div><div class="ttdef"><b>Definition:</b> <a href="macros_8hpp_source.html#l00025">macros.hpp:25</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html"><div class="ttname"><a href="classed_1_1Punto.html">ed::Punto</a></div><div class="ttdoc">Definición de la clase Vertex. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00016">Punto.hpp:16</a></div></div>
+<div class="ttc" id="classed_1_1Punto_html_a0af07f04ba39d5066642caf2ffbd9dbe"><div class="ttname"><a href="classed_1_1Punto.html#a0af07f04ba39d5066642caf2ffbd9dbe">ed::Punto::setY</a></div><div class="ttdeci">void setY(float const &amp;y)</div><div class="ttdoc">Modifica la coordenada y. </div><div class="ttdef"><b>Definition:</b> <a href="Punto_8hpp_source.html#l00078">Punto.hpp:78</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
