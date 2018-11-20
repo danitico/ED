@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente NodoMunicipioInterfaz.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NodoMunicipioInterfaz.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="NodoMunicipioInterfaz_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _NODOMUNICIPIOINTERFAZ_HPP_</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _NODOMUNICIPIOINTERFAZ_HPP_</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Municipio_8hpp.html">Municipio.hpp</a>&quot;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceed.html">ed</a>{</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classed_1_1NodoMunicipioInterfaz.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classed_1_1NodoMunicipioInterfaz.html">NodoMunicipioInterfaz</a></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classed_1_1NodoMunicipioInterfaz.html#a296862c3524ea37fd9e0e2cc3f323ce4">   32</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classed_1_1NodoMunicipioInterfaz.html#a296862c3524ea37fd9e0e2cc3f323ce4">~NodoMunicipioInterfaz</a>()</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="comment">// Se debe redefinir en la clase heredera</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="classed_1_1Municipio.html">ed::Municipio</a> &amp; <a class="code" href="classed_1_1NodoMunicipioInterfaz.html#a5d50acbd0fcdebb0e1643d91a78abda9">getItem</a>() <span class="keyword">const</span> = 0;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>  <a class="code" href="classed_1_1NodoMunicipioInterfaz.html#ae6b1c457260aaebbf35b7b6768488b7e">setItem</a>(<a class="code" href="classed_1_1Municipio.html">ed::Municipio</a> <span class="keyword">const</span> &amp;item) = 0;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">// Fin de la clase NodoMunicipioInterfaz</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">// Fin del espacio de nombres ed</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//Fin  _NODOMUNICIPIOINTERFAZ_HPP_</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="classed_1_1Municipio_html"><div class="ttname"><a href="classed_1_1Municipio.html">ed::Municipio</a></div><div class="ttdoc">Definición de la clase Municipio. </div><div class="ttdef"><b>Definition:</b> <a href="Municipio_8hpp_source.html#l00026">Municipio.hpp:26</a></div></div>
+<div class="ttc" id="classed_1_1NodoMunicipioInterfaz_html_a296862c3524ea37fd9e0e2cc3f323ce4"><div class="ttname"><a href="classed_1_1NodoMunicipioInterfaz.html#a296862c3524ea37fd9e0e2cc3f323ce4">ed::NodoMunicipioInterfaz::~NodoMunicipioInterfaz</a></div><div class="ttdeci">virtual ~NodoMunicipioInterfaz()</div><div class="ttdoc">Destructor de la clase. </div><div class="ttdef"><b>Definition:</b> <a href="NodoMunicipioInterfaz_8hpp_source.html#l00032">NodoMunicipioInterfaz.hpp:32</a></div></div>
+<div class="ttc" id="classed_1_1NodoMunicipioInterfaz_html_a5d50acbd0fcdebb0e1643d91a78abda9"><div class="ttname"><a href="classed_1_1NodoMunicipioInterfaz.html#a5d50acbd0fcdebb0e1643d91a78abda9">ed::NodoMunicipioInterfaz::getItem</a></div><div class="ttdeci">virtual const ed::Municipio &amp; getItem() const =0</div><div class="ttdoc">Método público que permite conocer el campo informativo del nodo: un municipio. </div></div>
+<div class="ttc" id="namespaceed_html"><div class="ttname"><a href="namespaceed.html">ed</a></div><div class="ttdoc">Espacio de nombres para la asignatura Estructuras de Datos. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8hpp_source.html#l00010">funcionesAuxiliares.hpp:10</a></div></div>
+<div class="ttc" id="classed_1_1NodoMunicipioInterfaz_html"><div class="ttname"><a href="classed_1_1NodoMunicipioInterfaz.html">ed::NodoMunicipioInterfaz</a></div><div class="ttdoc">Definición de la clase abstracta NodoMunicipioInterfaz. </div><div class="ttdef"><b>Definition:</b> <a href="NodoMunicipioInterfaz_8hpp_source.html#l00020">NodoMunicipioInterfaz.hpp:20</a></div></div>
+<div class="ttc" id="Municipio_8hpp_html"><div class="ttname"><a href="Municipio_8hpp.html">Municipio.hpp</a></div><div class="ttdoc">Fichero de la clase Municipio: vértice del plano euclídeo. </div></div>
+<div class="ttc" id="classed_1_1NodoMunicipioInterfaz_html_ae6b1c457260aaebbf35b7b6768488b7e"><div class="ttname"><a href="classed_1_1NodoMunicipioInterfaz.html#ae6b1c457260aaebbf35b7b6768488b7e">ed::NodoMunicipioInterfaz::setItem</a></div><div class="ttdeci">virtual void setItem(ed::Municipio const &amp;item)=0</div><div class="ttdoc">Método público que permite modificar el campo informativo del nodo: un municipio. ...</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

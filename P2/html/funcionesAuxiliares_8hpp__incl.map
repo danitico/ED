@@ -1,0 +1,9 @@
+<map id="funcionesAuxiliares.hpp" name="funcionesAuxiliares.hpp">
+<area shape="rect" id="node2" href="$Provincia_8hpp.html" title="Definición de la clase Provincia. " alt="" coords="35,80,136,107"/>
+<area shape="rect" id="node5" href="$ListaDoblementeEnlazadaOrdenadaMunicipios_8hpp.html" title="Clase de una lista doblemente enlazada y ordenada de Municipios. " alt="" coords="155,155,386,196"/>
+<area shape="rect" id="node6" href="$ListaOrdenadaMunicipiosInterfaz_8hpp.html" title="Clase abstracta de una lista enlazada y ordenada de Municipios. " alt="" coords="308,319,545,345"/>
+<area shape="rect" id="node7" href="$Municipio_8hpp.html" title="Fichero de la clase Municipio: vértice del plano euclídeo. " alt="" coords="219,393,322,420"/>
+<area shape="rect" id="node11" href="$NodoDoblementeEnlazadoMunicipio_8hpp.html" title="Declaración del TAD NodoDoblementeEnlazadoMunicipio: nodo doblemente enlazado con el campo informativ..." alt="" coords="142,244,399,271"/>
+<area shape="rect" id="node9" href="$macros_8hpp.html" title="Macros para la pantalla. " alt="" coords="185,468,276,495"/>
+<area shape="rect" id="node12" href="$NodoMunicipioInterfaz_8hpp.html" title="Declaración de la clase NodoMunicipioInterfaz: nodo que contiene como campo informativo a un Municipi..." alt="" coords="55,319,233,345"/>
+</map>

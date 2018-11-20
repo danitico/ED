@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos: Fichero Fuente funcionesAuxiliares.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Estructuras de Datos
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">funcionesAuxiliares.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="funcionesAuxiliares_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _FUNCIONESAUXILIARES_HPP_</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _FUNCIONESAUXILIARES_HPP_</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Provincia_8hpp.html">Provincia.hpp</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespaceed.html">   10</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceed.html">ed</a>{</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespaceed.html#a546d1699e6a9b8dd8d3aa52978a38f06">menu</a>();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#abf891cff592ea3518ec3682ab1f85867">comprobarProvinciaVacia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#a84f624e66e926904e55ba2bd08d98926">cargarProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#aa030fad15f5f1508f7347395aaba4d3b">grabarProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#afb0ad363716650234b2d8ab502d98e35">consultarDatosDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#a91e2b8aa28e5b13510f99a86fb271ada">mostrarMunicipiosDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#a5e5010dd33caed5b3a019fe303071c4e">modificarDatosDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#a3ec8872e5ba9f9c046669d8b70ae261a">borrarTodosLosMunicipiosDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#af40c211b84e18eb2beddeefe5ff6bdb7">consultarMunicipioDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#a57f9dbd2e7fb1b1185858d18e9bb6bf1">insertarMunicipioEnProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#ac9b1c5e1a78f96097af46e7fd3354e55">borrarMunicipioDeProvincia</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia);</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceed.html#aadb75d03c0ec790a9c208894a0d14b5d">modificarDatosDeMunicipio</a>(<a class="code" href="classed_1_1Provincia.html">ed::Provincia</a> &amp; provincia, std::string &amp; nombre_municipio);</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;} <span class="comment">// Fin del espacio de nombre de la asignatura: ed</span></div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">// Fin de _FUNCIONESAUXILIARES_HPP_</span></div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="classed_1_1Provincia_html"><div class="ttname"><a href="classed_1_1Provincia.html">ed::Provincia</a></div><div class="ttdoc">Definición de la clase Provincia. </div><div class="ttdef"><b>Definition:</b> <a href="Provincia_8hpp_source.html#l00023">Provincia.hpp:23</a></div></div>
+<div class="ttc" id="namespaceed_html_a5e5010dd33caed5b3a019fe303071c4e"><div class="ttname"><a href="namespaceed.html#a5e5010dd33caed5b3a019fe303071c4e">ed::modificarDatosDeProvincia</a></div><div class="ttdeci">void modificarDatosDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que muestra un submenu en el que se puede elegir modificar el código o el nombre de la provin...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00181">funcionesAuxiliares.cpp:181</a></div></div>
+<div class="ttc" id="namespaceed_html_a57f9dbd2e7fb1b1185858d18e9bb6bf1"><div class="ttname"><a href="namespaceed.html#a57f9dbd2e7fb1b1185858d18e9bb6bf1">ed::insertarMunicipioEnProvincia</a></div><div class="ttdeci">void insertarMunicipioEnProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que pide por pantalla los datos de un municipio. Si el municipio introducido no se encuentra ...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00287">funcionesAuxiliares.cpp:287</a></div></div>
+<div class="ttc" id="namespaceed_html_a3ec8872e5ba9f9c046669d8b70ae261a"><div class="ttname"><a href="namespaceed.html#a3ec8872e5ba9f9c046669d8b70ae261a">ed::borrarTodosLosMunicipiosDeProvincia</a></div><div class="ttdeci">void borrarTodosLosMunicipiosDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que borra todos los municipios de la lista. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00260">funcionesAuxiliares.cpp:260</a></div></div>
+<div class="ttc" id="namespaceed_html_ac9b1c5e1a78f96097af46e7fd3354e55"><div class="ttname"><a href="namespaceed.html#ac9b1c5e1a78f96097af46e7fd3354e55">ed::borrarMunicipioDeProvincia</a></div><div class="ttdeci">void borrarMunicipioDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que pide por pantalla el nombre del municipio para borrarlo de la lista. Si se encuentra en l...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00312">funcionesAuxiliares.cpp:312</a></div></div>
+<div class="ttc" id="namespaceed_html_abf891cff592ea3518ec3682ab1f85867"><div class="ttname"><a href="namespaceed.html#abf891cff592ea3518ec3682ab1f85867">ed::comprobarProvinciaVacia</a></div><div class="ttdeci">void comprobarProvinciaVacia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que comprueba si la Provincia tiene municipios. En caso afirmativo, se muestra por pantalla e...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00099">funcionesAuxiliares.cpp:99</a></div></div>
+<div class="ttc" id="namespaceed_html"><div class="ttname"><a href="namespaceed.html">ed</a></div><div class="ttdoc">Espacio de nombres para la asignatura Estructuras de Datos. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8hpp_source.html#l00010">funcionesAuxiliares.hpp:10</a></div></div>
+<div class="ttc" id="Provincia_8hpp_html"><div class="ttname"><a href="Provincia_8hpp.html">Provincia.hpp</a></div><div class="ttdoc">Definición de la clase Provincia. </div></div>
+<div class="ttc" id="namespaceed_html_a546d1699e6a9b8dd8d3aa52978a38f06"><div class="ttname"><a href="namespaceed.html#a546d1699e6a9b8dd8d3aa52978a38f06">ed::menu</a></div><div class="ttdeci">int menu()</div><div class="ttdoc">Función que muestra por pantalla utilizando macros las opciones del menú. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00017">funcionesAuxiliares.cpp:17</a></div></div>
+<div class="ttc" id="namespaceed_html_a84f624e66e926904e55ba2bd08d98926"><div class="ttname"><a href="namespaceed.html#a84f624e66e926904e55ba2bd08d98926">ed::cargarProvincia</a></div><div class="ttdeci">void cargarProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que pide por teclado el nombre de un archivo para volcar los datos en el objeto de la clase P...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00112">funcionesAuxiliares.cpp:112</a></div></div>
+<div class="ttc" id="namespaceed_html_aadb75d03c0ec790a9c208894a0d14b5d"><div class="ttname"><a href="namespaceed.html#aadb75d03c0ec790a9c208894a0d14b5d">ed::modificarDatosDeMunicipio</a></div><div class="ttdeci">void modificarDatosDeMunicipio(ed::Provincia &amp;provincia, std::string &amp;nombre_municipio)</div><div class="ttdoc">Función que modifica los datos de un municipio de la lista. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00327">funcionesAuxiliares.cpp:327</a></div></div>
+<div class="ttc" id="namespaceed_html_aa030fad15f5f1508f7347395aaba4d3b"><div class="ttname"><a href="namespaceed.html#aa030fad15f5f1508f7347395aaba4d3b">ed::grabarProvincia</a></div><div class="ttdeci">void grabarProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que pide por teclado el nombre de un archivo para volcar los datos desde el objeto de la clas...</div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00133">funcionesAuxiliares.cpp:133</a></div></div>
+<div class="ttc" id="namespaceed_html_af40c211b84e18eb2beddeefe5ff6bdb7"><div class="ttname"><a href="namespaceed.html#af40c211b84e18eb2beddeefe5ff6bdb7">ed::consultarMunicipioDeProvincia</a></div><div class="ttdeci">void consultarMunicipioDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que pide por pantalla el nombre del municipio para consultar su información. Si se encuentra en la lista, se muestra su información, en el caso contrario, se muestra un mensaje de error. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00271">funcionesAuxiliares.cpp:271</a></div></div>
+<div class="ttc" id="namespaceed_html_afb0ad363716650234b2d8ab502d98e35"><div class="ttname"><a href="namespaceed.html#afb0ad363716650234b2d8ab502d98e35">ed::consultarDatosDeProvincia</a></div><div class="ttdeci">void consultarDatosDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que muestra por pantalla los datos del objeto de la clase Provincia. Por defecto, siempre se muestra el nombre y el código de la provincia. En el caso que la lista de municipios no este vacía, se procede a imprimir por pantalla el número de municipios y el número total de habitantes, desglosado en hombres y mujeres. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00157">funcionesAuxiliares.cpp:157</a></div></div>
+<div class="ttc" id="namespaceed_html_a91e2b8aa28e5b13510f99a86fb271ada"><div class="ttname"><a href="namespaceed.html#a91e2b8aa28e5b13510f99a86fb271ada">ed::mostrarMunicipiosDeProvincia</a></div><div class="ttdeci">void mostrarMunicipiosDeProvincia(ed::Provincia &amp;provincia)</div><div class="ttdoc">Función que muestra por pantalla los municipios de la provincia con todos sus datos. Si la lista no está vacía, se procede a mostrar la información de los municipios por pantalla, en caso contrario, se muestra por pantalla un mensaje de error. </div><div class="ttdef"><b>Definition:</b> <a href="funcionesAuxiliares_8cpp_source.html#l00171">funcionesAuxiliares.cpp:171</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
